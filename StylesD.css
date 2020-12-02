@@ -1,1 +1,275 @@
-body{font-family:Montserrat,Arial;cursor:default;background:url(2.png) #555 no-repeat fixed;background-size:cover;}header{position:fixed;width:100%;top:0;background:#eee;z-index:100;}header >a{color:#000;float:left;margin:0;padding:1%;font-weight:700;}header nav a{color:#000;font-weight:500;padding:1%}header a:hover{background:#ddd;}header li{display:inline;padding:1%;}header nav{padding:1%;float:right;width:50%;display:inline-block;border-left:#222 solid .1em;background:#ccc;}article{margin:7% 2%;background:#abbe;min-height:100%;width:96%;position:absolute;z-index:0;transition:.2s ease-out;}article:hover{background:#abb;}article h1{text-align:center;}.list{display:flex;margin:2%;}.list a{color:#000;padding:2%;width:33.33%;text-align:center;transition:.2s ease-out;}.list a:nth-child(1){background-color:#a55;}.list a:nth-child(2){background-color:#a5a;}.list a:nth-child(3){background-color:#5aa;}.list a:nth-child(1):hover{background-color:#c55;}.list a:nth-child(2):hover{background-color:#c5c;}.list a:nth-child(3):hover{background-color:#5cc;}.link a:hover{transition:.2s ease-in}.cart{margin:2%;padding:1%;background:#eee;display:flex;border-radius: 2%;}.cart,.cart a,.cart p{animation:4s apear;}.Dsc{width:50%;padding:1%;}.lin .Dsc{background:#77f;margin:2%;display:inline-flex;width:45%;flex-direction:column;transition:.3 ease;}.lin .Dsc:hover{background:#55f;transition:.3 ease;}.cart>div:first-child{width:25%;border:.3em #111 solid;background-size:contain;background-repeat:no-repeat;background-position:center;}.uno{background:url(./Tuto/Main.gif) #035;transition:.2s ease-in;}.dos{background:url(./3.png) #d40;}.acd{background:url(./4.png) #b08;transition:.2s ease-in;}.tres{animation:Shad 1s;}.four{animation:inShad 1s;}.Dsc a{color:#000;font-weight:500;font-size:1.3em;}.Dsc a:hover{text-decoration:underline;}.link{display:flex;width:25%;flex-direction:column;}.link a ,.h{width:100%;padding:3%;text-align:center;background:#ddd;margin:5% 0%;font-weight:500;color:#000;transition:.2 ease-out;display:block;}.h:hover{background:#3aa;cursor:pointer;}.link>a:nth-child(1):hover{background:#3a3;}.link>a:nth-child(2):hover{background:#a33;}.link>a:nth-child(3):hover{background:#33a;}.bld{display:none;}.h p{transition:.2s ease;}@keyframes apear{0%{font-size:0;color:#0000;opacity:0}99%{color:#0000;}100%{font-size:100%;color:#000;}}@keyframes Shad{0%{border-bottom:.3em solid #f00;}33%{border-bottom:.3em solid #0f0;}33%{border-bottom:.3em solid #f0f;}}@keyframes inShad{0%{border-bottom:.3em solid #f0f;}33%{border-bottom:.3em solid #0f0;}33%{border-bottom:.3em solid #00f;}}@media (max-width:550px){header nav{width:70%;}article{margin:0;width:100%;background:#abb;}}@media (max-width:450px){.cart{flex-direction:column;margin:0% 0% 5% 0%;}.cart>*{width:100%;height:20%;}.uno, .acd{padding:40%;}.link a{margin:1%;}body{font-size:96%;}h1{margin-top:10%;}}
+body{
+font-family:Montserrat,Arial;
+cursor:default;
+  background:url(2.png) #555 no-repeat fixed;
+  background-size: cover;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #eee;
+  z-index: 100;
+}
+
+header >a {
+  color: #000;
+  float: left;
+  margin: 0;
+  padding: 1%;
+  font-weight: 700;
+}
+header nav a {
+  color: #000;
+  font-weight: 500;
+  padding: 1%
+}
+
+header a:hover {
+  background: #ddd;
+}
+
+header li {
+  display: inline;
+  padding: 1%;
+}
+header nav {
+  padding: 1%;
+  float: right;
+  width: 50%;
+  display: inline-block;
+  border-left: #222 solid .1em;
+  background: #ccc;
+}
+
+article {
+  margin: 7% 2%;
+  background: #abbe;
+  min-height: 100%;
+  width: 95%;
+  position: absolute;
+  z-index: 0;
+  transition: .2s ease-out;
+}
+
+article:hover {
+  background: #abb;
+}
+article h1 {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  margin: 2%;
+}
+.list a {
+ color: #000;
+ padding: 2%;
+  width: 33.33%;
+  text-align: center;
+  transition: .2s ease-out;
+}
+
+.list a:nth-child(1) {
+  background-color: #a55;
+}
+.list a:nth-child(2) {
+  background-color: #a5a;
+}
+.list a:nth-child(3) {
+  background-color: #5aa;
+}
+.list a:nth-child(1):hover {
+  background-color: #c55;
+}
+.list a:nth-child(2):hover {
+  background-color: #c5c;
+}
+.list a:nth-child(3):hover {
+  background-color: #5cc;
+}
+
+.link a:hover{
+  transition: .2s ease-in
+}
+
+.cart {
+  margin: 2%;
+  padding: 1%;
+  background: #eee;
+  display: flex;
+}
+
+.cart,.cart a,.cart p {
+  animation: 4s apear;
+}
+
+.Dsc {
+  width: 50%;
+  padding: 1%;
+}
+
+.lin .Dsc {
+  background: #77f;
+  margin: 2%;
+  display: inline-flex;
+  width: 45%;
+  flex-direction:column;
+  transition: .3 ease;
+}
+
+.lin .Dsc:hover {
+  background: #55f;
+  transition: .3 ease;
+}
+.cart>div:first-child {
+  width: 25%;
+  border: .3em #111 solid;
+/*   background: #000; */
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position:  center;
+}
+
+.uno {
+  background: url(./Tuto/Main.gif) #035;
+  transition: .2s ease-in;
+}
+.dos {
+  background:url(./3.png) #d40;
+}
+
+.acd {
+  background: url(./4.png) #b08;
+  transition: .2s ease-in;
+}
+
+.tres {
+  animation: Shad 1s;
+}
+.four {
+  animation: inShad 1s;
+}
+.Dsc a {
+  color: #000;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+
+.Dsc a:hover {
+  text-decoration: underline;
+}
+
+.link {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+}
+
+.link a ,.h{
+  width: 100%;
+  padding: 3%;
+  text-align: center;
+  background: #ddd;
+  margin: 5% 0%;
+  font-weight: 500;
+  color: #000;
+  transition: .2 ease-out;
+  display: block;
+}
+
+.h:hover {
+  background: #3aa;
+  cursor: pointer;
+}
+.link>a:nth-child(1):hover {
+  background: #3a3;
+}
+.link>a:nth-child(2):hover {
+  background: #a33;
+}
+.link>a:nth-child(3):hover {
+  background: #33a;
+}
+.bld {
+  display: none;
+}
+
+.h p {
+  transition:.2s ease;
+}
+
+@keyframes apear {
+  0% {font-size: 0;
+  color: #0000;
+  opacity: 0}
+/*   50% {
+    font-size: 50%;
+  color: #0000;
+  opacity: .5} */
+  99% {
+/*     font-size: 100%; */
+  color: #0000;}
+  100% {font-size: 100%;
+  color: #000;}
+}
+
+@keyframes Shad {
+  0% {
+    border-bottom: .3em solid #f00;
+  }
+    33% {
+    border-bottom: .3em solid #0f0;
+  }
+   33% {
+    border-bottom: .3em solid #f0f;
+  }
+}
+
+@keyframes inShad {
+  0% {
+    border-bottom: .3em solid #f0f;
+  }
+    33% {
+    border-bottom: .3em solid #0f0;
+  }
+   33% {
+    border-bottom: .3em solid #00f;
+  }
+}
+
+@media (max-width:550px){
+  header nav {
+    width: 70%;
+  }
+  article {
+    margin: 0;
+    width: 100%;
+    background: #abb;
+  }
+}
+
+@media (max-width:450px) {
+  .cart {
+    flex-direction: column;
+    margin: 0% 0% 5% 0%;
+  }
+  .cart>* {
+    width: 100%;
+    height: 20%;
+  }
+  .uno, .acd {
+    padding: 40%;
+  }
+  .link a {
+    margin: 1%;
+  }
+  body {
+    font-size: 96%;
+  }
+  h1 {
+    margin-top: 10%;
+  }
+}
