@@ -1,48 +1,41 @@
-var vr1 = "";
-var vr2 = "";
-var ips = 0;
-var in2= 0;
-var amernomen = false;
+var vr1 = '', vr2 = '';
+var ips = 0, in2 = 0;
+var Anm = false;
+
+document.querySelector('.link').addEventListener('click', () => {
+	document.querySelector('header').classList.toggle('tres');
+	document.querySelector('header').classList.toggle('four');
+});
 
 if (document.images) {
-var blank = new Image()
-blank.src = "AcordesHTML/vpcblank.gif"
-var select = new Image()
-select.src = "AcordesHTML/vpcselect.gif"
-var scalfil = new Image()
-scalfil.src = "AcordesHTML/vpcscalfil.gif"
-var black = new Image()
-black.src = "AcordesHTML/vpcblack.gif"
+var blank = new Image(); blank.src = "AcordesHTML/vpcblank.gif"
+var select = new Image(); select.src = "AcordesHTML/vpcselect.gif"
+var scalfil = new Image(); scalfil.src = "AcordesHTML/vpcscalfil.gif"
+var black = new Image(); black.src = "AcordesHTML/vpcblack.gif"
 }
 function go() {
-if (document.keyform.nomen.checked == 1){
-	amernomen = true;
-} else {
-	amernomen = false;
+	if (document.keyform.nomen.checked == 1) Anm = true;
+	else Anm = false;
+	ips = 0
+	if (document.keyform.cordscal[0].checked == 1) {
+		x = document.keyform.formula.options.selectedIndex;
+		chordcode = document.keyform.formula.options[x].value;
+		dispch(chordcode);
+		vr1 = chordcode
+		vr2 = chordcode
+	}
+	else if (document.keyform.cordscal[1].checked == 1) scalecalc();
+	else if (document.keyform.cordscal[2].checked == 1) {
+		if (document.keyform.notesnum[2].checked == 1) scalecalc();
+		else {
+		ConvertInput();
+		dispch(chordcode);
+		vr1 = chordcode
+		vr2 = chordcode
+		}
+	}
 }
-ips = 0
-if (document.keyform.cordscal[0].checked == 1) {
-x = document.keyform.formula.options.selectedIndex;
-chordcode = document.keyform.formula.options[x].value;
-dispch(chordcode);
-vr1 = chordcode
-vr2 = chordcode
-}
-else if (document.keyform.cordscal[1].checked == 1) {
-scalecalc();
-}
-else if (document.keyform.cordscal[2].checked == 1) {
-if (document.keyform.notesnum[2].checked == 1) {
-scalecalc();
-}
-else {
-ConvertInput();
-dispch(chordcode);
-vr1 = chordcode
-vr2 = chordcode
-}
-}
-}
+
 function dispch(formulatext) {
 z = document.keyform.root.options.selectedIndex;
 root = document.keyform.root.options[z].value;
@@ -50,32 +43,20 @@ if (document.keyform.notesnum[2].checked != 1) {
 if (formulatext.charAt(0) != "1") {
 userinput = document.keyform.forminput.value;
 if (document.keyform.cordscal[2].checked == 1) {
-if (userinput.charAt(0) != "1") {
-a = Number.NaN
+if (userinput.charAt(0) != "1") a = Number.NaN;
 }
+else a = parseFloat(root) + 12;
 }
-else {
-a = parseFloat(root) + 12
-}
-}
-else {
-a = Number.NaN
-}
+else a = Number.NaN;
 }
 formstring = ""
 inact();
 playnote(a);
 if (document.keyform.cordscal[2].checked == 1) {
-if (document.keyform.notesnum[1].checked != 1) {
-a = parseFloat(root) + 12
+if (document.keyform.notesnum[1].checked != 1) a = parseFloat(root) + 12;
+else a = 13
 }
-else {
-a = 13
-}
-}
-else {
-a = parseFloat(root) + 12
-}
+else a = parseFloat(root) + 12;
 b = 0
 d = formulatext.length / 2
 for (var i = 0; i < d; i++) {
@@ -89,7 +70,7 @@ dispstring = formstring.substring(0, (formstring.length - 2));
 document.keyform.formdisp.value = dispstring;
 }
 function playnote(note) {
-	if (document.images && amernomen == true){
+	if (document.images && Anm == true){
 	if (note == 1){
 	playkey(1)
 	formstring = formstring + 'C, '
@@ -114,9 +95,7 @@ function playnote(note) {
 	formstring = formstring + 'F, '
 	playkey(4)
 	}
-	if (note == 7){
-	playsharp(3)
-	}
+	if (note == 7)playsharp(3);
 	if (note == 8){
 	formstring = formstring + 'G, '
 	playkey(5)
@@ -234,7 +213,7 @@ function playnote(note) {
 	playkey(21)
 	}
 	}
-	if (document.images && amernomen ==false){
+	if (document.images && Anm ==false){
 if (note == 1){
 playkey(1)
 formstring = formstring + 'Do, '
@@ -260,6 +239,7 @@ formstring = formstring + 'Fa, '
 playkey(4)
 }
 if (note == 7){
+formstring = formstring + 'Fa#,' //rEV?
 playsharp(3)
 }
 if (note == 8){
@@ -452,25 +432,20 @@ function ConvertInput() {
 	formulastring = ""
 	userinput = document.keyform.forminput.value;
 	if (userinput.indexOf(",", 0) != -1) {
-		if (userinput.charAt(userinput.length - 1) != ",") {
-		userinput = userinput + ",";
-		}
+		if (userinput.charAt(userinput.length - 1) != ",") userinput = userinput + ",";
 		getValue(userinput);
 		if (temp == true) {
 			temp = false;
 			document.querySelector('.er').classList.toggle('err');
 		}
-	} else {
-		error();
-	}
+	} else error();
 chordcode = formulastring + ","
 dispch(chordcode);
 }
 function error() {
-// alert ("No has ingresado la Formula Correcta");
 	if (temp == false) {
 		temp = true;
-	document.querySelector('.er').classList.toggle('err');
+		document.querySelector('.er').classList.toggle('err');
 }
 }
 function getValue(inputvar) {
@@ -486,13 +461,9 @@ if (value.length != 1) {
 if (value.indexOf("b", 0) != -1) {
 comp = -1
 }
-else if (value.indexOf("#", 0) != -1) {
-comp = 1
+else if (value.indexOf("#", 0) != -1) comp = 1;
 }
-}
-else {
- comp = 0
-}
+else comp = 0;
 if (document.keyform.notesnum[0].checked == 1) {
 if (value.length <= 2) {
 if (value.indexOf("1", 0) != -1) {
@@ -591,9 +562,6 @@ formulastring = formulastring + keypress + ",";
 comp = 0
 }
 }
-function openhelp() {
-remote = window.open("help.html","remotewin","width=350,height=400,scrollbars=yes");
-}
 function scalecalc(){
 scaletext = "";
 scaletext1 = "";
@@ -607,12 +575,8 @@ x = document.keyform.scale.options.selectedIndex;
 scalevalue = document.keyform.scale.options[x].value.toUpperCase()
 }
 else if (document.keyform.cordscal[2].checked == 1) {
-if (document.keyform.notesnum[2].checked == 1) {
-scalevalue = document.keyform.forminput.value.toUpperCase()
-}
-else {
-scalevalue = document.keyform.forminput.value.toUpperCase()
-}
+if (document.keyform.notesnum[2].checked == 1) scalevalue = document.keyform.forminput.value.toUpperCase();
+else scalevalue = document.keyform.forminput.value.toUpperCase();
 }
 for (var y = 0; y < scalevalue.length; y++) {
 if (scalevalue.charAt(y) == "1") {
@@ -680,12 +644,8 @@ scaletext3 = scaletext3 +(t - 24) + ",";
 }
 u = t
 }
-if (document.keyform.lingerscal.checked == 1) {
-totalscale =scaletext + scaletext1 + scaletext3 + scaletext2
-}
-else {
-totalscale = scaletext
-}
+if (document.keyform.lingerscal.checked == 1) totalscale =scaletext + scaletext1 + scaletext3 + scaletext2;
+else totalscale = scaletext;
 dispch(totalscale);
 }
 function inverter() {

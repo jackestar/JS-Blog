@@ -1,0 +1,148 @@
+header {
+  background: url(./img0.gif) #353535 fixed;
+  animation: 12s blocks infinite ease alternate;
+}
+@keyframes blocks {
+  0% { background-position:right;}
+  25% { background-position:top;}
+  50% { background-position:left;}
+  75% { background-position:bottom;}
+  100% { background-position: center;}
+}
+article ul {
+  display: flex;
+  margin: 2%;
+}
+
+div.sel {
+  display: none;
+}
+div.act {
+  display: block;
+  opacity:1;
+  transform: scale(1);
+  animation: apear 1s;
+}
+@keyframes apear {
+  0% {
+  opacity:0;
+  transform: scale(.9);
+  }
+  100% {
+  opacity:1;
+  transform: scale(1);
+  }
+}
+
+article ul li {
+  width: 100%;
+  text-align: center;
+  margin: 5%;
+  align-self: center;
+}
+
+article li a, article li p {
+  padding: 5%;
+  display: block;
+  color: #111;
+  font-weight: 700;
+  background: #ddd;
+  cursor: pointer;
+  height: 100%;
+}
+
+.sub {
+  padding: 1%;
+  width: 100%;
+  min-height: 50%;
+  letter-spacing: .02em;
+  display: flex;
+  justify-content: center;
+}
+
+.sub>div {
+  padding: 4%;
+  display: none;
+  border: .2em #fff solid;
+  color: #eee;
+}
+.sub p {
+  font-variant: initial;
+}
+
+.win a {
+  background: #aaf;
+}
+.lin a {
+  background: #afa;
+}
+.src a {
+  background: #ffa;
+}
+
+.a:hover,.b:hover,.c:hover,.d:hover,.e:hover{
+  transition: .2s ease-in;
+}
+
+.a:hover,.a:active {
+  background: #aaf;
+}
+.b:hover,.b:active {
+  background: #afa;
+}
+.c:hover,.c:active {
+  background: #ffa;
+}
+.d:hover,.d:active {
+  background: #faf;
+}
+.e:hover,.e:active {
+  background: #faa;
+}
+.u {
+  opacity: .5;
+  cursor:not-allowed;
+}
+div.win,div.lin,div.src {
+  display: block;
+  animation: border 1s;
+  border: .2em #222 solid;
+  background:#000;
+  width: 100%;
+  height: auto;
+  font-size: 100%;
+  overflow: hidden;
+}
+
+.sub h3 {
+  text-align: center;
+}
+@keyframes border {
+  from {border: .2em #fff solid;
+    width:0;
+  height: 0;
+  font-size: 0;}
+  to {border: .2em #222 solid;
+  width: 100%;
+  height: auto;
+  font-size: 100%;}
+}
+
+article hr {
+  display: block;
+}
+
+@media (max-width:600px) {
+  article ul {
+    margin: 1%;
+  }
+  article ul li{
+    margin: 1%;
+  }
+}
+
+@media (max-width:470px) {
+  article ul {
+    flex-flow:  column;
+  }
+}

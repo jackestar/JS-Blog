@@ -1,0 +1,25 @@
+header {
+  background: url(./img3.gif) #353535 fixed;
+  animation: 12s blocks infinite ease alternate;
+}
+@keyframes blocks {
+  0% { background-position:left;}
+  25% { background-position:right;}
+  50% { background-position:top;}
+  75% { background-position:bottom;}
+  100% { background-position: unset;}
+}
+article i, article b {
+  margin: 0 1%;
+}
+article section p {
+  font-variant-caps:  petite-caps;
+   padding: 1% 0;
+}
+article a {
+  color: #000;
+  font-weight: 500;
+}
+article a:hover{
+  text-decoration: underline;
+}
