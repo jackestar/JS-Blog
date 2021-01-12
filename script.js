@@ -35,7 +35,7 @@ document.querySelector('p.s').addEventListener('click', () => {
 
 let AName = navigator["platform"], Ahref = '#',ark = navigator["oscpu"];
 let ANameA = ['Windows 64bits','Windows 32bits','Linux 32','Linux 64','MacOSX 64','MacOSX 32','Debian 32','Debian 64','Android'];
-let AhrefA = ['#Win64','#Win32'];
+let AhrefA = ['https://github.com/jackestar/Dl-PJ/releases/latest/download/DL-JS.Lis.64.7z','https://github.com/jackestar/Dl-PJ/releases/latest/download/DL-JS.Lis.32.7z'];
 let dsp = false;
 
 if (ark.includes('Win64')) {
