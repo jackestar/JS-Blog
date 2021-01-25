@@ -1,221 +1,217 @@
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<title>DL-JS - Como Usar 🏛</title>
-		<base href="./index.html">
-		<meta charset="utf-8">
-		<meta name="Author" content="Jakestar">
-		<link rel="stylesheet" type="text/css" href="Normalize.css">
-		<link rel="stylesheet" href="StylesU.css">
-		<link rel="stylesheet" href="StylesH.css">
-	</head>
-	<body>
-		<header>
-			<div>
-				<h1>Proyecto Liluim Lis</h1>
-				<p>Interfaz Grafica para Youtube-DL</p>
-			</div>
-		</header>
-				<nav>
-			<ul>
-				<li><a href="./indexDL.html">Proyecto</a></li>
-				<li><a href="./Download.html">Descargas</a></li>
-				<li><a href="#"class="act">Como Usar</a></li>
-				<li><a href="./Copyright.html">Copyright</a></li>
-				<li><a href="./index.html">Inicio</a></li>
-			</ul>
-		</nav>
-		<article>
-			<h1>DL-JS Documentación</h1>
-      <ul class="elist">
-        <li>Introducción</li>
-        <li>Fundamentos básicos</li>
-        <li>Configuración</li>
-        <li>Paginas compatibles</li>
-        <li>Comandos heredados útiles 
-          <p>Plantillas de Nombre</p></li>
-        <li>Otros</li>
-      </ul>
-      <hr>
-      <section>
-        <div class="tit">
-          <p>Introduccion</p>
-          <p>DL-JS es una interfaz gráfica del programa youtube-dl, la cual incorpora una serie de preconfiguraciones diseñadas para el usuario final. Este programa busca facilitar la descarga de multimedia en diversos sitios web sin la intromisión de terceros.</p>
-          <div class="img"><img src="./Tuto/Main.gif" alt="Interfaz"></div>
-          <p>La aplicación está en estado beta (Cubre todas las características objetivo mas no ha sido testeada), por lo que se inicia con una consola</p>
-          <p>El programa está Basado en español <i>(Its partialment traslated to English)</i> y se inicia el inglés si la maquina tiene el idioma ingles por defecto (Parcialmente traducido). Futuras traducciones serán añadidas</p>
-          <p>Por el momento La aplicación solo está disponible para Windows, más tiene el potencial para Linux y Mac (Sin testeo a fondo), Además de un port para <b>Android</b> para futuro desarrollo.</p>
-        </div>
-        <div class="tit">
-          <p>Fundamentos Básicos</p>
-          <p>Al ejecutar la interfaz se muestra un bloque para colocar el texto y tres opciones visible. Para acceder a ellas necesario colocar un <b>URL</b> valido y seleccionar el modo de descarga (Audio - Video - Subtítulos).</p>
-          <p>Los URL no deben contener espacios y deben ser 1 URL por vez.</p>
-
-          <i class="Spe" style="display: block;">www.ejemplo.com</i>
-          <p>al terminar se muestra el mensaje <b>Completado</b> si todo transcurrió con normalidad.</p>
-          <i>sí al terminar muestra error puede que no se haya terminado de descargar el video completamente, no se haya podido convertir, haga falta un video en la lista de reproducción etc.</i>
-          <i>Al terminar se muestra debajo el comando usado en caso de Error y si se está en modo Debug.</i>
-          <ul>
-            <b>Modos:</b>
-            <li>
-              <b>Modo Audio</b>
-              <p>Este descargara el audio (si está disponible) del <b>URL</b> seleccionado en la mejor calidad y si además están disponibles se le añaden los metadatos y caratula del audio (Cover). Y convierte en <b>MP3</b> el audio</p>
-              <i>De no estar FFMpeg disponible no se aplicarán todas las características (Preinstalado por defecto) </i>
-            </li>
-            <li>
-              <b>Modo Video</b>
-              <p>Este descargara el video en la mejor calidad posible</p>
-              <i>En el caso de Crunchyroll se le añaden los subtítulos embebidos, no superpuestos.</i>
-              <i>Si el audio y video de mejor calidad están disponibles por separado se descargarán y unirán al finalizar la descarga.</i>
-              <i>Al forzar Metadatos en video se convertirá en formato MKV lo cual puede tardar un tiempo durante la conversión.</i>
-            </li>
-            <li>
-              <b>Subtitulos</b>
-              <p>Este descargara los subtítulos en Idioma español de forma predeterminada (Español Latino si no España), para cambiar esto Accede a configuración.</p>
-            </li>
-            <i>Si la mejor calidad no está disponible se procederá a la segunda mejor y así sucesivamente</i>
-          </ul>
-        </div>
-          <div class="tit"><p>Configuración</p>
-          <p>En la esquina superior derecha se encuentra un icono con forma de engranaje, el cual muestra las configuraciones, además del cuadro de inicio de sesión y acceso a las actualizaciones <i>(Aun en desarrollo)</i></p>
-          <div class="img"><img src="./Tuto/Conf.gif" alt="Configuracion"></div>
-          <ul>
-            <b>Configuraciones</b>
-            <li class="log">
-              <b>Cuadro de Logeo</b>
-              <div class="img">
-                <img src="./Tuto/UserName.gif" alt="Nombre De Usuario">
-                <img src="./Tuto/EmailName.gif" alt="Correo de Usuario">
-              </div>
-              <p>Permite colocar los datos para iniciar sesión en el caso de que se requiera un usuario para descargar algún video.</p>
-              <p>Todo inicio de sesión se hace al empezar la descarga y se cierra al culminar esta.</p>
-              <p>La configuración se borra al reinicio</p>
-              <i>Ningún dato es almacenado o enviado a terceros en ningún momento.</i>
-              <i>Puede que el Login requiera resolver algún Recapta, en dicho caso de debe usar un navegador</i>
-            </li>
-            <li>
-              <b>ComoBoxs de Calidad</b>
-              <p>La descarga automáticamente elegirá la mejor combinación de calidad posible, pero en dicho caso se puede elegir un límite de calidad para el video (Resolución y FPS) y audio (AudioRate). Además, se puede seleccionar el idioma de los subtítulos.</p>
-              <i>Si dicha configuración no está disponible se pasa a la mejor disponible (o a la más cercana)</i>
-            </li>
-            <li>
-              <b>Añadir Metadatos</b>
-              <p>Predeterminado en modo audio, añade la información disponible sobre el medio. Nombre, autor, Álbum, año, etc.</p>
-              <i>Solo si FFMpeg está disponible (Pre instalado)</i>
-            </li>
-            <li>
-              <b>Añadir Caratula</b>
-              <p>Añade el <b>Cover</b> correspondiente en el medio seleccionado. Como la caratula de un álbum</p>
-            </li>
-            <li>
-              <b>Restringción de Nombre</b>
-              <p>Evita que se creen archivos con nombres no compatibles en Windows (Activado por defecto)</p>
-              <i>No tiene efecto en Linux o Android</i>
-            </li>
-            <li>
-              <b>Auto Nombre y Formato</b>
-              <p>El nombre se obtiene mediante el título del medio. y el formato de salida predeterminado es el disponible por la pagina. De no estar activado se pide el nombre del archivo y el formato el cual sera convertido<i>No requiere el nombre de la extensión.</i></p>
-              <i>El cuadro de dialogo pedira un nombre de archivo y formato de salida</i>
-            </li>
-            <li>
-              <b>Forzar Metadatos</b>
-              <p>Añade los Metadatos y caratula a videos</p>
-              <i>Suele convertir los videos a formato MKV lo que requiere de más tiempo</i>
-            </li>
-            <li>
-              <b>Forzar Subtítulos</b>
-              <p>Añade los subtítulos al video (Automático para Crunchyroll)</p>
-            </li>
-            <li>
-              <b>Modo Album</b>
-              <p>Descarga Listas de Reproducción, Canales, (Listas de Listas de reproducción), recursivamente, y las ordena según el nombre del álbum (o lista de reproducción), numero de lista y titulo. en carpetas separadas</p>
-              <i>Si se selecciona un canal o usuario descargara todo su contenido. Úsese con cuidado</i><hr>
-              <i>Para Dumpear (Descargar todo) un canal de música se recomienda usar el listado de <b>Álbumes & Canciones</b> este se obtiene desde el canal de youtube (Solo en canales que están también en Youtube Music) <br> Suele tener la siguiente forma: <p class="Spe">https://www.youtube.com/c/muse/playlists?view=71</p></i>
-            </li>
-            <li>
-              <b>Resetear</b>
-              <p>Resetea a la configuracion de fábrica</p>
-            </li>
-          </ul>
-        </div>
-        <div class="tit">
-          <p>Paginas Compatibles</p>
-          <p>El motor <i>Youtube-DL</i> tiene la capacidad para descargar de más de 700 páginas diferentes aproximadamente más de 1100 modos diferentes entre páginas. La preconfiguración actualmente está dirigida a</p>
-          <ul>
-            <li>
-              <b>Youtube</b>
-              <p>Listas de Reproducción</p>
-              <p>Canales</p>
-              <p>Youtube Music</p>
-            </li>
-            <li><b>Conunchyroll</b></li>
-            <li><b>Facebook</b></li>
-            <li><b>HBO</b></li>
-            <!-- <li><b></b></li> -->
-          </ul>
-          <p>Pero en la mayoría de las paginas compatibles listadas no suele haber inconvenientes para realizar descargas</p>
-          <ul><i><a href="./list.html">Lista de sitios Soportados</a></i></ul>
-        </div>
-        <div class="tit">
-          <p>Comandos Heredados Útiles</p>
-          <p>Son una serie de comandos que se pueden añadir antes del URL que pueden ser útiles en ciertos casos. Estos comandos son heredados del YoutubeDL y FFmpeg <b>Solo Desarrolladores</b></p>
-          <ul>
-            <li>
-              <b>No descarga ningún medio o quiero un formato especifico</b>
-              <p>Para conocer la lista de formatos disponible antecede <i>-F</i> antes del URL</p><i class="Spe">-F www.ejemplo.com</i>
-              <p>Este retorna a una lista de formatos en la consola cada uno con una ID y formato. para seleccionarlo usa <i>-f ID</i>. Por Ejemplo</p>
-              <i class="Spe">-f 140 www.ejemplo.com</i>
-            </li>
-            <li>
-              <!-- <i class="Spe">www.ejemplo.com</i> -->
-              <b>Para descargar los videos específicos de una lista de reproducción </b>
-              <p>Para empezar desde un numero especifico usa <i>--playlist-start Nro</i></p>
-              <i class="Spe">--playlist-start 3 www.ejemplo.com</i>
-              <p>Para descargar hasta cierto número usa <i>--playlist-end Nro</i></p>
-              <i class="Spe">--playlist-end 12 www.ejemplo.com</i>
-              <p>Para descargar algunos videos específicos usa <i>--playlist-items Nro</i>. separando los números con (,) y marcando rango con (-)</p>
-              <i class="Spe">--playlist-items 1,3,13,15 www.ejemplo.com</i>
-              <i class="Spe">--playlist-items 1-3,13,15-17 www.ejemplo.com</i>
-              <br>
-              <p>Para descargar en orden inverso usa <i>--playlist-reverse</i></p>
-              <p>Para descargar en orden aleatorio usa <i>--playlist-random</i></p>
-            </li>
-            <li>
-              <b>No se añadieron los subtitulos</b>
-              <i>Reportar si es posible</i>
-              <p>en algunas páginas el ID del idioma del subtitulo no es compatible por lo que se debe ingresar manualmente.</p>
-              <p>Primero se deben obtener la lista de subtítulos con <i>--list-subs</i></p>
-              <i class="Spe">--list-subs www.ejemplo.com</i>
-              <p>En la consola se obtendrá una lista de los subtítulos por ID e Idioma-Tipo</p><br>
-              <p>Luego se debe usar <i>--sub-lang Lenguaje</i> con ID seleccionado</p>
-              <i class="Spe">--sub-lang "ES_es-419" www.ejemplo.com</i><br>
-              <p>También se puede usar directamente <i>--all-subs</i> para descargar todos los subtítulos disponibles</p>
-              <i class="Spe">--all-subs www.ejemplo.com</i><br>
-              <p>En el caso de los subtítulos autogenerados de youtube se usa <i>--write-auto-sub</i></p>
-              <i class="Spe">--write-auto-sub www.youtube.com/watch?v=</i><hr>
-              <p>Los subtítulos embebidos al video solo se activan automáticamente en crunchyroll, para añadirlos automáticamente usa la opción Forzar Subtítulos en la configuración.</p>
-            </li>
-            <li>
-              <b></b>
-              <p></p>
-            </li>
-          </ul>
-          <i></i>
-          <ul><i><a href="#Github#DL#Readme">Lista de comandos Completos</a></i></ul>
-        </div>
-        <div class="tit">
-          <p>Otros</p>
-          <ul>
-            <b>Componentes</b>
-            <li><a href="#">QT</a></li>
-            <li><a href="#">YoutubeDL</a></li>
-            <li><a href="#">FFMpeg</a></li>
-            <li><a href="#">qdarkstyle</a></li>
-          </ul>
-        </div>
-      </section>
-		</article>
-    <footer><p>Jackestar® 2021</p></footer>
-	</body>
-	<!-- <script src="script.js"></script> -->
-</html>	
+<!doctype html>
+<html lang=es>
+<head>
+<title>DL-JS - Como Usar 🏛</title>
+<base href=./index.html>
+<meta charset=utf-8>
+<meta name=Author content=Jakestar>
+<link rel=stylesheet href=Normalize.css>
+<link rel=stylesheet href=StylesU.css>
+<link rel=stylesheet href=StylesH.css>
+</head>
+<body>
+<header>
+<div>
+<h1>Proyecto Liluim Lis</h1>
+<p>Interfaz Grafica para Youtube-DL</p>
+</div>
+</header>
+<nav>
+<ul>
+<li><a href=./indexDL.html>Proyecto</a></li>
+<li><a href=./Download.html>Descargas</a></li>
+<li><a href=# class=act>Como Usar</a></li>
+<li><a href=./Copyright.html>Copyright</a></li>
+<li><a href=./index.html>Inicio</a></li>
+</ul>
+</nav>
+<article>
+<h1>DL-JS Documentación</h1>
+<ul class=elist>
+<li>Introducción</li>
+<li>Fundamentos básicos</li>
+<li>Configuración</li>
+<li>Paginas compatibles</li>
+<li>Comandos heredados útiles
+<p>Plantillas de Nombre</p></li>
+<li>Otros</li>
+</ul>
+<hr>
+<section>
+<div class=tit>
+<p>Introduccion</p>
+<p>DL-JS es una interfaz gráfica del programa youtube-dl, la cual incorpora una serie de preconfiguraciones diseñadas para el usuario final. Este programa busca facilitar la descarga de multimedia en diversos sitios web sin la intromisión de terceros.</p>
+<div class=img><img src=./Tuto/Main.gif alt=Interfaz></div>
+<p>La aplicación está en estado beta (Cubre todas las características objetivo mas no ha sido testeada), por lo que se inicia con una consola</p>
+<p>El programa está Basado en español <i>(Its partialment traslated to English)</i> y se inicia el inglés si la maquina tiene el idioma ingles por defecto (Parcialmente traducido). Futuras traducciones serán añadidas</p>
+<p>Por el momento La aplicación solo está disponible para Windows, más tiene el potencial para Linux y Mac (Sin testeo a fondo), Además de un port para <b>Android</b> para futuro desarrollo.</p>
+</div>
+<div class=tit>
+<p>Fundamentos Básicos</p>
+<p>Al ejecutar la interfaz se muestra un bloque para colocar el texto y tres opciones visible. Para acceder a ellas necesario colocar un <b>URL</b> valido y seleccionar el modo de descarga (Audio - Video - Subtítulos).</p>
+<p>Los URL no deben contener espacios y deben ser 1 URL por vez.</p>
+<i class=Spe style=display:block>www.ejemplo.com</i>
+<p>al terminar se muestra el mensaje <b>Completado</b> si todo transcurrió con normalidad.</p>
+<i>sí al terminar muestra error puede que no se haya terminado de descargar el video completamente, no se haya podido convertir, haga falta un video en la lista de reproducción etc.</i>
+<i>Al terminar se muestra debajo el comando usado en caso de Error y si se está en modo Debug.</i>
+<ul>
+<b>Modos:</b>
+<li>
+<b>Modo Audio</b>
+<p>Este descargara el audio (si está disponible) del <b>URL</b> seleccionado en la mejor calidad y si además están disponibles se le añaden los metadatos y caratula del audio (Cover). Y convierte en <b>MP3</b> el audio</p>
+<i>De no estar FFMpeg disponible no se aplicarán todas las características (Preinstalado por defecto) </i>
+</li>
+<li>
+<b>Modo Video</b>
+<p>Este descargara el video en la mejor calidad posible</p>
+<i>En el caso de Crunchyroll se le añaden los subtítulos embebidos, no superpuestos.</i>
+<i>Si el audio y video de mejor calidad están disponibles por separado se descargarán y unirán al finalizar la descarga.</i>
+<i>Al forzar Metadatos en video se convertirá en formato MKV lo cual puede tardar un tiempo durante la conversión.</i>
+</li>
+<li>
+<b>Subtitulos</b>
+<p>Este descargara los subtítulos en Idioma español de forma predeterminada (Español Latino si no España), para cambiar esto Accede a configuración.</p>
+</li>
+<i>Si la mejor calidad no está disponible se procederá a la segunda mejor y así sucesivamente</i>
+</ul>
+</div>
+<div class=tit><p>Configuración</p>
+<p>En la esquina superior derecha se encuentra un icono con forma de engranaje, el cual muestra las configuraciones, además del cuadro de inicio de sesión y acceso a las actualizaciones <i>(Aun en desarrollo)</i></p>
+<div class=img><img src=./Tuto/Conf.gif alt=Configuracion></div>
+<ul>
+<b>Configuraciones</b>
+<li class=log>
+<b>Cuadro de Logeo</b>
+<div class=img>
+<img src=./Tuto/UserName.gif alt="Nombre De Usuario">
+<img src=./Tuto/EmailName.gif alt="Correo de Usuario">
+</div>
+<p>Permite colocar los datos para iniciar sesión en el caso de que se requiera un usuario para descargar algún video.</p>
+<p>Todo inicio de sesión se hace al empezar la descarga y se cierra al culminar esta.</p>
+<p>La configuración se borra al reinicio</p>
+<i>Ningún dato es almacenado o enviado a terceros en ningún momento.</i>
+<i>Puede que el Login requiera resolver algún Recapta, en dicho caso de debe usar un navegador</i>
+</li>
+<li>
+<b>ComoBoxs de Calidad</b>
+<p>La descarga automáticamente elegirá la mejor combinación de calidad posible, pero en dicho caso se puede elegir un límite de calidad para el video (Resolución y FPS) y audio (AudioRate). Además, se puede seleccionar el idioma de los subtítulos.</p>
+<i>Si dicha configuración no está disponible se pasa a la mejor disponible (o a la más cercana)</i>
+</li>
+<li>
+<b>Añadir Metadatos</b>
+<p>Predeterminado en modo audio, añade la información disponible sobre el medio. Nombre, autor, Álbum, año, etc.</p>
+<i>Solo si FFMpeg está disponible (Pre instalado)</i>
+</li>
+<li>
+<b>Añadir Caratula</b>
+<p>Añade el <b>Cover</b> correspondiente en el medio seleccionado. Como la caratula de un álbum</p>
+</li>
+<li>
+<b>Restringción de Nombre</b>
+<p>Evita que se creen archivos con nombres no compatibles en Windows (Activado por defecto)</p>
+<i>No tiene efecto en Linux o Android</i>
+</li>
+<li>
+<b>Auto Nombre y Formato</b>
+<p>El nombre se obtiene mediante el título del medio. y el formato de salida predeterminado es el disponible por la pagina. De no estar activado se pide el nombre del archivo y el formato el cual sera convertido<i>No requiere el nombre de la extensión.</i></p>
+<i>El cuadro de dialogo pedira un nombre de archivo y formato de salida</i>
+</li>
+<li>
+<b>Forzar Metadatos</b>
+<p>Añade los Metadatos y caratula a videos</p>
+<i>Suele convertir los videos a formato MKV lo que requiere de más tiempo</i>
+</li>
+<li>
+<b>Forzar Subtítulos</b>
+<p>Añade los subtítulos al video (Automático para Crunchyroll)</p>
+</li>
+<li>
+<b>Modo Album</b>
+<p>Descarga Listas de Reproducción, Canales, (Listas de Listas de reproducción), recursivamente, y las ordena según el nombre del álbum (o lista de reproducción), numero de lista y titulo. en carpetas separadas</p>
+<i>Si se selecciona un canal o usuario descargara todo su contenido. Úsese con cuidado</i><hr>
+<i>Para Dumpear (Descargar todo) un canal de música se recomienda usar el listado de <b>Álbumes & Canciones</b> este se obtiene desde el canal de youtube (Solo en canales que están también en Youtube Music) <br> Suele tener la siguiente forma: <p class=Spe>https://www.youtube.com/c/muse/playlists?view=71</p></i>
+</li>
+<li>
+<b>Resetear</b>
+<p>Resetea a la configuracion de fábrica</p>
+</li>
+</ul>
+</div>
+<div class=tit>
+<p>Paginas Compatibles</p>
+<p>El motor <i>Youtube-DL</i> tiene la capacidad para descargar de más de 700 páginas diferentes aproximadamente más de 1100 modos diferentes entre páginas. La preconfiguración actualmente está dirigida a</p>
+<ul>
+<li>
+<b>Youtube</b>
+<p>Listas de Reproducción</p>
+<p>Canales</p>
+<p>Youtube Music</p>
+</li>
+<li><b>Conunchyroll</b></li>
+<li><b>Facebook</b></li>
+<li><b>HBO</b></li>
+</ul>
+<p>Pero en la mayoría de las paginas compatibles listadas no suele haber inconvenientes para realizar descargas</p>
+<ul><i><a href=./list.html>Lista de sitios Soportados</a></i></ul>
+</div>
+<div class=tit>
+<p>Comandos Heredados Útiles</p>
+<p>Son una serie de comandos que se pueden añadir antes del URL que pueden ser útiles en ciertos casos. Estos comandos son heredados del YoutubeDL y FFmpeg <b>Solo Desarrolladores</b></p>
+<ul>
+<li>
+<b>No descarga ningún medio o quiero un formato especifico</b>
+<p>Para conocer la lista de formatos disponible antecede <i>-F</i> antes del URL</p><i class=Spe>-F www.ejemplo.com</i>
+<p>Este retorna a una lista de formatos en la consola cada uno con una ID y formato. para seleccionarlo usa <i>-f ID</i>. Por Ejemplo</p>
+<i class=Spe>-f 140 www.ejemplo.com</i>
+</li>
+<li>
+<b>Para descargar los videos específicos de una lista de reproducción </b>
+<p>Para empezar desde un numero especifico usa <i>--playlist-start Nro</i></p>
+<i class=Spe>--playlist-start 3 www.ejemplo.com</i>
+<p>Para descargar hasta cierto número usa <i>--playlist-end Nro</i></p>
+<i class=Spe>--playlist-end 12 www.ejemplo.com</i>
+<p>Para descargar algunos videos específicos usa <i>--playlist-items Nro</i>. separando los números con (,) y marcando rango con (-)</p>
+<i class=Spe>--playlist-items 1,3,13,15 www.ejemplo.com</i>
+<i class=Spe>--playlist-items 1-3,13,15-17 www.ejemplo.com</i>
+<br>
+<p>Para descargar en orden inverso usa <i>--playlist-reverse</i></p>
+<p>Para descargar en orden aleatorio usa <i>--playlist-random</i></p>
+</li>
+<li>
+<b>No se añadieron los subtitulos</b>
+<i>Reportar si es posible</i>
+<p>en algunas páginas el ID del idioma del subtitulo no es compatible por lo que se debe ingresar manualmente.</p>
+<p>Primero se deben obtener la lista de subtítulos con <i>--list-subs</i></p>
+<i class=Spe>--list-subs www.ejemplo.com</i>
+<p>En la consola se obtendrá una lista de los subtítulos por ID e Idioma-Tipo</p><br>
+<p>Luego se debe usar <i>--sub-lang Lenguaje</i> con ID seleccionado</p>
+<i class=Spe>--sub-lang "ES_es-419" www.ejemplo.com</i><br>
+<p>También se puede usar directamente <i>--all-subs</i> para descargar todos los subtítulos disponibles</p>
+<i class=Spe>--all-subs www.ejemplo.com</i><br>
+<p>En el caso de los subtítulos autogenerados de youtube se usa <i>--write-auto-sub</i></p>
+<i class=Spe>--write-auto-sub www.youtube.com/watch?v=</i><hr>
+<p>Los subtítulos embebidos al video solo se activan automáticamente en crunchyroll, para añadirlos automáticamente usa la opción Forzar Subtítulos en la configuración.</p>
+</li>
+<li>
+<b></b>
+<p></p>
+</li>
+</ul>
+<i></i>
+<ul><i><a href=https://github.com/ytdl-org/youtube-dl/blob/master/README.md>Lista de comandos Completos</a></i></ul>
+</div>
+<div class=tit>
+<p>Otros</p>
+<ul>
+<b>Componentes</b>
+<li><a href="https://www.qt.io/">QT</a></li>
+<li><a href=https://yt-dl.org/ >YoutubeDL</a></li>
+<li><a href="https://ffmpeg.org/">FFMpeg</a></li>
+<li><a href=https://github.com/ColinDuquesnoy/QDarkStyleSheet>qdarkstyle</a></li>
+</ul>
+</div>
+</section>
+</article>
+<footer><p>Jackestar® 2021</p></footer>
+</body>
+</html> 
