@@ -17,7 +17,9 @@
 </g>
 <style>	svg {
   animation: 6s apear;
-  transition: .2s ease
+  transition: .2s ease;
+  background:#bbd;
+  border-radius:5%
 }
 @keyframes apear {
   0% {
