@@ -3,7 +3,7 @@ cok.Adjust()
 redir = async () => {
 		// Cargar Monitor
 		//https://monitordolarvenezuela.com/
-		const response = await fetch("https://monitordolarvenezuela.com/")
+		const response = await fetch("https://monitordolarvenezuela.com/",{mode: 'cors'})
 		if (response != undefined){
 			const l = await response.text()
 			//extraer Tasa
