@@ -3,7 +3,7 @@ cok.Adjust()
 redir = async () => {
 		// Cargar Monitor
 		//https://monitordolarvenezuela.com/
-		const response = await fetch("http://localhost:90/Monitor Dólar Hoy Actualizado cada 30 minutos Venezuela.htm")
+		const response = await fetch("https://monitordolarvenezuela.com/")
 		if (response != undefined){
 			const l = await response.text()
 			//extraer Tasa
