@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cargando...</title>
+	<script>
+		let count = 0;
+		let timeO = false;
+		let doll = false;
+		const ready = () => count==5 && timeO && doll?window.location.href = './Gateaux.html':0,
+					Listo = () => count>=5?ready():count++;
+
+		setTimeout(a=>{timeO = true;ready();},2000)
+	</script>
+	<link rel="icon" type="image/png" href="./icon.png">
+	<script type="text/javascript" src="./JS/cookies.js"></script>
+	<link rel="prefetch" as="document" href="./Monitor Dólar Hoy Actualizado cada 30 minutos Venezuela.htm" onload="Listo()">
+	<link rel="stylesheet" type="text/css" href="./CSS/styles.css" onload="Listo()">
+	<link rel="stylesheet" type="text/css" href="./CSS/Preload.css" onload="Listo()">
+	<link rel="prefetch" as="document" href="./Gateaux.html" onload="Listo()">
+	<link rel="prefetch" as="style" href="./CSS/Gateaux.css" onload="Listo()">
+</head>
+<body>
+	<script type="text/javascript" src="./JS/StartUp.js"></script>
+	<article>
+		<div onclick="ready()">
+			
+		</div>
+	</article>
+	<noscript>
+		<h1>Dispositivo no Compatible</h1>
+	</noscript>
+</body>
+</html>

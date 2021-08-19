@@ -1,0 +1,207 @@
+:root {
+/*  Color Default Set  */
+  --text:#000;
+  --main:#abc;
+  --bgA:#dcf;
+  --bgB: #99e;
+  --bgC: #8ae;
+  --bgD: #eef;
+  --confA: #95e;
+  --confB: #a5f;
+  --input: #fff;
+  --inputT:#000;
+  --shad: #aab8;
+  
+  --plus:linear-gradient(45deg, #c56,#f96);
+  --mins:linear-gradient(45deg, #56c,#96c);
+  --slah:linear-gradient(45deg, #5c6,#9c6);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+  --text:#fff;
+  --main:#567;
+  --bgA:#235;
+  --bgB: #66b;
+  --bgC: #715;
+  --bgD: #001;
+  --confA: #518;
+  --confB: #207;
+  --input: #000;
+  --inputT:#fff;
+  --shad: #4458;
+
+  --plus:linear-gradient(45deg, #912,#a42);
+  --mins:linear-gradient(45deg, #129,#529);
+    --slah:linear-gradient(45deg, #192,#592);
+  }
+}
+body {
+  color: var(--text)
+}
+input {
+  background: var(--input);
+  color: var(--inputT);
+  border: solid .1em var(--inputT)
+}
+ul {
+  list-style: none;
+}
+div.doc {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  justify-content: space-between;
+}
+header {
+  background: var(--main);
+  text-align: center;
+  padding: 1%;
+}
+
+header p {
+  font-family: 'Montserrat Alternates';
+  font-variant: all-petite-caps;
+}
+
+div.newE {
+  background: var(--shad);
+  padding: 1%;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+div.newE.enab {
+  display: flex;
+}
+div.newE.enab article {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+article.main {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
+}
+article.main section {
+  padding: 1%
+}
+article.main section.act {
+  background: var(--bgB);
+  flex:2 max-content;
+  transition:.3s ease;
+}
+article.main section:not(.act):not(.prs) {
+  background: var(--bgA);
+  flex:2  fit-content ;
+  min-width: 25%;
+  transition:.3s ease;
+}
+section.prs {
+  background: var(--bgC);
+  flex: 1 100%;
+/*   height: 10%; */
+}
+div.newE.enab article.new {
+  border-radius: 0 0 0 5%;
+  transition:.2s ease
+}
+div.newE.enab article.ing {
+  border-radius: 0 5% 0 0%;
+  transition:.2s ease;
+  overflow-y:scroll;
+}
+
+div.newE article.act {
+  background: var(--confA);
+  flex: 2 max-content
+}
+div.newE article:not(.act) {
+  background: var(--confB);
+  overflow: hidden
+}
+div.newE article.ing ul li{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+div.newE article.act input {
+  padding: 1%;
+}
+div.newE article:not(.act) input {
+  width:  inherit
+}
+@keyframes hey {
+  0% {filter: invert(100%)}
+  100% {filter: invert(0)}
+}
+div.newE input.rel {
+  animation: hey 1s;
+  filter: invert(100%);
+}
+footer {
+  background: var(--bgD);
+  text-align: center
+}
+.ing li {
+  padding: 1%;
+}
+.ing input {
+  text-align: center;
+  transition:.2s ease;
+  flex: 2 50%;
+}
+.ing input:focus {
+  color:var(--input);
+  transition:.2s ease;
+}
+.ing input.cont {
+  color:var(--inputT);
+  transition:.2s ease;
+}
+
+
+@keyframes ad {
+  0% {clip-path: circle(100%);border-radius: 2em}
+  100% {clip-path: circle(5%)}
+}
+
+div.add {
+  color: #fff;
+  width:  -moz-available;
+  background:var(--plus);
+  clip-path: circle();
+  text-align: center;
+  font-size:  3em;
+  cursor: pointer;
+  animation: ad 1s ease;
+}
+
+div.del {
+  color: #fff;
+  min-width: 10%;
+  background:var(--mins);
+  border-radius: 5%;
+  text-align: center;
+  cursor: pointer;
+  animation: ad 1s ease;
+  flex: 1 100%;
+  font-size: 1.5em
+}
+div.sav {
+  color: #fff;
+  background:var(--slah);
+  border-radius: 5%;
+  text-align: center;
+  clip-path: circle();
+  min-width: 10%;
+  cursor: pointer;
+  animation: ad 1s ease;
+  font-size: 2em;
+  margin: 5%;
+}
