@@ -1,0 +1,89 @@
+@keyframes est {
+  50% {transform: rotateX(0deg) rotateY(0);}
+  100% {transform: rotateY(90deg) rotateX(10deg);}
+}
+
+/* Apear text*/
+@keyframes estT{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+.q{
+  cursor: default
+}
+
+body {
+  position: absolute;
+  height: 100%;
+  overflow-y: hidden;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  
+}
+article {
+  background:#fff3;
+  margin:5%;
+  padding: 5%;
+  text-align: center;
+  display: flex;
+  flex-flow:column;
+  max-height: 90%;
+  max-width:  80%;
+  align-self: center;
+  box-shadow: 1em 1em black;
+  animation: art1 1s;
+  transition: .2s ease-out;
+} @keyframes art1 {from {padding: 0;}to{padding: 5%}}
+
+article.ck {
+  padding: 3%;
+  transition: .2s ease-in;
+}
+
+article h1 {
+  margin: 0 0 5% 0;
+  flex-basis:min-content;
+  animation:1s estT;
+}
+h1:before {
+ content:"";
+ position:absolute;
+ left: 5%;
+ width:90%;
+ height:1em;
+ background:#333;
+ transform: rotateY(90deg) rotateX(10deg);
+ box-shadow: .5em .5em #eef;
+ transition:transform .3s .3s ease-out;
+ animation: est .7s ease;
+}
+article svg {
+  animation: 6s svga;
+  transition: .2s ease
+}
+
+@keyframes svga {
+0% {
+  stroke-dashoffset: 90;
+  stroke-dasharray: 90;
+  fill:#0000}
+100% {
+  stroke-dashoffset: 400;
+  stroke-dasharray: 500;
+  stroke-dashoffset: inherit;
+  fill:#000}
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: #aae;
+  }
+}

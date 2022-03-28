@@ -1,0 +1,49 @@
+<html lang="es"><head>
+		<meta charset="utf-8">
+		<meta name="keywords" content="data64">
+		<title>Conversor a Data64</title>
+		<link rel="stylesheet" type="text/css" href="./../Universal.css">
+		<link rel="stylesheet" type="text/css" href="assets/Styles/styles.css">
+	</head>
+	<body onload="setTimeout(()=>{document.body.classList.add('a')},2000)">
+		<div class="blk"> </div>
+			<div class="title">
+				<h1>Conversor a Data64<i onclick="chg()"></i></h1>
+			</div>
+			<div class="input">
+				<form>
+					<input autocomplete="off" placeholder="Inserte Texto" type="text" id="ins">
+					<input type="submit" value="Generar" onclick="gen()" formaction="#">
+					<input type="submit" value="Abrir" formaction="#">
+					<input type="submit" value=" " formaction="#" onclick="document.querySelector('div.cfg').classList.toggle('lk')" class="cfg">
+				</form>
+			</div>
+			<div class="res">
+				<div class="grf">
+
+				</div>
+				<div class="txt">
+					<p></p>
+					<div class="img">
+						<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48cGF0aCBkPSJNNDAyLjYgODMuMmw5MC4yIDkwLjJjMy44IDMuOCAzLjggMTAgMCAxMy44TDI3NC40IDQwNS42bC05Mi44IDEwLjNjLTEyLjQgMS40LTIyLjktOS4xLTIxLjUtMjEuNWwxMC4zLTkyLjhMMzg4LjggODMuMmMzLjgtMy44IDEwLTMuOCAxMy44IDB6bTE2Mi0yMi45bC00OC44LTQ4LjhjLTE1LjItMTUuMi0zOS45LTE1LjItNTUuMiAwbC0zNS40IDM1LjRjLTMuOCAzLjgtMy44IDEwIDAgMTMuOGw5MC4yIDkwLjJjMy44IDMuOCAxMCAzLjggMTMuOCAwbDM1LjQtMzUuNGMxNS4yLTE1LjMgMTUuMi00MCAwLTU1LjJ6TTM4NCAzNDYuMlY0NDhINjRWMTI4aDIyOS44YzMuMiAwIDYuMi0xLjMgOC41LTMuNWw0MC00MGM3LjYtNy42IDIuMi0yMC41LTguNS0yMC41SDQ4QzIxLjUgNjQgMCA4NS41IDAgMTEydjM1MmMwIDI2LjUgMjEuNSA0OCA0OCA0OGgzNTJjMjYuNSAwIDQ4LTIxLjUgNDgtNDhWMzA2LjJjMC0xMC43LTEyLjktMTYtMjAuNS04LjVsLTQwIDQwYy0yLjIgMi4zLTMuNSA1LjMtMy41IDguNXoiLz48L3N2Zz4=" onclick="c.style.userSelect == 'text' ? c.style.userSelect = 'all' : document.querySelector('.txt p').style.userSelect = 'text'">
+						<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBkPSJNMzIwIDQ0OHY0MGMwIDEzLjI1NS0xMC43NDUgMjQtMjQgMjRIMjRjLTEzLjI1NSAwLTI0LTEwLjc0NS0yNC0yNFYxMjBjMC0xMy4yNTUgMTAuNzQ1LTI0IDI0LTI0aDcydjI5NmMwIDMwLjg3OSAyNS4xMjEgNTYgNTYgNTZoMTY4em0wLTM0NFYwSDE1MmMtMTMuMjU1IDAtMjQgMTAuNzQ1LTI0IDI0djM2OGMwIDEzLjI1NSAxMC43NDUgMjQgMjQgMjRoMjcyYzEzLjI1NSAwIDI0LTEwLjc0NSAyNC0yNFYxMjhIMzQ0Yy0xMy4yIDAtMjQtMTAuOC0yNC0yNHptMTIwLjk3MS0zMS4wMjlMMzc1LjAyOSA3LjAyOUEyNCAyNCAwIDAgMCAzNTguMDU5IDBIMzUydjk2aDk2di02LjA1OWEyNCAyNCAwIDAgMC03LjAyOS0xNi45N3oiLz48L3N2Zz4=" onclick="c.dispatchEvent(new Event('copy'))">
+					</div>
+				</div>
+			</div>
+			<div class="cfg">
+				<div class="bx">
+					<ul>
+						<li><p>Añadir minetype</p></li>
+						<li><p>Vista previa</p></li>
+						<li><p></p></li>
+						<li><p></p></li>
+					</ul>
+					<p class="clos" onclick="document.querySelector('div.cfg').classList.toggle('lk')">X</p>
+				</div>
+			</div>
+	<noscript>
+        <p>Se requiere JavaScript</p>
+</noscript>
+<script type="text/javascript" src="./assets/Scripts/data64.js"></script>
+	</body>
+</html>

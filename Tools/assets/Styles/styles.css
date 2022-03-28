@@ -1,0 +1,370 @@
+*:root {
+  --cfg:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDg3LjQgMzE1LjdsLTQyLjYtMjQuNmM0LjMtMjMuMiA0LjMtNDcgMC03MC4ybDQyLjYtMjQuNmM0LjktMi44IDcuMS04LjYgNS41LTE0LTExLjEtMzUuNi0zMC02Ny44LTU0LjctOTQuNi0zLjgtNC4xLTEwLTUuMS0xNC44LTIuM0wzODAuOCAxMTBjLTE3LjktMTUuNC0zOC41LTI3LjMtNjAuOC0zNS4xVjI1LjhjMC01LjYtMy45LTEwLjUtOS40LTExLjctMzYuNy04LjItNzQuMy03LjgtMTA5LjIgMC01LjUgMS4yLTkuNCA2LjEtOS40IDExLjdWNzVjLTIyLjIgNy45LTQyLjggMTkuOC02MC44IDM1LjFMODguNyA4NS41Yy00LjktMi44LTExLTEuOS0xNC44IDIuMy0yNC43IDI2LjctNDMuNiA1OC45LTU0LjcgOTQuNi0xLjcgNS40LjYgMTEuMiA1LjUgMTRMNjcuMyAyMjFjLTQuMyAyMy4yLTQuMyA0NyAwIDcwLjJsLTQyLjYgMjQuNmMtNC45IDIuOC03LjEgOC42LTUuNSAxNCAxMS4xIDM1LjYgMzAgNjcuOCA1NC43IDk0LjYgMy44IDQuMSAxMCA1LjEgMTQuOCAyLjNsNDIuNi0yNC42YzE3LjkgMTUuNCAzOC41IDI3LjMgNjAuOCAzNS4xdjQ5LjJjMCA1LjYgMy45IDEwLjUgOS40IDExLjcgMzYuNyA4LjIgNzQuMyA3LjggMTA5LjIgMCA1LjUtMS4yIDkuNC02LjEgOS40LTExLjd2LTQ5LjJjMjIuMi03LjkgNDIuOC0xOS44IDYwLjgtMzUuMWw0Mi42IDI0LjZjNC45IDIuOCAxMSAxLjkgMTQuOC0yLjMgMjQuNy0yNi43IDQzLjYtNTguOSA1NC43LTk0LjYgMS41LTUuNS0uNy0xMS4zLTUuNi0xNC4xek0yNTYgMzM2Yy00NC4xIDAtODAtMzUuOS04MC04MHMzNS45LTgwIDgwLTgwIDgwIDM1LjkgODAgODAtMzUuOSA4MC04MCA4MHoiLz48L3N2Zz4=) no-repeat;
+  --chg:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDQwLjY1IDEyLjU3bDQgODIuNzdBMjQ3LjE2IDI0Ny4xNiAwIDAgMCAyNTUuODMgOEMxMzQuNzMgOCAzMy45MSA5NC45MiAxMi4yOSAyMDkuODJBMTIgMTIgMCAwIDAgMjQuMDkgMjI0aDQ5LjA1YTEyIDEyIDAgMCAwIDExLjY3LTkuMjYgMTc1LjkxIDE3NS45MSAwIDAgMSAzMTctNTYuOTRsLTEwMS40Ni00Ljg2YTEyIDEyIDAgMCAwLTEyLjU3IDEydjQ3LjQxYTEyIDEyIDAgMCAwIDEyIDEySDUwMGExMiAxMiAwIDAgMCAxMi0xMlYxMmExMiAxMiAwIDAgMC0xMi0xMmgtNDcuMzdhMTIgMTIgMCAwIDAtMTEuOTggMTIuNTd6TTI1NS44MyA0MzJhMTc1LjYxIDE3NS42MSAwIDAgMS0xNDYtNzcuOGwxMDEuOCA0Ljg3YTEyIDEyIDAgMCAwIDEyLjU3LTEydi00Ny40YTEyIDEyIDAgMCAwLTEyLTEySDEyYTEyIDEyIDAgMCAwLTEyIDEyVjUwMGExMiAxMiAwIDAgMCAxMiAxMmg0Ny4zNWExMiAxMiAwIDAgMCAxMi0xMi42bC00LjE1LTgyLjU3QTI0Ny4xNyAyNDcuMTcgMCAwIDAgMjU1LjgzIDUwNGMxMjEuMTEgMCAyMjEuOTMtODYuOTIgMjQzLjU1LTIwMS44MmExMiAxMiAwIDAgMC0xMS44LTE0LjE4aC00OS4wNWExMiAxMiAwIDAgMC0xMS42NyA5LjI2QTE3NS44NiAxNzUuODYgMCAwIDEgMjU1LjgzIDQzMnoiLz48L3N2Zz4=) no-repeat;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  justify-content: center;
+}
+.blk {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  cursor: not-allowed;
+  background: #0002;
+}
+body.a .blk {
+  display: none;
+}
+.title {
+  padding: 3%;
+  text-align: center;
+  font-variant: all-petite-caps;
+  font-size: 1.25em;
+  user-select: none;
+}
+.title h1 {
+  background: linear-gradient(90deg,#226,#bea);
+  background-clip: text;
+  color: #0000;
+  animation: rel 2s ease infinite;
+  display: flex;
+  align-items: center
+}
+.title h1 i {
+  width: 1em;
+  height:1em;
+  margin: 0 1vw;
+  background: var(--chg);
+  cursor: pointer;
+  opacity: 0;
+}
+body.a .title h1 i {
+  opacity: 1;
+  transition: .3s ease;
+}
+body.a .title h1 {
+  animation: none;
+  background: linear-gradient(90deg,#004,#251) text;
+}
+@keyframes rel {
+  0% {background-position: 50vh}
+  0% {background-position: -50vh}
+  100% {background-position: 100vh}
+}
+.title p {
+  font-family: Montserrat Alternates;
+}
+.title a,#result_id>*:not(input) {
+  text-decoration: line-through 100%;
+  transition:.2s ease;
+}
+body.a .title a,body.a #result_id>*:not(input) {
+  animation: tit 1s ease;
+  text-decoration: none;
+}
+
+@keyframes tit {
+  0% {text-decoration: line-through 100%;}
+  50% {text-decoration: line-through 0;}
+  100% {text-decoration: none;}
+}
+.input {
+  text-align: center;
+}
+
+.input h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none
+}
+.input h2 p {
+  color: #fff;
+  padding: 2%;
+  background: #000;
+  clip-path: circle();
+  margin: 1%;
+  cursor: pointer;
+}
+.input input {
+  text-align: center;
+  border: none;
+  padding: 5%;
+  margin: 0 1%;
+  color: transparent;
+}
+body.a .input input {
+  color: #000;
+}
+.input #result_id {user-select: none}
+#result_id > * {
+  margin: 3% 0;
+}
+form {
+  display: flex;
+  width:  auto;
+  height: auto;
+  justify-content: space-around;
+  align-items:  center;
+}
+.input input {
+  width:auto;
+  height:auto;
+}
+.input input[type="text"] {
+  background: #eee;
+  color: #000;
+  flex:75% 2;
+}
+.input input[type="submit"] {
+  background: #ddd;
+  flex:25% 2;
+  cursor: pointer;
+  border-radius: 10%;
+  transition:.2s ease;
+}
+.input input[type="submit"]:hover {
+  background: #cca;
+  transition:.2s ease;
+}
+.input input[type=submit]:active {
+  background: #ded;
+  transition:.2s ease;
+}
+.input input.cfg:enabled {
+  background:#ccc var(--cfg);
+  background-position: center;
+  transition:.2s ease;
+  opacity: 0;
+}
+body.a .input input.cfg:enabled {
+  opacity: 1;
+}
+.input input.cfg:enabled:hover {
+  background:#caa var(--cfg);
+  background-position: center;
+  transition:.2s ease;
+}
+.input input.cfg:enabled:active {
+  background:#fdd var(--cfg);
+  background-position: center;
+  transition:.2s ease;
+}
+
+.table {
+  margin: 2%;
+  border: #000 solid 3px;
+  border-style: dashed;
+  position: relative;
+  transition:.1s .2s ease;
+  border-radius: 2%;
+}
+.qt {
+  display: none;
+}
+.table th {
+  background: #eee;
+}
+.table td {
+  padding: 1%
+}
+.table td:first-child {
+  background: #ddd;
+}
+p.clos {
+  padding: 2%;
+  color: #fff;
+  background: #000;
+  clip-path: circle();
+  position: absolute;
+  top: -3.5%;
+  right: -3.5%;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none
+}
+
+#answer table{
+  width: 100%;
+
+}
+#answer table tr {
+  background: #eee;
+}
+#answer table td {
+  padding: 2%
+}
+#answer table td:first-child {
+  border-left: #444 solid .4em;
+}
+#answer table td:last-child {
+  border-right: #444 solid .4em;
+}
+.cre {
+  text-align: center;
+  user-select: none;
+  padding: 1%;
+}
+.cre a {
+  text-decoration: none;
+  border: 2px solid #fff0;
+}
+.cre a:hover {
+  border-radius: 5px;
+  border: 2px solid #09f;
+  padding: 0;
+  color: #000;
+}
+
+/*  Salida data 64 */
+
+.res {
+  display: none; /* flex */
+  padding: 1%;
+  width: 80%;
+  justify-content: center;
+}
+.res div {
+  flex:2 50%;
+  padding: 1%;
+}
+.res .txt p{
+  width: 100%;
+  max-height:50vh;
+  padding: 5%;
+  margin: 1%;
+  background: #eee;
+  border-radius: 5px;
+  user-select: all;
+  border: 3px solid #fff;
+  overflow-wrap:  anywhere;
+  overflow-y: scroll;
+}
+.res .txt p:hover {
+  border: 3px solid #999;
+}
+.res .txt .img {
+  position: relative;
+}
+.res .grf {
+  display: flex;
+  justify-content: center
+}
+.res .grf img {
+  max-height: 30vh;
+}
+.res .txt img {
+  height: 3vw;
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 20%;
+}
+.res .txt img {
+  right: 3.5vw;
+  padding: 1%;
+}
+.res .txt img:last-child {
+  right: .5vw;
+}
+.res .grf {
+  width: 100%;
+  padding: 5%;
+  margin: 1%;
+  background: #eee;
+  display:flex;
+}
+.grf img {
+  width: 100%;
+}
+
+/* Config */
+
+div.cfg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #4449;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+div.cfg.lk {
+  display: flex;
+}
+div.cfg div.bx {
+  padding: 5%;
+  background: #aaa;
+  width: 45%;
+  height:45%;
+  position: fixed;
+  overflow-x: hidden
+}
+
+div.cfg .bx ul li {
+  display: flex;
+  padding: 1vh;
+}
+
+/* Check Box */
+div.cfg .bx svg {
+  margin: 0 2%;
+  width: 1em;
+  height: 1em;
+  fill:#0000;
+  border: #000 .1em solid;
+  animation: ra 1.2s ease-in reverse;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 100;
+  filter: invert(1);
+}
+svg path {
+  fill-opacity: 1;
+  animation: qe 1.2s ease-in;
+}
+
+#a {
+  fill: #eaa;
+  clip-path: circle(100%);
+  animation: la 1.3s ease-in;
+}
+svg.clc {animation:ra 1.2s ease-in reverse;stroke-dasharray: 1000;stroke-dashoffset: 1000;}
+svg.clc path {animation:qe;fill:#aea;}
+svg.clc #a {animation:la 1.3s ease-in;clip-path: circle(100%);}
+@keyframes qe {
+  0% {fill-opacity: 0;}
+  50% {fill:#aae;}
+  100% {fill:#aea;}
+}
+@keyframes ra {
+  0% {  stroke-dasharray: 2000;
+  stroke-dashoffset: 0;}
+  50% {  stroke-dasharray: 1000;
+  stroke-dashoffset: 100;}
+  100% {  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;}
+}
+
+@keyframes la {
+  0% {clip-path: circle(0%);}
+  75% {clip-path: circle(0%);}
+  100% {clip-path: circle(100%);}
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    filter: invert(1);
+    background: #222;
+  }
+  .input input[type=submit] {
+  background: #ccc;
+  transition:.2s ease;
+}
+}
