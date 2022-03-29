@@ -51,11 +51,10 @@ let cok = {
         const redir = (a = false) => {
             const e = document.URL;
 
-            if (a) this.set(1,true);
             if (!e.endsWith("/index.html")) {
                 this.set(0,e);
                 window.location.href = document.baseURI
-            } else this.set(0,"/adulis.html");
+            } else this.set(0,"/adulis.html"); if (a) this.set(1,true);
         }
 
         if (!document.cookie.includes('firstRun')) redir(true)
