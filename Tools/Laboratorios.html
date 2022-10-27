@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./../Universal.css">
+	<link rel="stylesheet" type="text/css" href="./stylesf.css">
+	<title>Document</title>
+</head>
+<body onload="setTimeout(()=>{document.body.classList.add('a')},2000)">
+	<div class="blk"> </div>
+	<header>
+		<h1>Reporte Fisica</h1>
+		<div class="tam"><input type="number" placeholder="Columnas"><input type="number" placeholder="Filas"><a href="#" onclick="doit()">Generar</a></div>
+	</header>
+	<div class="tab">
+		<table></table>
+		<a href="#" onclick="gen()">Calcular</a>
+	</div>
+
+	<div class="rec">
+		<h2>Ecuacion de La Recta Experimental</h2>
+		<div class="eq"></div>
+	</div>
+
+	<script type="text/javascript" src="./fis2.js"></script>
+	<script>
+		// doit();
+		// gen();
+	</script>
+</body>
+</html>
