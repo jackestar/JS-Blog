@@ -55,17 +55,6 @@ let calk = {
 	tri: '',
 	tr: '',
 
-	// tdp(){
-	// 	let ret
-	// 	for (var i = 0; i < (this.col); i++) ret += this.tdi
-	// 	this.tri = `<tr><${ret + this.td + this.td}/tr>`
-	// },
-	// tda(){
-	// 	let ret;
-	// 	for (var i = 0; i < (this.col+2); i++) ret += this.td
-	// 	tr = `<tr>${ret}</tr>`
-	// },
-
 	mk() {
 		this.col = inpt[0].value/1;
 		this.fil = inpt[1].value/1;
@@ -85,31 +74,29 @@ let calk = {
 		} else ret += this.tri
 		return ret + this.tr + this.tr
 	},
-
-	// gen() {
-
-	// }
+	mk2() {
+		let ret = '<tr><td>Y</td></tr>'
+		if (this.fil > 1) for (var i = 1; i <= this.fil; i++) ret += `<tr><td>X${i}</td></tr>`
+		ret += "<tr><td>X</td></tr>"
+		return ret + "<tr><td>XY</td></tr><tr><td>X*X</td></tr>"
+	},
+	gen() {
+		clean();
+		document.querySelector('.tab table.tx').innerHTML = this.mk()
+		document.querySelector('.tab table.vl').innerHTML = this.mk2()
+		document.querySelectorAll('.tab table.tx td').forEach(a=> a.style.minWidth = `${85/(this.col+2)}%`)
+		document.querySelector('.tab').innerHTML += '<div class="al"><a href="#" onclick="gen()">Calcular</a></div>'
+	}
 
 }
 
-// inpt.forEach(a => {
-// 	a.addEventListener('change', b => {
-// 		colum = inpt[0].value
-// 		fila = inpt[1].value
-// 	})
-// })
-
-let doit = () => {
-clean();
-document.querySelector('.tab table').innerHTML = calk.mk()
-document.querySelectorAll('.tab td').forEach(a=> a.style.minWidth = `${100/(calk.col+2)}%`)}
 
 let gen = () => {
 	clean()
 	// Matriz de INtroduccion
 	matriz = Array(calk.fil)
 	for (var i = 0; i < (calk.fil+1); i++) {
-		matriz[i] = document.querySelectorAll(`.tab tr:nth-child(${i+1}) input`)
+		matriz[i] = document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) input`)
 	}
 
 	// Matriz completa
@@ -120,7 +107,7 @@ let gen = () => {
 
 	conte = Array(calk.fil+2)
 		for (var i = 0; i < (calk.fil+aer+1); i++) {
-			conte[i] = document.querySelectorAll(`.tab tr:nth-child(${i+1}) td`)
+			conte[i] = document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) td`)
 	}
 
 	// Sumatoria Prom Y

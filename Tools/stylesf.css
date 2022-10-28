@@ -23,7 +23,7 @@ body.a .blk {
   display: none;
 }
 
-body:not(.a) a, body:not(.a) input {
+body:not(.a) a, body:not(.a) input,body:not(.a) h2{
    color: #0000 !important;
   opacity: .1;
   transition: .2s ease-out
@@ -76,40 +76,64 @@ header a {
 header .tam {
   margin: 1em;
 }
-
+/* Tabla */
+.tab {
+display: flex;
+  flex-wrap: wrap;
+}
+.tab .tx {
+  flex: 2 75%;
+  border-radius: 0 10px 10px 0;
+/*   width: max-content; */
+}
+.tab .vl {
+  width: min-content;
+  border-radius: 10px 0 0 10px;
+  
+}
 .tab tr {
   display:flex;
-  min-width: 98vw;
-  margin-left: 1%;
 }
 .tab td {
   background: #333;
   border: .4em solid #555;
-  min-width: max-content;
   width: 100%;
+  min-height: 3em;
 }
 .tab td input {
-  padding: 1em;
-  transition: .2s ease-out
+  padding-inline-start: 1em;
+  transition: .2s ease-out;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
-.tab td:last-child {
-  padding: 1em;
+.tab td {
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
-
+.tab .tx td {
+  height: 4em;
+}
+.tab .vl td {
+  height: 4em;
+  width: 4em;
+}
 .tab table {
   background: #555;
-  border-radius: 10px;
-  width: 100%
 }
 
-.tab a {
-  padding: .7em;
-  background: #444;
+.tab .al {
+  transition: .2s ease-out;
+  flex: 1 100%;
+}
+.tab .al a {
   text-decoration: none;
   color: #fff;
+  background: #444;
+  padding: .7em;
   font-weight: 800;
-  transition: .2s ease-out
 }
 
 .tab table td {
