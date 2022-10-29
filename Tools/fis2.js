@@ -93,19 +93,15 @@ let calk = {
 	cal() {
 		clean()
 	// Matriz de INtroduccion
-	matriz = Array(this.fil)
-	for (var i = 0; i < (this.fil+1); i++) {
-		matriz[i] = document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) input`)
+	matriz = Array(calk.fil>1?calk.fil+2:1) // La Matriz Extra Para X
+	for (var i = 0; i < (calk.fil+2); i++) {
+		matriz[i] = (i < calk.fil+1) ? document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) input`) : document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) td`)
 	}
 
 	// Matriz completa
 
-	//rev
-	let aer = 3
-	if (this.fil > 1) aer = 4
-
 	conte = Array(this.fil+2)
-		for (var i = 0; i < (this.fil+aer); i++) {
+		for (var i = 0; i < (this.fil>1?this.fil+4:4); i++) {
 			conte[i] = document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) td`)
 	}
 
@@ -116,68 +112,75 @@ let calk = {
 	conte[0][this.col].innerHTML = ySum.toFixed(toPres)
 	conte[0][this.col+1].innerHTML = yPro.toFixed(toPres)
 
+	let tempX = 0
+	let tempXY = 0
+	let tempXX = 0
+
+	// MultiFila
 	if (this.fil > 1) {
 		let tempSum = 0
 		for (var e = 0; e < this.col; e++) {
 			tempSum = 0
 			for (var i = 1; i <= this.fil; i++) tempSum += matriz[i][e].value/1
-			conte[this.fil+1][e].innerHTML = (tempSum/this.fil).toFixed(toPres)
-			conte[this.fil+2][e].innerHTML = ((tempSum/this.fil)*(matriz[0][e].value/1)).toFixed(toPres)
-			conte[this.fil+3][e].innerHTML = Math.pow((tempSum/this.fil),2).toFixed(toPres)
 
+			matriz[this.fil+1][e].innerHTML = tempSum/this.fil;
+
+			tempX = (matriz[this.fil+1][e].innerHTML/1)
+			xSumt += tempX
+			conte[this.fil+1][e].innerHTML = tempX.toFixed(toPres)
+
+			tempXY = ((tempX)*(matriz[0][e].value/1))
+			xySum += tempXY
+			conte[this.fil+2][e].innerHTML = tempXY.toFixed(toPres)
+
+			tempXX = Math.pow(tempX,2)
+			xxSum += tempXX
+			conte[this.fil+3][e].innerHTML = tempXX.toFixed(toPres)
 		}
 
 		// X Promedio
-		for (var i = 0; i < this.col; i++) xSumt += conte[this.fil+1][i].innerHTML/1;
-		// conte[this.fil+1].forEach( a => xSumt += a.innerHTML/1) // ReSum Fix
 		xProt = xSumt/this.col;
 		conte[this.fil+1][this.col].innerHTML = xSumt.toFixed(toPres);
 		conte[this.fil+1][this.col+1].innerHTML = xProt.toFixed(toPres)
 
 
 		// XY Promedio
-		for (var i = 0; i < this.col; i++) xySum += conte[this.fil+2][i].innerHTML/1;
-		// conte[this.fil+2].forEach( a => xySum += (a.innerHTML/1)) // ReSum Fix
 		xyPro = xySum/this.col;
 		conte[this.fil+2][this.col].innerHTML = xySum.toFixed(toPres)
 		conte[this.fil+2][this.col+1].innerHTML = xyPro.toFixed(toPres)
 		
 
 		// XX Promedio
-		for (var i = 0; i < this.col; i++) xxSum += conte[this.fil+3][i].innerHTML/1;
-		// conte[this.fil+3].forEach( a => xxSum += (a.innerHTML/1)) // ReSum Fix
 		xxPro = xxSum/this.col;
 		conte[this.fil+3][this.col].innerHTML = xxSum.toFixed(toPres)
 		conte[this.fil+3][this.col+1].innerHTML = xxPro.toFixed(toPres)
 
+		// Una sola Fila
 	} else {
 		let tempSum = 0
 			matriz[1].forEach( a => xSumt += a.value/1)
 			xProt = xSumt/this.col
 
-			conte[1][this.col].innerHTML = xSumt
-			conte[1][this.col+1].innerHTML = xProt
+			conte[1][this.col].innerHTML = xSumt.toFixed(toPres)
+			conte[1][this.col+1].innerHTML = xProt.toFixed(toPres)
 
-			// XY
 			for (var i = 0; i < this.col; i++) {
+				//XY
 				tempSum = matriz[0][i].value/1 * matriz[1][i].value/1;
-				conte[2][i].innerHTML = tempSum
+				conte[2][i].innerHTML = tempSum.toFixed(toPres)
 				xySum += tempSum
-			}
-
-			//XX
-			tempSum = 0
-			for (var i = 0; i < this.col; i++) {
+				tempSum = 0 
+				//XX
 				tempSum = Math.pow(matriz[1][i].value/1,2)
 				conte[3][i].innerHTML = tempSum
 				xxSum += tempSum
 			}
 
-			conte[2][this.col].innerHTML = xSumt
-			conte[2][this.col+1].innerHTML = xProt
+			conte[2][this.col].innerHTML = xSumt.toFixed(toPres)
+			conte[2][this.col+1].innerHTML = xProt.toFixed(toPres)
 
-			conte[3][this.col].innerHTML = xSumt
-			conte[3][this.col+1].innerHTML = xProt
+			conte[3][this.col].innerHTML = xSumt.toFixed(toPres)
+			conte[3][this.col+1].innerHTML = xProt.toFixed(toPres)
 
 		// XY Promedio
 		xyPro = xySum/this.col;
