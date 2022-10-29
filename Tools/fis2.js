@@ -128,21 +128,24 @@ let calk = {
 		}
 
 		// X Promedio
-		conte[this.fil+1].forEach( a => xSumt += a.innerHTML/1)
+		for (var i = 0; i < this.col; i++) xSumt += conte[this.fil+1][i].innerHTML/1;
+		// conte[this.fil+1].forEach( a => xSumt += a.innerHTML/1) // ReSum Fix
 		xProt = xSumt/this.col;
 		conte[this.fil+1][this.col].innerHTML = xSumt.toFixed(toPres);
 		conte[this.fil+1][this.col+1].innerHTML = xProt.toFixed(toPres)
 
 
 		// XY Promedio
-		conte[this.fil+2].forEach( a => xySum += a.innerHTML/1)
+		for (var i = 0; i < this.col; i++) xySum += conte[this.fil+2][i].innerHTML/1;
+		// conte[this.fil+2].forEach( a => xySum += (a.innerHTML/1)) // ReSum Fix
 		xyPro = xySum/this.col;
 		conte[this.fil+2][this.col].innerHTML = xySum.toFixed(toPres)
 		conte[this.fil+2][this.col+1].innerHTML = xyPro.toFixed(toPres)
 		
 
 		// XX Promedio
-		conte[this.fil+3].forEach( a => xxSum += a.innerHTML/1)
+		for (var i = 0; i < this.col; i++) xxSum += conte[this.fil+3][i].innerHTML/1;
+		// conte[this.fil+3].forEach( a => xxSum += (a.innerHTML/1)) // ReSum Fix
 		xxPro = xxSum/this.col;
 		conte[this.fil+3][this.col].innerHTML = xxSum.toFixed(toPres)
 		conte[this.fil+3][this.col+1].innerHTML = xxPro.toFixed(toPres)
@@ -165,7 +168,7 @@ let calk = {
 			//XX
 			tempSum = 0
 			for (var i = 0; i < this.col; i++) {
-				tempSum = Math.pow(matriz[1][i].value/1)
+				tempSum = Math.pow(matriz[1][i].value/1,2)
 				conte[3][i].innerHTML = tempSum
 				xxSum += tempSum
 			}
@@ -177,14 +180,12 @@ let calk = {
 			conte[3][this.col+1].innerHTML = xProt
 
 		// XY Promedio
-		conte[2].forEach( a => xySum += a.innerHTML/1)
 		xyPro = xySum/this.col;
 		conte[2][this.col].innerHTML = xySum.toFixed(toPres)
 		conte[2][this.col+1].innerHTML = xyPro.toFixed(toPres)
 		
 
 		// XX Promedio
-		conte[3].forEach( a => xxSum += a.innerHTML/1)
 		xxPro = xxSum/this.col;
 		conte[3][this.col].innerHTML = xxSum.toFixed(toPres)
 		conte[3][this.col+1].innerHTML = xxPro.toFixed(toPres)
