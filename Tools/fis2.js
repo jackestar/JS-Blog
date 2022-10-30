@@ -45,7 +45,6 @@ conte = Array();
 let inpt = document.querySelectorAll('header input');
 
 let calk = {
-	// obj: tab,
 	col: colum,
 	fil: fila,
 
@@ -92,14 +91,13 @@ let calk = {
 
 	cal() {
 		clean()
-	// Matriz de INtroduccion
+	// Matriz de Datos
 	matriz = Array(calk.fil>1?calk.fil+2:1) // La Matriz Extra Para X
 	for (var i = 0; i < (calk.fil+2); i++) {
 		matriz[i] = (i < calk.fil+1) ? document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) input`) : document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) td`)
 	}
 
-	// Matriz completa
-
+	//Tabla de Datos
 	conte = Array(this.fil+2)
 		for (var i = 0; i < (this.fil>1?this.fil+4:4); i++) {
 			conte[i] = document.querySelectorAll(`.tab table.tx tr:nth-child(${i+1}) td`)
@@ -112,11 +110,12 @@ let calk = {
 	conte[0][this.col].innerHTML = ySum.toFixed(toPres)
 	conte[0][this.col+1].innerHTML = yPro.toFixed(toPres)
 
+	// Variables de Sumatorias
 	let tempX = 0
 	let tempXY = 0
 	let tempXX = 0
 
-	// MultiFila
+	// Caso Multiples Filas
 	if (this.fil > 1) {
 		let tempSum = 0
 		for (var e = 0; e < this.col; e++) {
@@ -133,7 +132,7 @@ let calk = {
 			xySum += tempXY
 			conte[this.fil+2][e].innerHTML = tempXY.toFixed(toPres)
 
-			tempXX = Math.pow(tempX,2)
+			tempXX = tempX**2
 			xxSum += tempXX
 			conte[this.fil+3][e].innerHTML = tempXX.toFixed(toPres)
 		}
@@ -143,12 +142,10 @@ let calk = {
 		conte[this.fil+1][this.col].innerHTML = xSumt.toFixed(toPres);
 		conte[this.fil+1][this.col+1].innerHTML = xProt.toFixed(toPres)
 
-
 		// XY Promedio
 		xyPro = xySum/this.col;
 		conte[this.fil+2][this.col].innerHTML = xySum.toFixed(toPres)
 		conte[this.fil+2][this.col+1].innerHTML = xyPro.toFixed(toPres)
-		
 
 		// XX Promedio
 		xxPro = xxSum/this.col;
@@ -171,7 +168,7 @@ let calk = {
 				xySum += tempSum
 				tempSum = 0 
 				//XX
-				tempSum = Math.pow(matriz[1][i].value/1,2)
+				tempSum = matriz[1][i].value/1**2
 				conte[3][i].innerHTML = tempSum
 				xxSum += tempSum
 			}
@@ -195,8 +192,9 @@ let calk = {
 
 	}
 
-	mEst = (xyPro-(xProt*yPro)) / (xxPro-Math.pow(xProt,2))
-	bEst = ((yPro*xxPro) - (xProt*xyPro))/(xxPro-Math.pow(xProt,2))
+	// Recta Estadistica
+	mEst = (xyPro-(xProt*yPro)) / (xxPro-xProt**2)
+	bEst = ((yPro*xxPro) - (xProt*xyPro))/(xxPro-xProt**2)
 
 	document.querySelector('.eq').innerHTML = `<p>Mest = ${mEst}
 	Best = ${bEst}

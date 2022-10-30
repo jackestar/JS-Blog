@@ -143,8 +143,25 @@ display: flex;
 }
 
 .rec {
-  padding: 3%
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
 }
 .rec {
   background: #eee;
+}
+
+@media  (orientation: portrait) {
+  .tab {
+    width: max-content;
+  }
+  table.vl td {
+     border-right: none;
+  }
+  table.tx td {
+    border-left: none;
+  }
+  .rec {
+   width: max-content
+  }
 }
