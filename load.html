@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Jackestar</title>
+	<link rel="stylesheet" type="text/css" href="./css/stylesI.css">
+	<link rel="stylesheet" type="text/css" href="./css/stylesU.css">
+</head>
+<body>
+	<div class="loadScene">
+		<div class="fx a"></div>
+		<div class="fx b"></div>
+		<div class="fx c" onclick="tog(this)"></div>
+	</div>
+	<section class="login">
+		<article class="User">
+			<div class="ico">
+				<div class="cnt" onclick="document.querySelector('section.login').classList.remove('ready2')"></div>
+			</div>
+		</article>
+		<article class="Pass">
+			<div class="in">
+				<input type="password" placeholder="password" name="pass">
+			</div>
+		</article>
+	</section>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

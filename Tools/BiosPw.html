@@ -1,14 +1,18 @@
-<html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
 		<meta charset="utf-8">
 		<meta name="keywords" content="bios, password, bypass, master password, generate, generator, laptop, notebook, computer, phoenix, insydeh20, sony, samsung, acer, dell, compaq, backdoor, laptop, fujitsu-siemens, hp, hewlett packard">
 		<meta name="keywords" content="Recover laptops with lost BIOS password">
 		<title>Generador de Claves Maestras de BIOS para Laptops</title>
-		<link rel="stylesheet" type="text/css" href="./../Universal.css">
-		<link rel="stylesheet" type="text/css" href="assets/Styles/styles.css">
+		<link rel="stylesheet" type="text/css" href="../css/stylesU.css">
+		<link rel="stylesheet" type="text/css" href="./Styles/styles.css">
 		<link rel="icon" type="image/x-ico" href="favicon.ico">
+		<script src="./Scripts/Prel.js"></script>
 	</head>
-	<body onload="setTimeout(()=>{document.body.classList.add('a')},2000)">
-			<div class="blk"> </div>
+	<body onload="Load()">
+		<div class="blk"> </div>
+		<div class="content">
 			<div class="title">
 				<h1>Recuperador de Claves BIOS para Laptops</h1>
 				<p>Original de <a href="http://dogber1.blogspot.com/2009/05/table-of-reverse-engineered-bios.html">Dogbert</a> & <a href="http://asyncrit.us">Asyncritus</a>.</p>
@@ -16,7 +20,7 @@
 			<div class="input">
 				<div id="control_id">
 					<h2>Ingresa tu codigo <p onclick="document.querySelector('.table').classList.toggle('qt')">?</p></h2><br>
-					<form name="pwgen" id="form_id">
+					<form name="pwgen" id="form_id" action="#">
 						<input autocomplete="off" placeholder="Inserte Codigo" type="text" id="serial_id">
 						<input type="submit" name="serial" id="button_id" value="Generar Clave">
 					</form>
@@ -29,84 +33,92 @@
 				</div>
 			<div class="qt table">
 				<p class="clos" onclick="document.querySelector('.table').classList.toggle('qt')">X</p>
-				<table><tbody>
-<tr>
-	<th>Vendor</th>
-	<th>Tipo</th>
-	<th>Codigo Hash/Serial Ejemplo</th>
-</tr>
-<tr>
-	<td>Compaq</td>
-	<td>5 Digitos Decimales</td>
-	<td>12345</td>
-</tr>
-<tr>
-	<td>Dell</td>
-	<td>serial number</td>
-	<td>1234567-595B<br>1234567-D35B<br>1234567-2A7B<br>1234567-1D3B<br>1234567-1F66<br>1234567-6FF1<br>1234567-1F5A<br>1234567-BF97</td>
-</tr>
-<tr>
-	<td>Fujitsu-Siemens</td>
-	<td>5 Digitos Decimales</td>
-	<td>12345</td>
-</tr>
-<tr>
-	<td>Fujitsu-Siemens</td>
-	<td>8 Digitos Hexadecimales</td>
-	<td>DEADBEEF</td>
-</tr>
-<tr>
-	<td>Fujitsu-Siemens</td>
-	<td>5x4 Digitos Hexadecimales</td>
-	<td>AAAA-BBBB-CCCC-DEAD-BEEF</td>
-</tr>
-<tr>
-	<td>Fujitsu-Siemens</td>
-	<td>5x4 Digitos Decimales</td>
-	<td>1234-4321-1234-4321-1234</td>
-</tr>
-<tr>
-	<td>Hewlett-Packard</td>
-	<td>5 Digitos Decimales</td>
-	<td>12345</td>
-</tr>
-<tr>
-	<td>Hewlett-Packard/Compaq Netbooks</td>
-	<td>10 Caracteres</td>
-	<td>CNU1234ABC</td>
-</tr>
-<tr>
-	<td >Insyde H20 (generic)</td>
-	<td>8 Digitos Decimales</td>
-	<td>03133610</td>
-</tr>
-<tr>
-	<td >Phoenix (generic)</td>
-	<td>5 Digitos Decimales</td>
-	<td>12345</td>
-</tr>
-<tr>
-	<td>Sony</td>
-	<td>7 Digitos Seriales Numericos</td>
-	<td>1234567</td>
-</tr>
-<tr>
-	<td>Samsung</td>
-	<td>12 Digitos Hexadecimales</td>
-	<td>07088120410C0000</td>
-</tr>
-			</tbody>
-		</table>
-		<div class="cre">
-			<h4>Creditos</h4>
-			<p>Codigo e idea original de <a href="http://dogber1.blogspot.com/2009/05/table-of-reverse-engineered-bios.html">Dogbert</a> & <a href="http://asyncrit.us">Asyncritus</a>.</p>
-			<p>Redieño y Traduccion <a href="jackestar.netlify.app">Jackestar</a>, Tipografia <a href="https://github.com/JulietaUla/Montserrat/">Montserrat</a>, Iconos <a href="https://fontawesome.com/">Font Awesome</a></p>
-		</div>
+				<table>
+					<tbody>
+						<tr>
+							<th>Vendor</th>
+							<th>Tipo</th>
+							<th>Codigo Hash/Serial Ejemplo</th>
+						</tr>
+						<tr>
+							<td>Compaq</td>
+							<td>5 Digitos Decimales</td>
+							<td>12345</td>
+						</tr>
+						<tr>
+							<td>Dell</td>
+							<td>serial number</td>
+							<td>1234567-595B<br>1234567-D35B<br>1234567-2A7B<br>1234567-1D3B<br>1234567-1F66<br>1234567-6FF1<br>1234567-1F5A<br>1234567-BF97
+							</td>
+						</tr>
+						<tr>
+							<td>Fujitsu-Siemens</td>
+							<td>5 Digitos Decimales</td>
+							<td>12345</td>
+						</tr>
+						<tr>
+							<td>Fujitsu-Siemens</td>
+							<td>8 Digitos Hexadecimales</td>
+							<td>DEADBEEF</td>
+						</tr>
+						<tr>
+							<td>Fujitsu-Siemens</td>
+							<td>5x4 Digitos Hexadecimales</td>
+							<td>AAAA-BBBB-CCCC-DEAD-BEEF</td>
+						</tr>
+						<tr>
+							<td>Fujitsu-Siemens</td>
+							<td>5x4 Digitos Decimales</td>
+							<td>1234-4321-1234-4321-1234</td>
+						</tr>
+						<tr>
+							<td>Hewlett-Packard</td>
+							<td>5 Digitos Decimales</td>
+							<td>12345</td>
+						</tr>
+						<tr>
+							<td>Hewlett-Packard/Compaq Netbooks</td>
+							<td>10 Caracteres</td>
+							<td>CNU1234ABC</td>
+						</tr>
+						<tr>
+							<td>Insyde H20 (generic)</td>
+							<td>8 Digitos Decimales</td>
+							<td>03133610</td>
+						</tr>
+						<tr>
+							<td>Phoenix (generic)</td>
+							<td>5 Digitos Decimales</td>
+							<td>12345</td>
+						</tr>
+						<tr>
+							<td>Sony</td>
+							<td>7 Digitos Seriales Numericos</td>
+							<td>1234567</td>
+						</tr>
+						<tr>
+							<td>Samsung</td>
+							<td>12 Digitos Hexadecimales</td>
+							<td>07088120410C0000</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="cre">
+					<h4>Creditos</h4>
+					<p>Codigo e idea original de <a
+							href="http://dogber1.blogspot.com/2009/05/table-of-reverse-engineered-bios.html">Dogbert</a> & <a
+							href="http://asyncrit.us">Asyncritus</a>.</p>
+					<p>Redieño y Traduccion <a href="jackestar.netlify.app">Jackestar</a>, Tipografia <a
+							href="https://github.com/JulietaUla/Montserrat/">Montserrat</a>, Iconos <a
+							href="https://fontawesome.com/">Font Awesome</a></p>
+				</div>
 			</div>
-<!-- 		<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112154345-1"></script> -->
-		<script type="text/javascript" src="./assets/Scripts/biosPsw.js"></script>
-	<noscript>
-        <p>Se requiere JavaScript</p>
-    </noscript>
+			<noscript>
+				<p>Se requiere JavaScript</p>
+			</noscript>
+			</div>
+			<footer onclick="window.location.href = '../'">Jackestar 2023</footer>
+			<!-- 		<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112154345-1"></script> -->
+			<script type="text/javascript" src="./Scripts/biosPsw.js"></script>
 	</body>
 </html>

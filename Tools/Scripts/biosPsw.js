@@ -4286,7 +4286,7 @@ function (t, r, e) {
   var n = function () {},
   i = document.createElement('script');
   i.async = !0;
-  i.src = 'https://www.googletagmanager.com/gtag/js?id=UA-112154345-1';
+  i.src = '#';
   var o = document.getElementsByTagName('script') [0];
   o.parentNode.insertBefore(i, o),
   window.dataLayer = window.dataLayer || [

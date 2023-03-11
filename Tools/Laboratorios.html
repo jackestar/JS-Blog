@@ -2,26 +2,53 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="./../Universal.css">
-	<link rel="stylesheet" type="text/css" href="./stylesf.css">
+	<link rel="stylesheet" type="text/css" href="../css/stylesU.css">
+	<link rel="stylesheet" type="text/css" href="./Styles/styles.css">
 	<link rel="icon" type="image/x-ico" href="favicon.png">
 	<title>Reporte de Laboratorio</title>
+	<script src="./Scripts/Prel.js"></script>
 </head>
-<body onload="setTimeout(()=>{document.body.classList.add('a')},2000)">
+<body onload="Load()">
 	<div class="blk"></div>
-	<header>
-		<h1>Reporte Fisica<i></i></h1>
-		<div class="tam"><input type="number" placeholder="Columnas"><input type="number" placeholder="Filas"><a href="#" onclick="calk.gen()">Generar</a></div>
-	</header>
-	<div class="tab">
-		<table class="vl"></table>
-		<table class="tx"></table>
-		<div class="al"></div>
+	<div class="content">
+		<div class="confg qt">
+			<ul class="input">
+				<li>
+					<h2>Decimales al Calcular</h2>
+					<input class="presC" type="number" value="3" placeholder="Valor">
+				</li>
+				<li>
+					<h2>Decimales a Mostrar</h2>
+					<input class="presS" type="number" value="3" placeholder="Valor">
+				</li>
+				<li>
+					<input type="submit" onclick="Conf()" value="Guardar">
+				</li>
+			</ul>
+		</div>
+		<header>
+			<div class="title">
+				<h1>Tabla Experimental<i class="iconc" onclick="Conf()"></i></h1>
+			</div>
+			<div class="tam input">
+				<input type="number" placeholder="Columnas">
+				<input type="number" placeholder="Filas">
+				<input type="submit" id="button_id" onclick="calk.gen()" value="Generar">
+			</div>
+		</header>
+		<div class="tab">
+			<table class="vl"></table>
+			<table class="tx"></table>
+			<div class="al"></div>
+		</div>
+		<div class="rec">
+			<h2>Ecuacion de La Recta Experimental</h2>
+			<p>Y = X·M<sub>est</sub>+B<sub>est</sub></p>
+			<hr><br>
+			<div class="eq"></div>
+		</div>
 	</div>
-	<div class="rec">
-		<h2>Ecuacion de La Recta Experimental</h2>
-		<div class="eq"></div>
-	</div>
-	<script type="text/javascript" src="./fis2.js"></script>
+	<footer onclick="window.location.href = '../'">Jackestar 2023</footer>
+	<script type="text/javascript" src="./Scripts/physic.js"></script>
 </body>
 </html>

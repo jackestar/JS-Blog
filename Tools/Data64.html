@@ -1,22 +1,24 @@
-<html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
 		<meta charset="utf-8">
 		<meta name="keywords" content="data64">
 		<title>Conversor a Data64</title>
-		<link rel="stylesheet" type="text/css" href="./../Universal.css">
-		<link rel="stylesheet" type="text/css" href="assets/Styles/styles.css">
+		<link rel="stylesheet" type="text/css" href="../css/stylesU.css">
+		<link rel="stylesheet" type="text/css" href="./Styles/styles.css">
+		<script src="./Scripts/Prel.js"></script>
 	</head>
-	<body onload="setTimeout(()=>{document.body.classList.add('a')},2000)">
-		<div class="blk"> </div>
+	<body onload="Load()">
+		<div class="blk"></div>
+		<div class="content">
 			<div class="title">
-				<h1>Conversor a Data64<i onclick="chg()"></i></h1>
+				<h1>Conversor a Data64<i class="icond" onclick="chg()"></i></h1>
 			</div>
 			<div class="input">
-				<form>
 					<input autocomplete="off" placeholder="Inserte Texto" type="text" id="ins">
 					<input type="submit" value="Generar" onclick="gen()" formaction="#">
 					<input type="submit" value="Abrir" formaction="#">
-					<input type="submit" value=" " formaction="#" onclick="document.querySelector('div.cfg').classList.toggle('lk')" class="cfg">
-				</form>
+					<input type="button" class="iconc" value="" onclick="Conf()">
 			</div>
 			<div class="res">
 				<div class="grf">
@@ -30,20 +32,25 @@
 					</div>
 				</div>
 			</div>
-			<div class="cfg">
-				<div class="bx">
-					<ul>
-						<li><p>Añadir minetype</p></li>
-						<li><p>Vista previa</p></li>
-						<li><p></p></li>
-						<li><p></p></li>
+			<div class="confg qt">
+					<ul class="input">
+						<li>
+							<p>Añadir minetype</p>
+						</li>
+						<li>
+							<p>Vista previa</p>
+						</li>
+						<li>
+							<p>Borrar Comentarios</p>
+						</li>
+						<li><input type="submit" onclick="Conf()" value="Guardar"></li>
 					</ul>
-					<p class="clos" onclick="document.querySelector('div.cfg').classList.toggle('lk')">X</p>
 				</div>
-			</div>
+		</div>
 	<noscript>
         <p>Se requiere JavaScript</p>
 </noscript>
-<script type="text/javascript" src="./assets/Scripts/data64.js"></script>
+<footer onclick="window.location.href = '../'">Jackestar 2023</footer>
+<script type="text/javascript" src="./Scripts/data64.js"></script>
 	</body>
 </html>

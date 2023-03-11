@@ -1,0 +1,223 @@
+body {
+  background: var(--gray3);
+  max-width: 100vw;
+  max-height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  user-select: none
+}
+
+/* LoadScne */
+
+.loadScene {
+  background: var(--gray4);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  
+}
+
+.loadScene .fx {
+  position: absolute;
+  background: var(--main1);
+}
+@media (orientation:landscape) {
+  .loadScene .fx {
+    width: 15vw;
+    height: 15vw;
+  } 
+}
+@media (orientation:portrait) {
+    .loadScene .fx {
+    width: 15vh;
+    height: 15vh;
+  } 
+}
+
+.loadScene .a {
+  border-radius: 2%;
+  background: linear-gradient(45deg,#0000 25%,var(--main4) 25%, var(--main4) 50%,var(--second4) 50%,var(--second4) 75%,#0000 75%);
+	background-repeat: repeat;
+	background-size: 5em 5em;
+	animation: anim 2s linear infinite;
+  border: solid .5em #000
+}
+.loadScene .b {
+  border-radius: 10%;
+  background-color: #000a;
+  rotate: 45deg;
+  animation: anim2 2s linear infinite;
+}
+.loadScene .c {
+  clip-path: circle();
+  background: linear-gradient(45deg,#0000 25%,var(--second4) 25%, var(--second4) 50%,var(--main2) 50%,var(--main2) 75%,#0000 75%);
+	background-repeat: repeat;
+	background-size: 5em 5em;
+  border: 1em solid var(--bg);
+  animation: anim 5s ease-out infinite reverse;
+}
+
+@keyframes anim{
+	0% {background-position-x:0em;
+  background-position-y:0em;}
+	100% {background-position-x:5em;
+  background-position-y:5em;}
+}
+@keyframes anim2{
+	0% {  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: var(--gray2) solid .5em;}
+	33% {  border-right: none;
+  border-left: var(--gray2) solid .5em;
+  border-top: none;
+  border-bottom: none;}
+  66% { border-right: none;
+  border-left: none;
+  border-top: var(--gray2) solid .5em;
+  border-bottom: none;
+  }
+	100% {  border-right: var(--gray2) solid .5em;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;}
+}
+.loadScene.ready {
+  opacity: 0;
+  transition: .2s .6s ease-out;
+  z-index: 0;
+}
+.loadScene.ready .b {
+  rotate: 0deg;
+  transition: .5s ease-out
+}
+.loadScene.ready .c {
+  clip-path: none;
+}
+.loadScene.ready .fx {
+  border-radius: 0em;
+  transition: .3s ease;
+  animation: 1.25s anim3 ease-out;
+  scale: 0%
+    
+}
+@keyframes anim3 {
+  0% {scale: 100%;
+  opacity:1;
+  border-radius: 0em;}
+  100% {scale: 0%;
+  opacity:.5;
+  border-radius: 100%;}
+}
+
+/* Login */
+section.login {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  transition: .4s .5s ease-out;
+}
+section.login .Pass {
+  background: var(--main3);
+  flex:0% 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: .4s .5s ease-out;
+}
+section.login .Pass input {
+  opacity: 0;
+  font-size: 2em;
+  background: #0000;
+  border:none;
+  border-bottom: var(--gray5) .2em solid;
+  transition: .2s ease-out;
+  width: 0;
+  height: 0;
+}
+section.login.ready2 .Pass input {
+  opacity: 1;
+  transition: .2s ease-in;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: .4s .5s ease-out;
+}
+section.login.ready2 .Pass input:focus {
+  border: var(--bg) .1em solid;
+  transition: .2s ease-in
+/*   border: none */
+}
+section.login .User {
+  background: var(--bg);
+  flex:100% 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: .4s .5s ease-out;
+}
+section.login .User .cnt {
+  width: 11em;
+  height: 11em;
+  background: radial-gradient(var(--main5) 50%,var(--gray4) 50%);
+  /* background: #fff url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDAgMjAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT5KYWNrZXN0YXIgTG9nbzwvdGl0bGU+PGcgc3Ryb2tlPSIjMDAwIj48cGF0aCBpZD0iYSIgZD0ibTk4LjY5IDYuMDFjLTIyLjg5IDAuMjYxNy00NS41NiA5LjI2OS02Mi4zNSAyNC44My0xNS4xMyAxMy45LTI1LjUyIDMyLjg3LTI4Ljk2IDUzLjEzLTMuMzUyIDE5LjI5LTAuNTE5NCAzOS42MiA4LjExOSA1Ny4yIDguMDcyIDE2LjU4IDIxLjExIDMwLjcyIDM3LjA2IDM5Ljk4IDE2LjEzIDkuNDMxIDM1LjExIDEzLjk2IDUzLjc3IDEyLjYzIDE4LjY1LTEuMjU3IDM2LjktOC4xODMgNTEuNTktMTkuNzUgMTUuMTgtMTEuODcgMjYuNjEtMjguNSAzMi4xLTQ2Ljk4IDUuNTktMTguNiA1LjI5LTM4Ljk1LTEuMDM1LTU3LjMyLTYuMTQ5LTE4LjA4LTE3LjkxLTM0LjIzLTMzLjM2LTQ1LjQ5LTE0Ljk3LTExLTMzLjI2LTE3LjQ2LTUxLjg0LTE4LjE1LTEuNzAxLTAuMDc0ODMtMy40MDUtMC4wOTEwNS01LjEwOC0wLjA3NjkxeiIgZmlsbC1vcGFjaXR5PSIwIiBzdHJva2Utd2lkdGg9IjIuODM1Ii8+PGcgaWQ9ImIiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS44OSI+PHBhdGggaWQ9ImMiIGQ9Im0xMDAgNzIuMTl2MjcuODFoLTIwLjIxIi8+PHBhdGggaWQ9ImQiIGQ9Im0xNDcuMyAxMDAgMzguMjgtMjcuODFoLTE3MS4ybDM4LjI4IDI3LjgxIi8+PHBhdGggaWQ9ImUiIGQ9Im03OS43OSAxNDkuMS0zMi42OSAyMy43NSA1Mi45LTE2Mi44IDUyLjkgMTYyLjgtMzIuNjktMjMuNzUiLz48L2c+PC9nPjwvc3ZnPg==) no-repeat; */
+  display: flex;
+  border: 1em solid var(--fg);
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  opacity: 0;
+  background-size:  cover;
+}
+section.login.ready .User .cnt {
+  opacity: 1;
+  transition: ease-in .2s
+}
+@media (orientation:landscape) {
+ section.login.ready2 .Pass {
+  flex: 50% 2;
+  transition:.4s ease-out;
+}
+section.login.ready2 .User {
+  flex: 50% 2;
+  transition:.4s ease-out;
+} 
+}
+@media (orientation:portrait) {
+  section.login {
+    flex-direction: column
+  }
+ section.login.ready2 .Pass {
+  flex: 75% 2;
+  transition:.4s ease-out;
+}
+section.login.ready2 .User {
+  flex: 25% 2;
+  transition:.4s ease-out;
+} 
+}
+section.login .User .cnt b {
+  font-size: 9em;
+}
+section.login .User .ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%;
+  width: 11em;
+  height: 11em;
+}
+/* UNtested */
+@media (prefers-color-scheme: light) {
+  body {
+    filter: invert(1)
+  }
+}

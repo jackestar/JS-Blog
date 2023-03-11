@@ -3,12 +3,18 @@
   --chg:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDQwLjY1IDEyLjU3bDQgODIuNzdBMjQ3LjE2IDI0Ny4xNiAwIDAgMCAyNTUuODMgOEMxMzQuNzMgOCAzMy45MSA5NC45MiAxMi4yOSAyMDkuODJBMTIgMTIgMCAwIDAgMjQuMDkgMjI0aDQ5LjA1YTEyIDEyIDAgMCAwIDExLjY3LTkuMjYgMTc1LjkxIDE3NS45MSAwIDAgMSAzMTctNTYuOTRsLTEwMS40Ni00Ljg2YTEyIDEyIDAgMCAwLTEyLjU3IDEydjQ3LjQxYTEyIDEyIDAgMCAwIDEyIDEySDUwMGExMiAxMiAwIDAgMCAxMi0xMlYxMmExMiAxMiAwIDAgMC0xMi0xMmgtNDcuMzdhMTIgMTIgMCAwIDAtMTEuOTggMTIuNTd6TTI1NS44MyA0MzJhMTc1LjYxIDE3NS42MSAwIDAgMS0xNDYtNzcuOGwxMDEuOCA0Ljg3YTEyIDEyIDAgMCAwIDEyLjU3LTEydi00Ny40YTEyIDEyIDAgMCAwLTEyLTEySDEyYTEyIDEyIDAgMCAwLTEyIDEyVjUwMGExMiAxMiAwIDAgMCAxMiAxMmg0Ny4zNWExMiAxMiAwIDAgMCAxMi0xMi42bC00LjE1LTgyLjU3QTI0Ny4xNyAyNDcuMTcgMCAwIDAgMjU1LjgzIDUwNGMxMjEuMTEgMCAyMjEuOTMtODYuOTIgMjQzLjU1LTIwMS44MmExMiAxMiAwIDAgMC0xMS44LTE0LjE4aC00OS4wNWExMiAxMiAwIDAgMC0xMS42NyA5LjI2QTE3NS44NiAxNzUuODYgMCAwIDEgMjU1LjgzIDQzMnoiLz48L3N2Zz4=) no-repeat;
 }
 body {
+  width: 100vw;
+  min-height: 100vh;
+  user-select: none;
+}
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  min-height: 100vh;
-  justify-content: center;
+  min-height: calc(100vh - 1.5em);
+  justify-content:center;
+  gap: 1em;
 }
 .blk {
   position: absolute;
@@ -21,6 +27,12 @@ body {
 body.a .blk {
   display: none;
 }
+header {
+  display: flex;
+  flex-flow:  column;
+  align-items: center;
+  padding-top: 1%;
+}
 .title {
   padding: 3%;
   text-align: center;
@@ -29,28 +41,45 @@ body.a .blk {
   user-select: none;
 }
 .title h1 {
-  background: linear-gradient(90deg,#226,#bea);
+  background:#000 linear-gradient(90deg,var(--foreg1),var(--main1));
   background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
   color: #0000;
   animation: rel 2s ease infinite;
   display: flex;
   align-items: center
 }
-.title h1 i {
+i.iconc,i.icond {
   width: 1em;
   height:1em;
   margin: 0 1vw;
-  background: var(--chg);
+  background-position: center;
   cursor: pointer;
   opacity: 0;
 }
-body.a .title h1 i {
+i.iconc {
+  background: var(--cfg);
+}
+i.icond {
+  background: var(--chg);
+}
+body.a i {
   opacity: 1;
   transition: .3s ease;
 }
+body:not(.a) input,body:not(.a) h2{
+  color: #0000 !important;
+  opacity: .1;
+  transition: .2s ease-out
+}
 body.a .title h1 {
   animation: none;
-  background: linear-gradient(90deg,#004,#251) text;
+  background: linear-gradient(90deg,var(--foreg2),var(--main2));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+
 }
 @keyframes rel {
   0% {background-position: 50vh}
@@ -76,6 +105,9 @@ body.a .title a,body.a #result_id>*:not(input) {
 }
 .input {
   text-align: center;
+  display: flex;
+  width: 75%;
+  justify-content: center;
 }
 
 .input h2 {
@@ -84,6 +116,7 @@ body.a .title a,body.a #result_id>*:not(input) {
   align-items: center;
   user-select: none
 }
+
 .input h2 p {
   color: #fff;
   padding: 2%;
@@ -95,7 +128,7 @@ body.a .title a,body.a #result_id>*:not(input) {
 .input input {
   text-align: center;
   border: none;
-  padding: 5%;
+  padding: 3%;
   margin: 0 1%;
   color: transparent;
 }
@@ -116,11 +149,17 @@ form {
 .input input {
   width:auto;
   height:auto;
+  border-radius: 5px;
 }
 .input input[type="text"] {
   background: #eee;
   color: #000;
   flex:75% 2;
+}
+.input input[type="number"] {
+  background: #eee;
+  color: #000;
+  flex:40% 2;
 }
 .input input[type="submit"] {
   background: #ddd;
@@ -137,26 +176,33 @@ form {
   background: #ded;
   transition:.2s ease;
 }
-.input input.cfg:enabled {
-  background:#ccc var(--cfg);
-  background-position: center;
-  transition:.2s ease;
-  opacity: 0;
-}
-body.a .input input.cfg:enabled {
-  opacity: 1;
-}
-.input input.cfg:enabled:hover {
-  background:#caa var(--cfg);
+.input input[type="button"] {
+  cursor: pointer;
+  background: #ddd var(--cfg) no-repeat;
+  background-size: contain;
   background-position: center;
   transition:.2s ease;
 }
-.input input.cfg:enabled:active {
-  background:#fdd var(--cfg);
+.input input[type="button"]:hover {
+  background: #cca var(--cfg) no-repeat;
+  background-size: contain;
   background-position: center;
   transition:.2s ease;
+}
+.confg .input p {
+  cursor: pointer;
+}
+.confg .input p:hover {
+  text-decoration: line-through #aaa .1em;
+}
+.qt {
+  display: none;
+}
+.pn {
+  display: flex !important;
 }
 
+/* Example Tables */
 .table {
   margin: 2%;
   border: #000 solid 3px;
@@ -164,9 +210,6 @@ body.a .input input.cfg:enabled {
   position: relative;
   transition:.1s .2s ease;
   border-radius: 2%;
-}
-.qt {
-  display: none;
 }
 .table th {
   background: #eee;
@@ -177,7 +220,7 @@ body.a .input input.cfg:enabled {
 .table td:first-child {
   background: #ddd;
 }
-p.clos {
+/* p.clos {
   padding: 2%;
   color: #fff;
   background: #000;
@@ -188,6 +231,114 @@ p.clos {
   font-weight: 800;
   cursor: pointer;
   user-select: none
+} */
+
+/* Tabla */
+.tab {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+  .tab .tx {
+    flex: 2 80%;
+    border-radius: 0 10px 10px 0;
+    display: inline-block;
+    overflow-x:scroll;
+    width: auto;
+  }
+  .tab .tx tbody {
+    min-width: 100%;
+    width: fit-content;
+    display: block;
+    /* flex-direction: column; */
+  }
+  .tab .vl {
+    /* flex: 2 10%; */
+    border-radius: 15px 0 0 15px;
+    
+  }
+  .tab tr {
+    min-width: 100%;
+    display:flex;
+    
+  }
+  .tab td {
+    background: var(--gray1);
+    border: .4em solid var(--gray3);
+    /* min-width: 4em; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .tab td input {
+    padding-inline-start: 1em;
+    transition: .2s ease-out;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  .tab .tx td {
+    height: 4em;
+    max-inline-size: 50%;
+    min-inline-size: 8em;
+  }
+  .tab .vl td {
+    height: 4em;
+  }
+  .tab table {
+    background:var(--gray1);
+    overflow: hidden;
+  }
+  
+  .tab .al {
+    transition: .2s ease-out;
+    flex: 1 100%;
+    gap:1em;
+    display: flex;
+    
+  }
+  .tab .al * {
+    padding: .7em;
+    font-weight: 800;
+    z-index: 1000;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .tab .al a{
+    text-decoration: none;
+    color: #fff;
+    background: var(--gray1);
+  }
+  .tab .al input {
+    border: var(--gray5) solid;
+  }
+
+/* Line */
+
+div.rec {
+  width: 100%;
+  padding: 2em;
+  background: var(--gray4);
+  color: #fff;
+}
+footer {
+  width: 100vw;
+  height: 1.5em;
+  overflow: hidden;
+  padding: .25em;
+  text-align: center;
+  transition: .2s ease-out;
+  opacity: 0;
+  cursor: pointer;
+}
+body.a footer {
+  opacity: 1;
+}
+body.a footer:hover {
+  background: var(--gray1);
+  transition: .2s ease-in;
 }
 
 #answer table{
@@ -287,44 +438,28 @@ p.clos {
 
 /* Config */
 
-div.cfg {
+.confg {
   position: fixed;
+  padding: 5%;
+  background: var(--main1);
+  border: 15px;
+  box-shadow: #ddd 0 0 1em;
+  border-radius: 15px;
+  z-index: 1001;
+}
+.confg * {
+  z-index: 1001;
+}
+.confg ul {
+  list-style: none;
+  display: grid;
   width: 100%;
   height: 100%;
-  background: #4449;
-  display: none;
   justify-content: center;
-  align-items: center;
-}
-div.cfg.lk {
-  display: flex;
-}
-div.cfg div.bx {
-  padding: 5%;
-  background: #aaa;
-  width: 45%;
-  height:45%;
-  position: fixed;
-  overflow-x: hidden
+  align-content: center;
+  gap: 1em;
 }
 
-div.cfg .bx ul li {
-  display: flex;
-  padding: 1vh;
-}
-
-/* Check Box */
-div.cfg .bx svg {
-  margin: 0 2%;
-  width: 1em;
-  height: 1em;
-  fill:#0000;
-  border: #000 .1em solid;
-  animation: ra 1.2s ease-in reverse;
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 100;
-  filter: invert(1);
-}
 svg path {
   fill-opacity: 1;
   animation: qe 1.2s ease-in;
@@ -361,10 +496,10 @@ svg.clc #a {animation:la 1.3s ease-in;clip-path: circle(100%);}
 @media (prefers-color-scheme: dark) {
   body {
     filter: invert(1);
-    background: #222;
+    background: var(--gray4);
   }
   .input input[type=submit] {
-  background: #ccc;
+  background: var(--gray1);
   transition:.2s ease;
 }
 }
