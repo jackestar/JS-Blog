@@ -170,12 +170,12 @@ let calk = {
 
 			for (var i = 0; i < this.col; i++) {
 				//XY
-				tempSum = matriz[0][i].value / 1 * matriz[1][i].value / 1;
+				tempSum = (matriz[0][i].value / 1) * (matriz[1][i].value / 1);
 				conte[2][i].innerHTML = tempSum.toFixed(presSw) / 1
 				xySum += tempSum
 				tempSum = 0
 				//XX
-				tempSum = matriz[1][i].value / 1 ** 2
+				tempSum = (matriz[1][i].value / 1) ** 2
 				conte[3][i].innerHTML = tempSum
 				xxSum += tempSum
 			}
