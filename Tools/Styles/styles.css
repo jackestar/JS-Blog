@@ -68,7 +68,7 @@ body.a i {
   opacity: 1;
   transition: .3s ease;
 }
-body:not(.a) input,body:not(.a) h2{
+body:not(.a) input,body:not(.a) h2,body:not(.a) h3,body:not(.a) p{
   color: #0000 !important;
   opacity: .1;
   transition: .2s ease-out
@@ -502,4 +502,37 @@ svg.clc #a {animation:la 1.3s ease-in;clip-path: circle(100%);}
   background: var(--gray1);
   transition:.2s ease;
 }
+}
+
+.noeq {
+  display: flex;
+  height: 5em;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.noeq>p {
+  margin:0 .5em;
+  padding: .2em;
+}
+.noeq .eqc {
+  margin:0 .5em;
+  padding: .2em;
+  text-align: center;
+}
+
+.noeq .eqc:first-child {
+  border-bottom: .15em solid #fff;
+}
+
+.noeq div.eqb:not(div.eqr) b {
+  text-decoration:overline .15em;
+}
+
+.noeq .bld {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.noeq .shw {
+  display: none;
 }

@@ -1,6 +1,9 @@
+//Cookies - Config
 //Presicion
 let presSw = 3
 let presCl = 3
+//
+let Cerror = true
 
 //Matriz de Array Columnas x fila
 // Entrada
@@ -93,7 +96,7 @@ let calk = {
 		document.querySelector('.tab table.tx').innerHTML = this.mk()
 		document.querySelector('.tab table.vl').innerHTML = this.mk2()
 		// document.querySelectorAll('.tab table.tx td').forEach(a=> a.style.minWidth = `${85/(this.col+2)}%`)
-		document.querySelector('.tab .al').innerHTML = '<a href="#" onclick="calk.cal()">Calcular</a><input class="xt" type="number" placeholder="X₂ (P₂)">'
+		document.querySelector('.tab .al').innerHTML = '<a href="#" onclick="calk.cal()">Calcular</a><input class="xt" type="number" placeholder="X₂ (P₂)"><input class="mexp" type="number" placeholder="Mexp">'
 	},
 
 	cal() {
@@ -163,7 +166,7 @@ let calk = {
 		} else {
 			let tempSum = 0
 			matriz[1].forEach(a => xSumt += a.value / 1)
-			xProt = xSumt / this.col
+			xProt = (xSumt / this.col).toFixed(presCl)/1
 
 			conte[1][this.col].innerHTML = xSumt.toFixed(presSw) / 1
 			conte[1][this.col + 1].innerHTML = xProt.toFixed(presSw) / 1
@@ -176,7 +179,7 @@ let calk = {
 				tempSum = 0
 				//XX
 				tempSum = (matriz[1][i].value / 1) ** 2
-				conte[3][i].innerHTML = tempSum
+				conte[3][i].innerHTML = tempSum.toFixed(presSw) / 1
 				xxSum += tempSum
 			}
 
@@ -199,12 +202,30 @@ let calk = {
 
 		}
 
+
 		// Recta Estadistica
-		mEst = ((xyPro - (xProt * yPro)) / (xxPro - xProt ** 2)).toFixed(presCl) / 1
-		bEst = (((yPro * xxPro) - (xProt * xyPro)) / (xxPro - xProt ** 2)).toFixed(presCl) / 1
-		let x2 = document.querySelector('.xt').value,
-			y2 = x2 * mEst + bEst,
-			eq = document.querySelector('.eq');
+		mEst = (((xyPro.toFixed(presCl) / 1) - ((xProt.toFixed(presCl) / 1) * (yPro.toFixed(presCl) / 1))) / ((xxPro.toFixed(presCl) / 1) - ((xProt.toFixed(presCl) / 1) ** 2))).toFixed(presCl) / 1
+		bEst = ((((yPro.toFixed(presCl) / 1) * (xxPro.toFixed(presCl) / 1)) - ((xProt.toFixed(presCl) / 1) * (xyPro.toFixed(presCl) / 1))) / ((xxPro.toFixed(presCl) / 1) - ((xProt.toFixed(presCl) / 1) ** 2))).toFixed(presCl) / 1
+		if ((xxPro - (xProt ** 2)) == 0 ) {
+			mEst = Infinity
+			bEst = Infinity
+		}
+		let x2 = document.querySelector('.xt').value/1,
+			y2 = x2 * (mEst.toFixed(presCl) / 1) + (bEst.toFixed(presCl) / 1),
+			eq = document.querySelector('.eq'),
+			meq = document.querySelector('.eqd'),
+			beq = document.querySelector('.eqe'),
+			shw = document.querySelectorAll('.shw'),
+			mrs = document.querySelector('.mrs'),
+			brs = document.querySelector('.brs'),
+			mexp = document.querySelector('.mexp').value/1,
+			ereq = document.querySelector('.eqf'),
+			errs = document.querySelector('.errs'),
+			erep = document.querySelector('.eqg'),
+			errp = document.querySelector('.errp')
+
+		// Opcion
+		if (true) shw.forEach( a => a.style.display = 'block') 
 
 		eq.innerHTML = `
 	<p>M<sub>est</sub> = ${mEst.toFixed(presSw)} 
@@ -212,10 +233,30 @@ let calk = {
 
 	<p>P<sub>1</sub>(0,${bEst.toFixed(presSw)})</p>
 	`
+
+	meq.innerHTML = `
+	<div class="eqc"><p>(<b>${xyPro.toFixed(presSw)}</b>) - (<b>${xProt.toFixed(presSw)}</b>*<b>${yPro.toFixed(presSw)}</b>)</p></div>
+	<div class="eqc"><p><b>${xxPro.toFixed(presSw)}</b> - (<b>${xProt.toFixed(presSw)}</b>)<sup>2</sup></p></div>`
+	mrs.innerHTML = `<p>${mEst.toFixed(presSw)}</p>`
+
+	beq.innerHTML = `
+	<div class="eqc"><p>(<b>${yPro.toFixed(presSw)}</b>)*(<b>${xxPro.toFixed(presSw)}</b>) - (<b>${xProt.toFixed(presSw)}</b>*<b>${xyPro.toFixed(presSw)}</b>)</p></div>
+	<div class="eqc"><p><b>${xxPro.toFixed(presSw)}</b> - (<b>${xProt.toFixed(presSw)}</b>)<sup>2</sup></p></div>`
+	brs.innerHTML = `<p>${bEst.toFixed(presSw)}</p>`
+
 		if (x2 != 0) {
 			eq.innerHTML += `
 		<p>P<sub>2</sub>(${x2},${y2.toFixed(presSw)})</p>`
 		}
+
+	ereq.innerHTML = `
+	<div class="eqc"><p>${mEst.toFixed(presSw)}</sub> - ${mexp.toFixed(presSw)} </p></div>
+	<div class="eqc"><p>${mEst.toFixed(presSw)}</p></div>`
+
+	let errorR = (mEst.toFixed(presCl) - mexp)/mEst.toFixed(presCl)
+	errs.innerHTML = `<p>${errorR.toFixed(presSw)} </p>`
+	erep.innerHTML = `<p>${errorR.toFixed(presSw)} * 100 </p>`
+	errp.innerHTML = `<p>${((errorR.toFixed(presCl))*100).toFixed(presSw)}</p>`
 	}
 
 }
