@@ -185,7 +185,7 @@ let table = {
                 'Defensa V',
                 'DIN-31153',
                 5,[2,2,0],
-                [[20,false]]),
+                [[27,false]]),
 
             new materia(
                 'Conversion Electromecanica',
