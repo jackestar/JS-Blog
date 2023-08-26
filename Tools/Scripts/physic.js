@@ -225,7 +225,7 @@ let calk = {
 			errp = document.querySelector('.errp')
 
 		// Opcion
-		if (true) shw.forEach( a => a.style.display = 'block') 
+		if (true) shw.forEach( a => a.style.display = 'block');
 
 		eq.innerHTML = `
 	<p>M<sub>est</sub> = ${mEst.toFixed(presSw)} 
@@ -248,7 +248,8 @@ let calk = {
 			eq.innerHTML += `
 		<p>P<sub>2</sub>(${x2},${y2.toFixed(presSw)})</p>`
 		}
-
+		// Calculo de error
+	// if (mexp = 0) {
 	ereq.innerHTML = `
 	<div class="eqc"><p>${mEst.toFixed(presSw)}</sub> - ${mexp.toFixed(presSw)} </p></div>
 	<div class="eqc"><p>${mEst.toFixed(presSw)}</p></div>`
@@ -256,7 +257,7 @@ let calk = {
 	let errorR = (mEst.toFixed(presCl) - mexp)/mEst.toFixed(presCl)
 	errs.innerHTML = `<p>${errorR.toFixed(presSw)} </p>`
 	erep.innerHTML = `<p>${errorR.toFixed(presSw)} * 100 </p>`
-	errp.innerHTML = `<p>${((errorR.toFixed(presCl))*100).toFixed(presSw)}</p>`
-	}
+	errp.innerHTML = `<p>${((errorR.toFixed(presCl))*100).toFixed(presSw)}</p>`}
+	// }
 
 }
