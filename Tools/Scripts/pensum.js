@@ -7,6 +7,7 @@ function materia(nombre,codigo,semest,horas,prelacion = [0]) {
 }
 let table = {
     objeto:document.querySelector('section.main>article.scheme'),
+    smain:document.querySelector('section.main'),
     info:document.querySelector('aside.content'),
     condProfecinal:true,
     Materias:[],
@@ -79,7 +80,7 @@ let table = {
                 2,[2,4,0],
                 [[4,false],[5,false]]),
             new materia(
-                'Seminatio II',
+                'Seminario II',
                 'ADG-25141',
                 2,[1,0,0],
                 [[6,false]]),
@@ -280,7 +281,7 @@ let table = {
                 8,[4,1,0],
                 [[44,false],[41,true]]),
             new materia(
-                'Semination de Control',
+                'Seminarion de Control',
                 'ELN-33301',
                 8,[0,2,0],
                 [[44,false]]),
@@ -303,8 +304,8 @@ let table = {
             new materia(
                 'TEG',
                 '',
-                9,[0,0,0],
-                [[0,false]])]
+                9,[0,0,0],218
+                )]
             this.MateriasSemestres.length = this.Semestres
             this.MateriasSemestres.fill(Array())
             this.Materias.forEach((e,i) => {
@@ -327,9 +328,11 @@ let table = {
         // });
         this.Materias.forEach(e => {
             let av = true
-            if (e.prelac != 0) {
+            console.log('murder',e)
+            if (typeof(e.prelac) == "object" && e.prelac != 0) {
                 // Primero Las prelaciones
                 e.prelac.forEach(i => {
+                    console.log(i[0],this.Materias[i[0]])
                     if (!i[1] && !this.Materias[i[0]].Aprobed) {
                         av = false
                         e.Aprobed = false
@@ -348,6 +351,8 @@ let table = {
 
                 })
                 e.avaible = av
+            } else {
+                // TEG
             }
         });
         let posicion = 0
@@ -370,14 +375,15 @@ let table = {
                 let clases = ''
 
                 if (this.Materias[posicion].avaible) {
-                    clases += 'aviable '
                     if (this.Materias[posicion].Aprobed) clases += 'aprobed '
-                    else if (this.Materias[posicion].coprel) clases += 'copre '
-                    else if (this.Materias[posicion].dep) clases += 'dep'
+                    else {
+                        clases += 'aviable '
+                        if (this.Materias[posicion].coprel) clases += 'copre '
+                        else if (this.Materias[posicion].dep) clases += 'dep'}
                 }
                 
                 tempString +=
-                    `<li class='${clases}' onclick='table.infor(${posicion});${this.Materias[posicion].avaible?`table.update(${posicion})`:''}'>
+                    `<li class='${clases}' onclick='${this.Materias[posicion].avaible?`table.update(${posicion})`:`table.infor(${posicion})`}'>
                         <h3>${this.Materias[posicion].nombre}</h3>
                         <p>${this.Materias[posicion].codigo}</p>
                     </li>`;
@@ -387,11 +393,11 @@ let table = {
             tempString += '</ul>'
         }
         this.objeto.innerHTML = tempString
-        if (this.materiaSelected != undefined) this.infor()
     },
     update(materia) {
         if (this.Materias[materia].Aprobed == true) this.Materias[materia].Aprobed = false
         else this.Materias[materia].Aprobed = true
+        this.infor(materia)
         this.Generate()
     },
     pass(Semestre) {
@@ -409,30 +415,43 @@ let table = {
         this.info.innerHTML = ''
         let tempString = "<div class='"
         if (this.Materias[materia].avaible) {
-            tempString+= "aviable "
-            if (this.Materias[materia].Aprobed) tempString += "aprobed "
-            if (this.Materias[materia].coprel) tempString += "copre "
-            else if (this.Materias[materia].dep) tempString += "dep "
-        }
+        if (this.Materias[materia].Aprobed) tempString += "aprobed "
+        else tempString+= "aviable "}
+        if (this.Materias[materia].coprel) tempString += "copre "
+        else if (this.Materias[materia].dep) tempString += "dep "
         tempString+=`'>
             <h3>${this.Materias[materia].nombre}</h3>
-            <i>${this.Materias[materia].codigo}</i>
-        </div><h4>Horas</h4><ul class='hours'>`
-        for (let i = 0; i < this.Materias[materia].horas[0]; i++) tempString += `<li class='t'>${i==0?this.Materias[materia].horas[0]:''}</li>`
-        for (let i = 0; i < this.Materias[materia].horas[1]; i++) tempString += `<li class='p'>${i==0?this.Materias[materia].horas[1]:''}</li>`
-        for (let i = 0; i < this.Materias[materia].horas[2]; i++) tempString += `<li class='l'>${i==0?this.Materias[materia].horas[2]:''}</li>`
-        tempString+="</ul><b>Prelaciones</b><ul class='list'>"
-        this.Materias[materia].prelac.forEach(e => {
-            if (!e[1] && e!=0) {
-                tempString += "<li class='"
-                if (this.Materias[e[0]].Aprobed) tempString += "aprobed "
-                if (this.Materias[e[0]].coprel) tempString += "copre "
-                else if (this.Materias[e[0]].dep) tempString += "dep "
-                tempString +=`'><p>${this.Materias[e[0]].nombre}</p><i>${this.Materias[e[0]].codigo}</i></li>` //e[1]
-            }
-        });
+            <i>${this.Materias[materia].codigo}</i></div>`
+        if ((this.Materias[materia].horas[0] + this.Materias[materia].horas[1] + this.Materias[materia].horas[2]) != 0) {
+            tempString+="<h4>Horas</h4><ul class='hours'>"
+            for (let i = 0; i < this.Materias[materia].horas[0]; i++) tempString += `<li class='t'>${i==0?this.Materias[materia].horas[0]+'T':''}</li>`
+            for (let i = 0; i < this.Materias[materia].horas[1]; i++) tempString += `<li class='p'>${i==0?this.Materias[materia].horas[1]+'P':''}</li>`
+            for (let i = 0; i < this.Materias[materia].horas[2]; i++) tempString += `<li class='l'>${i==0?this.Materias[materia].horas[2]+'L':''}</li>`
+            tempString+="</ul>"
+        }
+        if (this.Materias[materia].prelac !=0) {
+            tempString+="<b>Prelaciones</b><ul class='list'>"
+            if (typeof(this.Materias[materia].prelac) == "number") tempString += `<i>Unidades de Credito ${this.Materias[materia].prelac}</i>`
+            else this.Materias[materia].prelac.forEach(e => {
+                if (!e[1]) {
+                    tempString += "<li class='"
+                    if (this.Materias[e[0]].avaible) {
+                        if (this.Materias[e[0]].Aprobed) tempString += "aprobed "
+                        else tempString += "aviable "
+                    }            
+                
+                    if (this.Materias[e[0]].coprel) tempString += "copre "
+                    else if (this.Materias[e[0]].dep) tempString += "dep "
+                    tempString +=`'><p>${this.Materias[e[0]].nombre}</p><i>${this.Materias[e[0]].codigo}</i></li>` //e[1]
+                }
+            });
+        }
 
-
+        if ((this.materiaSelected == materia && !this.Materias[materia].avaible) || this.materiaSelected == undefined || this.info.classList.contains('hide')) {
+            this.info.classList.toggle('hide')
+            this.smain.classList.toggle('hide')
+        }
+        // else if (this.info.classList.contains('hide'))
         this.info.innerHTML = tempString;
         this.materiaSelected = materia
         

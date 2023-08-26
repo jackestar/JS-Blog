@@ -2,61 +2,98 @@ body {
     position: absolute;
     background: var(--background);
     display: flex;
-    max-width: 100vw;
+/*     max-width: 100vw; */
     max-height: 100vh;
-/*     justify-content:    center; */
+/*     justify-content:    space-around; */
 /*     align-items: center; */
     flex-flow: wrap;
     font-size: .7em;
+    overflow-x: hidden;
     
 }
 
 section.main {
     background: var(--background);
-    max-width: 75vw;
+    width: 100vw;
+    max-width: 100vw;
     min-height: 100vh;
     flex: 2 75vw;
+    transition:1s ease;
+}
+section.main.hide {
+    width: 75vw;
+    max-width: 100vw;
+    min-height: 100vh;
+    flex: 2 75vw;
+    transition:1s ease;
+}
+aside.content.hide {
+    min-width: 0;
+    width: 0;
+    height: 0;
+    display: none;
+    opacity: .90;
+    transition: .3s ease;
 }
 
 aside.content {
-    flex: 2 24.5vw;
-    min-width: 24.5vw;
+    opacity: 1;
+    flex: 2 23.5vw;
+    width: 23.5vw;
 /*     max-width: 20vw; */
-    right: 0;
+/*     right: 0; */
     min-height: 100vh;
-    background: var(--colorF);
+    background: var(--colorC);
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: -.75em 0 0 #2c292d55;
-    z-index: 100;
-/*     width: 20vw; */
+    z-index: 1000;
+    overflow: hidden;
+/*     transition: .3s ease; */
+/*     animation: apear .8s;   */
 }
+
+/* @keyframes apear {
+    0% {width:0;min-width:0;max-height: 0;height:0;flex:1 0vw;}
+    50% {width:12;min-width:12;max-height: 0;height:0;flex:2 12vw;}
+    100%{max-width;12vw;width: 12vw;flex: 2 23.5vw}
+} */
 aside.content h3 {
     text-align: center;
     font-variant: all-small-caps;
     font-weight: 800;
     font-size: 2em
 }
+aside.content h4 {
+    font-variant: all-small-caps;
+    font-size: 1.5em;
+    padding: .5em;
+}
 aside.content div {
     min-width: 50%;
     text-align: center;
-    margin: 1%;
+    margin: 1em;
     padding: 1em;
-    border-radius: 1em
+    border-radius: 1em;
+    border: .3em solid var(--background)
 /*     width: min-content */
 }
 aside.content ul.list {
     width: 100%;
     display: flex;
+    list-style: none;
+    margin-block: 1em;
+    justify-content: center;
 }
 aside.content ul.list>li {
-    list-style: none;
     text-align: center;
-    margin: 1%;
-    border-radius: 25%;
+    margin: 0em 1em;
+    border-radius: 1em;
     padding: 1%;
-    flex: 2 40%;
+/*     width: min-content; */
+    flex: 2;
+    background: var(--colorE);
 }
 aside.content ul.list>li i {
     display: none;
@@ -88,7 +125,9 @@ body aside.content div.copre {
 aside.content ul.hours {
     display: flex;
     width: 100%;
+    border-block:.2em solid var(--background) ;
     list-style: none;
+    margin-bottom: 1em;
 }
 aside.content ul.hours li {
     width: 100%;
@@ -110,10 +149,9 @@ footer {
     font-variant:all-small-caps;
     flex: 1 100%;
     text-align: center;
-}
-footer a {
-    text-decoration: none;
     color: var(--foreground);
+    user-select: text;
+    cursor: pointer
 }
 article.scheme {
     display: flex;
@@ -149,6 +187,7 @@ article.scheme ul li {
     transition: .3s ease-in;
     border: solid #0000; /*Rezise*/
     user-select: none;
+    font-variant: all-small-caps;
 }
 article.scheme ul li:hover {
     opacity: 1;
@@ -198,11 +237,37 @@ aside.help {
     text-align: center;
     display: flex;
     justify-content: center;
-    box-shadow:0em 0em 1em var(--second1);
+    box-shadow:0em 0em 1em var(--colorE);
     align-items: center;
+    z-index: 1001;
 }
 aside.help p {
     font-weight: 800;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+/* @media (orientation:landscape) {
+} */
+@media (orientation:portrait) {
+    aside.content {
+        flex: 1 100vw;
+/*         width: 100vw; */
+        min-height: auto;
+        max-height: 25vh;
+        height: 25vh;
+    }
+    section.main {
+        width: 100vw;
+/*         max-width: 100vw; */
+/*         max-height: 75vh; */
+/*         height: 75vh; */
+/*         min-height: 75vh; */
+/*         flex: 1 100vw; */
+    }
+    section.main.hide {
+        height: 75vh;
+/*         max-height: 75vh; */
+        min-height: 75vh;
+    }
 }
