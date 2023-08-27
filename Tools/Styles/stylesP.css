@@ -9,6 +9,7 @@ body {
     flex-flow: wrap;
     font-size: .7em;
     overflow-x: hidden;
+/*     z-index: 1; */
     
 }
 
@@ -19,6 +20,7 @@ section.main {
     min-height: 100vh;
     flex: 2 75vw;
     transition:1s ease;
+    z-index: 1000
 }
 section.main.hide {
     width: 75vw;
@@ -32,7 +34,7 @@ aside.content.hide {
     width: 0;
     height: 0;
     display: none;
-    opacity: .90;
+    opacity: .7;
     transition: .3s ease;
 }
 
@@ -65,10 +67,20 @@ aside.content h3 {
     font-weight: 800;
     font-size: 2em
 }
+aside div i {
+    width: 100%;
+}
 aside.content h4 {
     font-variant: all-small-caps;
     font-size: 1.5em;
     padding: .5em;
+}
+aside.content h4 b {
+    background: var(--colorDs);
+/*     border: solid .2em var(--background); */
+    padding:.2em;
+    border-radius: 100%;
+    
 }
 aside.content div {
     min-width: 50%;
@@ -76,8 +88,9 @@ aside.content div {
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
-    border: .3em solid var(--background)
-/*     width: min-content */
+    border: .3em solid var(--background);
+    display: flex;
+    flex-direction: column;
 }
 aside.content ul.list {
     width: 100%;
@@ -86,7 +99,7 @@ aside.content ul.list {
     margin-block: 1em;
     justify-content: center;
 }
-aside.content ul.list>li {
+aside.content ul.list li {
     text-align: center;
     margin: 0em 1em;
     border-radius: 1em;
@@ -105,13 +118,13 @@ aside.content ul.list>li:hover p {
     display: none
 }
 aside.content>div {
-    background: var(--foreground);
+    background: var(--colorE);
 }
 aside.content .aviable {
-    background: var(--foreground);
+    background: var(--foreground) !important;
 }
 aside.content .aprobed {
-    background: var(--colorD);
+    background: var(--colorD) !important;
     transition: .2s ease;
 }
 aside.content .dep {
@@ -151,7 +164,8 @@ footer {
     text-align: center;
     color: var(--foreground);
     user-select: text;
-    cursor: pointer
+    cursor: pointer;
+    z-index: 1000
 }
 article.scheme {
     display: flex;
@@ -183,7 +197,7 @@ article.scheme ul li {
     align-items: center;
     text-align: center;
     cursor: pointer;
-    opacity: .6;
+    opacity: .7;
     transition: .3s ease-in;
     border: solid #0000; /*Rezise*/
     user-select: none;
@@ -197,8 +211,8 @@ article.scheme ul li:hover {
 article.scheme ul li.aviable {
     background: var(--foreground);
     opacity: 1;
-    transition: .2s ease;
     user-select: all;
+    transition: .3s ease;
 }
 article.scheme ul li.aprobed {
     background: var(--colorD);
@@ -229,24 +243,70 @@ aside.help {
     bottom: 0;
     right: 0;
     background: var(--foreground);
-    padding: 1em;
+/*     padding: .5em 1em; */
     margin: .5em;
-    border-radius: 100%;
-    width: 1em;
-    height: 1em;
+    border-radius: 100em;
+/*     width: 1em; */
+/*     height: 1em; */
     text-align: center;
     display: flex;
     justify-content: center;
     box-shadow:0em 0em 1em var(--colorE);
-    align-items: center;
+    align-items:  end;
+    flex-direction: row;
+    flex-wrap: wrap;
     z-index: 1001;
+    transition: .4s ease all
 }
 aside.help p {
     font-weight: 800;
-    font-size: 1.5em;
+    font-size: 1.75em;
     cursor: pointer;
+    flex: 1 100%;
+    padding: .5em .75em;
 }
-
+aside.help.look p {
+    align-self: baseline;
+}
+aside.help.look {
+    bottom: 5vh;
+    right: 5vw;
+    width: 90vw;
+    height: 90vh;
+    border-radius: 1em;
+    box-shadow: none;
+    border: .3em solid var(--background);
+    transition: .4s ease;
+}
+aside.help div.hcont {
+    display: none;
+    opacity: 0;
+}
+aside.help.look div.hcont {
+    display: flex;
+    opacity: 1;
+    min-height: 75%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction:column;
+    margin: 1em;
+}
+div.blk {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--background);
+    z-index: 0;
+    opacity: 0;
+}
+div.blk.look {
+    z-index: 1001;
+    opacity: .70;
+    transition: .2s ease-in opacity;
+}
 /* @media (orientation:landscape) {
 } */
 @media (orientation:portrait) {
@@ -270,4 +330,17 @@ aside.help p {
 /*         max-height: 75vh; */
         min-height: 75vh;
     }
+}
+i.back {
+    background: var(--background);
+    font-size: 2em;
+    font-weight: 800;
+    color: var(--foreground);
+    padding: .1em;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    clip-path: circle();
+    user-select: none;
+    cursor: pointer;
 }

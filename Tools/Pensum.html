@@ -7,15 +7,18 @@
     <link rel="stylesheet" type="text/css" href="../css/stylesU.css">
 </head>
 <body>
+    <div class="blk"></div>
     <section class="main">
         <article class="scheme"></article>
     </section>
     <aside class="content hide">
-        <h2 class="mName"></h2>
-        <div class="aCont"></div>
     </aside>
     <aside class="help">
-        <p>?</p>
+        <p onclick="help()">?</p>
+        <div class="hcont">
+            <p>En construccion 🏗️...</p>
+            <i class="back" onclick="help(true)">→</i>
+        </div>
     </aside>
     <footer onclick="window.location.href='../'">Jackestar</footer>
     <script src="./Scripts/pensum.js"></script>
