@@ -238,59 +238,89 @@ article.scheme ul.locked {
     opacity: .5;
     transition: .2s ease;
 }
-aside.help {
+section.bann {
+    right: 0;
     position: fixed;
     bottom: 0;
-    right: 0;
+    margin: .75em;
+    z-index: 1001;
+    transition: .4s ease all;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+section.bann>div {
     background: var(--foreground);
-/*     padding: .5em 1em; */
-    margin: .5em;
     border-radius: 100em;
-/*     width: 1em; */
-/*     height: 1em; */
-    text-align: center;
+    flex: 2 auto;
+    margin: 0 .45em;
+    width: 3em;
+    height: 3em;
+    overflow: hidden;
     display: flex;
     justify-content: center;
-    box-shadow:0em 0em 1em var(--colorE);
-    align-items:  end;
-    flex-direction: row;
-    flex-wrap: wrap;
-    z-index: 1001;
-    transition: .4s ease all
+    transition: .5s ease;
+    flex-direction: column;
 }
-aside.help p {
+section.bann>div.look {
+    justify-content: space-between;
+    width: 90vw;
+    height: 90vh;
+    flex: 2 90vw;
+    border-radius: 1em;
+    align-items: start;
+    transition: .5s ease;
+    margin: 2.5vh 2.5vw;
+}
+/* section.bann>div>p {
     font-weight: 800;
     font-size: 1.75em;
     cursor: pointer;
-    flex: 1 100%;
-    padding: .5em .75em;
+    text-align: center;
+    padding: 0.625em 0;
+    width: 3em;
+    height: 3em;
+    line-height: 1.75em;
+    display: flex;
+    justify-content: center;
+} */
+section.bann div.icon img {
+    width: 1.45em;
 }
-aside.help.look p {
-    align-self: baseline;
+section.bann div.look div.icon img {
+    width: 2.5em
 }
-aside.help.look {
-    bottom: 5vh;
-    right: 5vw;
-    width: 90vw;
-    height: 90vh;
-    border-radius: 1em;
-    box-shadow: none;
-    border: .3em solid var(--background);
-    transition: .4s ease;
+section.bann div.icon p {
+    text-align: center;
+    align-self: center;
+    font-size: 1.45em;
+    font-weight: 800;
 }
-aside.help div.hcont {
+section.bann div.look div.icon p {
+    width: 2.5em
+}
+section.bann div.icon {
+    align-self: center;
+    display: flex;
+}
+section.bann div.icon h3 {
+    display: none;
+    margin: 1em;
+    font-size: 2.5em
+}
+section.bann div.look div.icon h3 {
+    display: block;
+}
+section.bann div.hcont {
     display: none;
     opacity: 0;
 }
-aside.help.look div.hcont {
+section.bann div.look div.hcont {
     display: flex;
     opacity: 1;
-    min-height: 75%;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    flex-direction:column;
-    margin: 1em;
+/*     width: 100%; */
+    align-self: stretch;
 }
 div.blk {
     width: 100vw;
@@ -319,11 +349,6 @@ div.blk.look {
     }
     section.main {
         width: 100vw;
-/*         max-width: 100vw; */
-/*         max-height: 75vh; */
-/*         height: 75vh; */
-/*         min-height: 75vh; */
-/*         flex: 1 100vw; */
     }
     section.main.hide {
         height: 75vh;

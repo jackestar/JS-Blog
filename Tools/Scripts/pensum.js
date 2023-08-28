@@ -542,22 +542,48 @@ let table = {
 
 table.getData()
 table.Generate()
-
 // let help = document.querySelector('aside.help').classList.toggle('look')
-let help = (exit = false) => {
-    if (exit) {
-        console.log(1)
-        document.querySelector('aside.help p').innerHTML = "?"
-        setTimeout(() => {
-            document.querySelector('aside.help').classList.remove('look')
-            document.querySelector('div.blk').classList.remove('look')
-        }, 500);
+let open = false;
+let asideOpt = document.querySelectorAll('section.bann>div');
+asideOpt.forEach(e=>{
+    e.querySelector('.icon').addEventListener('click',()=>{
+        if (open) {
+            asideOpt.forEach(i => {
+                if (i!=e) i.classList.remove('look')
+                else e.classList.add('look')
+            });
+        } else {
+            open = true
+            e.classList.add('look')
+            document.querySelector('div.blk').classList.add('look')
+        }
+    })
+})
+let axit = () => {
+    asideOpt.forEach(e => {
+        e.classList.remove('look')
+    });
+    document.querySelector('div.blk').classList.remove('look')
+    open =false
+}, carga = (ev) => {
+    console.log("File(s) dropped");
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+  
+    if (ev.dataTransfer.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      [...ev.dataTransfer.items].forEach((item, i) => {
+        // If dropped items aren't files, reject them
+        if (item.kind === "file") {
+          const file = item.getAsFile();
+          console.log(`… file[${i}].name = ${file.name}`);
+        }
+      });
     } else {
-        console.log(0)
-    document.querySelector('aside.help').classList.add('look');
-    document.querySelector('div.blk').classList.add('look')
-    setTimeout(() => {
-        document.querySelector('aside.help p').innerHTML = "Ayuda"
-    }, 500);
-}
+      // Use DataTransfer interface to access the file(s)
+      [...ev.dataTransfer.files].forEach((file, i) => {
+        console.log(`… file[${i}].name = ${file.name}`);
+      });
+    }
 }

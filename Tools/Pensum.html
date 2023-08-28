@@ -5,21 +5,36 @@
     <title>Pensum (UNEFA Electronica)  -- ⚡ Prototipo 🎓 --</title>
     <link rel="stylesheet" type="text/css" href="./Styles/stylesP.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesU.css">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body ondragover="document.querySelector('section.bann div.upl .icon').click()">
     <div class="blk"></div>
     <section class="main">
         <article class="scheme"></article>
     </section>
     <aside class="content hide">
     </aside>
-    <aside class="help">
-        <p onclick="help()">?</p>
-        <div class="hcont">
-            <p>En construccion 🏗️...</p>
-            <i class="back" onclick="help(true)">→</i>
+    <section class="bann">
+        <div class="help">
+            <div class="icon">
+                <p>?</p><h3>Ayuda</h3>
+            </div>
+            <div class="hcont">
+                <p>En construccion 🏗️...</p>
+                <i class="back" onclick="axit()">→</i>
+            </div>
         </div>
-    </aside>
+        <div class="upl" ondrop="carga(event)" ondragover="event.preventDefault()">
+            <div class="icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em02NS4xOCAyMTYuMDFIMjI0djgwYzAgOC44NC03LjE2IDE2LTE2IDE2aC0zMmMtOC44NCAwLTE2LTcuMTYtMTYtMTZ2LTgwSDk0LjgyYy0xNC4yOCAwLTIxLjQxLTE3LjI5LTExLjI3LTI3LjM2bDk2LjQyLTk1LjdjNi42NS02LjYxIDE3LjM5LTYuNjEgMjQuMDQgMGw5Ni40MiA5NS43YzEwLjE1IDEwLjA3IDMuMDMgMjcuMzYtMTEuMjUgMjcuMzZ6TTM3NyAxMDVMMjc5LjEgN2MtNC41LTQuNS0xMC42LTctMTctN0gyNTZ2MTI4aDEyOHYtNi4xYzAtNi4zLTIuNS0xMi40LTctMTYuOXoiLz48L3N2Zz4=" alt="Subir Record">
+                <h3>Subir Record</h3>
+            </div>
+            <div class="hcont">
+                <p>En construccion 🏗️...</p>
+                <i class="back" onclick="axit()">→</i>
+            </div>
+        </div>
+    </section>
     <footer onclick="window.location.href='../'">Jackestar</footer>
     <script src="./Scripts/pensum.js"></script>
 </body>
