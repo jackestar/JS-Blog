@@ -168,13 +168,13 @@ let table = {
                 'ELC-30215',
                 5,
                 4,[3,2,3],
-                [[25,true]]),
+                [[21,true]]),
             new materia(
                 'Sistemas Digitales I',
                 'ELN-31325',
                 5,
                 4,[3,2,3],
-                [[25,true]]),
+                [[21,true]]),
             new materia(
                 'Teoria Electromagnetica',
                 'ELN-30314',
@@ -383,39 +383,45 @@ let table = {
     },
     Generate() {
         this.objeto.innerHTML = ''
-        this.Materias.forEach(e => {
-            // let av = true
-            // console.log('murder',e)
-            e.avaible = true
-            // Sin Prelacion
-            if (e.prelac == 0) e.avaible = true
-            else if (typeof(e.prelac) == "object") {
-                e.prelac.forEach(i =>{
-                    if (this.Materias[i[0]].avaible) {
-                        if (this.Materias[i[0]].Aprobed) {
-                            e.coprel = false
-                        } else if (i[1]) {
-                            this.Materias[i[0]].dep = true
-                            if (!e.Aprobed) e.coprel = true
+        this.MateriasSemestres.forEach((s,i)=>{
+            for (let x = 0; x < 2; x++) {
+                s.forEach(m=>this.Materias[m].dep = false)
+                s.forEach(m=>{
+                e = this.Materias[m]
+
+                // e.dep = false
+                e.avaible = true
+                if (e.prelac == 0) e.avaible = true
+                else if (typeof(e.prelac) == "object") {
+                    e.prelac.forEach(i =>{
+                        if (this.Materias[i[0]].avaible) {
+                            if (this.Materias[i[0]].Aprobed) {
+                                e.coprel = false
+                            } else if (i[1]) {
+                                if (e.Aprobed) this.Materias[i[0]].dep = true
+                                else e.coprel = true
+                            } else {
+                                if (e.Aprobed)  this.unidCrdit -= e.unid
+                                e.avaible = false
+                                e.Aprobed = false
+                            }
                         } else {
                             if (e.Aprobed)  this.unidCrdit -= e.unid
                             e.avaible = false
                             e.Aprobed = false
                         }
-                    } else if (!i[1]) {
-                        if (e.Aprobed)  this.unidCrdit -= e.unid
-                        e.avaible = false
-                        e.Aprobed = false
-                    }
+                    })
+                // TEG
+                } else if (this.unidCrdit + e.unid >= this.unidCrditTot) e.avaible = true
+                else {
+                    if (e.Aprobed) this.unidCrdit -= e.unid
+                    e.avaible = false
+                    e.Aprobed = false
+                }
                 })
-            // TEG
-            } else if (this.unidCrdit + e.unid >= this.unidCrditTot) e.avaible = true
-            else {
-                if (e.Aprobed) this.unidCrdit -= e.unid
-                e.avaible = false
-                e.Aprobed = false
             }
-        })
+            })
+        
         let posicion = 0
         let tempString = ''
         let lock = false
@@ -456,22 +462,19 @@ let table = {
         if (this.Materias[materia].Aprobed) {
             this.Materias[materia].Aprobed = false
             this.unidCrdit -= this.Materias[materia].unid
-            // console.log(this.Materias[materia].unid)
         }
         else {
             this.Materias[materia].Aprobed = true
             this.unidCrdit += this.Materias[materia].unid
-            // console.log(this.Materias[materia].unid)
         }
-        // this.Materias[materia].Aprobed = this.Materias[materia].Aprobed ? false : true
-        this.infor(materia)
         this.Generate()
+        this.infor(materia)
     },
     pass(Semestre) {
         let comp = true
-        if (this.MateriasSemestres[Semestre-1].every(e=>this.Materias[e].Aprobed)) {
+        if (this.MateriasSemestres[Semestre-1].every(e=>this.Materias[e].Aprobed || !this.Materias[e].avaible)) {
             this.MateriasSemestres[Semestre-1].forEach(e=>{
-                this.unidCrdit -= this.Materias[e].unid
+                if (this.Materias[e].avaible) this.unidCrdit -= this.Materias[e].unid
                 this.Materias[e].Aprobed = false
             })
         } else {
@@ -483,6 +486,7 @@ let table = {
             })
         }
         this.Generate()
+        this.infor()
     },
     infor(materia = this.materiaSelected) {
         this.info.innerHTML = ''
@@ -528,7 +532,7 @@ let table = {
         }
         // else if (this.info.classList.contains('hide'))
         this.info.innerHTML = tempString + `<i class="back" onclick="table.infoT()">→</i>`;
-        if ((this.materiaSelected == materia && !this.Materias[materia].avaible) || this.materiaSelected == undefined || this.info.classList.contains('hide')) this.infoT();
+        if (this.materiaSelected == undefined || (!this.Materias[materia].avaible && this.materiaSelected == materia) || (this.Materias[materia].avaible && this.info.classList.contains('hide') )) this.infoT();
         this.materiaSelected = materia
         
     },
@@ -566,7 +570,7 @@ let axit = () => {
     document.querySelector('div.blk').classList.remove('look')
     open =false
 }, carga = (ev) => {
-    console.log("File(s) dropped");
+    // console.log("File(s) dropped");
 
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
