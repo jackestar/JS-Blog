@@ -369,11 +369,9 @@ let table = {
             this.MateriasSemestres.length = this.Semestres
             this.MateriasSemestres.fill(Array())
             this.Materias.forEach((e,i) => {
-                // console.log(e,this.MateriasSemestres[e.semest-1])
                 let temp = this.MateriasSemestres[e.semest-1].slice()
                 temp.push(i)
                 this.MateriasSemestres[e.semest-1] = temp.slice()
-                // console.log(e,i)
             this.Materias.forEach(e => {
                 e.Aprobed = false
                 e.avaible = true
@@ -388,8 +386,6 @@ let table = {
                 s.forEach(m=>this.Materias[m].dep = false)
                 s.forEach(m=>{
                 e = this.Materias[m]
-
-                // e.dep = false
                 e.avaible = true
                 if (e.prelac == 0) e.avaible = true
                 else if (typeof(e.prelac) == "object") {
@@ -530,7 +526,6 @@ let table = {
             if (temppre != '') tempString+="<b>Prelaciones</b><ul class='list'>" + temppre + '</ul>'
             if (tempcop != '') tempString+="<b>Co-Prelaciones</b><ul class='list'>" + tempcop + '</ul>'
         }
-        // else if (this.info.classList.contains('hide'))
         this.info.innerHTML = tempString + `<i class="back" onclick="table.infoT()">→</i>`;
         if (this.materiaSelected == undefined || (!this.Materias[materia].avaible && this.materiaSelected == materia) || (this.Materias[materia].avaible && this.info.classList.contains('hide') )) this.infoT();
         this.materiaSelected = materia
@@ -546,7 +541,6 @@ let table = {
 
 table.getData()
 table.Generate()
-// let help = document.querySelector('aside.help').classList.toggle('look')
 let open = false;
 let asideOpt = document.querySelectorAll('section.bann>div');
 asideOpt.forEach(e=>{
@@ -569,8 +563,8 @@ let axit = () => {
     });
     document.querySelector('div.blk').classList.remove('look')
     open =false
-}, carga = (ev) => {
-    // console.log("File(s) dropped");
+}
+,carga = (ev) => {
 
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
@@ -590,4 +584,48 @@ let axit = () => {
         console.log(`… file[${i}].name = ${file.name}`);
       });
     }
+}, page = (objeto) => {
+    let n = undefined,
+    m = document.querySelectorAll('.hcont div.pag'),
+    chil = objeto.parentElement.children
+    for (let i = 0; i < chil.length; i++) {
+        if (chil[i] == objeto) n = i
+        else {
+            chil[i].classList.remove('sel')
+            m[i].classList.remove('sel')
+        }
+        
+    }
+    m.forEach((e,i)=>{
+        if (i == n) {
+            e.classList.add('sel')
+            chil[i].classList.add('sel')
+            if (i==1) {
+                let dem = ()=> {
+                    e.querySelectorAll('li')[1].classList.add('aprobed')
+                    setTimeout(()=>{
+                        e.querySelectorAll('ul')[1].classList.remove('locked')
+                        e.querySelectorAll('li')[1].classList.add('aprobed')
+                        e.querySelectorAll('li')[2].classList.add('aprobed')
+                        e.querySelectorAll('li')[4].classList.add('aviable')
+                        setTimeout(()=>{
+                            e.querySelectorAll('li')[4].classList.add('aprobed')
+                            setTimeout(()=>{
+                                e.querySelectorAll('ul')[1].classList.add('locked')
+                                e.querySelectorAll('li')[1].classList.remove('aprobed')
+                                e.querySelectorAll('li')[2].classList.remove('aprobed')
+                                e.querySelectorAll('li')[4].classList.remove('aprobed')
+                            },1000)
+                        },1000)
+                    },1000)
+                }
+                dem()
+                demo = setInterval(()=>dem(),4100)
+            }
+            else {
+                clearInterval(demo);
+            }
+        }
+    })
 }
+let demo = 0

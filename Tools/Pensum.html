@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 </head>
 <body ondragover="document.querySelector('section.bann div.upl .icon').click()">
-    <div class="blk"></div>
+    <div class="blk" onclick="axit()"></div>
     <section class="main">
         <article class="scheme"></article>
     </section>
@@ -20,7 +20,53 @@
                 <p>?</p><h3>Ayuda</h3>
             </div>
             <div class="hcont">
-                <p>En construccion 🏗️...</p>
+                <article class="scheme">
+                    <!-- <h2>Leyenda</h2> -->
+                    <div class="catalog">
+                        <div class="pag sel">
+                            <h2>Leyenda</h2>
+                            <ul class="leyend">
+                                <li class="aviable">
+                                    <h3>Materia</h3>
+                                    <p>Codigo</p>
+                                </li>
+                                <li class="aviable">Disponible</li>
+                                <li>No Disponible</li>
+                                <li class="aprobed">Aprobado</li>
+                                <li class="copre aviable">Coprelacion</li>
+                                <li class="dep aviable">Coprelada</li>
+                            </ul>
+                        </div>
+                        <div class="pag l">
+                            <h2>Semestres Bloquedos</h2>
+                            <ul>
+                                <li class="sem"><h3>Semestre A</h3></li>
+                                <li class="aviable">
+                                    <h3>Materia</h3>
+                                    <p>Codigo</p>
+                                </li>
+                                <li class="aviable">
+                                    <h3>Materia</h3>
+                                    <p>Codigo</p>
+                                </li>
+                            </ul>
+                            <ul class="locked">
+                                <li class="sem"><h3>Semestre B</h3></li>
+                                <li>
+                                    <h3>Materia</h3>
+                                    <p>codigo</p>
+                                </li>
+                            </ul>
+                            <p>Se requieren todas las materias del semestre A aprobado para optar materias del semestre B</p>
+                        </div>
+                        <div class="pag"></div>
+                    </div>
+                    <div class="dots">
+                        <div onclick="page(this)" class="dot sel"></div>
+                        <div onclick="page(this)" class="dot"></div>
+                        <div onclick="page(this)" class="dot"></div>
+                    </div>
+                </article>
                 <i class="back" onclick="axit()">→</i>
             </div>
         </div>
