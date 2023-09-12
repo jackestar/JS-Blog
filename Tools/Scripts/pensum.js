@@ -557,7 +557,7 @@ let table = {
             e.Aprobed = false
         })
         
-        console.log(texto)
+        // console.log(texto)
         // codigos.forEach((e,i)=>{
         //     if (e != '' && texto.includes(e)) {
         //         this.Materias[i].Aprobed = true
@@ -574,8 +574,8 @@ let table = {
                     codigos.forEach((g,h)=>{
                         if (g != '' && e.includes(g)) this.Materias[h].Aprobed = true
                     })
-                    console.log(e,"Aprobo")
-                } else console.log(e[e.length-8],"Raspo!")
+                    // console.log(e,"Aprobo")
+                } //else console.log(e[e.length-8],"Raspo!")
             }
         })
         // let regular = new RegExp("/[0-9]-[0-9]{4} [0-9]{2} ");
@@ -616,7 +616,7 @@ let axit = () => {
 ,carga = (ev) => {
 
     // Prevent default behavior (Prevent file from being opened)
-    console.log(ev)
+    // console.log(ev)
     ev.preventDefault();
   
     if (ev.dataTransfer.items) {
@@ -625,11 +625,12 @@ let axit = () => {
         // If dropped items aren't files, reject them
         if (item.kind === "file") {
           const file = item.getAsFile();
+          console.log(file)
         //   console.log(item.getAsString())
         // tipo = item
         // console.log(tipo)
         const reader = new FileReader()
-        const id = 'Record'
+        // const id = 'Record'
         reader.addEventListener('load', e => {
             documento = reader.result
             evoke()
@@ -696,7 +697,18 @@ let axit = () => {
 }
 
 document.querySelector('input.file').addEventListener('change',ev =>{
-    console.log(ev)
+    // console.log(ev.target.files)
+    let file = ev.target.files[0]
+    console.log(file)
+    const reader = new FileReader()
+    const id = 'Record'
+    reader.addEventListener('load', e => {
+        documento = reader.result
+        evoke()
+        axit()
+
+    })
+    reader.readAsDataURL(file)
 })
 let demo = 0
 let inputFile =document.querySelector(".upl input.file")
@@ -705,7 +717,7 @@ let inputFile =document.querySelector(".upl input.file")
 
 let extractText = (pdfUrl) => {
     var pdf = pdfjsLib.getDocument({data: pdfUrl});
-    console.log(pdf)
+    // console.log(pdf)
     return pdf.promise.then(function (pdf) {
         var totalPageCount = pdf.numPages;
         var countPromises = [];
