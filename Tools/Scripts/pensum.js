@@ -544,17 +544,46 @@ let table = {
     materiaSelected:undefined,
     unidCrdit:0,
     ReadRecord (texto) {
+        // Codigo en un array
+        // console.log(texto)
+        if (!texto.includes("REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO")) {
+            // console.log("Record academico Please...")
+            alert("Record acaemico no valido...")
+            return 0
+        }
         let codigos = Array()
-        // codigos.length = this.Materias.length
         this.Materias.forEach(e =>{
-            // if (e.codigo != "") codigos.push(e.codigo)
             codigos.push(e.codigo)
-        })
-        // console.log(codigos)
-        codigos.forEach((e,i)=>{
             e.Aprobed = false
-            if (texto.includes(e)) this.Materias[i].Aprobed = true
         })
+        
+        console.log(texto)
+        // codigos.forEach((e,i)=>{
+        //     if (e != '' && texto.includes(e)) {
+        //         this.Materias[i].Aprobed = true
+        //     }
+        // })
+        contenido = texto.split(new RegExp('[0-9PIV]-[0-9]{4} [0-9]{2} '))
+        contenido.shift() // Delete header
+        contenido.forEach((e,i)=>{
+            if (!e.includes("APROBÓ")) {
+                if (e.includes("Índice")) e = e.substr(0,e.indexOf("Índice"))
+                // console.log("C",i,e)
+                // contenido.splice(i,1)
+                if ((e[e.length-8])/1 == 0) {
+                    codigos.forEach((g,h)=>{
+                        if (g != '' && e.includes(g)) this.Materias[h].Aprobed = true
+                    })
+                    console.log(e,"Aprobo")
+                } else console.log(e[e.length-8],"Raspo!")
+            }
+        })
+        // let regular = new RegExp("/[0-9]-[0-9]{4} [0-9]{2} ");
+        // contenido = texto.split(regular)
+        // codigos.forEach(e=>{
+        //     // if (e != '') console.log("YES")
+        //     if (e != '') contenido = contenido.split(e)
+        // })
         this.Generate()
     }
 }
@@ -603,7 +632,8 @@ let axit = () => {
         const id = 'Record'
         reader.addEventListener('load', e => {
             documento = reader.result
-            // console.log(fileUrl)
+            evoke()
+            axit()
 
         })
         reader.readAsDataURL(file)
