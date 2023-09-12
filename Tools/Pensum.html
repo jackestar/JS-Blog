@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="./Styles/stylesP.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesU.css">
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <script defer src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <link rel="prefetch" href="https://mozilla.github.io/pdf.js/build/pdf.worker.js" as="script">
+    <!-- <script src="https://mozilla.github.io/pdf.js/build/pdf.worker.js"></script> -->
 </head>
 <body ondragover="document.querySelector('section.bann div.upl .icon').click()">
     <div class="blk" onclick="axit()"></div>
@@ -76,7 +79,8 @@
                 <h3>Subir Record</h3>
             </div>
             <div class="hcont">
-                <p>En construccion 🏗️...</p>
+                <button onclick="inputFile.click()" >Selecionar archivo</button>
+                <input type="file" name="input" class="file" hidden multiple accept=".pdf,application/pdf">
                 <i class="back" onclick="axit()">→</i>
             </div>
         </div>

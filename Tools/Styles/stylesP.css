@@ -326,6 +326,7 @@ div.blk.look {
     }
     section.main {
         width: 100vw;
+        font-size: 1.75em;
     }
     section.main.hide {
         height: 75vh;
@@ -436,4 +437,17 @@ div.pag.l>p {
     flex: 1 100%;
     text-align: center;
     padding: 1em;
+}
+div.upl button {
+    background: var(--background);
+    border-radius: 2em;
+    border: none;
+    margin: 1em;
+/*     padding: 0 */
+    width: min-content;
+    max-height: 50%;
+    height: min-content;
+    padding: 1em;
+    color: var(--foreground);
+    font-weight: 800;
 }

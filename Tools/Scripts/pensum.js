@@ -6,6 +6,12 @@ function materia(nombre,codigo,unid,semest,horas,prelacion = [0]) {
     this.horas = horas
     this.prelac = prelacion
 }
+let url = ""
+
+let documento = ""
+// contenido del record
+let contenido = ""
+
 let table = {
     objeto:document.querySelector('section.main>article.scheme'),
     smain:document.querySelector('section.main'),
@@ -110,7 +116,7 @@ let table = {
 
             new materia(
                 'Fisica II',
-                'QUF-23035',
+                'QUF-23025',
                 5,
                 3,[4,2,2],
                 [[10,false],[11,false]]),
@@ -536,7 +542,21 @@ let table = {
             this.smain.classList.toggle('hide')
     },
     materiaSelected:undefined,
-    unidCrdit:0
+    unidCrdit:0,
+    ReadRecord (texto) {
+        let codigos = Array()
+        // codigos.length = this.Materias.length
+        this.Materias.forEach(e =>{
+            // if (e.codigo != "") codigos.push(e.codigo)
+            codigos.push(e.codigo)
+        })
+        // console.log(codigos)
+        codigos.forEach((e,i)=>{
+            e.Aprobed = false
+            if (texto.includes(e)) this.Materias[i].Aprobed = true
+        })
+        this.Generate()
+    }
 }
 
 table.getData()
@@ -567,6 +587,7 @@ let axit = () => {
 ,carga = (ev) => {
 
     // Prevent default behavior (Prevent file from being opened)
+    console.log(ev)
     ev.preventDefault();
   
     if (ev.dataTransfer.items) {
@@ -575,13 +596,28 @@ let axit = () => {
         // If dropped items aren't files, reject them
         if (item.kind === "file") {
           const file = item.getAsFile();
-          console.log(`… file[${i}].name = ${file.name}`);
+        //   console.log(item.getAsString())
+        // tipo = item
+        // console.log(tipo)
+        const reader = new FileReader()
+        const id = 'Record'
+        reader.addEventListener('load', e => {
+            documento = reader.result
+            // console.log(fileUrl)
+
+        })
+        reader.readAsDataURL(file)
+        // console.log(`… file[${i}].name = ${file.name}`);
+        documento = file.webkitRelativePath + file.name;
         }
       });
     } else {
       // Use DataTransfer interface to access the file(s)
       [...ev.dataTransfer.files].forEach((file, i) => {
+        const relativePath = file.webkitRelativePath;
+        console.log(relativePath)
         console.log(`… file[${i}].name = ${file.name}`);
+        documento = file.webkitRelativePath + file.name;
       });
     }
 }, page = (objeto) => {
@@ -628,4 +664,59 @@ let axit = () => {
         }
     })
 }
+
+document.querySelector('input.file').addEventListener('change',ev =>{
+    console.log(ev)
+})
 let demo = 0
+let inputFile =document.querySelector(".upl input.file")
+
+// PDF extractor
+
+let extractText = (pdfUrl) => {
+    var pdf = pdfjsLib.getDocument({data: pdfUrl});
+    console.log(pdf)
+    return pdf.promise.then(function (pdf) {
+        var totalPageCount = pdf.numPages;
+        var countPromises = [];
+        for (
+            var currentPage = 1;
+            currentPage <= totalPageCount;
+            currentPage++
+        ) {
+            var page = pdf.getPage(currentPage);
+            countPromises.push(
+                page.then(function (page) {
+                    var textContent = page.getTextContent();
+                    return textContent.then(function (text) {
+                        return text.items
+                            .map(function (s) {
+                                return s.str;
+                            })
+                            .join('');
+                    });
+                }),
+            );
+        }
+
+        return Promise.all(countPromises).then(function (texts) {
+            return texts.join('');
+        });
+    });
+}
+    // url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf';
+// let url = documento.slice(documento.indexOf('base')+7)
+
+let evoke = () => {
+    url = atob(documento.slice(documento.indexOf('base')+7))
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+    extractText(url).then(
+        function (text) {
+            // console.log('parse ' + text);
+            table.ReadRecord(text)
+        },
+        function (reason) {
+            console.error(reason);
+        },
+    );
+}

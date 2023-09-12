@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leer PDF con PDF.js</title>
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+</head>
+<body>
+  <h1>Leer PDF con PDF.js</h1>
+  <input type="file" id="archivo">
+  <button onclick="leerPDF()">Leer PDF</button>
+  <div id="pdf"></div>
+  <!-- <script src="pdfjs-dist.min.js"></script> -->
+  <script>
+    			pdfjsLib.GlobalWorkerOptions.workerSrc =
+				'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+    async function leerPDF() {
+      // Obtiene el archivo seleccionado
+      const archivo = document.getElementById("archivo").files[0];
+
+      // Obtiene el texto del PDF
+      const text = await pdfjsLib.getDocument(archivo).getTextContent();
+
+      // Muestra el texto en el DOM
+      const div = document.getElementById("pdf");
+      div.innerHTML = text;
+    }
+  </script>
+</body>
+</html>
