@@ -6,7 +6,6 @@ function materia(nombre,codigo,unid,semest,horas,prelacion = [0]) {
     this.horas = horas
     this.prelac = prelacion
 }
-let url = ""
 
 let documento = ""
 // contenido del record
@@ -361,7 +360,7 @@ let table = {
                 []),
             new materia(
                 'Defensa VIII',
-                'DIN-31173',
+                'DIN-31183',
                 3,
                 8,[2,2,0],
                 [[48,false]]),
@@ -725,14 +724,11 @@ let extractText = (pdfUrl) => {
 
 let evoke = () => {
     bann.classList.remove('lk')
-    url = atob(documento.slice(documento.indexOf('base')+7))
+    let url = atob(documento.slice(documento.indexOf('base')+7))
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
     extractText(url).then(
         function (text) {
             table.ReadRecord(text)
         }
-        // function (reason) {
-            // console.error(reason);
-        // },
     );
 }

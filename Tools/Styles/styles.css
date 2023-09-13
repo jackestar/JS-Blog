@@ -41,7 +41,7 @@ header {
   user-select: none;
 }
 .title h1 {
-  background:#000 linear-gradient(90deg,var(--foreg1),var(--main1));
+  background:#000 linear-gradient(90deg,var(--colorD),var(--colorE));
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -75,7 +75,7 @@ body:not(.a) input,body:not(.a) h2,body:not(.a) h3,body:not(.a) p{
 }
 body.a .title h1 {
   animation: none;
-  background: linear-gradient(90deg,var(--foreg2),var(--main2));
+  background: linear-gradient(90deg,var(--colorAs),var(--colorBs));
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -496,7 +496,7 @@ svg.clc #a {animation:la 1.3s ease-in;clip-path: circle(100%);}
 @media (prefers-color-scheme: dark) {
   body {
     filter: invert(1);
-    background: var(--gray4);
+    background: var(--background);
   }
   .input input[type=submit] {
   background: var(--gray1);

@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/74b08afd-bbd2-424c-b0c2-0dfa1dc0896e/deploy-status)](https://app.netlify.com/sites/jackestar/deploys)
+[![Netlify Status](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jackestar/JS-Blog)
 
 [Pagina De Inicio](https://jackestar.netlify.app)
 

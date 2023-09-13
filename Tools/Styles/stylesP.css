@@ -38,7 +38,7 @@ aside.content {
     flex: 2 23.5vw;
     width: 23.5vw;
     min-height: 100vh;
-    background: var(--colorC);
+    background: var(--colorFs);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -397,12 +397,7 @@ div.help article.scheme h2 {
     font-variant: all-small-caps;
     flex: 1 100%;
 }
-section.bann div.help div.icon img {
-/*     width: 4em; */
-    
-/*     padding: 1em; */
-/*     border-radius: 100%; */
-}
+
 section.bann div.help div.icon {
     background: var(--foreground);
     width: min-content;
@@ -453,10 +448,6 @@ div.pag.l {
     justify-content: center;
     flex-wrap: wrap;
 }
-/* div.pag.l ul {
-/*     flex: 1 100%; */
-
-} */
 div.pag.l ul li{
     width: min-content;   
 }
@@ -467,7 +458,7 @@ div.pag.l>p {
     text-align: center;
     padding: 1em;
 }
-div.upl button {
+div.upl div.but button {
     background: var(--background);
     border-radius: 2em;
     border: none;
@@ -480,6 +471,11 @@ div.upl button {
     font-weight: 800;
     font-size: 2.5em;
     font-variant: all-petite-caps;
+    transition: .2s ease-out;
+}
+div.upl  div.but button:hover, i.back:hover {
+    background: var(--colorEs);
+    transition: .2s ease-in;
 }
 div.but {
     padding: 5em;
