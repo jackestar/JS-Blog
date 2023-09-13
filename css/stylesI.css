@@ -1,5 +1,5 @@
 body {
-    background-color: var(--gray4);
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,7 @@ header {
     justify-content: center;
     width: 100vw;
     flex-direction: column;
-    background: var(--gray3);
+    background: var(--gray4);
     position: sticky;
     box-shadow: var(--gray4) 0em .1em .2em;
 }
@@ -43,13 +43,13 @@ header ul {
 header li {
     width: 2em;
     height: 2em;
-    background: #fff;
+    background: var(--foreground);
     border-radius: 100%;
     text-align: center;
     color: #000;
     margin: -.75em 1em;
     cursor: pointer;
-    border: #fff solid .1em;
+    border: var(--foreground) solid .1em;
     background-size: contain;
     background-position: center;
 }
@@ -82,7 +82,7 @@ section {
     text-align: center;
 }
 section a {
-    color: var(--backg1);
+    color: var(--colorAs);
     text-decoration: none;
     font-family: Montserrat Alternates;
 }
@@ -100,9 +100,9 @@ section article {
     overflow: hidden;
 }
 section article div{
-    background: #333c;
+    background: color-mix(in lch, var(--background) 70%,#0000 20%);
     background-size: cover;
-    color:#fff;
+    color:var(--foreground);
     padding: 1em;
     min-height: 20em;
     display: grid;
@@ -127,6 +127,6 @@ article h3 {
 }
 @media (prefers-color-scheme: dark) {
     header {
-        color: #fff;
+        color: var(--foreground);
     }
 }

@@ -1,21 +1,24 @@
 // Generador de degradados
 
-const varGrad = ['main1',
-    'main2',
-    'second1',
-    'second2',
-    'backg1',
-    'backg2',
-    'foreg1',
-    'foreg2',
-    'gray1',
-    'gray3',
-    'gray5'],
+const varGrad = [
+"colorA",
+"colorB",
+"colorC",
+"colorD",
+"colorE",
+"colorF",
+"colorAs",
+"colorBs",
+"colorCs",
+"colorDs",
+"colorEs",
+"colorFs"
+],
     paterns = varGrad.length
 
 const grad = () => {
     let q = (Math.random() * paterns).toFixed(0)
-    console.log(q)
+    // console.log(q)
     return varGrad[q]
 }
 
@@ -36,7 +39,7 @@ art.forEach(a => {
 // The images title an decription will be probided by db
 
 art.forEach((a, n) => {
-    if (n < 2) {
+    if (n != 3) {
         a.style.backgroundImage = `url(./img/art${n + 1}.png)`
         a.style.backgroundSize = 'cover'
         a.style.backgroundPosition = 'center'

@@ -592,6 +592,7 @@ asideOpt.forEach(e=>{
 })
 let axit = () => {
     asideOpt.forEach(e => {
+        bann.classList.remove('lk')
         e.classList.remove('look')
     });
     document.querySelector('div.blk').classList.remove('look')
@@ -675,7 +676,7 @@ let axit = () => {
 
 document.querySelector('input.file').addEventListener('change',ev =>{
     let file = ev.target.files[0]
-    console.log(file)
+    // console.log(file)
     const reader = new FileReader()
     const id = 'Record'
     reader.addEventListener('load', e => {
@@ -729,9 +730,9 @@ let evoke = () => {
     extractText(url).then(
         function (text) {
             table.ReadRecord(text)
-        },
-        function (reason) {
-            console.error(reason);
-        },
+        }
+        // function (reason) {
+            // console.error(reason);
+        // },
     );
 }

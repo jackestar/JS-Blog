@@ -37,8 +37,6 @@ aside.content {
     opacity: 1;
     flex: 2 23.5vw;
     width: 23.5vw;
-/*     max-width: 20vw; */
-/*     right: 0; */
     min-height: 100vh;
     background: var(--colorC);
     display: flex;
@@ -215,10 +213,15 @@ article.scheme ul li.dep {
     border: .3em dotted var(--colorAs);
     transition: .2s ease;
 }
-article.scheme ul.locked {
-    background: var(--colorA);
+article.scheme .locked {
+/*     background: var(--colorA); */
     opacity: .5;
     transition: .2s ease;
+}
+
+article.scheme ul.locked:nth-of-type(4), article.scheme ul.locked.x {
+    border-left: dotted var(--colorA) 1em;
+/*         background: var(--colorA); */
 }
 section.bann {
     right: 0;
@@ -310,6 +313,7 @@ section.bann div.look div.hcont {
     flex: 2;
     align-items: center;
 }
+
 div.blk {
     width: 100vw;
     height: 100vh;
@@ -392,8 +396,27 @@ div.help article.scheme h2 {
     color: var(--foreground);
     font-variant: all-small-caps;
     flex: 1 100%;
-/*     min-width: 100%; */
-/*     height: min-content; */
+}
+section.bann div.help div.icon img {
+/*     width: 4em; */
+    
+/*     padding: 1em; */
+/*     border-radius: 100%; */
+}
+section.bann div.help div.icon {
+    background: var(--foreground);
+    width: min-content;
+    padding: .85em;
+    border-radius: 100%
+}
+section.bann div.pag>p {
+    color: var(--foreground);
+    margin: 1em;
+    font-size: 1.5em;
+    font-variant: all-petite-caps;
+    font-weight: 600;
+    text-align: center;
+/*     width: 100%; */
 }
 div.dots {
     align-self: center;
