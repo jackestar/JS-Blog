@@ -544,10 +544,7 @@ let table = {
     materiaSelected:undefined,
     unidCrdit:0,
     ReadRecord (texto) {
-        // Codigo en un array
-        // console.log(texto)
         if (!texto.includes("REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO")) {
-            // console.log("Record academico Please...")
             alert("Record acaemico no valido...")
             return 0
         }
@@ -556,34 +553,18 @@ let table = {
             codigos.push(e.codigo)
             e.Aprobed = false
         })
-        
-        // console.log(texto)
-        // codigos.forEach((e,i)=>{
-        //     if (e != '' && texto.includes(e)) {
-        //         this.Materias[i].Aprobed = true
-        //     }
-        // })
         contenido = texto.split(new RegExp('[0-9PIV]-[0-9]{4} [0-9]{2} '))
         contenido.shift() // Delete header
         contenido.forEach((e,i)=>{
             if (!e.includes("APROBÓ")) {
                 if (e.includes("Índice")) e = e.substr(0,e.indexOf("Índice"))
-                // console.log("C",i,e)
-                // contenido.splice(i,1)
                 if ((e[e.length-8])/1 == 0) {
                     codigos.forEach((g,h)=>{
                         if (g != '' && e.includes(g)) this.Materias[h].Aprobed = true
                     })
-                    // console.log(e,"Aprobo")
                 } //else console.log(e[e.length-8],"Raspo!")
             }
         })
-        // let regular = new RegExp("/[0-9]-[0-9]{4} [0-9]{2} ");
-        // contenido = texto.split(regular)
-        // codigos.forEach(e=>{
-        //     // if (e != '') console.log("YES")
-        //     if (e != '') contenido = contenido.split(e)
-        // })
         this.Generate()
     }
 }
@@ -591,15 +572,18 @@ let table = {
 table.getData()
 table.Generate()
 let open = false;
-let asideOpt = document.querySelectorAll('section.bann>div');
+let bann = document.querySelector('section.bann')
+let asideOpt = bann.querySelectorAll('section.bann>div');
 asideOpt.forEach(e=>{
     e.querySelector('.icon').addEventListener('click',()=>{
         if (open) {
+            bann.classList.remove('lk')
             asideOpt.forEach(i => {
                 if (i!=e) i.classList.remove('look')
                 else e.classList.add('look')
             });
         } else {
+            bann.classList.add('lk')
             open = true
             e.classList.add('look')
             document.querySelector('div.blk').classList.add('look')
@@ -614,43 +598,36 @@ let axit = () => {
     open =false
 }
 ,carga = (ev) => {
-
     // Prevent default behavior (Prevent file from being opened)
-    // console.log(ev)
     ev.preventDefault();
+    let file
   
     if (ev.dataTransfer.items) {
       // Use DataTransferItemList interface to access the file(s)
       [...ev.dataTransfer.items].forEach((item, i) => {
         // If dropped items aren't files, reject them
         if (item.kind === "file") {
-          const file = item.getAsFile();
-          console.log(file)
-        //   console.log(item.getAsString())
-        // tipo = item
-        // console.log(tipo)
-        const reader = new FileReader()
-        // const id = 'Record'
-        reader.addEventListener('load', e => {
-            documento = reader.result
-            evoke()
-            axit()
+         file = item.getAsFile();
 
-        })
-        reader.readAsDataURL(file)
-        // console.log(`… file[${i}].name = ${file.name}`);
-        documento = file.webkitRelativePath + file.name;
         }
       });
     } else {
       // Use DataTransfer interface to access the file(s)
-      [...ev.dataTransfer.files].forEach((file, i) => {
-        const relativePath = file.webkitRelativePath;
-        console.log(relativePath)
-        console.log(`… file[${i}].name = ${file.name}`);
-        documento = file.webkitRelativePath + file.name;
+      [...ev.dataTransfer.files].forEach((filex, i) => {
+        
+        file = file
       });
     }
+    const reader = new FileReader()
+    // const id = 'Record'
+    reader.addEventListener('load', e => {
+        documento = reader.result
+        evoke()
+        axit()
+
+    })
+    reader.readAsDataURL(file)
+    documento = file.webkitRelativePath + file.name;
 }, page = (objeto) => {
     let n = undefined,
     m = document.querySelectorAll('.hcont div.pag'),
@@ -697,7 +674,6 @@ let axit = () => {
 }
 
 document.querySelector('input.file').addEventListener('change',ev =>{
-    // console.log(ev.target.files)
     let file = ev.target.files[0]
     console.log(file)
     const reader = new FileReader()
@@ -717,7 +693,6 @@ let inputFile =document.querySelector(".upl input.file")
 
 let extractText = (pdfUrl) => {
     var pdf = pdfjsLib.getDocument({data: pdfUrl});
-    // console.log(pdf)
     return pdf.promise.then(function (pdf) {
         var totalPageCount = pdf.numPages;
         var countPromises = [];
@@ -746,15 +721,12 @@ let extractText = (pdfUrl) => {
         });
     });
 }
-    // url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf';
-// let url = documento.slice(documento.indexOf('base')+7)
 
 let evoke = () => {
     url = atob(documento.slice(documento.indexOf('base')+7))
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
     extractText(url).then(
         function (text) {
-            // console.log('parse ' + text);
             table.ReadRecord(text)
         },
         function (reason) {

@@ -230,40 +230,47 @@ section.bann {
     display:flex;
     flex-direction:row-reverse;
     justify-content: center;
-    align-items: center;
+    align-items:center;
+    /*! width: 100%; */
+    /*! height: 100%; */
+}
+section.bann.lk {
+    width: 100%;
+    height: 100%;
 }
 section.bann>div {
     background: var(--foreground);
     border-radius: 100em;
-    flex: 2 auto;
-    margin: 0 .45em;
-    width: 3em;
-    height: 3em;
+/*     flex: 2 1%; */
+    margin: 0 1em;
+    width: 5em;
+    height: 5em;
     overflow: hidden;
     display: flex;
     justify-content: center;
     transition: .5s ease;
     flex-direction: column;
+    align-self:end;
 }
 section.bann>div.look {
-/*     justify-content: space-between; */
     width: 90vw;
     height: 90vh;
     flex: 2 90vw;
     border-radius: 1em;
     transition: .5s ease;
     margin: 2.5vh 2.5vw;
+    align-self: center;
 }
 section.bann div.icon img {
-    width: 1.45em;
+    width: 3em;
 }
 section.bann div.look div.icon img {
-    width: 2.5em
+    width: 3em
 }
 section.bann div.icon p {
     text-align: center;
     align-self: center;
-    font-size: 1.45em;
+    font-size: 4em;
     font-weight: 800;
 }
 section.bann div.look div.icon p {
@@ -301,6 +308,7 @@ section.bann div.look div.hcont {
     opacity: 1;
     justify-content: center;
     flex: 2;
+    align-items: center;
 }
 div.blk {
     width: 100vw;
@@ -335,7 +343,7 @@ div.blk.look {
 }
 i.back {
     background: var(--background);
-    font-size: 2em;
+    font-size: 4em;
     font-weight: 800;
     color: var(--foreground);
     padding: .1em;
@@ -345,20 +353,19 @@ i.back {
     clip-path: circle();
     user-select: none;
     cursor: pointer;
+    align-self: end;
+    margin: 1em;
 }
 div.help .hcont {
-/*     flex-direction: column; */
-/*     flex-wrap: wrap; */
     margin: 1em;
     align-items: end;
 }
 div.help article.scheme {
-    margin: 1em;
+    margin: 2em;
     background: var(--background);
     border-radius: 1em;
     flex-direction: column;
     flex: 2;
-/*     flex-wrap: wrap */
 }
 
 div.help article.scheme ul.leyend {
@@ -395,12 +402,11 @@ div.dots {
     align-items: end;
 }
 div.dots div.dot {
-    padding: .5em;
+    padding: .75em;
     background: var(--foreground);
     border-radius: 100%;
-/*     margin: .7em; */
-    width: 1em;
-    height: 1em;
+    width: 2em;
+    height: 2em;
     cursor: pointer;
     transition:.2s ease;
     border: 1em solid var(--background);
@@ -443,11 +449,21 @@ div.upl button {
     border-radius: 2em;
     border: none;
     margin: 1em;
-/*     padding: 0 */
     width: min-content;
     max-height: 50%;
     height: min-content;
     padding: 1em;
     color: var(--foreground);
     font-weight: 800;
+    font-size: 2.5em;
+    font-variant: all-petite-caps;
+}
+div.but {
+    padding: 5em;
+    border-radius: 2.5em;
+    border: var(--background) dotted 1em;
+    margin: 2em;
+    width: 90%;
+    display: flex;
+    justify-content: center;
 }
