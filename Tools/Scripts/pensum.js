@@ -8,12 +8,10 @@ function materia(nombre,codigo,unid,semest,horas,prelacion = [0]) {
 }
 
 let documento = ""
-// contenido del record
-let contenido = ""
 
 let table = {
-    objeto:document.querySelector('section.main>article.scheme'),
     smain:document.querySelector('section.main'),
+    objeto:document.querySelector('section.main>article.scheme'),
     info:document.querySelector('aside.content'),
     condProfecinal:true,
     Materias:[],
@@ -21,6 +19,8 @@ let table = {
     Carrera:'',
     Semestres:0,
     unidCrditTot:0,
+    materiaSelected:undefined,
+    unidCrdit:0, // Actuales
     getData(carrera = 0) { // Default Electronica
         // Consulta a la Base de datos...
         this.condProfecinal = true
@@ -302,19 +302,19 @@ let table = {
                 'ADG-30214',
                 4,
                 7,[3,2,0],
-                []),
+                162),
             new materia(
                 'Electiva Tecnica',
                 '',
                 3,
                 7,[3,1,0],
-                []),
+                162),
             new materia(
                 'Electiva No Tecnica',
                 '',
                 3,
                 7,[3,0,0],
-                []),
+                162),
             new materia(
                 'Defensa VII',
                 'DIN-31173',
@@ -351,13 +351,13 @@ let table = {
                 '',
                 3,
                 8,[3,1,0],
-                []),
+                195),
             new materia(
                 'Electiva No Tecnica',
                 '',
                 3,
                 8,[3,0,0],
-                []),
+                195),
             new materia(
                 'Defensa VIII',
                 'DIN-31183',
@@ -377,97 +377,92 @@ let table = {
                 let temp = this.MateriasSemestres[e.semest-1].slice()
                 temp.push(i)
                 this.MateriasSemestres[e.semest-1] = temp.slice()
-            this.Materias.forEach(e => {
                 e.Aprobed = false
                 e.avaible = true
-            });
-
             });
     },
     Generate() {
         this.objeto.innerHTML = ''
+        let selSem = 0,
+            tempString = '' //template
         this.MateriasSemestres.forEach((s,i)=>{
-            for (let x = 0; x < 2; x++) {
-                s.forEach(m=>this.Materias[m].dep = false)
-                s.forEach(m=>{
-                e = this.Materias[m]
-                e.avaible = true
-                if (e.prelac == 0) e.avaible = true
-                else if (typeof(e.prelac) == "object") {
-                    e.prelac.forEach(i =>{
-                        if (this.Materias[i[0]].avaible) {
-                            if (this.Materias[i[0]].Aprobed) {
-                                e.coprel = false
-                            } else if (i[1]) {
-                                if (e.Aprobed) this.Materias[i[0]].dep = true
-                                else e.coprel = true
-                            } else {
-                                if (e.Aprobed)  this.unidCrdit -= e.unid
-                                e.avaible = false
-                                e.Aprobed = false
-                            }
-                        } else {
+            s.forEach( m => {
+                this.Materias[m].avaible = true
+            })
+
+            s.forEach(m=>{
+                let e = this.Materias[m],
+                    aproach = (status = false) => {
+                        if (status) e.avaible = true
+                        else {
                             if (e.Aprobed)  this.unidCrdit -= e.unid
                             e.avaible = false
-                            e.Aprobed = false
-                        }
-                    })
-                // TEG
-                } else if (this.unidCrdit + e.unid >= this.unidCrditTot) e.avaible = true
-                else {
-                    if (e.Aprobed) this.unidCrdit -= e.unid
-                    e.avaible = false
-                    e.Aprobed = false
+                            e.Aprobed = false}
                 }
+                if (e.prelac == 0) e.avaible = true
+                else if (typeof(e.prelac) == "object") {
+                    for (let x = 0; x < 2; x++) {
+                        e.prelac.forEach(i =>{
+                            if (this.Materias[i[0]].avaible) {
+                                if (this.Materias[i[0]].Aprobed) {
+                                    e.coprel = false
+                                } else if (i[1]) {
+                                    if (e.Aprobed) this.Materias[i[0]].dep = true
+                                    else {
+                                        e.coprel = true
+                                        this.Materias[i[0]].dep = false
+                                    }
+                                } else aproach()
+                            } else aproach()
+                        })
+                    }
+                // Prel per Unids
+                } else if (this.unidCrdit >= e.prelac && this.MateriasSemestres[i-1].every(x=>this.Materias[x].Aprobed)) {
+                    if (e.Aprobed) aproach(this.unidCrdit - e.unid >= e.prelac)
+                    else aproach(true)
+                }
+                else aproach()
                 })
-            }
-            })
-        
-        let posicion = 0
-        let tempString = ''
-        let lock = false
-        if (this.condProfecinal) {
-            this.MateriasSemestres[3].forEach(e => {
-                if (!this.Materias[e].avaible) lock = true
-            });
-        }
-        for (let s = 1; s <= this.Semestres; s++) {
-            tempString += `<ul ${(s>3 && lock)?"class='locked'":''}>
-                <li class='sem' onclick='table.pass(${s})'>
-                    <h3>Semestre ${s}</h3>
-                </li>`
-            while (this.Materias[posicion].semest == s) {
-                let clases = ''
-
-                if (this.Materias[posicion].avaible) {
-                    if (this.Materias[posicion].Aprobed) clases += 'aprobed '
-                    else {
-                        clases += 'aviable '
-                        if (this.Materias[posicion].coprel) clases += 'copre '
-                        else if (this.Materias[posicion].dep) clases += 'dep'}
-                }
                 
-                tempString +=
-                    `<li class='${clases}' onclick='${this.Materias[posicion].avaible?`table.update(${posicion})`:`table.infor(${posicion})`}'>
-                        <h3>${this.Materias[posicion].nombre}</h3>
-                        <p>${this.Materias[posicion].codigo}</p>
-                    </li>`;
-                posicion++
-                if (posicion == this.Materias.length) break
-            }
-            tempString += '</ul>'
-        }
-        this.objeto.innerHTML = tempString
+            })
+
+            //Generate
+            this.MateriasSemestres.forEach((s,i)=>{
+                tempString += `<ul ${i>2 && this.condProfecinal && !this.MateriasSemestres[3].every(x=>this.Materias[x].avaible)?"class='locked'":''}>
+                                <li class='sem' onclick='table.pass(${i+1})'>
+                                <h3>Semestre ${i+1}</h3>
+                                </li>`
+                s.forEach(m=>{
+                    let e = this.Materias[m]
+                    let clases = ''
+
+                    if (e.avaible) {
+                        if (e.Aprobed) clases += 'aprobed '
+                        else {
+                            clases += 'aviable '
+                            if (e.coprel) clases += 'copre '
+                            else if (e.dep) clases += 'dep'}
+                        }
+                
+                    tempString += `<li class='${clases}' onclick='${e.avaible?`table.update(${m})`:`table.infor(${m})`}'>
+                                    <h3>${e.nombre}</h3>
+                                    <p>${e.codigo}</p>
+                                    </li>`;
+                })
+                tempString += '</ul>'
+            })
+
+            this.objeto.innerHTML = tempString
+        
+        // let posicion = 0
+        // gen...
     },
     update(materia) {
-        if (this.Materias[materia].Aprobed) {
-            this.Materias[materia].Aprobed = false
-            this.unidCrdit -= this.Materias[materia].unid
-        }
-        else {
-            this.Materias[materia].Aprobed = true
+        // la asignacion retorna el valor asignado
+        if (this.Materias[materia].Aprobed = !this.Materias[materia].Aprobed)
             this.unidCrdit += this.Materias[materia].unid
-        }
+        else
+            this.unidCrdit -= this.Materias[materia].unid
         this.Generate()
         this.infor(materia)
     },
@@ -481,13 +476,12 @@ let table = {
         } else {
             this.MateriasSemestres[Semestre-1].forEach(e=>{
                 if (!this.Materias[e].Aprobed) {
-                this.unidCrdit += this.Materias[e].unid
                 this.Materias[e].Aprobed = true
-            }
+                this.unidCrdit += this.Materias[e].unid
+                }
             })
         }
         this.Generate()
-        this.infor()
     },
     infor(materia = this.materiaSelected) {
         this.info.innerHTML = ''
@@ -514,8 +508,7 @@ let table = {
         if (this.Materias[materia].prelac !=0) {
             if (typeof(this.Materias[materia].prelac) == "number") temppre += `<i>Unidades de Credito ${this.Materias[materia].prelac}</i>`
             else this.Materias[materia].prelac.forEach(e => {
-                let temp = ''
-                    temp += "<li class='"
+                let temp  = "<li class='"
                     if (this.Materias[e[0]].avaible) {
                         if (this.Materias[e[0]].Aprobed) temp += "aprobed "
                         else temp += "aviable "
@@ -523,25 +516,22 @@ let table = {
                 
                     if (this.Materias[e[0]].coprel) temp += "copre "
                     else if (this.Materias[e[0]].dep) temp += "dep "
-                    temp +=`'><p>${this.Materias[e[0]].nombre}</p><i>${this.Materias[e[0]].codigo}</i></li>` //e[1]
-                    if (!e[1]) temppre += temp
-                    else tempcop = temp
+                    temp +=`'><p>${this.Materias[e[0]].nombre}</p><i>${this.Materias[e[0]].codigo}</i></li>`
+                    if (e[1]) tempcop += temp
+                    else temppre += temp
             })
             // REV...
             if (temppre != '') tempString+="<b>Prelaciones</b><ul class='list'>" + temppre + '</ul>'
             if (tempcop != '') tempString+="<b>Co-Prelaciones</b><ul class='list'>" + tempcop + '</ul>'
         }
         this.info.innerHTML = tempString + `<i class="back" onclick="table.infoT()">→</i>`;
-        if (this.materiaSelected == undefined || (!this.Materias[materia].avaible && this.materiaSelected == materia) || (this.Materias[materia].avaible && this.info.classList.contains('hide') )) this.infoT();
+        if (this.materiaSelected == undefined || (!this.Materias[materia].avaible && this.materiaSelected == materia) || (this.info.classList.contains('hide') )) this.infoT();
         this.materiaSelected = materia
-        
     },
     infoT() {
             this.info.classList.toggle('hide')
             this.smain.classList.toggle('hide')
     },
-    materiaSelected:undefined,
-    unidCrdit:0,
     ReadRecord (texto) {
         if (!texto.includes("REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO")) {
             alert("Record acaemico no valido...")
@@ -552,6 +542,7 @@ let table = {
             codigos.push(e.codigo)
             e.Aprobed = false
         })
+        let contenido = ""
         contenido = texto.split(new RegExp('[0-9PIV]-[0-9]{4} [0-9]{2} '))
         contenido.shift() // Delete header
         contenido.forEach((e,i)=>{
@@ -585,7 +576,7 @@ asideOpt.forEach(e=>{
             bann.classList.add('lk')
             open = true
             e.classList.add('look')
-            document.querySelector('div.blk').classList.add('look')
+            this.querySelector('div.blk').classList.add('look')
         }
     })
 })
