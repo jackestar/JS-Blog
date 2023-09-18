@@ -7,7 +7,9 @@ function materia(nombre,codigo,unid,semest,horas,prelacion = [0]) {
     this.prelac = prelacion
 }
 
-let documento = ""
+let documento = "",
+    bann = document.querySelector('section.bann'),
+    asideOpt = bann.querySelectorAll('section.bann>div');
 
 let table = {
     smain:document.querySelector('section.main'),
@@ -265,7 +267,7 @@ let table = {
                 'CJU-37314',
                 4,
                 6,[4,0,0],
-                []),
+                72),
             new materia(
                 'Defensa VI',
                 'DIN-31163',
@@ -417,7 +419,9 @@ let table = {
                         })
                     }
                 // Prel per Unids
-                } else if (this.unidCrdit >= e.prelac && this.MateriasSemestres[i-1].every(x=>this.Materias[x].Aprobed)) {
+
+                } else if (this.unidCrdit >= e.prelac && this.MateriasSemestres.every(y=>y.every(x=>this.Materias[x].semest >= i+1 || (this.Materias[x].semest < i+1 && this.Materias[x].Aprobed)))) {
+                    // console.log(below())
                     if (e.Aprobed) aproach(this.unidCrdit - e.unid >= e.prelac)
                     else aproach(true)
                 }
@@ -498,7 +502,7 @@ let table = {
         let totHors = 0
         this.Materias[materia].horas.forEach(e=>totHors+=e)
         if (totHors !=0 ) {
-            tempString+=`<h4>Horas <b> ${totHors} </b></h4><ul class='hours'>`
+            tempString+=`<h4>HORAS: <b> ${totHors} </b></h4><ul class='hours'>`
             for (let i = 0; i < this.Materias[materia].horas[0]; i++) tempString += `<li class='t'>${i==0?this.Materias[materia].horas[0]+'T':''}</li>`
             for (let i = 0; i < this.Materias[materia].horas[1]; i++) tempString += `<li class='p'>${i==0?this.Materias[materia].horas[1]+'P':''}</li>`
             for (let i = 0; i < this.Materias[materia].horas[2]; i++) tempString += `<li class='l'>${i==0?this.Materias[materia].horas[2]+'L':''}</li>`
@@ -506,7 +510,7 @@ let table = {
         }
         let tempcop = '',temppre = ''
         if (this.Materias[materia].prelac !=0) {
-            if (typeof(this.Materias[materia].prelac) == "number") temppre += `<i>Unidades de Credito ${this.Materias[materia].prelac}</i>`
+            if (typeof(this.Materias[materia].prelac) == "number") temppre += `<i>Unidades de Credito: ${this.Materias[materia].prelac}</i>`
             else this.Materias[materia].prelac.forEach(e => {
                 let temp  = "<li class='"
                     if (this.Materias[e[0]].avaible) {
@@ -552,45 +556,45 @@ let table = {
                     codigos.forEach((g,h)=>{
                         if (g != '' && e.includes(g)) this.Materias[h].Aprobed = true
                     })
-                } //else console.log(e[e.length-8],"Raspo!")
+                }
             }
         })
         this.Generate()
+        document.querySelector('div.blk').classList.remove('look')
     }
 }
 
 table.getData()
 table.Generate()
 let open = false;
-let bann = document.querySelector('section.bann')
-let asideOpt = bann.querySelectorAll('section.bann>div');
 asideOpt.forEach(e=>{
     e.querySelector('.icon').addEventListener('click',()=>{
+        bann.classList.add('lk')
         if (open) {
-            bann.classList.remove('lk')
             asideOpt.forEach(i => {
                 if (i!=e) i.classList.remove('look')
                 else e.classList.add('look')
             });
         } else {
-            bann.classList.add('lk')
             open = true
             e.classList.add('look')
-            this.querySelector('div.blk').classList.add('look')
+            // console.log(this,'Sel?')
+            document.querySelector('div.blk').classList.add('look')
         }
     })
 })
-let axit = () => {
+let axit = (ulook = true) => {
     asideOpt.forEach(e => {
         bann.classList.remove('lk')
         e.classList.remove('look')
     });
-    document.querySelector('div.blk').classList.remove('look')
-    open =false
+    if (ulook) document.querySelector('div.blk').classList.remove('look')
+    open = false
 }
 ,carga = (ev) => {
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
+    document.querySelector('div.blk').classList.add('look')
     let file
   
     if (ev.dataTransfer.items) {
@@ -614,7 +618,7 @@ let axit = () => {
     reader.addEventListener('load', e => {
         documento = reader.result
         evoke()
-        axit()
+        axit(false)
 
     })
     reader.readAsDataURL(file)
@@ -665,6 +669,7 @@ let axit = () => {
 }
 
 document.querySelector('input.file').addEventListener('change',ev =>{
+    document.querySelector('div.blk').classList.add('look')
     let file = ev.target.files[0]
     // console.log(file)
     const reader = new FileReader()
@@ -672,7 +677,7 @@ document.querySelector('input.file').addEventListener('change',ev =>{
     reader.addEventListener('load', e => {
         documento = reader.result
         evoke()
-        axit()
+        axit(false)
 
     })
     reader.readAsDataURL(file)
