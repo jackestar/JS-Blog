@@ -267,7 +267,7 @@ let table = {
                 'CJU-37314',
                 4,
                 6,[4,0,0],
-                72),
+                58),
             new materia(
                 'Defensa VI',
                 'DIN-31163',
