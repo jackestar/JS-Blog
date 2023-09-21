@@ -6,6 +6,7 @@ function materia(nombre,codigo,unid,semest,horas,prelacion = [0]) {
     this.horas = horas
     this.prelac = prelacion
 }
+// let erase
 
 let documento = "",
     bann = document.querySelector('section.bann'),
@@ -22,6 +23,7 @@ let table = {
     Semestres:0,
     unidCrditTot:0,
     materiaSelected:undefined,
+    loaded:false,
     unidCrdit:0, // Actuales
     getData(carrera = 0) { // Default Electronica
         // Consulta a la Base de datos...
@@ -69,7 +71,7 @@ let table = {
                 1,[1,0,0]),
             new materia(
                 'Defensa I',
-                'DIN-2113',
+                'DIN-21113',
                 3,
                 1,[2,2,0]),
 
@@ -394,12 +396,13 @@ let table = {
 
             s.forEach(m=>{
                 let e = this.Materias[m],
-                    aproach = (status = false) => {
-                        if (status) e.avaible = true
-                        else {
+                aproach = (status = false) => {
+                    if (status) e.avaible = true
+                    else if (!(this.loaded && e.Aprobed)){
                             if (e.Aprobed)  this.unidCrdit -= e.unid
                             e.avaible = false
-                            e.Aprobed = false}
+                            e.Aprobed = false
+                    }
                 }
                 if (e.prelac == 0) e.avaible = true
                 else if (typeof(e.prelac) == "object") {
@@ -462,6 +465,7 @@ let table = {
         // gen...
     },
     update(materia) {
+        this.loaded = false
         // la asignacion retorna el valor asignado
         if (this.Materias[materia].Aprobed = !this.Materias[materia].Aprobed)
             this.unidCrdit += this.Materias[materia].unid
@@ -471,6 +475,7 @@ let table = {
         this.infor(materia)
     },
     pass(Semestre) {
+        this.loaded = false
         let comp = true
         if (this.MateriasSemestres[Semestre-1].every(e=>this.Materias[e].Aprobed || !this.Materias[e].avaible)) {
             this.MateriasSemestres[Semestre-1].forEach(e=>{
@@ -537,6 +542,7 @@ let table = {
             this.smain.classList.toggle('hide')
     },
     ReadRecord (texto) {
+        // console.log(texto)
         if (!texto.includes("REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO")) {
             alert("Record acaemico no valido...")
             return 0
@@ -547,18 +553,45 @@ let table = {
             e.Aprobed = false
         })
         let contenido = ""
-        contenido = texto.split(new RegExp('[0-9PIV]-[0-9]{4} [0-9]{2} '))
+        contenido = texto.split(new RegExp('[0-9PIV]-[0-9]{4} '))
         contenido.shift() // Delete header
+        contenido = contenido.filter(e=>{return !e.includes("APROBÓ") && !e.includes("REPROBÓ")})
         contenido.forEach((e,i)=>{
-            if (!e.includes("APROBÓ")) {
+                // I dont know if realy necessary... but
                 if (e.includes("Índice")) e = e.substr(0,e.indexOf("Índice"))
-                if ((e[e.length-8])/1 == 0) {
+                if (e.includes("REPARACIÓN")) e = e.substr(0,e.indexOf("REPARACIÓN"))
+
+                let nova = e.split(new RegExp('^(0[0-9])+? | [A-Z ÁÉÍÓÚ\(\),]{4,} ')).filter(e=>{return e!=undefined&&e!=""})
+                // console.log(e,nova)
+                // nova[0] = nova[0].substr(1,nova[0].length)
+                // if (nova[1][0].includes('DIN-21113')) console.log(e,i)
+                if (nova[2][0] != '0') {
                     codigos.forEach((g,h)=>{
-                        if (g != '' && e.includes(g)) this.Materias[h].Aprobed = true
-                    })
-                }
-            }
+                        // console.log(String(nova[0]),String(g))
+                        if (g != '' && nova[1] == g) {
+                            // console.log(e,i,h,g,this.Materias[h].Aprobed)
+                            this.unidCrdit += this.Materias[h].unid
+                            this.Materias[h].Aprobed = true
+                        } else if (e.includes('ELECTIVA NO TÉCNICA')) this.MateriasSemestres[nova[0]-1].forEach(w=>{
+                            // console.log(w,this.Materias[w])
+                            if (this.Materias[w].nombre.includes('Electiva No')) {
+                                this.Materias[w].Aprobed = true
+                                this.unidCrdit += this.Materias[w].unid
+                            }
+                        })
+                        else if (e.includes('ELECTIVA TÉCNICA')) this.MateriasSemestres[nova[0]-1].forEach(w=>{
+                            // console.log(w,this.Materias[w])
+                            if (this.Materias[w].nombre.includes('Electiva T')) {
+                                this.Materias[w].Aprobed = true
+                                this.unidCrdit += this.Materias[w].unid
+                            }
+                        })
+                    }
+                    )
+                } //else console.log(e,i,this.Materias[h].Aprobed)
         })
+        // erase = texto
+        this.loaded = true
         this.Generate()
         document.querySelector('div.blk').classList.remove('look')
     }
