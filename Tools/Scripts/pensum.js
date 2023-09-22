@@ -424,7 +424,6 @@ let table = {
                 // Prel per Unids
 
                 } else if (this.unidCrdit >= e.prelac && this.MateriasSemestres.every(y=>y.every(x=>this.Materias[x].semest >= i+1 || (this.Materias[x].semest < i+1 && this.Materias[x].Aprobed)))) {
-                    // console.log(below())
                     if (e.Aprobed) aproach(this.unidCrdit - e.unid >= e.prelac)
                     else aproach(true)
                 }
@@ -515,7 +514,7 @@ let table = {
         }
         let tempcop = '',temppre = ''
         if (this.Materias[materia].prelac !=0) {
-            if (typeof(this.Materias[materia].prelac) == "number") temppre += `<i>Unidades de Credito: ${this.Materias[materia].prelac}</i>`
+            if (typeof(this.Materias[materia].prelac) == "number") temppre += `<i>Unidades de Credito: ${this.Materias[materia].prelac}</i><br><i>Unidades de Credito Actuales: ${this.unidCrdit}</i>`
             else this.Materias[materia].prelac.forEach(e => {
                 let temp  = "<li class='"
                     if (this.Materias[e[0]].avaible) {
@@ -542,9 +541,9 @@ let table = {
             this.smain.classList.toggle('hide')
     },
     ReadRecord (texto) {
-        // console.log(texto)
+        this.unidCrdit = 0
         if (!texto.includes("REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO")) {
-            alert("Record acaemico no valido...")
+            alert("Record academico no valido...")
             return 0
         }
         let codigos = Array()
@@ -562,38 +561,52 @@ let table = {
                 if (e.includes("REPARACIÓN")) e = e.substr(0,e.indexOf("REPARACIÓN"))
 
                 let nova = e.split(new RegExp('^(0[0-9])+? | [A-Z ÁÉÍÓÚ\(\),]{4,} ')).filter(e=>{return e!=undefined&&e!=""})
-                // console.log(e,nova)
-                // nova[0] = nova[0].substr(1,nova[0].length)
-                // if (nova[1][0].includes('DIN-21113')) console.log(e,i)
+
                 if (nova[2][0] != '0') {
-                    codigos.forEach((g,h)=>{
-                        // console.log(String(nova[0]),String(g))
-                        if (g != '' && nova[1] == g) {
-                            // console.log(e,i,h,g,this.Materias[h].Aprobed)
-                            this.unidCrdit += this.Materias[h].unid
-                            this.Materias[h].Aprobed = true
-                        } else if (e.includes('ELECTIVA NO TÉCNICA')) this.MateriasSemestres[nova[0]-1].forEach(w=>{
-                            // console.log(w,this.Materias[w])
-                            if (this.Materias[w].nombre.includes('Electiva No')) {
+                    for (let h = 0; h < codigos.length; h++) {
+                        const g = codigos[h];
+                        if (g != '') {
+                            if (nova[1] == g){
+                                this.unidCrdit += this.Materias[h].unid
+                                this.Materias[h].Aprobed = true
+                                break;
+                            }
+                        } else if (e.includes('ELECTIVA')) {
+                            let broken = false
+                            for (let i = 0; i < this.MateriasSemestres[nova[0]-1].length; i++) {
+                                const w = this.MateriasSemestres[nova[0]-1][i]
+                                
+                            if (this.Materias[w].nombre.includes('Electiva No') && e.includes('A NO')) {
                                 this.Materias[w].Aprobed = true
                                 this.unidCrdit += this.Materias[w].unid
-                            }
-                        })
-                        else if (e.includes('ELECTIVA TÉCNICA')) this.MateriasSemestres[nova[0]-1].forEach(w=>{
-                            // console.log(w,this.Materias[w])
-                            if (this.Materias[w].nombre.includes('Electiva T')) {
+                                broken = true
+                                break;
+                                
+                            } else if (this.Materias[w].nombre.includes('Electiva T') && e.includes('A TE')) {
                                 this.Materias[w].Aprobed = true
                                 this.unidCrdit += this.Materias[w].unid
+                                broken = true
+                                break;
+                            } 
+                        // })
                             }
-                        })
+                        if (broken) break;
+                    } 
                     }
-                    )
-                } //else console.log(e,i,this.Materias[h].Aprobed)
+                    // codigos.forEach((g,h)=> {
+
+                    // })
+                }
         })
         // erase = texto
         this.loaded = true
+        if (this.materiaSelected != undefined) {
+            this.infor()
+            this.infoT()
+        }
         this.Generate()
         document.querySelector('div.blk').classList.remove('look')
+
     }
 }
 
@@ -611,7 +624,6 @@ asideOpt.forEach(e=>{
         } else {
             open = true
             e.classList.add('look')
-            // console.log(this,'Sel?')
             document.querySelector('div.blk').classList.add('look')
         }
     })
@@ -704,7 +716,6 @@ let axit = (ulook = true) => {
 document.querySelector('input.file').addEventListener('change',ev =>{
     document.querySelector('div.blk').classList.add('look')
     let file = ev.target.files[0]
-    // console.log(file)
     const reader = new FileReader()
     const id = 'Record'
     reader.addEventListener('load', e => {
