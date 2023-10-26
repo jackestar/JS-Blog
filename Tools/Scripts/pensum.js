@@ -208,7 +208,7 @@ let table = {
                 'ELN-30115',
                 5,
                 5,[3,2,3],
-                [[24,false],[22,false]]),
+                [[21,false],[22,false]]),
             new materia(
                 'Sistemas Digitales II',
                 'ELN-31335',
