@@ -765,7 +765,7 @@ let extractText = (pdfUrl) => {
 let evoke = () => {
     bann.classList.remove('lk')
     let url = atob(documento.slice(documento.indexOf('base')+7))
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '../../js/pdfjs-st/pdf.worker.js';
     extractText(url).then(
         function (text) {
             table.ReadRecord(text)

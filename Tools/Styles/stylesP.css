@@ -88,10 +88,14 @@ aside.content ul.list li {
     text-align: center;
     margin: 0em 1em;
     border-radius: 1em;
-    padding: 1%;
+    
     flex: 2;
     max-width: 50vw;
     background: var(--colorE);
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 aside.content ul.list>li i {
     display: none;
