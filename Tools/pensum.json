@@ -1,31 +1,32 @@
 {
     "name":"Pensum Electronica 2024 UNEFA - Prototipo",
     "lang": "es",
-    "display": "browser",
     "short_name":"Pensum UNEFA",
     "background_color": "#2c292d",
+    "display":"standalone",
     "theme_color": "#33D5E8",
+    "start_url":"./Pensum.html",
     "description":"generador de pensum de carreras UNEFA autogerado, arbol de prelaciones, Electronica 2024, carga tu record academico",
     "icons":[
         {
-            "src":"./favicon.svg",
-            "size":"any"
+            "src":"manifest/48.png",
+            "sizes":"48x48",
+            "purpose":"any"
         },
         {
-            "src":"./48.png",
-            "size":"48x48"
+            "src":"manifest/72.png",
+            "sizes":"72x72",
+            "purpose":"any"
         },
         {
-            "src":"./72.png",
-            "size":"72x72"
+            "src":"manifest/256.png",
+            "sizes":"256x256",
+            "purpose":"any"
         },
         {
-            "src":"./256.png",
-            "size":"256x256"
-        },
-        {
-            "src":"./512.png",
-            "size":"512x512"
+            "src":"manifest/512.png",
+            "sizes":"512x512",
+            "purpose":"any"
         }
     ],
     "screenshots" : [
@@ -35,7 +36,7 @@
             "form_factor":"wide",
             "label":"Pagina Principal del generador de arbol de prelaciones de pensum",
             "platform":"windows",
-            "sizes":"1359x661"
+            "sizes":"1440x900"
         },
         {
             "src":"manifest/w01.png",
@@ -43,7 +44,7 @@
             "form_factor":"wide",
             "label":"Pagina Principal del generador de arbol de prelaciones de pensum con aside de materias",
             "platform":"windows",
-            "sizes":"1359x661"
+            "sizes":"1440x900"
         },
         {
             "src":"manifest/w02.png",
@@ -51,7 +52,7 @@
             "form_factor":"wide",
             "label":"carga de record academico, generador de arbol de prelaciones",
             "platform":"windows",
-            "sizes":"1359x661"
+            "sizes":"1440x900"
         },
         {
             "src":"manifest/w01.png",
@@ -59,7 +60,7 @@
             "form_factor":"wide",
             "label":"Pagina de ayuda",
             "platform":"windows",
-            "sizes":"1359x661"
+            "sizes":"1440x900"
         },
         {
             "src":"manifest/a00.png",
@@ -67,7 +68,7 @@
             "form_factor":"narrow",
             "label":"Pagina Principal del generador de arbol de prelaciones de pensum",
             "platform":"android",
-            "sizes":"720x1136"
+            "sizes":"720x1280"
         },
         {
             "src":"manifest/a01.png",
@@ -75,23 +76,7 @@
             "form_factor":"narrow",
             "label":"Pagina Principal del generador de arbol de prelaciones de pensum con aside de materias",
             "platform":"android",
-            "sizes":"720x1136"
-        },
-        {
-            "src":"manifest/a02.png",
-            "type":"image/png",
-            "form_factor":"narrow",
-            "label":"carga de record academico, generador de arbol de prelaciones",
-            "platform":"android",
-            "sizes":"720x1136"
-        },
-        {
-            "src":"manifest/a03.png",
-            "type":"image/png",
-            "form_factor":"narrow",
-            "label":"Pagina de ayuda",
-            "platform":"android",
-            "sizes":"720x1136"
+            "sizes":"720x1280"
         }
     ]
 }
