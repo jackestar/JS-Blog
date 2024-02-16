@@ -15,7 +15,7 @@ section.main {
     min-height: 100vh;
     flex: 2 75vw;
     transition:1s ease;
-    z-index: 1000
+    z-index: 1000;
 }
 section.main.hide {
     width: 75vw;
@@ -160,9 +160,22 @@ article.scheme {
     display: flex;
     max-width: 100vw;
     min-height: 100%;
-    overflow-y: scroll;
-    overflow-x: scroll;
-    
+    overflow-y: auto;
+    overflow-x: auto;
+/*     scrollbar-width: thin; */
+/*     scrollbar-color: var(--foreground) var(--background); */
+}
+*::-webkit-scrollbar {
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--foreground);
+}
+*::-webkit-scrollbar-track {
+    background: var(--background);
 }
 article.scheme ul {
     list-style: none;
@@ -189,6 +202,9 @@ article.scheme ul li {
     border: solid #0000; /*Rezise*/
     user-select: none;
     font-variant: all-small-caps;
+}
+article.scheme ul li.road {
+    background: var(--colorE);
 }
 article.scheme ul li:hover {
     opacity: 1;
