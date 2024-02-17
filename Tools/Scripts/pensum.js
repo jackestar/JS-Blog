@@ -599,16 +599,14 @@ let table = {
     this.smain.classList.toggle("hide");
   },
   ReadRecord(texto) {
+    // console.log(texto);
     this.unidCrdit = 0;
-    if (
-      !texto.includes(
-        "REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO"
-      )
-    ) {
+    if (!texto.includes("REPÚBLICA BOLIVARIANA DE VENEZUELAMINISTERIO DEL PODER POPULAR PARA LA DEFENSAVICEMINISTERIO DE EDUCACIÓN PARA LA DEFENSAUNIVERSIDAD NACIONAL EXPERIMENTALPOLITÉCNICA DE LA FUERZA ARMADA NACIONAL BOLIVARIANAU.N.E.F.ANÚCLEO")) {
       alert("Record academico no valido...");
       return 0;
     }
     let codigos = Array();
+    //default
     this.Materias.forEach((e) => {
       codigos.push(e.codigo);
       e.Aprobed = false;
@@ -625,7 +623,7 @@ let table = {
       if (e.includes("REPARACIÓN")) e = e.substr(0, e.indexOf("REPARACIÓN"));
 
       let nova = e
-        .split(new RegExp("^(0[0-9])+? | [A-Z ÁÉÍÓÚ(),]{4,} "))
+        .split(new RegExp("^(0[0-9])+? | [A-Z ÁÉÍÓÚÑ(),]{4,} "))
         .filter((e) => {
           return e != undefined && e != "";
         });
@@ -665,14 +663,10 @@ let table = {
                 broken = true;
                 break;
               }
-              // })
             }
             if (broken) break;
           }
         }
-        // codigos.forEach((g,h)=> {
-
-        // })
       }
     });
     // erase = texto
@@ -810,11 +804,11 @@ let extractText = (pdfUrl) => {
     for (var currentPage = 1; currentPage <= totalPageCount; currentPage++) {
       var page = pdf.getPage(currentPage);
       countPromises.push(
-        page.then(function (page) {
+        page.then(page => {
           var textContent = page.getTextContent();
           return textContent.then(function (text) {
             return text.items
-              .map(function (s) {
+              .map(s => {
                 return s.str;
               })
               .join("");
@@ -833,7 +827,7 @@ let evoke = () => {
   bann.classList.remove("lk");
   let url = atob(documento.slice(documento.indexOf("base") + 7));
   pdfjsLib.GlobalWorkerOptions.workerSrc = "../../js/pdfjs-st/pdf.worker.js";
-  extractText(url).then(function (text) {
+  extractText(url).then(text => {
     table.ReadRecord(text);
   });
 };

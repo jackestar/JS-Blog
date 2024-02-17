@@ -4,7 +4,7 @@ body {
   display: flex;
   max-height: 100vh;
   flex-flow: wrap;
-  font-size: 0.7em;
+  font-size: 0.8em;
   overflow-x: hidden;
 }
 
@@ -251,7 +251,7 @@ section.bann {
   position: fixed;
   margin: 1em;
   z-index: 1001;
-  transition: 0.4s ease all;
+/*   transition: 0.4s ease; */
   display: flex;
   flex-direction: row-reverse;
 }
@@ -270,7 +270,7 @@ section.bann > div {
   height: 5em;
   overflow: hidden;
   display: flex;
-  transition: 0.5s ease;
+  /* transition: 0.5s ease; */
   flex-direction: column;
   /*     align-self:center; */
 }
@@ -333,6 +333,21 @@ section.bann div.look div.hcont {
   flex: 2;
   align-items: center;
 }
+section.bann div div.icon {
+  background: var(--foreground);
+  width: max-content;
+  padding: 0.85em;
+  border-radius: 100%;
+}
+section.bann div.pag > p {
+  color: var(--foreground);
+  margin: 1em;
+  font-size: 1.5em;
+  font-variant: all-petite-caps;
+  font-weight: 600;
+/*   text-align: center; */
+  /*     width: 100%; */
+}
 
 div.blk {
   width: 100vw;
@@ -348,28 +363,6 @@ div.blk.look {
   z-index: 1001;
   opacity: 0.7;
   transition: 0.2s ease-in opacity;
-}
-@media (orientation: portrait) {
-  aside.content {
-    flex: 1 100vw;
-    min-height: auto;
-    max-height: 25vh;
-    height: 25vh;
-  }
-  section.main {
-    width: 100vw;
-    font-size: 1.75em;
-  }
-  section.main.hide {
-    height: 75vh;
-    min-height: 75vh;
-  }
-  section.bann > div.look {
-    min-height: 50%;
-  }
-  aside i.back {
-    transform: rotate(90deg);
-  }
 }
 i.back {
   background: var(--background);
@@ -396,9 +389,9 @@ div.help article.scheme {
   border-radius: 1em;
   flex-direction: column;
   flex: 2;
-  min-height: 40vh;
+  padding: 2em;
+  min-height: min-content;
 }
-
 div.help article.scheme ul.leyend {
   flex-direction: row;
   justify-content: center;
@@ -425,21 +418,6 @@ div.help article.scheme h2 {
   flex: 1 100%;
 }
 
-section.bann div div.icon {
-  background: var(--foreground);
-  width: max-content;
-  padding: 0.85em;
-  border-radius: 100%;
-}
-section.bann div.pag > p {
-  color: var(--foreground);
-  margin: 1em;
-  font-size: 1.5em;
-  font-variant: all-petite-caps;
-  font-weight: 600;
-  text-align: center;
-  /*     width: 100%; */
-}
 div.dots {
   align-self: center;
   display: flex;
@@ -465,6 +443,11 @@ div.pag.sel {
   display: flex;
   width: auto;
   transition: 0.3s ease;
+  /* font-size: 2em; */
+  justify-content: center;
+}
+div.pag.sel div.icon {
+  width: 5em
 }
 div.pag {
   display: none;
@@ -513,4 +496,57 @@ div.but {
   width: 90%;
   display: flex;
   justify-content: center;
+}
+
+@media (orientation: portrait) {
+  aside.content {
+    flex: 1 100vw;
+    min-height: auto;
+    max-height: 25vh;
+    height: 25vh;
+  }
+  section.main {
+    width: 100vw;
+    font-size: 1.75em;
+  }
+  section.main.hide {
+    height: 75vh;
+    min-height: 75vh;
+  }
+  section.bann > div {
+    width: 10em;
+    height: 10em;
+  }
+  section.bann > div.look {
+    min-height: 50%;
+  }
+  section.bann div div.icon img {
+    width: 5em;
+  }
+  section.bann div.look div.icon img {
+    width: 6em;
+  }
+    section.bann div div.icon p {
+    font-size:5em;
+  }
+  section.bann div.look div.icon p {
+    font-size:6em;
+  }
+  section.bann {
+    flex-direction: column;
+    justify-content: center
+  }
+  section.bann div.look {
+    max-height: 50%;
+  }
+  section.bann > div:not(.look) {
+    max-height: 10em;
+  }
+  i.back {
+    font-size: 7em;
+  }
+  aside i.back {
+    transform: rotate(90deg);
+    font-size: 5em;
+  }
 }
