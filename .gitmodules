@@ -1,0 +1,7 @@
+[submodule "Banner"]
+	path = Proyects/Banner
+	url = https://github.com/jackestar/bannerMaker
+
+[submodule "Pensum"]
+	path = Proyects/Pensum
+	url = https://github.com/jackestar/Pensum
