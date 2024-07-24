@@ -1,4 +1,6 @@
 let textObj = document.querySelector("h1");
+
+// Old Method
 // █
 let write = (
     textObject = textObj,
@@ -28,8 +30,67 @@ let write = (
     }, 100 * (textLength + 1));
 };
 
-let listType = (textObject = textObj, stayPointer = true, textList = [], pointer = "|") => {
-    
+
+// New Method (list only)
+function ListType(textObject, wordList, stayPointer = true, pointer = "|") {
+    this.word = "";
+    this.wordTyping = "";
+    this.wordList = wordList || [];
+    this.listPosition = 0;
+    this.wordPosition = 0;
+    this.wordInterval = 2000;
+    this.letterInterval = 100;
+    this.wordLength = 0;
+    this.listLength = this.wordList.length;
+    this.textObj = textObject || {};
+    this.pointer = pointer;
+    this.stayPointer = stayPointer;
+    this.writeLoop = true;
+    this.randomWriteSpeed = 50;
+    this.pointerIntervalID = -1;
+
+    this.wordType = function() {
+        if (this.listLength > this.listPosition) {
+            this.word = this.wordList[this.listPosition];
+            this.wordLength = this.word.length;
+            this.letterType();
+        } else {
+            this.listPosition = 0;
+            if (this.writeLoop) {
+                this.listStart();
+            }
+        }
+    };
+
+    this.letterType = function() {
+        if (this.wordLength >= this.wordPosition) {
+            this.wordTyping += this.word.charAt(this.wordPosition);
+            this.textObj.innerText = this.wordTyping + this.pointer;
+            this.wordPosition++;
+            setTimeout(() => {
+                this.letterType();
+            }, this.letterInterval + (Math.random() * this.randomWriteSpeed * 2) - this.randomWriteSpeed);
+        } else {
+            let intervalStatus = true;
+            this.pointerIntervalID = setInterval(() => {
+                this.textObj.innerText = this.word + (intervalStatus ? this.pointer : "\u00A0");
+                intervalStatus = !intervalStatus;
+            }, 450);
+            setTimeout(() => {
+                clearInterval(this.pointerIntervalID);
+                this.wordPosition = 0;
+                this.wordTyping = "";
+                this.listPosition++;
+                this.wordType();
+            }, this.wordInterval);
+        }
+    };
+
+    this.listStart = function() {
+        this.listPosition = 0;
+        this.wordPosition = 0;
+        this.wordType();
+    };
 }
 
 // Default
@@ -40,7 +101,10 @@ const subtitle = document.querySelector("header div.title p")
 const subtitleMenssage = subtitle.innerText
 document.querySelector("header div.title p").innerText = ""
 write(title,false);
-setTimeout( ()=>
-write(subtitle, true,subtitleMenssage)
-,(title.innerText.length + 1)*100
-)
+
+list = new ListType(subtitle,["Web Developer", "Graphic Designer", "Electronic Engineering Student", "AI enthusiast","Linux enthusiast"])
+
+setTimeout( ()=>{
+    list.listStart()}
+    ,(title.innerText.length + 3)*100
+    )
