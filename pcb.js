@@ -18,12 +18,16 @@ let squareSize = 0;
 let square = {};
 
 const lines = [];
+let linePosition = 0;
+let endPosition = 0;
 const ends = [];
 const lineSpeed = 4;
 let lineSpacing = 10; // Espacio entre las líneas
 const minLength = 8; // Longitud mínima antes de cambiar de dirección
-let color = "#fff"
-
+const color = "#fff"
+const halfPI = Math.PI/2
+const quaterPi = Math.PI/4
+const doublePi = Math.PI*2
 
 let generatePCB = (canvas = lastObj, location = lastLocation) => {
     lastLocation = location;
@@ -36,10 +40,10 @@ let generatePCB = (canvas = lastObj, location = lastLocation) => {
 }
 
 let makePCB = (canvas = lastObj, location = lastLocation) => {
+    linePosition = 0;
+    endPosition = 0;
     // Stop the previous animation
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-    }
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
     // Clear the lines and ends arrays
     lines.length = 0;
     ends.length = 0;
@@ -102,6 +106,8 @@ let makePCB = (canvas = lastObj, location = lastLocation) => {
     lineSpacing = 8 + ctx.lineWidth*2;
     createLinesFromEdges();
     ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = color;
+    ctx.strokeRect(square.x, square.y, square.size, square.size);
     animate();
 }
 
@@ -114,20 +120,23 @@ let drawLine = line => {
 
 let drawCircles = circle => {
     ctx.beginPath();
-    ctx.arc(circle.x, circle.y, 2, 0, 2 * Math.PI);
+    ctx.arc(circle.x, circle.y, 2, 0, doublePi);
     ctx.stroke();
     ctx.fillStyle = color;
     ctx.fill();
 }
 
+
+let numEnds = 0 // Auto Generated
 let createLinesFromEdges = () => {
     const numLinesPerEdge = Math.floor(square.size / lineSpacing);
+    numEnds = (numLinesPerEdge-1)*4
 
     // Top edge
     for (let i = 1; i < numLinesPerEdge; i++) {
         let x1 = square.x + i * lineSpacing;
         let y1 = square.y;
-        lines.push({ x1, y1, x2: x1, y2: y1 - lineSpeed, angle: -Math.PI / 2, length: 0, lastAngle: -1 });
+        lines.push({ x1, y1, x2: x1, y2: y1 - lineSpeed, angle: -halfPI, length: 0, lastAngle: -1 });
     }
 
     // Right edge
@@ -141,7 +150,7 @@ let createLinesFromEdges = () => {
     for (let i = 1; i < numLinesPerEdge; i++) {
         let x1 = square.x + i * lineSpacing;
         let y1 = square.y + square.size;
-        lines.push({ x1, y1, x2: x1, y2: y1 + lineSpeed, angle: Math.PI / 2, length: 0, lastAngle: -1 });
+        lines.push({ x1, y1, x2: x1, y2: y1 + lineSpeed, angle: halfPI, length: 0, lastAngle: -1 });
     }
 
     // Left edge
@@ -155,7 +164,7 @@ let createLinesFromEdges = () => {
 let updateLine = line => {
     let oldAngle = line.angle;
     if (line.length >= minLength && Math.random() < 0.008) { // Probabilidad de cambiar la dirección después de la longitud mínima
-        const randomAngle = (Math.random() < 0.5 ? 1 : -1) * Math.PI / 4;
+        const randomAngle = (Math.random() < 0.5 ? 1 : -1) * quaterPi;
         line.angle += randomAngle;
     }
     const newX2 = line.x2 + lineSpeed * Math.cos(line.angle);
@@ -169,7 +178,7 @@ let updateLine = line => {
         } else {
             lines.push({ x1: line.x2, y1: line.y2, x2: newX2, y2: newY2, angle: line.lastAngle, length: line.length + lineSpeed, lastAngle: line.lastAngle });
         }
-    } else {
+    } else { // Final de la linea
         let x = line.x2;
         if (Math.random() > 0.5) x += 1;
         else x -= 1;
@@ -191,26 +200,25 @@ let checkCollision = (x2, y2) => {
 }
 
 let animate = () => {
-    ctx.clearRect(0, 0, width, height);
-
-    // Draw square
-    ctx.strokeStyle = color;
-    ctx.strokeRect(square.x, square.y, square.size, square.size);
-
+    if (linePosition == lines.length && endPosition == ends.length) cancelAnimationFrame(animationFrameId);
+    // else if (linePosition > 0) {
     // Update and draw lines
     lines.forEach(line => {
         if (!line.finished) {
             updateLine(line);
         }
-        drawLine(line);
     });
-    ends.forEach(circle => {
-        drawCircles(circle);
-    });
+    lines.slice(linePosition,lines.length).forEach(line => drawLine(line))
+
+    linePosition = lines.length;
+
+    ends.slice(endPosition,ends.length).forEach(circle => drawCircles(circle));
+
+    endPosition = ends.length;
 
     ctx.clearRect(square.x+1, square.y+1, square.size-2, square.size-2);
-
-    animationFrameId = requestAnimationFrame(animate);
+    if (numEnds>ends.length) animationFrameId = requestAnimationFrame(animate);
+    // }
 }
 
 // Default

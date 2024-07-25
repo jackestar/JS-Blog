@@ -10,10 +10,14 @@
   --second3: #008563;
   --second4: #004b38;
   --second5: #002018;
+
+  --theme:#a33;
+  --background:#2c292d;
+  /* --other:#2c292d; */
 }
 
 body {
-background: #a33;
+background: var(--theme);
 /*   background: linear-gradient(90deg,var(--second3),var(--second5)); */
 }
 
@@ -22,7 +26,16 @@ position: absolute;
 z-index: -1;
 mix-blend-mode: overlay
 }
-header ,header>* {
+/* Well... */
+header { 
+width: 100vw;
+height: 100vh;
+max-width: 100vw;
+max-height: 100vh;
+min-width: 100vw;
+min-height: 100vh;
+}
+header>* {
 width: 100vw;
 height: 100vh;
 }
@@ -38,8 +51,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 padding: 1em;
-/*   grid */
-/* width: 50%; */
 
 }
 
@@ -56,4 +67,23 @@ header div.canv div.title p {
   font-variant-caps: petite-caps;
   max-width: 100vw;
   width: 50vw;
+}
+
+header div.rsBanner {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: end;
+}
+header div.rsBanner div.iconCont {
+  padding: 1em;
+  display: flex;
+  flex-direction: row
+}
+header div.rsBanner div.rsIcon {
+  padding-left: 1em;
+}
+header div.rsBanner div.rsIcon svg {
+  width: 5em;
+  height: 5em;
 }
