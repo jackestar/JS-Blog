@@ -242,6 +242,7 @@ section#proyects div.elem a.stitle>p {
   letter-spacing: .1em;
   text-justify:inter-word;
 }
+
 section#proyects p.des {
   letter-spacing: .1em;
   font-size: 1.2em;
@@ -250,7 +251,10 @@ section#proyects p.des {
   margin-top: 10px
 /*   text-justify:  inter-word */
 }
-
+section#proyects p.des a {
+  color: #aaf;
+  text-decoration: none;
+}
 section#proyects div.maintitle {
   color: #eef;
   text-align: center;
