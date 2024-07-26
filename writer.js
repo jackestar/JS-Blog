@@ -32,8 +32,8 @@ let write = (
 
 
 // New Method (list only)
-function ListType(textObject, wordList, stayPointer = true, pointer = "|") {
-    this.word = "";
+function ListType(textObject, wordList, word = "", stayPointer = true, pointer = "|") {
+    this.word = word;
     this.wordTyping = "";
     this.wordList = wordList || [];
     this.listPosition = 0;
@@ -49,7 +49,7 @@ function ListType(textObject, wordList, stayPointer = true, pointer = "|") {
     this.randomWriteSpeed = 50;
     this.pointerIntervalID = -1;
 
-    this.wordType = function() {
+    this.wordType = () => {
         if (this.listLength > this.listPosition) {
             this.word = this.wordList[this.listPosition];
             this.wordLength = this.word.length;
@@ -62,7 +62,7 @@ function ListType(textObject, wordList, stayPointer = true, pointer = "|") {
         }
     };
 
-    this.letterType = function() {
+    this.letterType = () => {
         if (this.wordLength >= this.wordPosition) {
             this.wordTyping += this.word.charAt(this.wordPosition);
             this.textObj.innerText = this.wordTyping + this.pointer;
@@ -76,7 +76,7 @@ function ListType(textObject, wordList, stayPointer = true, pointer = "|") {
                 this.textObj.innerText = this.word + (intervalStatus ? this.pointer : "\u00A0");
                 intervalStatus = !intervalStatus;
             }, 450);
-            setTimeout(() => {
+            if (this.listLength) setTimeout(() => {
                 clearInterval(this.pointerIntervalID);
                 this.wordPosition = 0;
                 this.wordTyping = "";
@@ -86,11 +86,13 @@ function ListType(textObject, wordList, stayPointer = true, pointer = "|") {
         }
     };
 
-    this.listStart = function() {
+    this.listStart = () => {
         this.listPosition = 0;
         this.wordPosition = 0;
         this.wordType();
     };
+
+
 }
 
 // Default
