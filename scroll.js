@@ -1,4 +1,4 @@
-// document.addEventListener('DOMContentLoaded', () => {
+let scroll = () => {
     const sections = document.querySelectorAll('header, main > section');
     
     let animations = (index) => {
@@ -21,15 +21,13 @@
             }
             setTimeout(()=>glow(), 500);
         }
-        
     }
-    
+
     let scrollToSection = (index) => {
         window.scrollTo({
             top: sections[index].offsetTop,
             behavior: 'smooth'
         });
-
     }
 
     let updateURLHash = (index) => {
@@ -58,7 +56,6 @@
         } else if (event.deltaY < 0 && currentSection > 0) {
             currentSection--;
         }
-
         // scrollToSection(currentSection);
         updateURLHash(currentSection);
     }
@@ -66,15 +63,12 @@
     let handleKeydown = (event) => {
         if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
             // event.preventDefault();
-
             let currentSection = getCurrentSectionIndex();
-
             if (event.key === 'ArrowDown' && currentSection < sections.length - 1) {
                 currentSection++;
             } else if (event.key === 'ArrowUp' && currentSection > 0) {
                 currentSection--;
             }
-
             // scrollToSection(currentSection);
             updateURLHash(currentSection);
         }
@@ -102,5 +96,4 @@
         scrollToSection(initialIndex);
         animations(initialIndex)
     }
-
-// });
+}

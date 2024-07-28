@@ -224,5 +224,22 @@
         <script src="pcb.js"></script>
         <script src="writer.js"></script>
         <script src="scroll.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', ()=> {
+                const title = document.querySelector("header h1")
+                const subtitle = document.querySelector("header div.title p")
+                subtitle.innerText = ""
+
+                list = new ListType(subtitle,["Web Developer", "Graphic Designer", "Electronic Engineering Student", "AI enthusiast","Linux enthusiast"])
+
+                maintitle = new ListType(title)
+                maintitle.stayPointer =false
+                maintitle.randomWriteSpeed = 5
+                maintitle.wordCallback = list.listStart
+                maintitle.start()
+                generatePCB(document.querySelector("canvas.headerCanvas"))
+                scroll()
+            })
+        </script>
     </body>
 </html>

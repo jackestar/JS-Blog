@@ -1,11 +1,3 @@
-// PCB Maker
-//  generatePCB(canvas, location)
-// canvas:      Object to html canvas
-// Location     "AutoRightBottom"
-//              "AutoLeftTop"
-//              "HalfRightBottom"
-//              "HalfLeftTop"
-
 let ctx;
 let lastObj = "";
 
@@ -177,4 +169,4 @@ let animate = () => {
 
 // Default
 
-generatePCB(document.querySelector("canvas.headerCanvas"))
+// generatePCB(document.querySelector("canvas.headerCanvas"))
