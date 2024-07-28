@@ -22,14 +22,6 @@ main {
     scrollbar-color: var(--theme) var(--second);
 }
 
-/* main::-webkit-scrollbar-thumb { */
-/*     background: transparent; */
-/* } */
-/* main::-webkit-scrollbar-track { */
-/*     background: transparent; */
-/* } */
-
-
 body header,
 body section {
     height: 100vh;
@@ -40,7 +32,6 @@ canvas.headerCanvas {
     position: absolute;
     z-index: -1;
     mix-blend-mode: overlay;
-    /*   background: var(--theme); */
 }
 /* Well... */
 header {
@@ -86,14 +77,13 @@ div.rsBanner {
     justify-content: right;
     align-items: end;
 }
+
 div.rsBanner div.iconCont {
     padding: 1em;
     display: flex;
     flex-direction: row;
 }
-div.rsBanner div.rsIcon {
-/*     padding-left: 1em; */
-}
+
 div.rsBanner div.rsIcon {
     width: 5em;
     height: 5em;
@@ -113,10 +103,7 @@ section#skills {
 }
 section#proyects {
     background: var(--second);
-/*     max-height: 100vh; */
-/*     height: auto; */
-    /*     overflow-x: auto; */
-        overflow-y: auto;
+    overflow-y: auto;
     scrollbar-color: auto transparent;
     scrollbar-width: thin;
 
@@ -139,8 +126,6 @@ section#proyects div.pcontain {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-    /*   min-width: 100vw; */
-/*     height: 100%; */
     justify-content: space-evenly;
     align-items: stretch;
     overflow-x: auto;
@@ -221,6 +206,9 @@ div.img.web {
 div.img.linked {
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBkPSJNNDE2IDMySDMxLjlDMTQuMyAzMiAwIDQ2LjUgMCA2NC4zdjM4My40QzAgNDY1LjUgMTQuMyA0ODAgMzEuOSA0ODBINDE2YzE3LjYgMCAzMi0xNC41IDMyLTMyLjNWNjQuM2MwLTE3LjgtMTQuNC0zMi4zLTMyLTMyLjN6TTEzNS40IDQxNkg2OVYyMDIuMmg2Ni41VjQxNnptLTMzLjItMjQzYy0yMS4zIDAtMzguNS0xNy4zLTM4LjUtMzguNVM4MC45IDk2IDEwMi4yIDk2YzIxLjIgMCAzOC41IDE3LjMgMzguNSAzOC41IDAgMjEuMy0xNy4yIDM4LjUtMzguNSAzOC41em0yODIuMSAyNDNoLTY2LjRWMzEyYzAtMjQuOC0uNS01Ni43LTM0LjUtNTYuNy0zNC42IDAtMzkuOSAyNy0zOS45IDU0LjlWNDE2aC02Ni40VjIwMi4yaDYzLjd2MjkuMmguOWM4LjktMTYuOCAzMC42LTM0LjUgNjIuOS0zNC41IDY3LjIgMCA3OS43IDQ0LjMgNzkuNyAxMDEuOVY0MTZ6Ii8+PC9zdmc+)
 }
+div.img.npm {
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48cGF0aCBkPSJNMjg4IDI4OGgtMzJ2LTY0aDMydjY0em0yODgtMTI4djE5MkgyODh2MzJIMTYwdi0zMkgwVjE2MGg1NzZ6bS00MTYgMzJIMzJ2MTI4aDY0di05NmgzMnY5NmgzMlYxOTJ6bTE2MCAwSDE5MnYxNjBoNjR2LTMyaDY0VjE5MnptMjI0IDBIMzUydjEyOGg2NHYtOTZoMzJ2OTZoMzJ2LTk2aDMydjk2aDMyVjE5MnoiPjwvcGF0aD48L3N2Zz4=);
+}
 
 section#proyects div.elem a.stitle {
     display: flex;
@@ -268,7 +256,6 @@ section#proyects div.maintitle svg path {
 
 section#proyects.show div.maintitle svg path {
     opacity: 1;
-    /*   fill:#bbf; */
     stroke: #bbf;
     animation-fill-mode: both;
     animation: textapear 3s 0.5s linear;

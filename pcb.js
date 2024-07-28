@@ -8,7 +8,6 @@
 
 let ctx;
 let lastObj = "";
-let lastLocation = "center";
 
 let width = 0;
 let height = 0;
@@ -28,18 +27,17 @@ const color = "#fff"
 const halfPI = Math.PI/2
 const quaterPi = Math.PI/4
 const doublePi = Math.PI*2
+let numEnds = 0
 
-let generatePCB = (canvas = lastObj, location = lastLocation) => {
-    lastLocation = location;
+let generatePCB = (canvas = lastObj) => {
     lastObj = canvas;
     ctx = canvas.getContext('2d');
-    window.addEventListener('resize', () => {
-        makePCB(canvas, location)
-    }, true);
+    observer = new ResizeObserver(() =>makePCB());
+    observer.observe(canvas)
     makePCB();
 }
 
-let makePCB = (canvas = lastObj, location = lastLocation) => {
+let makePCB = (canvas = lastObj) => {
     linePosition = 0;
     endPosition = 0;
     // Stop the previous animation
@@ -49,8 +47,8 @@ let makePCB = (canvas = lastObj, location = lastLocation) => {
     ends.length = 0;
 
     // Reset canvas dimensions
-    width = window.innerWidth;
-    height = window.innerHeight;
+    width = canvas.clientWidth;
+    height = canvas.clientHeight;
     canvas.width = width;
     canvas.height = height;
     squareSize = (width < height ? width : height) / 3;
@@ -59,42 +57,12 @@ let makePCB = (canvas = lastObj, location = lastLocation) => {
 
     let posx = 0
     let posy = 0
-    if (location == "center") {
-        console.log("center")
-        posx = (width - squareSize) / 2
+    if (width >= height) {
+        posx = (width - squareSize) * 3 / 4
         posy = (height - squareSize) / 2
-    } else if (location == "AutoRightBottom") {
-        if (width >= height) {
-            posx = (width - squareSize) * 3 / 4
-            posy = (height - squareSize) / 2
-        } else {
-            posx = (width - squareSize) / 2
-            posy = (height - squareSize) * 3 / 4
-        }
-    } else if (location == "AutoLeftTop") {
-        if (width >= height) {
-            posx = (width - squareSize) * 1 / 4
-            posy = (height - squareSize) / 2
-        } else {
-            posx = (width - squareSize) / 2
-            posy = (height - squareSize) * 1 / 4
-        }
-    } else if (location == "HalfRightBottom") {
-        if (width >= height) {
-            posx = (width - squareSize/2)
-            posy = (height - squareSize) / 2
-        } else {
-            posx = (width - squareSize) / 2
-            posy = (height - squareSize/2)
-        }
-    } else if (location == "HalfLeftTop") {
-        if (width >= height) {
-            posx = -(squareSize)/2
-            posy = (height - squareSize) / 2
-        } else {
-            posx = (width - squareSize) / 2
-            posy = -(squareSize) / 2
-        }
+    } else {
+        posx = (width - squareSize) / 2
+        posy = (height - squareSize) * 3 / 4
     }
 
     square = {
@@ -104,31 +72,7 @@ let makePCB = (canvas = lastObj, location = lastLocation) => {
     };
     ctx.lineWidth = Math.floor(((width < height ? width : height)*2)/1000)
     lineSpacing = 8 + ctx.lineWidth*2;
-    createLinesFromEdges();
-    ctx.clearRect(0, 0, width, height);
-    ctx.strokeStyle = color;
-    ctx.strokeRect(square.x, square.y, square.size, square.size);
-    animate();
-}
-
-let drawLine = line => {
-    ctx.beginPath();
-    ctx.moveTo(line.x1, line.y1);
-    ctx.lineTo(line.x2, line.y2);
-    ctx.stroke();
-}
-
-let drawCircles = circle => {
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, 2, 0, doublePi);
-    ctx.stroke();
-    ctx.fillStyle = color;
-    ctx.fill();
-}
-
-
-let numEnds = 0 // Auto Generated
-let createLinesFromEdges = () => {
+    // createLinesFromEdges();
     const numLinesPerEdge = Math.floor(square.size / lineSpacing);
     numEnds = (numLinesPerEdge-1)*4
 
@@ -159,10 +103,28 @@ let createLinesFromEdges = () => {
         let y1 = square.y + i * lineSpacing;
         lines.push({ x1, y1, x2: x1 - lineSpeed, y2: y1, angle: Math.PI, length: 0, lastAngle: -1 });
     }
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = color;
+    ctx.strokeRect(square.x, square.y, square.size, square.size);
+    animate();
 }
 
-let updateLine = line => {
-    let oldAngle = line.angle;
+let checkCollision = (x2, y2) => {
+    for (let line of lines) {
+        if (Math.hypot(x2 - line.x2, y2 - line.y2) < 2) {
+            return true;
+        }
+    }
+    return false;
+}
+
+let animate = () => {
+    if (linePosition == lines.length && endPosition == ends.length) cancelAnimationFrame(animationFrameId);
+    // else if (linePosition > 0) {
+    // Update and draw lines
+    lines.forEach(line => {
+        if (!line.finished) {
+            let oldAngle = line.angle;
     if (line.length >= minLength && Math.random() < 0.008) { // Probabilidad de cambiar la dirección después de la longitud mínima
         const randomAngle = (Math.random() < 0.5 ? 1 : -1) * quaterPi;
         line.angle += randomAngle;
@@ -188,39 +150,31 @@ let updateLine = line => {
         ends.push({ x: x, y: y });
     }
     line.finished = true;
-}
-
-let checkCollision = (x2, y2) => {
-    for (let line of lines) {
-        if (Math.hypot(x2 - line.x2, y2 - line.y2) < 2) {
-            return true;
-        }
-    }
-    return false;
-}
-
-let animate = () => {
-    if (linePosition == lines.length && endPosition == ends.length) cancelAnimationFrame(animationFrameId);
-    // else if (linePosition > 0) {
-    // Update and draw lines
-    lines.forEach(line => {
-        if (!line.finished) {
-            updateLine(line);
         }
     });
-    lines.slice(linePosition,lines.length).forEach(line => drawLine(line))
+    lines.slice(linePosition,lines.length).forEach(drawLine = line => {
+        ctx.beginPath();
+        ctx.moveTo(line.x1, line.y1);
+        ctx.lineTo(line.x2, line.y2);
+        ctx.stroke();
+    })
 
     linePosition = lines.length;
 
-    ends.slice(endPosition,ends.length).forEach(circle => drawCircles(circle));
+    ends.slice(endPosition,ends.length).forEach(drawCircles = circle => {
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, 2, 0, doublePi);
+        ctx.stroke();
+        ctx.fillStyle = color;
+        ctx.fill();
+    });
 
     endPosition = ends.length;
 
     ctx.clearRect(square.x+1, square.y+1, square.size-2, square.size-2);
     if (numEnds>ends.length) animationFrameId = requestAnimationFrame(animate);
-    // }
 }
 
 // Default
 
-generatePCB(document.querySelector("canvas.headerCanvas"),"AutoRightBottom")
+generatePCB(document.querySelector("canvas.headerCanvas"))
