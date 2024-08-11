@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Montserrat;
+    background: #000;
 }
 
 div.headerTitle {
@@ -126,8 +127,6 @@ div.headerTitle a{
     padding: .1em .5em;
 }
 .mark-container ol li::marker {
-/*     font-size:.75em; */
-/*         color: #f00; */
     font-family: Montserrat Alternates;
     font-weight: 800;
 }
