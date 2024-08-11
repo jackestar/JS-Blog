@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    font-family: Montserrat;
+}
+
+div.headerTitle {
+    color: #eee;
+    background-attachment:  fixed !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+
+}
+div.headerTitle .sha {
+    background-color: #333c;
+    transition:.2s ease-out;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+div.headerTitle .sha:hover {
+    background-color: #333e;
+    transition:.2s ease-in;
+}
+div.headerTitle h1 {
+    margin: 0;
+    padding: .5em;
+}
+
+div.headerTitle a{
+    padding: .3em;
+    margin: .2em;
+    background-color: #faa;
+/*     border-radius: 0 3em 3em 0; */
+    margin:0 .5em ;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+*:root {
+    --main-bg:#070503;
+    --code-bg:#fff2;
+    --code-pd:#222;
+}
+
+.mark-container {
+    font-family: Montserrat;
+    padding: 1em;
+    background: var(--main-bg);
+    color: #fff;
+    border-bottom: .3em solid #111;
+}
+.mark-container h1,.mark-container h2,.mark-container h3,.mark-container h4 {
+    font-variant: petite-caps;
+    letter-spacing: .075em;
+    padding-top: .75em;
+}
+.mark-container h1 {
+    font-size: 2.5em;
+    letter-spacing: .15em;
+    font-weight: 800;
+    padding: 0
+}
+.mark-container h2 {
+    letter-spacing: .1em;
+    font-weight: 800;
+    padding: 1em 0
+}
+.mark-container p {
+    margin:0 1em;
+}
+.mark-container ul {
+    list-style: disc;
+}
+.mark-container ul li a {
+    color: #fff;
+    font-variant: all-petite-caps;
+}
+.mark-container>ul>li>a {
+    font-size: 1.1em;
+}
+.mark-container>ul>li::marker {
+    color: #fffd
+}
+.mark-container>ul>li>ul li::marker {
+    color: #fffa
+}
+.mark-container ul li:hover::marker {
+    color: #fff
+}
+
+.mark-container a {
+    color: #aaf;
+    font-variant: all-petite-caps;
+    text-decoration: none;
+    font-family: Montserrat Alternates;
+}
+.mark-container a:hover {
+    color: #99f;
+    transition: .1s ease-in
+}
+
+.mark-container code {
+    background: var(--code-bg);
+    padding: .15em .25em;
+    border-radius: .25em;
+    font-family: Roboto,mono;
+    font-size: .85em
+}
+.mark-container pre>code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+.mark-container pre {
+    background: var(--code-pd);
+    padding: 1em;
+    border-left: 1em solid #333;
+    border-radius: .25em;
+    margin:1em;
+}
+
+.mark-container blockquote {
+    background: #000;
+    border-left: .5em solid #333;
+    padding: .1em .5em;
+}
+.mark-container ol li::marker {
+/*     font-size:.75em; */
+/*         color: #f00; */
+    font-family: Montserrat Alternates;
+    font-weight: 800;
+}
+
+section.otherArticles {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    background: #333;
+    border-top: .3em solid #222;
+}
+section.otherArticles a {
+    flex: 4 15em;
+    margin: 1em;
+    padding: 1em;
+    background: #556;
+    color: #fff;
+    border-radius: 1em;
+    text-decoration: none;
+    max-width: 25em;
+}
+section.otherArticles a strong {
+    font-variant: petite-caps;
+}
