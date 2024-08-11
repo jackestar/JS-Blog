@@ -34,3 +34,5 @@ index.html          // React Blog
 * Appropiate Snippet Injection
 * Page transition
 * Appropiate Minify
+* Migrate to my *Own headless CMD*
+* Markdown Titles Aside

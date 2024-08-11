@@ -1,6 +1,6 @@
 import './elements.css'
 import './prism.css'
-import './prism'
+// import '../public/prism'
 
 export let TitleHeader = ({article , banner=''}) => {
     // title,tags,banner=''
@@ -27,28 +27,42 @@ export let TitleHeader = ({article , banner=''}) => {
 }
 
 import Markdown from 'markdown-to-jsx'
-import { loadPrism } from './prism'
+// import { loadPrism } from '../public/prism'
+import React, { useState, useEffect } from "react";
 
 export let MarkdownContent = ({markdown}) => {
-    // console.log(markdown)
+    const [contentMD, setcontentMD] = useState(null);
+    useEffect(() => {
+      fetch(markdown)
+        // fetch(`${API_URL}/api/articles?populate=*`)
+        .then((response) => response.text())
+        .then((data) => setcontentMD(data))
+        .catch((error) => console.log(error));
+    }, []);
+    if (contentMD)
     return (
         <>
-            <Markdown className="mark-container">{markdown}</Markdown>
+            <Markdown className="mark-container">{contentMD}</Markdown>
+        </>
+    )
+    else return (
+        <>
+            <h1>Loading Markdown</h1>
         </>
     )
 }
 
 export let Prism = () => {
     // Reload PrismJS
-    // let before = document.querySelector('.primss')
-    // if (before) document.body.removeChild(before)
+    let before = document.querySelector('.primss')
+    if (before) document.body.removeChild(before)
     
-    // const script = document.createElement('script');
-    // script.src = '/src/prism.js';
-    // script.classList.add('primss')
-    // script.async = true;
-    // document.body.appendChild(script);
-    loadPrism()
+    const script = document.createElement('script');
+    script.src = '/prism.js';
+    script.classList.add('primss')
+    script.async = true;
+    document.body.appendChild(script);
+    // loadPrism()
     return (
         <>
         </>
@@ -60,7 +74,7 @@ export let OtherArticles = ({articles,actualArticle}) => {
     return (
         <section className="otherArticles">
             {articles.filter(a => a.id!=actualArticle).map( article =>
-            <a href='#' key={article.id}>
+            <a href={article.attributes.Title.replaceAll(' ','_')} key={article.id}>
                 <strong>{article.attributes.Title}</strong>
                 <p>{article.attributes.Description}</p>
             </a>
