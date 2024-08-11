@@ -1,8 +1,36 @@
-# React + Vite
+# Jackestar's Portfolio & Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- (In test) -->
+## Deploy
 
-Currently, two official plugins are available:
+Install
+`npm install`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Build
+`npm run build`
+
+Preview
+`npm run preview`
+
+## Structure
+
+```
+public/             // Static files
+    uploads/        // Media from CMS
+    _redirects      // Netlify redirects
+    articles.json   // Entire Blog JSON (test)
+src/                // React Blog files
+index.html          // React Blog
+```
+
+## TODO
+
+* Better Readme
+* Lang static Redirect (es/en)
+* Status page
+* Blog
+    - Read From API
+* Not found Page
+* Appropiate Snippet Injection
+* Page transition
+* Appropiate Minify
