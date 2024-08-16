@@ -1,15 +1,15 @@
-# Jackestar's Portfolio
+# Jackestar's Portfolio & Blog
 
-# TODO
+## TODO
 
-* Better readme
-⋅ Deploys
-⋅ Copyrights
+* Better Readme
+* Lang static Redirect (es/en)
+* Status page
 * Blog
-⋅ How i do severals proyects
-* Not Found
-* Redirects (Pensum https://jackestar.netlify.app/tools/pensum)
-* Snippet injection
-⋅ Go to home
-⋅ Page transition animation
-* Some server side builds things...
+    - export to PDF
+    - MultiLang
+    - Titles
+* Not found Page
+* Appropiate Snippet Injection
+* Page transition
+* Appropiate Minify
