@@ -77,16 +77,18 @@ let ArticleViewer = () => {
     return (
       <>
         <TitleHeader article={article.data[articleNumber].attributes} banner={banner}>
-        </TitleHeader>
-        <MarkdownContent markdown={markdownURL} >
-        </MarkdownContent>
-        <Prism></Prism>
+        </TitleHeader>  
+        <MarkdownContent children={markdownURL}/>
+        {/* <Prism></Prism> */}
         <OtherArticles articles={article.data} actualArticle={article.data[articleNumber].id}></OtherArticles>
+        <footer>
+          <a href="/">Jackestar 2024</a>
+        </footer>
       </>
     )
   }
   else return (
-    <div>
+    <div className='LoadingContent'   >
       <h2>Wait</h2>
       <p>Loading...</p>
     </div>

@@ -1,6 +1,5 @@
 import './elements.css'
 import './prism.css'
-// import '../public/prism'
 
 export let TitleHeader = ({article , banner=''}) => {
     // title,tags,banner=''
@@ -26,31 +25,82 @@ export let TitleHeader = ({article , banner=''}) => {
     )
 }
 
-import Markdown from 'markdown-to-jsx'
-// import { loadPrism } from '../public/prism'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, StrictMode } from "react";
 
-export let MarkdownContent = ({markdown}) => {
+// export let MarkdownContent = ({markdown}) => {
+//     const [contentMD, setcontentMD] = useState(null);
+//     useEffect(() => {
+//       fetch(markdown)
+//         // fetch(`${API_URL}/api/articles?populate=*`)
+//         .then((response) => response.text())
+//         .then((data) => setcontentMD(data))
+//         .catch((error) => console.log(error));
+//     }, []);
+//     if (contentMD)
+//     return (
+//         <>
+//             <Markdown className="mark-container">{contentMD}</Markdown>
+//         </>
+//     )
+//     else return (
+//         <>
+//             <h1>Loading Markdown</h1>
+//         </>
+//     )
+// }
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+// import remarkGfm from "remark-gfm";
+// import rehypeKatex from 'rehype-katex';
+import rehypeMathjax from 'rehype-mathjax';
+import rehypeRaw from 'rehype-raw'
+
+export const MarkdownContent = (props) => {
+    console.log(props.children)
     const [contentMD, setcontentMD] = useState(null);
     useEffect(() => {
-      fetch(markdown)
+      fetch(props.children)
         // fetch(`${API_URL}/api/articles?populate=*`)
         .then((response) => response.text())
         .then((data) => setcontentMD(data))
         .catch((error) => console.log(error));
     }, []);
-    if (contentMD)
-    return (
-        <>
-            <Markdown className="mark-container">{contentMD}</Markdown>
-        </>
+    if (contentMD) {
+        // console.log({"children":contentMD})
+        return (
+            <div className='mark-container'>
+                {/* <ReactMarkdown {..._mapProps({"children":contentMD})} /> */}
+                <ReactMarkdown children={contentMD}
+                remarkPlugins={[
+                    remarkMath,
+                    // remarkGfm
+                ]} 
+                // rehypePlugins={[[
+                //     rehypeKatex,
+                //     {
+                //         strict:false,
+                //         output:'mathml'
+                //     },
+                // ],
+                // ]}
+                rehypePlugins={[
+                    [rehypeMathjax],
+                    [rehypeRaw]
+                ]}
+                />
+                <Prism></Prism>
+            </div>
     )
+    }
     else return (
-        <>
+        <div className='LoadingContent'>
             <h1>Loading Markdown</h1>
-        </>
+        </div>
     )
 }
+
+export default MarkdownContent;
+// export default Markdown;
 
 export let Prism = () => {
     // Reload PrismJS
