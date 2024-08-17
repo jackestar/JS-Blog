@@ -1,6 +1,5 @@
 node_modules
 minify*
-package*
 .vscode
 .vitepress
 dist

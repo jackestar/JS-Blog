@@ -1,0 +1,16 @@
+{
+  "homepage": "https://jackestar.netlify.dev",
+  "scripts": {
+    "docs:dev": "vitepress dev Blog --host",
+    "docs:build": "vitepress build Blog",
+    "docs:preview": "vitepress preview Blog --host",
+    "build":"vitepress build Blog --outDir './dist/Blog'",
+    "postbuild":"cp -r ./static/* ./dist"
+  },
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2"
+  },
+  "dependencies": {
+    "vitepress": "^1.3.2"
+  }
+}
