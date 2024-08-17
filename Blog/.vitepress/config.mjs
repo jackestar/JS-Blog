@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base:'./',
+  base:'/Blog/',
   lang: 'es-ES',
   logo: '/manifest/favicon128.png',
   lastUpdated: true,

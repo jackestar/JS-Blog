@@ -3,3 +3,4 @@ minify*
 .vscode
 dist
 bun.lockb
+cache
