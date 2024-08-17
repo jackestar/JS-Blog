@@ -1,6 +1,5 @@
 node_modules
 minify*
 .vscode
-.vitepress
 dist
 bun.lockb

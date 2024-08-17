@@ -4,7 +4,7 @@
     "docs:dev": "vitepress dev Blog --host",
     "docs:build": "vitepress build Blog",
     "docs:preview": "vitepress preview Blog --host",
-    "build":"vitepress build Blog --outDir './dist/Blog'",
+    "build":"vitepress build Blog --outDir './dist/Blog' --base './' --minify 'terser'",
     "postbuild":"cp -r ./static/* ./dist"
   },
   "devDependencies": {

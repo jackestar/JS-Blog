@@ -1,5 +1,8 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
+
+title: Jackestar Blog
+
 layout: home
 
 hero:
@@ -16,7 +19,7 @@ hero:
 features:
   - title: Ejercicios Electronica Part. 1
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
-    link: /elec
+    link: ./elec
   - title: Baremetal Microcontrollers
     details: C++ Rust y assambler comparison
 ---
