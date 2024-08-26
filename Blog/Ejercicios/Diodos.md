@@ -6,31 +6,25 @@ lastUpdated: true
 outline: deep
 ---
 
-# Ejercicios Electronica
-
-El contenido cubre el tema de semiconductores en diodos y transistores, enfocado en el diseño, donde se cubre **diodo**, **transistor de unión bipolar (BJT)**, **Amplificadores** y **Amplificadores multietapa**
-
-El planteamiento de estos ejercicios es resolver de manera rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
-
-## Diodos
+# Diodos
 
 El primer contenido es diodo, centrado en diodo *Zener* y *Schottky*, modelos, Análisis de Circuitos con Diodos (características de transferencia): recortadores. Detectores y fijadores de voltaje, rectificadores de media onda y de onda completa. Fuentes de alimentación no reguladas (filtraje). Fuentes de alimentación reguladas con diodo Zener.
 
-### Ejercicios
+## Ejercicios
 
 Inserte Ejercicios Durante el Semestre
 
 ---
 
-### Parcial
+## Parcial
 
-#### 1. Determine la Función de transferencia $Vo = f(Vi)$ y grafique $Vo = f(Vi)$ y $Vo(t),{0,T}$
+### 1. Determine la Función de transferencia $Vo = f(Vi)$ y grafique $Vo = f(Vi)$ y $Vo(t),{0,T}$
 
-![Pregunta 1](./BlogImages/parcial1-1.svg)
+![Pregunta 1](./img/parcial1-1.svg)
 
 Donde $Vi$ se describe como una señal triangular de periodo $T$ de $8ms$ y Tension Pico-Pico $Vpp$ de $20v$.
 
-![Pregunta 1b](./BlogImages/Parcial%201-1a.png)
+![Pregunta 1b](./img/Parcial%201-1a.png)
 
 <details class="answer">
 <summary>Respuesta</summary>
@@ -44,13 +38,13 @@ El primera paso es simplificar el circuito si es posible. El teorema de Thevenin
 
 Lo que significa que si una parte del circuito comprendida por dos terminales es independiente de la otra parte y solo contiene elementos lineales se puede simplificar por un equivalente de Thevenin.
 
-![alt text](./BlogImages/parcial1-1b.svg)
+![alt text](./img/parcial1-1b.svg)
 
 En este caso como no tenemos fuentes dependientes podemos tomar el lado derecho del circuito de manera sencilla. Determinando la tension entre los terminales del circuito separado, con $Vi$ como constante, se obtiene $V_{th}$. Apagando las fuente del circuito y calculando la resistencia equivalente entre sus terminales se obtiene $R_{th}$.
 
 Para $V_{th}$ se puede hacer un sistema de ecuaciones para conocer el valor de tension en los terminales. Pero el circuito se puede resolver con técnicas mas sencilla. Primero se puede hacer una transformación de fuente donde una fuente de tension en serie con una resistencia tiene un equivalente con una fuente corriente en serie con una resistencia del mismo valor.
 
-![alt text](./BlogImages/sourceTransform.svg)
+![alt text](./img/sourceTransform.svg)
 
 Obedeciendo las siguientes formulas
 
@@ -81,8 +75,8 @@ $$
 
 Ahora el paralelo de $R1$ y $R2$ le asignaremos una resistencia equivalente $Ra$ de valor $R/2$. Queda la fuente $Ia$ en paralelo con resistencia $Ra$ y a su vez el serie con la resistencia $R3$. Se transforma $Ia$ junto a $Ra$ a una fuente de tension $Va$ de valor $Vi/2$ en serie con $Ra$, la cual queda en serie con $R3$, cuyo equivalente ahora es $Rb$ de valor $3R/2$. Finalmente la fuente $Va$ en serie con $Rb$ se transforma a una fuente de corriente $Ith$ de valor $Vi/(3R)$ en paralelo con con $Rb$ y con $R4$. El equivalente de $Rb$ y $R4$ es $R_{th}$ con valor $3R/5$. Lo que resulta en un equivalente de Norton, por comodidad (y para que la fuente equivalente no quede en función del valor de las resistencias) se transforma una vez mas en un equivalente de Thevenin, quedando $V_{th}$ con valor $Vi/5$.
 
-![Thevenin Procedimiento](./BlogImages/parcial1-1c.svg)
-![Thevenin Procedimiento](./BlogImages/parcial1-1d.svg)
+![Thevenin Procedimiento](./img/parcial1-1c.svg)
+![Thevenin Procedimiento](./img/parcial1-1d.svg)
 
 > [!TIP]
 >El objetivo de este procedimiento es poder realizar simplificaciones rápidas sin tener que plantear sistemas de ecuaciones, de manera que se pueda resolver el ejercicio con un calculadora de sencilla o mentalmente.
@@ -104,7 +98,7 @@ Para conocer el comportamiento de $Vo$ y poder graficarlo se analizan las 3 rama
 > Para los diodos Zener se tiene el mismo comportamiento con la adición que al superar el umbral de $Vz$ en polarización inversa el diodo conduce
 
 
-![Diodo](./BlogImages/Diode_symbol.svg)
+![Diodo](./img/Diode_symbol.svg)
 
 Analizaremos el ciclo positivo y negativo de cada rama
 
@@ -163,18 +157,18 @@ $$
 
 </details>
 
-#### 2. Determine que compuerta lógica digital forman estos circuitos, considere A y B entradas lógicas.
+### 2. Determine que compuerta lógica digital forman estos circuitos, considere A y B entradas lógicas.
 $1 = 5v (H)$ ; $0 = 0v (L)$
 
 > a. Analice tomando diodos ideales
 
 *a*
 
-![Pregunta 2](./BlogImages/parcial1-2a.svg)
+![Pregunta 2](./img/parcial1-2a.svg)
 
 *b*
 
-![Pregunta 2](./BlogImages/parcial1-2b.svg)
+![Pregunta 2](./img/parcial1-2b.svg)
 
 > b. Si los diodos fueran de silicio siguen funcionanado ambas compuertas?
 
@@ -185,78 +179,78 @@ Análisis Para determinar el tipo de compuerta simplemente se realiza la tabla d
 
 *a*
 
-![alt text](./BlogImages/parcial1-2as.svg)
+![alt text](./img/parcial1-2as.svg)
 
 <table>
-	<tr>
-		<td>A</td>
-		<td>B</td>
-		<td>Vod</td>
-		<td>Vo</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>0</td>
-		<td>1</td>
-		<td>5v</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>1</td>
-		<td>1</td>
-		<td>5v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>1</td>
-		<td>1</td>
-		<td>5v</td>
-	</tr>
+    <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>Vod</td>
+        <td>Vo</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>5v</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>5v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>5v</td>
+    </tr>
 </table>
 
 Cuando $A$ **o** $B$ es $1$ $V_o$ es $1$ ($5v$ analógico) por lo que la primera compuerta es una compuerta **OR**
 
 *b*
 
-![alt text](./BlogImages/parcial1-2bs.svg)
+![alt text](./img/parcial1-2bs.svg)
 
 <table>
-	<tr>
-		<td>A</td>
-		<td>B</td>
-		<td>Vod</td>
-		<td>Vo</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>0</td>
-		<td>0</td>
-		<td>0v</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>1</td>
-		<td>0</td>
-		<td>0v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>1</td>
-		<td>1</td>
-		<td>5v</td>
-	</tr>
+    <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>Vod</td>
+        <td>Vo</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0v</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>5v</td>
+    </tr>
 </table>
 
 Cuando $A$ **y** $B$ es $1$ $V_o$ es $1$ ($5v$ analógico) por lo que la segunda compuerta es una compuerta **AND**
@@ -264,61 +258,61 @@ Cuando $A$ **y** $B$ es $1$ $V_o$ es $1$ ($5v$ analógico) por lo que la segunda
 Si los diodos fueran de silicio tomando el modelo simplificado del diodo, en el caso `a` si alguna de las entradas fuese asertiva ($1$ o $5v$) habría una caída de tension en el diodo de $0.7v$ por lo que la tabla de la verdad quedaría
 
 <table>
-	<tr>
-		<td>A</td>
-		<td>B</td>
-		<td>Vo</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>0</td>
-		<td>0v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>0</td>
-		<td>4.3v</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>1</td>
-		<td>4.3v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>1</td>
-		<td>4.3v</td>
-	</tr>
+    <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>Vo</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>4.3v</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>4.3v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>4.3v</td>
+    </tr>
 </table>
 
 En el caso de la compuerta `b` si alguna entrada es $0v$ la corriente va desde la alimentación, a través de la resistencia y cae a través de uno de los diodos, por lo que respecto a tierra habría una diferencia de potencial de $0.7v$. si ambas entradas son asertivas la tension seria de $5v$.
 
 <table>
-	<tr>
-		<td>A</td>
-		<td>B</td>
-		<td>Vo</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>0</td>
-		<td>0.7v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>0</td>
-		<td>0.7v</td>
-	</tr>
-	<tr>
-		<td>0</td>
-		<td>1</td>
-		<td>0.7v</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>1</td>
-		<td>5v</td>
-	</tr>
+    <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>Vo</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0.7v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>0.7v</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0.7v</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>5v</td>
+    </tr>
 </table>
 
 El umbral entre un $1$ y $0$ lógico viene definido por la tecnología de dicha compuerta, tanto para la tecnología TTL y CMOS, cumplen para los valores de entrada (es decir para la tension aplicada a la entrada de otra compuerta), pero no cumple con las especificaciones de margenes de ruido para la tension de salida, de la misma.
@@ -330,7 +324,7 @@ A términos de un circuito digital podemos decir que sigue funcionando como comp
 
 </details>
 
-#### 3. Una fuente DC esta formada por un transformador de relación $10:1$, un puente rectificador de diodos soportan un max $2A$, un condensador de $47\mu F$ y una carga de $10K\Omega$.
+### 3. Una fuente DC esta formada por un transformador de relación $10:1$, un puente rectificador de diodos soportan un max $2A$, un condensador de $47\mu F$ y una carga de $10K\Omega$.
 > a. Dibuje el circuito para que la salida sea positiva. Determine el valor de Vo y el voltaje de rizo, sabiendo que $Vr=\frac{4V_o}{fcr}$
 
 > b. Que cambio realizaría al circuito para que la tension a la salida sea un voltaje negativo de -5v
@@ -345,7 +339,7 @@ A términos de un circuito digital podemos decir que sigue funcionando como comp
 > [!NOTE]
 > Se toman todos los diodos bajo el modelo simplificado, con diodos de silicio
 
-![Pregunta 3](./BlogImages/parcial1-3a.svg)
+![Pregunta 3](./img/parcial1-3a.svg)
 
 Para calcular $Vo$ vamos desde la entrada la fuente de tension $120v_{rms}\space⏦$, tomamos el transformador de manera ideal cumpliendo la siguiente relación.
 
@@ -407,7 +401,7 @@ $$
 f_{V_o}=120hz
 $$
 
-![Pregunta 3](./BlogImages/Parcial%201-3b.png)
+![Pregunta 3](./img/Parcial%201-3b.png)
 
 ya con estos valores tenemos que 
 
@@ -430,7 +424,7 @@ Para obtener un voltaje de $-5v$ (se tomara como voltaje pico) se pueden hacer u
 
 el primer método consiste en utilizar un divisor de tension capacitivo a la entrada.
 
-![Pregunta 3b Método 1](./BlogImages/parcial1-3b.svg)
+![Pregunta 3b Método 1](./img/parcial1-3b.svg)
 
 tomando la referencia (tierra) como el cátodo de los diodos $D_1$ y $D_4$ se obtiene voltaje negativo respecto a la tierra. Como aclaratoria invertir el puente rectificador generaría el mismo circuito.
 

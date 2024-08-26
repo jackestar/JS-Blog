@@ -3,7 +3,7 @@
     --background: #2c292d;
     --second: #161b1c;
     --third: #ff934f;
-    --fourth: #faa275;
+    --fourth: #101926;
     --fifth: #81f495;
 }
 body {
@@ -300,4 +300,44 @@ a.skip-to-content-link:focus {
     width: auto !important;
     padding: 0.5em !important;
     color: #000;
+}
+
+/* Blog */
+
+/* Prelimiar */
+
+section#blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section#blog h2 {
+    padding: .45em;
+    font-size: 3em;
+    font-variant: all-petite-caps;
+    border-radius: 1em;
+    border-bottom: .5em solid var(--theme);
+    margin-bottom: 1em;
+    color:#fff;
+}
+
+section#blog a {
+    color: #000;
+    padding: 1em;
+    text-decoration: none;
+    border-radius: 1em;
+    /* border-bottom: .5em solid var(--theme); */
+    font-weight: 500;
+    font-size: 1.25em;
+    background: linear-gradient(var(--theme) 50%,#fff 50%);
+    background-size: 10em 10em;
+    background-position-y: 4em;
+    transition:.3s ease-out;
+}
+
+section#blog a:hover {
+    background-position-y: 0;
+    transition:.3s ease-in;
 }

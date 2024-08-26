@@ -3,7 +3,8 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import './custom.css'
-// import '/css/stylesU.css'
+import founding from './Layout.vue'
+import '../../src/css/stylesU.css'
 
 /** @type {import('vitepress').Theme} */
 export default {
@@ -11,6 +12,7 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
+      'not-found': () => h(founding)
     })
   },
   enhanceApp({ app, router, siteData }) {
