@@ -31,6 +31,11 @@ export default defineConfig({
           items: [
             { text: 'Introducción', link: '/Baremetal/' },
             { text: 'Instalación', link: '/Baremetal/Installation' },
+            { text: 'Ejemplos',
+              items: [
+                { text: 'Blink', link: '/Baremetal/blink' },
+              ]
+            },
           ]
         }
       ],

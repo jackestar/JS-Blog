@@ -60,3 +60,12 @@
 .main div.console div.language-bash code>span:first-child:before,.main div.language-console code>span:first-child:before {
     content: '$ ';
 }
+
+.main div.longBlock>div.line-numbers-mode {
+    overflow-y: scroll;
+    height: 45vh;
+}
+
+.main div.longBlock div.line-numbers-wrapper {
+    height: max-content;
+}

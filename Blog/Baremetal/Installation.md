@@ -40,10 +40,6 @@ SUBSYSTEMS=="usb-serial", TAG+="uaccess"
 
 tambien se puede especificar el acceso solo a dispositivos especifico [udev - ArchWiki](https://wiki.archlinux.org/title/Udev#About_udev_rules)
 
-## Para programar con RUST
-
-
-
 ## Para programar con C/C++
 
 - Instalar las librerías [*avr-libc*](https://avrdudes.github.io/avr-libc/), contiene los headers necesarios para compilar en C
@@ -140,6 +136,78 @@ Para los argumentos de cada microcontrolador, programador y demás configuracion
 
 > [!warning]
 > Habitualmente se encuentra el uso de el argumento `-F` el cual ignora la firma del microcontrolador, lo cual puede ser util bajo ciertos casos (errores de dispositivo, memoria corrupta o sin formato etc.). Y también es habitual la opción `-V` que no comprueba si los datos fueron escritos correctamente. **No se recomienda su uso si no es necesario.**
+
+## Para programar con RUST
+
+Para compilar en avr con rust en necesario usar la version `nightly` del compilador de rust asi como su componente `rust-src`. Haciendo uso de la herramienta `rustup`
+
+<div class='console'>
+
+```bash
+rustup toolchain install nightly
+```
+
+```bash
+rustup component add rust-src --toolchain nightly
+```
+
+- Instalar las librerías [*avr-libc*](https://avrdudes.github.io/avr-libc/)
+
+```bash
+pacman -S avr-libc
+```
+
+</div>
+
+### con Hardware Abstraction Layer (HAL)
+
+La manera mas sencilla de programar un embebido en Rust es con algún **HAL** (con el objetivo de no trabajar con memoria directamente con rust). Una de las mas usadas es `avr-hal`
+
+<div class='console'>
+
+#### Uso de Plantilla (Opcional)
+
+`cargo-generate` permite utilizar plantillas para proyectos en rust
+
+```bash
+cargo install cargo-generate
+```
+
+Para crear nuevo proyecto con la plantilla `avr-hal-template`
+
+```bash
+cargo generate --git https://github.com/Rahix/avr-hal-template.git
+```
+> [!NOTE]
+> Esta plantilla por defecto proporciona dos perfiles de compilación `dev` (predeterminado) y `release`, ambos con información de depuración. Para obtener una compilación optimizada y sin información para depuración puede crear o modificar el `profile`
+> ```toml
+>[profile.release]
+>panic = "abort"
+>codegen-units = 1
+>debug = false
+>lto = true
+>opt-level = "s"
+>```
+
+##### Solo compilar
+
+```bash
+cargo build --profile=release
+```
+
+##### Compilar y cargar
+```bash
+cargo run --profile=release
+```
+
+#### Programacion
+
+```bash
+cargo install ravedude
+```
+
+</div>
+
 
 ## Para Programar sketch Arduino con Arduino CLI
 
@@ -267,3 +335,7 @@ arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:uno Blink
 [avr-libc - Github](https://github.com/avrdudes/avr-libc)
 
 [Arduino CLI](https://arduino.github.io/arduino-cli/1.0/)
+
+[avr-hal](https://github.com/Rahix/avr-hal/)
+
+[avr-hal-template](https://github.com/Rahix/avr-hal-template)
