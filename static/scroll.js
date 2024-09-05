@@ -74,7 +74,7 @@ let scroll = () => {
         }
     }
 
-    document.addEventListener('wheel', handleScroll, { passive: false });
+    document.querySelector('main').addEventListener('scroll', handleScroll, { passive: false });
     document.addEventListener('keydown', handleKeydown);
 
     window.addEventListener('hashchange', () => {

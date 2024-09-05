@@ -214,12 +214,20 @@
                 </div>
             </section>
             <section id="blog">
-                <h2>Blog de ingeniería en español</h2>
-                <a href="./Blog">Visitar</a>
+                <div class="title">
+                    <h2>Blog</h2>
+                    <p>Blog de ingeniería en español sobre microcontroladores, teoria de control, electronica, informatica y tecnologia en general</p>
+                    <a href="./Blog">Visitar</a><a href="./Blog/papers">Documentos</a>
+                </div>
+                <div class="banner">
+                    <div class="banimg">
+                        <img src="./src/blogBanner.png" alt="#">
+                    </div>
+                </div>
             </section>
-            <section id="papers">
+            <!-- <section id="papers">
                 <p>Papers</p>
-            </section>
+            </section> -->
             <!-- <footer><p>Jackestar 2024</p></footer> -->
         </main>
         <script src="pcb.js"></script>
@@ -233,13 +241,13 @@
 
                 list = new ListType(subtitle,["Web Developer", "Graphic Designer", "Electronic Engineering Student", "AI enthusiast","Linux enthusiast"])
 
-                maintitle = new ListType(title)
-                maintitle.stayPointer =false
-                maintitle.randomWriteSpeed = 5
-                maintitle.wordCallback = list.listStart
-                maintitle.start()
+                mainTitle = new ListType(title)
+                mainTitle.stayPointer =false
+                mainTitle.randomWriteSpeed = 5
+                mainTitle.wordCallback = list.listStart
+                mainTitle.start()
                 generatePCB(document.querySelector("canvas.headerCanvas"))
-                scroll()
+                scroll(document);
             })
         </script>
     </body>

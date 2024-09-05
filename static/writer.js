@@ -1,4 +1,4 @@
-function ListType(textObject, wordList, word = "", stayPointer = true, pointer = "|") {
+function ListType(textObject, wordList, word = "", stayPointer = true, pointer = "|", centred = true) {
     this.word = word;
     this.wordTyping = "";
     this.wordList = wordList || [];
@@ -18,7 +18,7 @@ function ListType(textObject, wordList, word = "", stayPointer = true, pointer =
 
     this.wordType = () => {
         if (this.listLength > this.listPosition) {
-            this.word = this.wordList[this.listPosition];
+            this.word = (centred ? "\u00A0" : "") + this.wordList[this.listPosition];
             this.wordLength = this.word.length;
             this.letterType();
         } else {
@@ -62,7 +62,7 @@ function ListType(textObject, wordList, word = "", stayPointer = true, pointer =
         this.wordType();
     };
     this.start = () => {
-        this.word = textObject.innerHTML
+        this.word = (centred ? "\u00A0" : "") + textObject.innerHTML
         this.wordLength = this.word.length;
         this.letterType();
     }

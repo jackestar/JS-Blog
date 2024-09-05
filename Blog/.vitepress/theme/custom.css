@@ -69,3 +69,45 @@
 .main div.longBlock div.line-numbers-wrapper {
     height: max-content;
 }
+
+.paper .document {
+    border: .2em solid var(--vp-c-default-2);
+    border-radius:3em;
+    padding:1.5em;
+    margin: 1em 0;
+    transition:.2s ease;
+  }
+  
+  .paper .document:hover {
+    border: .2em solid var(--vp-button-brand-bg);
+    transition:.2s ease;
+  }
+  
+  .paper .document h2 {
+    border:none;
+  /*   padding: 0; */
+    margin: 0;
+  }
+  
+  .paper .document p {
+    text-align:justify;
+  }
+  
+  .paper .document p em {
+    color: var(--vp-c-brand-1);
+  }
+
+  .paper .document p>a {
+    padding: .75em;
+    color: var(--vp-c-text-1);
+    text-decoration: none;
+    border: .2em solid var(--vp-c-brand-1);
+    border-radius: .5em;
+    transition:.2s ease;
+  }
+  
+  .paper .document p>a:hover {
+    background-color: var(--vp-c-brand-1);
+    color: var(--vp-c-bg);
+    transition:.2s ease;
+  }

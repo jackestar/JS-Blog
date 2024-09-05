@@ -20,6 +20,9 @@ export default defineConfig({
       { text: 'Artículos', link: '/' },
       { text: 'Home', link: 'https://jackestar.netlify.app/' }
     ],
+    search: {
+      provider: 'local'
+    },
 
     aside: {},
     sidebar: {

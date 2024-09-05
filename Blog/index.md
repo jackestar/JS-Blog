@@ -24,6 +24,9 @@ hero:
     - theme: alt
       text: Blog Repo
       link: https://github.com/jackestar/JS-Blog/
+    - theme: alt
+      text: Documentos
+      link: ./papers.md
 
 features:
   - title: Ejercicios Electronica Part. 1
