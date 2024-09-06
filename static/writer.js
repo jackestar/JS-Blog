@@ -66,19 +66,4 @@ function ListType(textObject, wordList, word = "", stayPointer = true, pointer =
         this.wordLength = this.word.length;
         this.letterType();
     }
-
 }
-
-// Default
-
-// const title = document.querySelector("header h1")
-// const subtitle = document.querySelector("header div.title p")
-// subtitle.innerText = ""
-
-// list = new ListType(subtitle,["Web Developer", "Graphic Designer", "Electronic Engineering Student", "AI enthusiast","Linux enthusiast"])
-
-// maintitle = new ListType(title)
-// maintitle.stayPointer =false
-// maintitle.randomWriteSpeed = 5
-// maintitle.wordCallback = list.listStart
-// maintitle.start()

@@ -56,7 +56,6 @@ let scroll = () => {
         } else if (event.deltaY < 0 && currentSection > 0) {
             currentSection--;
         }
-        // scrollToSection(currentSection);
         updateURLHash(currentSection);
     }
 
@@ -69,7 +68,6 @@ let scroll = () => {
             } else if (event.key === 'ArrowUp' && currentSection > 0) {
                 currentSection--;
             }
-            // scrollToSection(currentSection);
             updateURLHash(currentSection);
         }
     }
@@ -87,7 +85,6 @@ let scroll = () => {
 
     window.addEventListener('scroll', () => {
         const currentSection = getCurrentSectionIndex();
-        // scrollToSection(currentSection);
         updateURLHash(currentSection);
     });
 

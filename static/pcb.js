@@ -64,7 +64,6 @@ let makePCB = (canvas = lastObj) => {
     };
     ctx.lineWidth = Math.floor(((width < height ? width : height)*2)/1000)
     lineSpacing = 8 + ctx.lineWidth*2;
-    // createLinesFromEdges();
     const numLinesPerEdge = Math.floor(square.size / lineSpacing);
     numEnds = (numLinesPerEdge-1)*4
 
@@ -112,7 +111,7 @@ let checkCollision = (x2, y2) => {
 
 let animate = () => {
     if (linePosition == lines.length && endPosition == ends.length) cancelAnimationFrame(animationFrameId);
-    // else if (linePosition > 0) {
+
     // Update and draw lines
     lines.forEach(line => {
         if (!line.finished) {
@@ -166,7 +165,3 @@ let animate = () => {
     ctx.clearRect(square.x+1, square.y+1, square.size-2, square.size-2);
     if (numEnds>ends.length) animationFrameId = requestAnimationFrame(animate);
 }
-
-// Default
-
-// generatePCB(document.querySelector("canvas.headerCanvas"))

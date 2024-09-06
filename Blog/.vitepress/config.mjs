@@ -4,10 +4,6 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: '/Blog/',
   lang: 'es-ES',
-  // rollupOptions: {
-  //   external: ['/Blog/src/css/stylesU.css']
-  // },
-  // logo: '/manifest/favicon128.png',
   lastUpdated: true,
   title: "Jackestar Blog",
   description: "Electronics, Web Desing and Techology",
