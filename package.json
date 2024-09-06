@@ -4,6 +4,7 @@
     "docs:dev": "vitepress dev Blog --host",
     "docs:build": "vitepress build Blog",
     "docs:preview": "vitepress preview Blog --host",
+    "prebuild": "git submodule update --remote",
     "build":"vitepress build Blog --outDir './dist/Blog'",
     "postbuild":"cp -r ./static/* ./dist"
   },
