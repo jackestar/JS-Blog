@@ -4,7 +4,7 @@
 
 ### build Page
 
-clone repo
+clone repo (with submodules)
 ```bash
 git clone --recurse-submodules https://github.com/jackestar/JS-Blog 
 ```
@@ -32,10 +32,10 @@ deploy `dist` folder
 * Lang static Redirect (es/en)
 * Status page
 * Blog
-    - export to PDF
+    - Export to PDF
     - MultiLang
-    - Prerender for OpenGraph
+    - OpenGraph
 * Not found Page
-* Appropiate Snippet Injection
+* Appropriate Snippet Injection
 * Page transition
-* Appropiate Minify
+* Appropriate Minify

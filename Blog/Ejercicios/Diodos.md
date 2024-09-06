@@ -86,7 +86,7 @@ Lo que resulta en una $R_{th}$ de valor $600Ω$, y para un valor de tension pico
 
 **Resolución**
 
-Para conocer el comportamiento de $Vo$ y poder graficarlo se analizan las 3 ramas. considerando lo siguiente.
+Para conocer el comportamiento de $Vo$ y poder graficar se analizan las 3 ramas. considerando lo siguiente.
 
 > [!NOTE]
 > Se consider un modelo de diodo simplificado donde el diodo conduce corriente en polarización directa cuando la tension entre sus terminales alcanza una tension $Vk$, equivalente a una fuente de tension polarizada inversamente. Y cuando la tension entre sus terminales no alcanza la corriente de polarización o esta polarizada inversamente se comporta como un circuito abierto.
@@ -102,14 +102,14 @@ Para conocer el comportamiento de $Vo$ y poder graficarlo se analizan las 3 rama
 
 Analizaremos el ciclo positivo y negativo de cada rama
 
-Para la primera rama en el **ciclo positivo** para polarizar el diodo se debe superar la tension de polarización del diodo $Vk$ y ademas la tension de la fuente de $2v$, por lo que apartir de los $2.7v$ el diodo conduce. Para el **ciclo negativo** el diodo no conduce
+Para la primera rama en el **ciclo positivo** para polarizar el diodo se debe superar la tension de polarización del diodo $Vk$ y ademas la tension de la fuente de $2v$, por lo que a partir de los $2.7v$ el diodo conduce. Para el **ciclo negativo** el diodo no conduce
 
-Para la segunda rama en el **ciclo positivo** el diodo no conduce, y en el **ciclo negativo** apartir de los $-2.7v$ el diodo conduce, después de superar la tension de polarización del diodo y de la fuente de tension.
+Para la segunda rama en el **ciclo positivo** el diodo no conduce, y en el **ciclo negativo** a partir de los $-2.7v$ el diodo conduce, después de superar la tension de polarización del diodo y de la fuente de tension.
 
 > [!TIP]
 > se denota que la simetría inversa que poseen las primeras dos ramas
 
-Para la tercera rama el diodo Zener en el **ciclo positivo** al superar los $0.7v$ el diodo conduce y para el **ciclo negativo** apartir de los $-5v$ el diodo conduce.
+Para la tercera rama el diodo Zener en el **ciclo positivo** al superar los $0.7v$ el diodo conduce y para el **ciclo negativo** a partir de los $-5v$ el diodo conduce.
 
 Ya que la fuente de tension $V_{th}$ suministra una tension pico de $±2v$ la primera y segunda rama nunca conducen ya que no exceden la tension de $2.7v$ requerida para polarizar los diodos.
 
@@ -140,7 +140,7 @@ $$
 
 *Cuando D1, D2 y D3 no conducen*
 
-Al no haber corriente no hay caida te tension en $R_{th}$ por lo que
+Al no haber corriente no hay caída te tension en $R_{th}$ por lo que
 
 $$
 Vo = \frac{Vi}5
@@ -170,7 +170,7 @@ $1 = 5v (H)$ ; $0 = 0v (L)$
 
 ![Pregunta 2](./img/parcial1-2b.svg)
 
-> b. Si los diodos fueran de silicio siguen funcionanado ambas compuertas?
+> b. Si los diodos fueran de silicio siguen funcionando ambas compuertas?
 
 <details class='answer'>
 <summary>Respuesta</summary>
@@ -395,7 +395,7 @@ $$
 V_r=\frac{4V_{o_p}}{f\cdot c\cdot r}
 $$
 
-la frecuencia de la fuente de tension es $60hz$ el transformador bajo el modelo ideal no se ve afectado por la frecuencia y no cambia la misma a su salida. Al pasar por el puente rectificador para el ciclo positivo y el ciclo negativo del transformador, a la salida del puente rectificador se da la misma onda en la misma direccion, por lo que la frecuencia se duplica.
+la frecuencia de la fuente de tension es $60hz$ el transformador bajo el modelo ideal no se ve afectado por la frecuencia y no cambia la misma a su salida. Al pasar por el puente rectificador para el ciclo positivo y el ciclo negativo del transformador, a la salida del puente rectificador se da la misma onda en la misma dirección, por lo que la frecuencia se duplica.
 
 $$
 f_{V_o}=120hz

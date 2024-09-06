@@ -38,7 +38,7 @@ para permitir al usuario manejar interfaces seriales a través de USB es necesar
 SUBSYSTEMS=="usb-serial", TAG+="uaccess"
 ```
 
-tambien se puede especificar el acceso solo a dispositivos especifico [udev - ArchWiki](https://wiki.archlinux.org/title/Udev#About_udev_rules)
+también se puede especificar el acceso solo a dispositivos especifico [udev - ArchWiki](https://wiki.archlinux.org/title/Udev#About_udev_rules)
 
 ## Para programar con C/C++
 
@@ -93,7 +93,7 @@ Donde el argumento `-j .text -j .data` especifica que la sección `.text` (conte
 
 ### Resultado en ASM
 
-Para obtener el resultado del codigo compilado en assambler se usa el comando `avr-objdump`, donde `-m` establece la arquitectura del codigo compilado y `-D` muestra las nemotecnias del codigo assambler en base a la arquitectura
+Para obtener el resultado del codigo compilado en assembler se usa el comando `avr-objdump`, donde `-m` establece la arquitectura del codigo compilado y `-D` muestra las nemotecnias del codigo assembler en base a la arquitectura
 
 <div class='console'>
 
@@ -107,7 +107,7 @@ avr-objdump -D -mavr5 ./main.elf
 
 ### Programar
 
-para programar un microcontrolador AVR se usa la herramienta `avrdude`. Donde se debe especificar que microcontrolador esta conectado al programador con el argumento `-p` (Ej. ATmega328P `-p m328p`). El programador que se esta usando con el argumento `-c` (Ej. para un arduino UNO R3 `-c arduino`), el puerto al que esta conectado con el argumento `-P`. Y especificar que se va hacer una operación en memoria con el argumento `-U` señalando que memoria se va a programar (`flash`), el tipo de operación (escritura `w`), el nombre del archivo a programar (`main.hex`) y opcionalmente su formato (Ej `i` para intel HEX, `e` para ELF)
+para programar un microcontrolador AVR se usa la herramienta `avrdude`. Donde se debe especificar que microcontrolador esta conectado al programador con el argumento `-p` (Ej. ATmega328P `-p m328p`). El programador que se esta usando con el argumento `-c` (Ej. para un Arduino UNO R3 `-c arduino`), el puerto al que esta conectado con el argumento `-P`. Y especificar que se va hacer una operación en memoria con el argumento `-U` señalando que memoria se va a programar (`flash`), el tipo de operación (escritura `w`), el nombre del archivo a programar (`main.hex`) y opcionalmente su formato (Ej `i` para intel HEX, `e` para ELF)
 
 <div class='console'>
 
@@ -132,7 +132,7 @@ avrdude -p m328p -c arduino -P /dev/ttyUSB0 -U flash:w:main.elf:e
 Para los argumentos de cada microcontrolador, programador y demás configuraciones consulte la documentación de [avrdude](https://github.com/avrdudes/avrdude/)
 
 > [!note]
-> Tambien se suele especificar el baudrate, esta suele ser provista por el programador, de ser necesario se puede especificar con el argumento `-b`
+> También se suele especificar el baudrate, esta suele ser provista por el programador, de ser necesario se puede especificar con el argumento `-b`
 
 > [!warning]
 > Habitualmente se encuentra el uso de el argumento `-F` el cual ignora la firma del microcontrolador, lo cual puede ser util bajo ciertos casos (errores de dispositivo, memoria corrupta o sin formato etc.). Y también es habitual la opción `-V` que no comprueba si los datos fueron escritos correctamente. **No se recomienda su uso si no es necesario.**
@@ -200,7 +200,7 @@ cargo build --profile=release
 cargo run --profile=release
 ```
 
-#### Programacion
+#### Programación
 
 ```bash
 cargo install ravedude
@@ -232,7 +232,7 @@ arduino-cli sketch new NombreDelSketch
 ```
 ### Configurar Placa de desarrollo
 
-Actualiza la lista plataforma y librerias disponibles
+Actualiza la lista plataforma y librerías disponibles
 
 ```bash
 arduino-cli core update-index

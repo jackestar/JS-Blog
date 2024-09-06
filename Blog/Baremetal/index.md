@@ -1,6 +1,6 @@
 ---
-title: Baremetal in microcontrollers
-description: Comparacion entre Assambler C++ y rust. En ATmega328P (Arduino Uno/Nano) y ESP32 Devkit 1
+title: Baremetal en microcontrollers
+description: Comparación entre Assambler C++ y rust. En ATmega328P (Arduino Uno/Nano) y ESP32 Devkit 1
 
 lastUpdated: true
 outline: deep
