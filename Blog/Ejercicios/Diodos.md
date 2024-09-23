@@ -49,10 +49,10 @@ Para $V_{th}$ se puede hacer un sistema de ecuaciones para conocer el valor de t
 Obedeciendo las siguientes formulas
 
 $$
-\begin{align}
+\begin{gather}
     Vs = R\cdot Is \\
     Is = \frac{Vs}R
-\end{align}
+\end{gather}
 $$
 
 Dichas formulas son fácilmente deducibles con análisis de circuito.
@@ -65,12 +65,12 @@ Al tener todas las resistencias el mismo valor le asignaremos la constante $R$ p
 Demostrando la formula general para resistencias en paralelo se tiene que
 
 $$
-\begin{align}
+\begin{gather}
 R_{eq} = \frac{1}{(\frac{1}R + \frac{1}R)}\\
 
 
 R_{eq} = \frac{R}2
-\end{align}
+\end{gather}
 $$
 
 Ahora el paralelo de $R1$ y $R2$ le asignaremos una resistencia equivalente $Ra$ de valor $R/2$. Queda la fuente $Ia$ en paralelo con resistencia $Ra$ y a su vez el serie con la resistencia $R3$. Se transforma $Ia$ junto a $Ra$ a una fuente de tension $Va$ de valor $Vi/2$ en serie con $Ra$, la cual queda en serie con $R3$, cuyo equivalente ahora es $Rb$ de valor $3R/2$. Finalmente la fuente $Va$ en serie con $Rb$ se transforma a una fuente de corriente $Ith$ de valor $Vi/(3R)$ en paralelo con con $Rb$ y con $R4$. El equivalente de $Rb$ y $R4$ es $R_{th}$ con valor $3R/5$. Lo que resulta en un equivalente de Norton, por comodidad (y para que la fuente equivalente no quede en función del valor de las resistencias) se transforma una vez mas en un equivalente de Thevenin, quedando $V_{th}$ con valor $Vi/5$.
@@ -120,22 +120,22 @@ queda la siguiente ecuación
 *Cuando D1 y D2 no conducen, D3 si conduce:*
 
 $$
-\begin{align}
+\begin{gather}
 \frac{Vi}5 = I\cdot R_{th} + I\cdot R_{D3} + 0.7\\
 
 I = (Vi - 3.5v)/13k
-\end{align}
+\end{gather}
 $$
 lo que indica que cuando $Vi > 3.5$ hay corriente atravez de $D3$
 
 para $Vo$ cuando $D3$ conduce
 
 $$
-\begin{align}
+\begin{gather}
 Vo = I\cdot R_{D3} - Vi\\
 
 Vo = \frac{2Vi}{13} + 21/130
-\end{align}
+\end{gather}
 $$
 
 *Cuando D1, D2 y D3 no conducen*
@@ -336,6 +336,7 @@ A términos de un circuito digital podemos decir que sigue funcionando como comp
 
 > [!NOTE]
 > La fuente recibe a la entrada $120v_{rms}\space⏦$ AC a $60hz$
+
 > [!NOTE]
 > Se toman todos los diodos bajo el modelo simplificado, con diodos de silicio
 
@@ -345,7 +346,7 @@ Para calcular $Vo$ vamos desde la entrada la fuente de tension $120v_{rms}\space
 
 $$
 
-\frac{V_p}{V_s}=\frac{n_p}{n_s}
+\frac{V_p}{V_s}=\frac{n_p}{n_s}\tag{a}
 
 $$
 
@@ -370,11 +371,11 @@ $$
 lo que para una señal de función senoidal es
 
 $$
-
+\begin{gather}
 V_{efz} = \frac{v_p}{\sqrt2}\\
 V_{efz}\cdot \sqrt2 = v_p\\
 v_p=12\sqrt2
-
+\end{gather}
 
 $$
 
@@ -382,20 +383,20 @@ en el **ciclo positivo** a la salida del transformador la corriente fluye a trav
 En ambos ciclos, la tension del secundario del transformador debe superar la tension de polarización de dos diodos, por lo que cuando la tension (del secundario) es mayor $±1.4v$ ambos diodos conducen, sabiendo la caída de tension de los diodos tenemos que:
 
 $$
-
+\begin{gather}
 V_{o_p} = v_p - 2\cdot V_d\\
 V_{o_p} = 12\sqrt2 -1.4v\\
-V_{o_p} \approx 15.57v
-
+V_{o_p} \approx 15.5705v
+\end{gather}
 $$
 
-Tomando $V_o$ como el voltaje pico a la salida. tenemos la ecuación de voltaje de rizo
+Tomando $V_o$ como el voltaje pico a la salida, tenemos la ecuación de voltaje de rizo
 
 $$
-V_r=\frac{4V_{o_p}}{f\cdot c\cdot r}
+V_r=\frac{4V_{o_p}}{f\cdot c\cdot r}\tag{b}
 $$
 
-la frecuencia de la fuente de tension es $60hz$ el transformador bajo el modelo ideal no se ve afectado por la frecuencia y no cambia la misma a su salida. Al pasar por el puente rectificador para el ciclo positivo y el ciclo negativo del transformador, a la salida del puente rectificador se da la misma onda en la misma dirección, por lo que la frecuencia se duplica.
+La frecuencia de la fuente de tension es $60hz$ el transformador bajo el modelo ideal no se ve afectado por la frecuencia y no cambia la misma a su salida. Al pasar por el puente rectificador para el ciclo positivo y el ciclo negativo del transformador, a la salida del puente rectificador se da la misma onda en la misma dirección, por lo que la frecuencia se duplica.
 
 $$
 f_{V_o}=120hz
@@ -406,38 +407,133 @@ $$
 ya con estos valores tenemos que 
 
 $$
-V_r=\frac{40\sqrt2}{47}\approx 1.2035v
+V_r=\frac{2\cdot(60\sqrt2-7)}{141}\approx 1.1042v
 $$
 
 Para obtener el voltaje de salida tomamos el valor pico menos la mitad del voltaje de rizo, con la notación de ± la mitad del voltaje rizo
 
 $$
-
+\begin{gather}
 V_o = \left(V_{o_p}-\frac{V_r}2\right)±\frac{V_r}2\\
-V_o \approx 14.4987 ± 0.6017
-
+V_o \approx 15.0184 ± 0.5521
+\end{gather}
 $$
 
 Para obtener un voltaje de $-5v$ (se tomara como voltaje pico) se pueden hacer utilizar varios métodos (sin alterar los elementos ya existente). Demostraremos dos métodos.
 
 *Primer método*
 
-el primer método consiste en utilizar un divisor de tension capacitivo a la entrada.
+el primer método consiste en utilizar un divisor de tension capacitivo a la entrada, para asi no tener perdidas de potencia.
+
+>[!NOTE]
+> Se toman los capacitores como reactancias
 
 ![Pregunta 3b Método 1](./img/parcial1-3b.svg)
 
-tomando la referencia (tierra) como el cátodo de los diodos $D_1$ y $D_4$ se obtiene voltaje negativo respecto a la tierra. Como aclaratoria invertir el puente rectificador generaría el mismo circuito.
+Tomando la referencia (tierra) como el cátodo de los diodos $D_1$ y $D_4$ se obtiene voltaje negativo respecto a la tierra. Como aclaratoria invertir el puente rectificador generaría el mismo circuito.
 
-La tension $V_{o_p}$ es 5v, la tension que cae en el puente rectificador es de $1.4v$ por lo que la en los terminales del secundario tenemos $6.4v$, ya que la relación del transformador es $10:1$ (a través de la formula de relación de transformación) el voltaje pico a en el primario del transformador es $64v$ con un voltaje eficaz de $64/\sqrt2$.
+La tension $V_{o_p}$ es 5v, la tension que cae en el puente rectificador es de $1.4v$ por lo que la en los terminales del secundario tenemos $6.4v$, ya que la relación del transformador es $10:1$ (a través de la formula de relación de transformación) el voltaje pico a en el primario del transformador ($V_p$) es $64v$ con un voltaje eficaz de $64/\sqrt2$.
 
 Un divisor de tension viene dado por la siguiente expresión:
 
-$$$
+$$
+\begin{gather}
+V_{C_1}=\frac{Z_1\cdot V_i}{Z_1+Z_2} \tag{1.1}\\
+V_{C_2}=\frac{Z_2\cdot V_i}{Z_1+Z_2} \tag{1.2}
+\end{gather}
+$$
 
-V
+>[!NOTE]
+> Esta formula se obtiene con LVK y Ohm.
 
-$$$
+Donde $V_{C_1}$ es la tension al primario del transformador, al analizar la malla la fuente de tension y los dos capacitores tenemos por LVK (Kirchhoff)
 
+$$
+\begin{gather}
+V_i-V_{C_1}-V_{C_2}=0\\
+120 - 64/\sqrt2 = V_{C_1}\\
+V_{C_1}\approx 74.7451
+\end{gather}
+$$
+
+Para calcular el valor de los capacitores tenemos su valor en impedancia
+
+$$
+\begin{gather}
+Z_C=\frac{-j}{\omega\cdot c}\\
+\omega=2\pi f\\
+Z_C=\frac{-j}{2\pi\cdot f\cdot c} \tag{2}\\
+\end{gather}
+$$
+
+En base a las Eq. $\eqref{1.1}$ y $\eqref{2}$
+
+$$
+\begin{gather}
+V_{C_2}=\frac{\frac{-j}{2\pi\cdot f\cdot C_2}\cdot V_i}{\frac{-j}{2\pi\cdot f\cdot C_1}+\frac{-j}{2\pi\cdot f\cdot C_2}}\\
+V_{C_2}=\frac{\frac{1}{C_2}\cdot V_i}{\frac{1}{C_1}\cdot \frac{1}{C_2}}\\
+V_{C_2}=\frac{C_1\cdot V_i}{C_1+C_2} \tag{3.1}\\
+V_{C_1}=\frac{C_2\cdot V_i}{C_1+C_2} \tag{3.2}
+\end{gather}
+$$
+
+>[!NOTE]
+> la Eq $\eqref{3.2}$ se obtiene de la misma manera con las ecuaciones Eq. $\eqref{1.2}$ y $\eqref{2}$
+
+Con los valores de $V_{C_2}$ y $V_{C_2}$ obtenemos
+
+$$
+\begin{gather}
+\frac{8}{15\sqrt2-8}=\frac{C_1}{C_2}\\
+\frac{C_1}{C_2}\approx 0.6054\\
+0.6054C_2\approx C_1
+\end{gather}
+$$
+
+Obtenemos una proporción entre $C_1$ y $C_2$ y no un valor concreto. Se escoge el valor comercial de $33\mu F$ para $C_3$ lo que resulta para $C_1\approx19.98\mu F$ que aproximamos al valor comercial $20\mu F$.
+
+Ya con estos valores comprobamos. Dado $\eqref{3.1}$
+
+$$
+\begin{gather}
+V_{C_2}=\frac{20\mu F\cdot120}{33\mu F+20\mu F}\\
+V_{C_2}=2400/53\\
+V_{C_2}\approx45.2830v_{rms}
+\end{gather}
+$$
+
+Obtenemos la tencion en el capacitor $C_2$ y por ende en el primario del transformador, dado su relacion de transformacion Eq. $\eqref{a}$ a su salida tenemos
+
+$$
+\begin{gather}
+V_s=240/53\\
+V_s\approx4.5283v_{rms}\\
+V_{s_{pp}}\approx V_p\cdot\sqrt2\cdot\\
+V_{s_{pp}}\approx 6.4039
+\end{gather}
+$$
+
+al pasar por el puente rectificador cae en $1.4v$ al pasar por dos diodos en cada ciclo, por lo que el voltaje pico de salida es
+
+$$
+\begin{gather}
+V_o\approx V_{s_{pp}} -1.4\\
+V_o\approx 5.0039v\\
+\end{gather}
+$$
+
+Para el voltaje rizo la Eq $\eqref{b}$ lo que da
+
+$$
+V_r\approx0.3548v
+$$
+
+Tomando la referencia (tierra) como el cátodo de los diodos $D_1$ y $D_4$ y redondeando el resultado se comprueba que a la salida hay $V_o\approx -5v\\$
+
+
+*Segundo Método*
+
+Poner un zener XD
 </details>
 
 

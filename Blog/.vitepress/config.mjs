@@ -33,6 +33,7 @@ export default defineConfig({
             { text: 'Ejemplos',
               items: [
                 { text: 'Blink', link: '/Baremetal/blink' },
+                { text: 'Encoder Rotatorio (Rotary Encoder)', link: '/Baremetal/incremental_encoder' },
               ]
             },
           ]
