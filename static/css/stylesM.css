@@ -154,7 +154,6 @@ section#proyects div.pcontain div.elem {
     border-radius: 1em;
     transition: 0.5s ease-out;
     display: grid;
-    overflow:hidden;
     text-overflow: ellipsis;
 }
 section#proyects div.pcontain div.elem > div,
@@ -184,6 +183,7 @@ section#proyects div.pcontain div.elem > div.frontcard {
     background-color: var(--second);
     z-index: 1002;
     max-width:100%;
+    overflow:hidden;
 }
 
 section#proyects div.pcontain div.elem:hover {
