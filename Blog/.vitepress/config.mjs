@@ -48,6 +48,11 @@ export default defineConfig({
           items: [
             { text: 'Introducción', link: '/Ejercicios/' },
             { text: 'Diodos', link: '/Ejercicios/Diodos' },
+            { text: ' Anexos',
+              items: [
+                { text: 'Carga-Divisor', link: '/Ejercicios/Thevenin-01' },
+              ]
+            },
           ]
         }
       ]
