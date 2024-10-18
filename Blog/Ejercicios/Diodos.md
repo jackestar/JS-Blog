@@ -155,6 +155,8 @@ V_o = \begin{cases}
 \end{cases}
 $$
 
+![Grafica Vo(Vi)](img/vivo.svg)
+
 </details>
 
 ### 2. Determine que compuerta lógica digital forman estos circuitos, considere A y B entradas lógicas.
@@ -329,7 +331,7 @@ A términos de un circuito digital podemos decir que sigue funcionando como comp
 
 > b. Que cambio realizaría al circuito para que la tension a la salida sea un voltaje negativo de -5v
 
-> c. que ocurre si el capacitor a la salida tiene un valor muy pequeño
+> c. Que ocurre si el capacitor a la salida tiene un valor muy pequeño
 
 <details class="answer">
 <summary>Respuesta</summary>
@@ -414,7 +416,7 @@ Para obtener el voltaje de salida tomamos el valor pico menos la mitad del volta
 
 $$
 \begin{gather}
-V_o = \left(V_{o_p}-\frac{V_r}2\right)±\frac{V_r}2\\
+V_o = \left(V_{o_p}-\frac{V_r}2\right)±\frac{V_r}2\tag{c}\\
 V_o \approx 15.0184 ± 0.5521
 \end{gather}
 $$
@@ -466,7 +468,7 @@ Z_C=\frac{-j}{2\pi\cdot f\cdot c} \tag{2}\\
 \end{gather}
 $$
 
-En base a las Eq. $\eqref{1.1}$ y $\eqref{2}$
+En base a las Eq. $(1.1)$ y $(2)$
 
 $$
 \begin{gather}
@@ -478,7 +480,7 @@ V_{C_1}=\frac{C_2\cdot V_i}{C_1+C_2} \tag{3.2}
 $$
 
 >[!NOTE]
-> la Eq $\eqref{3.2}$ se obtiene de la misma manera con las ecuaciones Eq. $\eqref{1.2}$ y $\eqref{2}$
+> la Eq $(3.2)$ se obtiene de la misma manera con las ecuaciones Eq. $(1.2)$ y $(2)$
 
 Con los valores de $V_{C_2}$ y $V_{C_2}$ obtenemos
 
@@ -486,13 +488,13 @@ $$
 \begin{gather}
 \frac{8}{15\sqrt2-8}=\frac{C_1}{C_2}\\
 \frac{C_1}{C_2}\approx 0.6054\\
-0.6054C_2\approx C_1
+0.6054\cdot C_2\approx C_1
 \end{gather}
 $$
 
 Obtenemos una proporción entre $C_1$ y $C_2$ y no un valor concreto. Se escoge el valor comercial de $33\mu F$ para $C_3$ lo que resulta para $C_1\approx19.98\mu F$ que aproximamos al valor comercial $20\mu F$.
 
-Ya con estos valores comprobamos. Dado $\eqref{3.1}$
+Ya con estos valores comprobamos. Dado $(3.1)$
 
 $$
 \begin{gather}
@@ -502,7 +504,7 @@ V_{C_2}\approx45.2830v_{rms}
 \end{gather}
 $$
 
-Obtenemos la tencion en el capacitor $C_2$ y por ende en el primario del transformador, dado su relacion de transformacion Eq. $\eqref{a}$ a su salida tenemos
+Obtenemos la tencion en el capacitor $C_2$ y por ende en el primario del transformador, dado su relacion de transformacion Eq. $(a)$ a su salida tenemos
 
 $$
 \begin{gather}
@@ -522,7 +524,7 @@ V_o\approx 5.0039v\\
 \end{gather}
 $$
 
-Para el voltaje rizo la Eq $\eqref{b}$ lo que da
+Para el voltaje rizo la Eq $(b)$ lo que da
 
 $$
 V_r\approx0.3548v
@@ -530,11 +532,85 @@ $$
 
 Tomando la referencia (tierra) como el cátodo de los diodos $D_1$ y $D_4$ y redondeando el resultado se comprueba que a la salida hay $V_o\approx -5v\\$
 
+lo que según la Eq $(c)$
+
+$$
+V_o=-5.0039±0.1774V
+$$
+
+
 
 *Segundo Método*
 
-Poner un zener XD
+![Método 2](img/parcial1-3c.svg)
+
+Otro método valido es poner un diodo zener a la salida de puente rectificador
+
+> [!NOTE]
+> Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuraciónn de los mismos cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
+
+Sabemos que el valor pico a la salida del puente rectificador es $V_{O_{p}}=120\sqrt2 - 1.4$ de la primera parte del problema, por lo que se tiene que:
+
+$$
+\begin{gather}
+V_{O_{p}}-Vz = V_o\\
+V_{O_{p}}-V_o = V_z\\
+V_z = 12\sqrt{2}-6.4\\
+V_z \approx 10.6
+\end{gather}
+$$
+
+Por lo que el nuevo voltage de salida para $V_z$ normalizado sera
+
+$$
+V_o=V_{O_{p}}-Vz\\
+V_o=12\sqrt{2}-12\\
+V_o\approx 4.9705V
+$$
+
+Para el voltage rizo tomando la Eq. $(b)$
+
+$$
+\begin{gather}
+V_r = \frac{4\cdot 4.9705}{120\cdot 47\mu \cdot 10k}\\
+V_r \approx 0.3525
+\end{gather}
+$$
+
+lo que según la Eq $(c)$
+
+$$
+Vo \approx 4.97056 ± 0.1763 V
+$$
+
+Si el capacitor de salida es de valor muy pequeño el rizo se hace muy grande y el voltage de salida pasa a tener una variación notable.
+
 </details>
 
+### 4. Dado el regulador zener
+
+![Diagrama Ejercicio 4](img/parcial1-4a.svg)
+
+$$
+\begin{gather}
+V_z=5v\\
+V_i=[10,15]v\\
+P_z=1W
+
+\end{gather}
+$$
+> $R_p$
+
+> Valor mínimo y máximo de $R_l$ para que el circuito trabaje como regulador
+
+> Que ocurre si $R_l=5\Omega$
+
+> Que ocurre si $R_l=5k\Omega$
+
+> Que ocurre si $V_i$ aumenta al doble de su valor maximo
+
+<details class="answer">
+<summary>Respuesta</summary>
+</details>
 
 ---

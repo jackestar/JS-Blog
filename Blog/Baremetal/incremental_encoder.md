@@ -158,7 +158,7 @@ Una manera de hacer esto es con Interrupciones. En el caso del Atmega328p cuenta
 
 Lo primero es importar la librería `#include <avr/interrupt.h>` para manejar las interrupciones.
 
-Utilizaremos el Timer/Counter0, al ser de 8bits puede contar hasta `255` antes de mandar una interrupción por desbordamiento (overflow) o `255` o menos con una interrupción por comparación. Por defecto el contador incrementa su valor por cada ciclo de reloj, al operar el microcontrolador a `16Mhz` significa una interrupción cada $16\mu s$, lo que es demasiado rápido. Para evitar esto cada Timer/Counter posee un prescaler divide el valor del cantador en valores de 8, 64, 256, 1024. Para manejar el prescaler se usa el registro `TCCR0B`
+Utilizaremos el Timer/Counter0, al ser de 8bits puede contar hasta `255` antes de mandar una interrupción por desbordamiento (overflow) (`>255`) o menos con una interrupción por comparación. Por defecto el contador incrementa su valor por cada ciclo de reloj, al operar el microcontrolador a `16Mhz` significa una interrupción cada $16\mu s$, lo que es demasiado rápido. Para evitar esto cada Timer/Counter posee un prescaler divide el valor del cantador en valores de 8, 64, 256, 1024. Para manejar el prescaler se usa el registro `TCCR0B`
 
 **TCCR0B - Timer/Counter Control Register B**
 
@@ -223,6 +223,7 @@ El Timer/Counter0 puede desencadenar 3 interrupciones, enmascaradas por el regis
 
 Establecido la interrupción, falta establecer que hacer frente a dicha interrupción, para eso se usa la sintaxis
 
-```
-ISR
+```c
+ISR(TIMER0_COMPA_vect) {
+}
 ```

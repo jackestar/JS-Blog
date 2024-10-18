@@ -4,3 +4,4 @@ minify*
 dist
 bun.lockb
 cache
+test.md
