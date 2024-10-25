@@ -10,11 +10,11 @@ outline: deep
 
 El primer contenido es diodo, centrado en diodo *Zener* y *Schottky*, modelos, Análisis de Circuitos con Diodos (características de transferencia): recortadores. Detectores y fijadores de voltaje, rectificadores de media onda y de onda completa. Fuentes de alimentación no reguladas (filtraje). Fuentes de alimentación reguladas con diodo Zener.
 
-## Ejercicios
+<!-- ## Ejercicios
 
 Inserte Ejercicios Durante el Semestre
 
----
+--- -->
 
 ## Parcial
 

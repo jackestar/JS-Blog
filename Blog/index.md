@@ -31,8 +31,11 @@ hero:
 features:
   - title: Ejercicios Electronica Part. 1
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
-    link: ./Ejercicios
+    link: ./Ejercicios-Electronica-I
   - title: Baremetal Microcontrollers
     details: Programacion de microcontroladores baremetal C++ Rust y assambler
     link: ./Baremetal
+  - title: Ejercicios Electronica Part. 2
+    details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
+    link: ./Ejercicios-Electronica-II
 ---

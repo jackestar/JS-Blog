@@ -42,15 +42,30 @@ export default defineConfig({
 
       // This sidebar gets displayed when a user
       // is on `config` directory.
-      '/Ejercicios/': [
+      '/Ejercicios-Electronica-I/': [
         {
-          text: 'Ejercicions Electronica',
+          text: 'Ejercicios Electronica I',
           items: [
-            { text: 'Introducción', link: '/Ejercicios/' },
-            { text: 'Diodos', link: '/Ejercicios/Diodos' },
+            { text: 'Introducción', link: '/Ejercicios-Electronica-I/' },
+            { text: 'Diodos', link: '/Ejercicios-Electronica-I/Diodos' },
             { text: ' Anexos',
               items: [
-                { text: 'Carga-Divisor', link: '/Ejercicios/Thevenin-01' },
+                { text: 'Carga-Divisor', link: '/Ejercicios-Electronica-I/Thevenin-01' },
+              ]
+            },
+          ]
+        }
+      ],
+
+      '/Ejercicios-Electronica-II/': [
+        {
+          text: 'Ejercicios Electronica II',
+          items: [
+            { text: 'Introducción', link: '/Ejercicios-Electronica-II/' },
+            { text: 'FET', link: '/Ejercicios-Electronica-II/FET' },
+            { text: ' Anexos',
+              items: [
+                { text: 'Guía'},
               ]
             },
           ]

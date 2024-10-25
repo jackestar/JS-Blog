@@ -7,11 +7,11 @@ outline: deep
 ---
 
 ## Laboratorios
-
+### Electronica I
 <div class="paper">
 <div class="document">
 
-### Practica de Laboratorio #1 - Diodos<Badge type="info" text="Electronica I" />
+#### Practica de Laboratorio #1 - Diodos<Badge type="info" text="Electronica I" />
 
 *Abstract—* Los diodos, son unos de los elementos principales en la electrónica (tanto para la digital, como la analógica), ya que la mayoría de los circuitos electrónicos se conforman por los mismos. De esta manera, es importante conocer algunas características principales, que siempre se tendrán en cuenta, a la hora de la práctica. Además, se resaltará una característica importante de las fuentes de tensión cuando a éstas se les conecta a una red que exige más corriente de la que la misma fuente puede suministrar.
 
@@ -22,7 +22,7 @@ outline: deep
 </div>
 <div class="document">
 
-### Practica de Laboratorio #2 – Integrado 555<Badge type="info" text="Electronica I" />
+#### Practica de Laboratorio #2 – Integrado 555<Badge type="info" text="Electronica I" />
 
 *Abstract—* El circuito integrado 555 es uno de los principales elementos de estudio en la electrónica, debido a la versatilidad que este presenta al momento de diseñar circuitos electrónicos, la cantidad de aplicaciones que se pueden realizar con este son innumerables, por ende, es importante realizar un análisis detallado acerca de su funcionamiento básico en los distintos modos de operación que este posee (astable y monoestable).
 
@@ -32,7 +32,7 @@ outline: deep
 </div>
 <div class="document">
 
-### Practica de Laboratorio #3 – Osciloscopio<Badge type="info" text="Electronica I" />
+#### Practica de Laboratorio #3 – Osciloscopio<Badge type="info" text="Electronica I" />
 
 *Abstract—* El presente laboratorio busca comprender el funcionamiento y utilidad del osciloscopio para aplicaciones en la electrónica, así como verificar su calibración, la información que se puede extraer del mismo y las utilidades que ofrece.
 
@@ -43,7 +43,7 @@ outline: deep
 
 <div class="document">
 
-### Practica de Laboratorio #4 – Voltaje de Rizo<Badge type="info" text="Electronica I" />
+#### Practica de Laboratorio #4 – Voltaje de Rizo<Badge type="info" text="Electronica I" />
 
 *Abstract—* en presente trabajo busca demostrar los efecto de el filtrado por capacitores de señales senoidales rectificadas, con el objetivo de obtener una constante experimental para el voltaje de rizo dado un carga
 
@@ -53,7 +53,7 @@ outline: deep
 </div>
 <div class="document">
 
-### Practica de Laboratorio #5 – Transistor y Relé<Badge type="info" text="Electronica I" />
+#### Practica de Laboratorio #5 – Transistor y Relé<Badge type="info" text="Electronica I" />
 
 *Abstract—* A manera que avanza la tecnología, los sistemas se vuelven cada vez más digitales, y automatizados, de esta manera, es importante, desarrollar circuitos, que sean capaces de comunicarse de forma digital, con lo cual es importante dar a conocer un pequeño ejemplo con la implementación de un circuito relé-transistor
 
@@ -63,7 +63,7 @@ outline: deep
 </div>
 <div class="document">
 
-### Practica de Laboratorio #6 – Fuente Regulable<Badge type="info" text="Electronica I" />
+#### Practica de Laboratorio #6 – Fuente Regulable<Badge type="info" text="Electronica I" />
 
 *Abstract—* En esta práctica de laboratorio se diseñó y construyó una fuente de voltaje regulable utilizando un transformador, un puente rectificador y el integrado LM317. Se midió y ajustó el voltaje de salida para obtener una fuente de hasta 25V, incluyendo la implementación de un indicador LED. También se realizó un montaje similar utilizando el integrado LM337 para obtener voltajes negativos.
 
