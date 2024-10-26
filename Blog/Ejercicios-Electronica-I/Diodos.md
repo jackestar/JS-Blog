@@ -26,8 +26,7 @@ Donde $Vi$ se describe como una señal triangular de periodo $T$ de $8ms$ y Tens
 
 ![Pregunta 1b](./img/Parcial%201-1a.png)
 
-<details class="answer">
-<summary>Respuesta</summary>
+:::details Respuesta
 
 **Simplificación**
 
@@ -157,7 +156,7 @@ $$
 
 ![Grafica Vo(Vi)](img/vivo.svg)
 
-</details>
+:::
 
 ### 2. Determine que compuerta lógica digital forman estos circuitos, considere A y B entradas lógicas.
 $1 = 5v (H)$ ; $0 = 0v (L)$
@@ -174,8 +173,7 @@ $1 = 5v (H)$ ; $0 = 0v (L)$
 
 > b. Si los diodos fueran de silicio siguen funcionando ambas compuertas?
 
-<details class='answer'>
-<summary>Respuesta</summary>
+:::details Respuesta
 
 Análisis Para determinar el tipo de compuerta simplemente se realiza la tabla de la verdad para cada caso tomando $A$ y $B$ como entrada y $V_o$ como salida.
 
@@ -324,7 +322,7 @@ El umbral entre un $1$ y $0$ lógico viene definido por la tecnología de dicha 
 
 A términos de un circuito digital podemos decir que sigue funcionando como compuerta, mas no cumple con las especificaciones TTL y CMOS.
 
-</details>
+:::
 
 ### 3. Una fuente DC esta formada por un transformador de relación $10:1$, un puente rectificador de diodos soportan un max $2A$, un condensador de $47\mu F$ y una carga de $10K\Omega$.
 > a. Dibuje el circuito para que la salida sea positiva. Determine el valor de Vo y el voltaje de rizo, sabiendo que $Vr=\frac{4V_o}{fcr}$
@@ -333,8 +331,7 @@ A términos de un circuito digital podemos decir que sigue funcionando como comp
 
 > c. Que ocurre si el capacitor a la salida tiene un valor muy pequeño
 
-<details class="answer">
-<summary>Respuesta</summary>
+:::details Respuesta
 
 > [!NOTE]
 > La fuente recibe a la entrada $120v_{rms}\space⏦$ AC a $60hz$
@@ -585,7 +582,7 @@ $$
 
 Si el capacitor de salida es de valor muy pequeño el rizo se hace muy grande y el voltage de salida pasa a tener una variación notable.
 
-</details>
+:::
 
 ### 4. Dado el regulador zener
 
@@ -593,9 +590,9 @@ Si el capacitor de salida es de valor muy pequeño el rizo se hace muy grande y 
 
 $$
 \begin{gather}
-V_z=5v\\
+V_Z=5v\\
 V_i=[10,15]v\\
-P_z=1W
+P_Z=1W
 
 \end{gather}
 $$
@@ -609,8 +606,77 @@ $$
 
 > Que ocurre si $V_i$ aumenta al doble de su valor maximo
 
-<details class="answer">
-<summary>Respuesta</summary>
-</details>
+:::details Respuesta
+<!-- <details class="answer"> -->
+<!-- <summary>Respuesta</summary> -->
+
+El limitante para el valor de $R_P$ es la potencia maxima que soporta el zener
+
+$$
+\begin{gather}
+P_Z=V_Z\cdot I_{ZM}\\
+I_{ZM}=200mA
+\end{gather}
+$$
+> [!NOTE]
+> El circuito esta compuestos por dos nodos por donde pasan las mismas corrientes, por lo que se referirá al "nodo" como cualquiera de estos
+
+por el nodo pasa las siguientes corrientes
+
+$$
+I_P=I_{ZM}+I_L
+$$
+
+Para que $I_{ZM}$ tenga su valor máximo, $I_L\to 0$, por ley de ohm se tiene que
+
+$$
+\begin{gather}
+R_L=\lim\limits_{I_L\to 0}V_R/I_L\\
+R_L=\infty
+\end{gather}
+$$
+
+Una resistencia infinita es equivalente a un circuito abierto, o al circuito sin carga $R_L$. al ser $I_L=0$ también $I_P=I_{ZM}$, por lo que queda la siguiente malla
+
+$$
+\begin{gather}
+Vi - I_{ZM}\cdot R_p - V_Z = 0\\
+R_p = \frac{V_i-V_Z}{I_{ZM}}\\
+R_p = 50\Omega
+\end{gather}
+$$
+
+En base a estos valores de puede determinar los valores mínimos y máximos que puede tomar la carga, para el modelo anterior consideramos al circuito sin carga es decir con una carga de resistencia infinita, por lo que consideramos que no tiene limite superior, por otro lado el diodo zener requiere una corriente minima $I_{ZK}$ (Corriente de Codo (*knee current*)) para operar, la cual suele ser entre el 5% y 10% de la corriente maxima $I_{ZM}$. Para este caso asumimos un 10%
+
+$$
+\begin{gather}
+I_{ZK} = 10\%\cdot I_{ZM}\\
+I_{ZK} = 0.1\cdot I_{ZM}\\
+I_{ZK} = 20mA
+\end{gather}
+$$
+
+Para que el circuito funcione la diferencia de potencia tanto en el diodo y como la resistencia de carga deben ser iguales $V_Z=V_L=5V$, por la rama del diodo zener debe haber al menos $I_{ZK}$.
+
+$$
+\begin{gather}
+V_i-R_P\cdot (I_{ZK}+I_{I_L}) - 5=0\\
+I_L=\frac{V_L}{R_L}\\
+R_L=\frac{V_Z\cdot R_P}{V_i-V_Z-I_Z\cdot R_P}\\
+R_L=250/9\\
+R_L\approx27.8\Omega
+\end{gather}
+$$
+
+Con estos valores sabemos que $R_L=[\frac{250}{9},\infty]$ por lo que
+
+**Si $R_L=5\Omega$** el circuito no regula
+
+**Si $R_L=5k\Omega$** el circuito regula
+
+> [!NOTE]
+> al estar las resistencias dentro del rango no hace falta verificar $P_Z$, $V_L$ o $I_{ZK}$
+
+:::
 
 ---

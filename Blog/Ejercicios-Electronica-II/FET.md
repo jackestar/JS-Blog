@@ -32,8 +32,7 @@ El BF245A es un transistor JFET de canal N para aplicaciones de amplificación e
 
 *<p style="text-align:center">Fig P1.9.3</p>*
 
-<details class="answer">
-<summary>Respuesta</summary>
+:::details Respuesta
 
 Con los datos de la Fig. P1.9a conocemos que $V_p=-2V$ y $I_{DSS}=4mA$
 
@@ -214,6 +213,6 @@ V_{DS_2} \geq - 1 - (-2)\\
 3 \geq 1\\
 \end{gather}
 $$
-</details>
+:::
 
 <!-- ## Parcial -->
