@@ -111,3 +111,10 @@
     color: var(--vp-c-bg);
     transition:.2s ease;
   }
+
+
+  /* Majax Fix */
+
+mjx-container {
+  overflow-x: unset;
+}

@@ -21,6 +21,11 @@ export default defineConfig({
     },
 
     aside: {},
+
+    footer: {
+      message: 'Jackestar 2024',
+      // copyright: 'Copyright © 2019-present Evan You'
+    },
     sidebar: {
       // This sidebar gets displayed when a user
       // is on `guide` directory.
@@ -70,8 +75,19 @@ export default defineConfig({
             },
           ]
         }
+      ],
+      '/PAC22/': [
+        {
+          text: 'Suite PAC 22',
+          items: [
+            { text: 'Introducción', link: '/PAC22/' },
+            { text: 'Instalación ArchLinux', link: '/PAC22/installation.md' },
+          ]
+        }
       ]
     },
+
+    
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/jackestar' }

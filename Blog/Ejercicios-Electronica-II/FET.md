@@ -8,6 +8,9 @@ outline: deep
 
 ## Ejercicios
 
+> [!NOTE]
+> Los ejercicios a continuación son del libro *Electronica Básica para Ingenieros* y *Electronica Básica para Ingenieros problemas resueltos*, con la aclaración de que uno no es el solucionario del otro
+
 ### Electronica Básica para Ingenieros P 1.9
 
 El BF245A es un transistor JFET de canal N para aplicaciones de amplificación en VHF/UHF. Las características DC de este JFET se muestran en la figura P1.9a y P1.9b. Con esta información determinar el punto de trabajo de los transistores de las figuras P1.9.1, P1.9.2 y P1.9.3.
@@ -42,7 +45,7 @@ Para el primer ejercicio analizamos la malla de entrada
 
 $$
 
-0-R_G5\cdot I_G-V_{GS}-R_S\cdot I_S-0=0
+0-R_G\cdot I_G-V_{GS}-R_S\cdot I_S-0=0
 
 $$
 
@@ -76,12 +79,12 @@ Al ser $I_{D_{2}}$ mayor al $I_{DSS}$ se descarta, lo que nos deja con la siguie
 
 ![Intersección](img/p1-1a.svg)
 
-Donde el punto de trabajo es $V_{GS}\approx-0.8264V;I_D\approx1.3773mA$, con estos datos podemos calcular $V_{DS}$, tomando la maya de salida:
+Donde el punto de trabajo es $V_{GS}\approx-0.8264v;I_D\approx1.3773mA$, con estos datos podemos calcular $V_{DS}$, tomando la maya de salida:
 
 $$
 \begin{gather}
 V_{DD}-R_D\cdot I_D-V_{DS}-R_S\cdot I_D-0=0\\
-V_{DS}\approx11.9698V
+V_{DS}\approx11.9698v
 \end{gather}
 $$
 
@@ -103,7 +106,7 @@ $$
 V_G=\frac{R_{G_2}\cdot(V_{DD}-0)}{R_{G_1}+R_{G_2}}\\
 V_G=\frac{R_{G_2}\cdot V_{DD}}{R_{G_1}+R_{G_2}}\\
 V_G=\frac{165}{86}\\
-V_G\approx1.9186V
+V_G\approx1.9186v
 \end{gather}
 $$
 
@@ -128,8 +131,8 @@ se toma la curva de saturación del ejercicio anterior (por ser el mismo transis
 
 $$
 \begin{gather}
-V_{GS_1}=-4.5417V\\
-V_{GS_2}=-0.4582V
+V_{GS_1}=-4.5417v\\
+V_{GS_2}=-0.4582v
 \end{gather}
 $$
 
@@ -143,7 +146,7 @@ Donde el punto de trabajo es $V_{GS}\approx-0.4582V;I_D\approx2.3768mA$, con est
 $$
 \begin{gather}
 V_{DD}-R_D\cdot I_D-V_{DS}-R_S\cdot I_D-0=0\\
-V_{DS}\approx9.0577V
+V_{DS}\approx9.0577v
 \end{gather}
 $$
 
@@ -164,7 +167,7 @@ Se numera al JFET superior como (1) y al inferior como (2), resolvemos la malla 
 $$
 0 + V_{GG} - V_{GS_2} - 0\\
 V_{GS_2} = V_{GG}\\
-V_{GS_2} = -1V\\
+V_{GS_2} = -1v\\
 $$
 
 Junto a la Ec. (a), asumiendo de que esta en saturación para obtener $I_{DSS_2}$
@@ -183,7 +186,7 @@ I_{D_1} = 4mA
 \end{gather}
 $$
 
-Se analiza el nodo entre JFETs y la carga $R_L$, lo intentificaremos como nodo 1
+Se analiza el nodo entre JFETs y la carga $R_L$, lo identificaremos como nodo 1
 
 $$
 \begin{gather}
@@ -196,14 +199,14 @@ al conocer la corriente $I_L$ se puede conocer la tension entre los terminales d
 
 $$
 V_{R_L}=I_L\cdot R_L\\
-V_{R_L}=3V
+V_{R_L}=3v
 $$
 
 la resistencia $R_L$ esta en paralelo con los terminales *Drain* y *Source* del JFET 2, por lo que también sabemos que la tension $V_{DS_2}=3V$. Al completar la malla o al calcular la diferencia de potencial para con el JFET 1, obtenemos que $V_{DS_1}=12V$
 
 ![Intersección](img/P1-3g.svg)
 
-Por ultimo se comprueba las ecuaciones la condicion de la Ec. (b)
+Por ultimo se comprueba las ecuaciones la condición de la Ec. (b)
 
 $$
 \begin{gather}
@@ -213,6 +216,100 @@ V_{DS_2} \geq - 1 - (-2)\\
 3 \geq 1\\
 \end{gather}
 $$
+:::
+
+### Electronica Básica para Ingenieros - Problemas resueltos P 3
+
+Calcular el punto de trabajo de transistores $Q_1$, $Q_2$ de la figura
+
+![fig 1](img/EBS-P3.svg)
+
+$V_{CC}=15v$, $R_1=10k\Omega$, $R_2=50k\Omega$, $R_3=400k\Omega$, $R_4=1k\Omega$, $R_5=3k3\Omega$, $V_{BE}=0.7$, $h_{fe}=100$, $I_{DSS}=6mA$, $V_P=-5V$
+
+:::details Respuesta
+
+La tension en el *gate* del JFET viene dado por el divisor de tension formado por $R_1$ y $R_2$. La corriente de *gate* $I_G\approx 0$ por lo que se calcula solo la tension en el punto $V_G$. Ademas $I_S=I_D$
+
+$$
+\begin{gather}
+V_G = \frac{R_1\cdot V_{cc}}{R_1+R_2}\\
+V_G = 2.5v
+\end{gather}
+$$
+
+realizamos la malla de entrada del JFET, para obtener la recta de carga estática
+
+$$
+\begin{gather}
+V_G - V_{GS} - R_5\cdot I_D - 0 = 0\\
+V_{GS} = 2.5 - 3.3k\cdot I_D
+\end{gather}
+$$
+
+Tomamos la ecuación de curva de saturación.
+
+$$
+\begin{gather}
+I_D=I_{DSS}\cdot\left(1-\frac{V_{GS}}{V_p}\right)^2\\
+I_D=240mA\cdot(5+V_{GS})^2
+\end{gather}
+$$
+
+Igualando ambas ecuaciones obtenemos
+
+$$
+\begin{gather}
+I_{D_1}\approx1.5121mA; V_{GS_1}\approx-2.48994V\\
+I_{D_2}\approx3.41597mA; V_{GS_2}\approx-8.77269V
+\end{gather}
+$$
+
+$V_{GS_2}<V_P$ por lo que $I_{D_2}; V_{GS_2}$ no son soluciones por lo que el punto de trabajo del JFET es $I_{D_1}\approx1.5121mA; V_{GS_1}\approx-2.48994V$
+
+![intersección](img/EBS-P3g.svg)
+
+Analizamos la malla de salida y la malla de entrada del BJT
+
+$$
+\begin{gather}
+V_{cc}-R_4\cdot I_C-V_{ce}-V_{DS}-R_5\cdot I_D - 0 = 0\\
+V_{cc} - R_5\cdot I_D = R_4\cdot I_C+V_{ce}+V_{DS}\\
+\end{gather}
+$$
+
+$$
+\begin{gather}
+V_{cc}-R_3\cdot I_B-V_{be}-V_{DS}-R_5\cdot I_D - 0 = 0\\
+V_{cc} - R_5\cdot I_D - V_{be} = R_3\cdot I_B+V_{DS}\\
+\end{gather}
+$$
+
+> [!NOTE]
+> $\beta = h_{fe}$
+> se puede considerar que $I_E\approx I_C$, pero para ser mas 1% mas precisos
+
+tomamos las siguientes consideraciones $I_E = I_D$, $I_B=I_C/\beta$, $I_E = I_b\cdot (\beta + 1)$
+
+$$
+\begin{gather}
+I_C=I_D\frac{\beta}{\beta+1}\\
+I_C\approx1.4971mA\\
+I_B=I_D\frac{1}{\beta+1}\\
+I_B\approx15.1210mA
+\end{gather}
+$$
+
+en base a la s ecuaciones anteriores tenemos que
+
+$$
+\begin{gather}
+V_{cc} - R_5\cdot I_D = R_4\cdot I_D\frac{\beta}{\beta+1}+V_{ce}+V_{DS}\tag{1}\\
+V_{cc} - R_5\cdot I_D - V_{be} = R_3\cdot I_D\frac{1}{\beta+1}+V_{DS}\tag{2}
+\end{gather}
+$$
+
+Donde despejando la Ec. (2) obtenemos $V_{DS}\approx3.3215v$, con este valor despejando la Ec. (1) obtenemos $V_{ce}\approx5.1913v$
+
 :::
 
 <!-- ## Parcial -->
