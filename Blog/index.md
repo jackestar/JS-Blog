@@ -1,5 +1,4 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 
 title: Jackestar Blog
 
@@ -15,7 +14,7 @@ head:
 
 hero:
   name: "Jackestar Blog"
-  text: "Electronics, Web Desing and Techology"
+  text: "Electronics, Web Design and Technology"
   tagline: Blog de ingeniería
   actions:
     - theme: brand
@@ -29,7 +28,7 @@ hero:
       link: ./papers.md
 
   image:
-    src: /src/blogBanner.png
+    src: ./blogBanner.png
     alt: Jackestar Blog
 
 features:
@@ -37,7 +36,7 @@ features:
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
     link: ./Ejercicios-Electronica-I
   - title: Baremetal Microcontrollers
-    details: Programacion de microcontroladores baremetal C++ Rust y assambler
+    details: Programación de microcontroladores baremetal C++ Rust y assembler
     link: ./Baremetal
   - title: Ejercicios Electronica Part. 2
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución

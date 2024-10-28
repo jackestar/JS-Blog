@@ -1,12 +1,18 @@
 import { defineConfig } from 'vitepress'
 
+let baseDir = '/Blog/'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/Blog/',
+  base: baseDir,
   lang: 'es-ES',
   lastUpdated: true,
   title: "Jackestar Blog",
-  description: "Electronics, Web Desing and Techology",
+  description: "Electronics, Web Design and Technology",
+  head: [
+    ['link', { rel: 'stylesheet', href: `${baseDir}css/stylesU.css` }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   markdown: {
     math: true
   },

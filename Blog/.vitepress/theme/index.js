@@ -4,7 +4,7 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import './custom.css'
 import founding from './Layout.vue'
-import '../../src/css/stylesU.css'
+// import '/css/stylesU.css'
 
 /** @type {import('vitepress').Theme} */
 export default {
