@@ -59,6 +59,7 @@ export default defineConfig({
           items: [
             { text: 'Introducción', link: '/Ejercicios-Electronica-I/' },
             { text: 'Diodos', link: '/Ejercicios-Electronica-I/Diodos' },
+            { text: 'BJT', link: '/Ejercicios-Electronica-I/BJT' },
             { text: ' Anexos',
               items: [
                 { text: 'Carga-Divisor', link: '/Ejercicios-Electronica-I/Thevenin-01' },
@@ -73,7 +74,12 @@ export default defineConfig({
           text: 'Ejercicios Electronica II',
           items: [
             { text: 'Introducción', link: '/Ejercicios-Electronica-II/' },
-            { text: 'FET', link: '/Ejercicios-Electronica-II/FET' },
+            { text: 'FET',
+              items: [
+                {text: 'Ejercicios', link: '/Ejercicios-Electronica-II/FET/Ejercicios.md'},
+                {text: 'Prueba Corta', link: '/Ejercicios-Electronica-II/FET/PruebaCorta.md'}
+              ]
+            },
             { text: ' Anexos',
               items: [
                 { text: 'Guía'},

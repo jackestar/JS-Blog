@@ -35,6 +35,9 @@ features:
   - title: Ejercicios Electronica Part. 1
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
     link: ./Ejercicios-Electronica-I
+  - title: Exportar esquemático de Kicad a SVG
+    details: Exportar esquemático de Kicad a SVG usando Inkscape por linea de comandos de forma rápida
+    link: ./Kicad/schematicToSVG.md
   - title: Baremetal Microcontrollers
     details: Programación de microcontroladores baremetal C++ Rust y assembler
     link: ./Baremetal
