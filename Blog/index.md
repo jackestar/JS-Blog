@@ -55,9 +55,31 @@ features:
     --vp-home-hero-image-background-image:linear-gradient(90deg,#3e63dd 0, #ffc400 7.5em,#bb0000 15em);
   }
   .VPFeatures .items .item {
-    /* min-width:20em; */
     justify-self:center;
   }
+.main h1.name span {
+    font-family: Montserrat Alternates;
+    background: linear-gradient(90deg, #b00 0, #ffc400 7.5em, #bb0000 15em) text;
+    transition: 0.5s ease-out;
+    background-size: 15em;
+    background-position: -2em;
+    animation: 10s title infinite;
+}
+
+@keyframes title {
+    to {
+        background-position: 0em;
+    }
+    from {
+        background-position: 15em;
+    }
+}
+
+.main h1.name span:hover {
+    /* background-position: -1em; */
+    background-blend-mode: difference;
+    transition: 1s ease-in;
+}
 
   .VPFeatures .items {
     justify-content:center;

@@ -39,28 +39,6 @@
     display: none;
 }
 
-.main h1.name span {
-    font-family: Montserrat Alternates;
-    background: linear-gradient(90deg, #b00 0, #ffc400 7.5em, #bb0000 15em) text;
-    transition: 0.5s ease-out;
-    background-size: 15em;
-    background-position: -2em;
-    animation: 10s title infinite;
-}
-
-@keyframes title {
-    to {
-        background-position: 0em;
-    }
-    from {
-        background-position: 15em;
-    }
-}
-
-.main h1.name span:hover {
-    background-position: -1em;
-    transition: 1s ease-in;
-}
 
 .main div.console div.language-bash code > span:first-child:before,
 .main div.language-console code > span:first-child:before {

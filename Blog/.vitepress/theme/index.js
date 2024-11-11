@@ -17,9 +17,6 @@ export default {
   },
   enhanceApp({ router }) {
     if (typeof window !== 'undefined') {
-      // Ejecutar la función cuando la aplicación se monta y cada vez que se actualiza el contenido
-      // onMounted(setupImageZoom);
-      // onUpdated(setupImageZoom);
       setupImageZoom()
     }
   }
