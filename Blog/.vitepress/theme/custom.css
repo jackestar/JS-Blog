@@ -1,8 +1,9 @@
 .main div img {
     background: #fff;
-    border-radius: .25em;
+    border-radius: 0.25em;
     /* padding: 1em; */
-    color:#000;
+    border: 10px solid #fff;
+    color: #000;
     text-align: center;
     /* font-variant: small-caps; */
 }
@@ -14,11 +15,11 @@
 }
 
 .main p img {
-    margin-bottom: .25em;
+    margin-bottom: 0.25em;
 }
 
-.main details.answer {
-    border: .2em solid var(--vp-c-text-3);
+/* .main details.answer {
+    border: 0.2em solid var(--vp-c-text-3);
     border-radius: 2em;
     padding: 1em;
 }
@@ -26,42 +27,25 @@
 .main details.answer summary {
     margin-left: 1em;
     cursor: pointer;
-}
+} */
 
 .main blockquote {
     background: #aaf2;
-    border-left: .3em solid #aaf;
-    border-radius: 0 .25em .25em 0;
+    border-left: 0.3em solid #aaf;
+    border-radius: 0 0.25em 0.25em 0;
 }
 
 .main .custom-block-title {
     display: none;
 }
 
-.main h1.name span {
-    font-family: Montserrat Alternates;
-    background: linear-gradient(90deg,#b00 0, #ffc400 7.5em,#bb0000 15em) text;
-    transition: .5s ease-out;
-    background-size: 15em;
-    background-position: -2em;
-    animation: 10s title infinite;
+
+.main div.console div.language-bash code > span:first-child:before,
+.main div.language-console code > span:first-child:before {
+    content: "$ ";
 }
 
-@keyframes title {
-    to {background-position: 0em;}
-    from {background-position: 15em;}
-}
-
-.main h1.name span:hover {
-    background-position: -1em;
-    transition: 1s ease-in;
-}
-
-.main div.console div.language-bash code>span:first-child:before,.main div.language-console code>span:first-child:before {
-    content: '$ ';
-}
-
-.main div.longBlock>div.line-numbers-mode {
+.main div.longBlock > div.line-numbers-mode {
     overflow-y: scroll;
     height: 45vh;
 }
@@ -71,50 +55,91 @@
 }
 
 .paper .document {
-    border: .2em solid var(--vp-c-default-2);
-    border-radius:3em;
-    padding:1.5em;
+    border: 0.2em solid var(--vp-c-default-2);
+    border-radius: 3em;
+    padding: 1.5em;
     margin: 1em 0;
-    transition:.2s ease;
-  }
-  
-  .paper .document:hover {
-    border: .2em solid var(--vp-button-brand-bg);
-    transition:.2s ease;
-  }
-  
-  .paper .document h2 {
-    border:none;
-  /*   padding: 0; */
-    margin: 0;
-  }
-  
-  .paper .document p {
-    text-align:justify;
-  }
-  
-  .paper .document p em {
-    color: var(--vp-c-brand-1);
-  }
+    transition: 0.2s ease;
+}
 
-  .paper .document p>a {
-    padding: .75em;
+.paper .document:hover {
+    border: 0.2em solid var(--vp-button-brand-bg);
+    transition: 0.2s ease;
+}
+
+.paper .document h2 {
+    border: none;
+    /*   padding: 0; */
+    margin: 0;
+}
+
+.paper .document p {
+    text-align: justify;
+}
+
+.paper .document p em {
+    color: var(--vp-c-brand-1);
+}
+
+.paper .document p > a {
+    padding: 0.75em;
     color: var(--vp-c-text-1);
     text-decoration: none;
-    border: .2em solid var(--vp-c-brand-1);
-    border-radius: .5em;
-    transition:.2s ease;
-  }
-  
-  .paper .document p>a:hover {
+    border: 0.2em solid var(--vp-c-brand-1);
+    border-radius: 0.5em;
+    transition: 0.2s ease;
+}
+
+.paper .document p > a:hover {
     background-color: var(--vp-c-brand-1);
     color: var(--vp-c-bg);
-    transition:.2s ease;
-  }
+    transition: 0.2s ease;
+}
 
-
-  /* Majax Fix */
+/* Majax Fix */
 
 mjx-container {
-  overflow-x: unset;
+    overflow-x: unset;
 }
+
+/* Zoom */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--vp-c-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.zoom-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zoomed-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+    cursor: zoom-out;
+    background: #fff;
+    border: solid 10px #fff;
+}
+
+/* body[data-theme="dark"] .zoom-overlay {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+body[data-theme="light"] .zoom-overlay {
+  background-color: rgba(255, 255, 255, 0.9);
+} */

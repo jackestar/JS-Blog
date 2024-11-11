@@ -11,7 +11,7 @@ export default defineConfig({
   description: "Electronics, Web Design and Technology",
   head: [
     ['link', { rel: 'stylesheet', href: `${baseDir}css/stylesU.css` }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/Blog/favicon.ico' }]
   ],
   markdown: {
     math: true
@@ -25,13 +25,30 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
-
+    outline: {
+      label: 'En esta página'
+    },
+    lastUpdated: {
+      text: 'Ultima Actualizacion',
+      formatOptions: {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      }
+    },
     aside: {},
-
+    docFooter: {
+      prev: 'Anterior',
+      next: 'Siguiente'
+    },
     footer: {
       message: 'Jackestar 2024',
-      // copyright: 'Copyright © 2019-present Evan You'
     },
+    langMenuLabel: 'Cambiar Idioma (Change lang)',
+    returnToTopLabel: 'Volver arriba',
+    sidebarMenuLabel: 'Menu Lateral',
+    darkModeSwitchLabel: 'Tema Oscuro',
+    lightModeSwitchTitle: 'Modo claro',
+    darkModeSwitchTitle: 'Modo oscuro',
     sidebar: {
       // This sidebar gets displayed when a user
       // is on `guide` directory.
@@ -106,3 +123,48 @@ export default defineConfig({
     ]
   }
 })
+
+// export const search = {
+//   es: {
+//     placeholder: 'Buscar Articulo/Documento',
+//     translations: {
+//       button: {
+//         buttonText: 'Buscar 🔍',
+//         buttonAriaLabel: 'Buscar 🔍'
+//       },
+//       modal: {
+//         searchBox: {
+//           resetButtonTitle: 'Limpiar búsqueda',
+//           resetButtonAriaLabel: 'Limpiar búsqueda',
+//           cancelButtonText: 'Cancelar',
+//           cancelButtonAriaLabel: 'Cancelar'
+//         },
+//         startScreen: {
+//           recentSearchesTitle: 'Historial',
+//           noRecentSearchesText: 'Ninguna búsqueda reciente',
+//           saveRecentSearchButtonTitle: 'Guardar en el historial de búsqueda',
+//           removeRecentSearchButtonTitle: 'Borrar del historial',
+//           favoriteSearchesTitle: 'Favoritos',
+//           removeFavoriteSearchButtonTitle: 'Borrar de favoritos'
+//         },
+//         errorScreen: {
+//           titleText: 'No fue posible obtener resultados',
+//           helpText: 'Verifique su conexión de red'
+//         },
+//         footer: {
+//           selectText: 'Seleccionar',
+//           navigateText: 'Navegar',
+//           closeText: 'Cerrar',
+//           searchByText: 'Búsqueda por'
+//         },
+//         noResultsScreen: {
+//           noResultsText: 'No fue posible encontrar resultados',
+//           suggestedQueryText: 'Puede intentar una nueva búsqueda',
+//           reportMissingResultsText:
+//             'Deberían haber resultados para esa consulta?',
+//           reportMissingResultsLinkText: 'Click para enviar feedback'
+//         }
+//       }
+//     }
+//   }
+// }
