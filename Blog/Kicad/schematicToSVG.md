@@ -76,6 +76,50 @@ Donde `input.svg` es el archivo original generado por Kicad, y output.svg es la 
 
 Abre la imagen generada por Kicad presiona `Ctrl`+`Mayus`+`D` para abrir las `Propiedades del Documento` (Document Properties) y selecciona `Ajustar al Contenido` (Resize to Content), Luego exporta la imagen como un SVG plano  presionando `Ctrl`+`Mayus`+`E` y seleccionando `SVG plano *.svg` (Plain SVG *.svg) y finalmente exportando
 
+## Automatización
+
+Se puede integrar fácilmente como una función de bash en la consola
+
+```bash
+kicad_export() {
+# Verificar si se proporcionó un argumento
+if [ $# -eq 0 ]; then
+  echo "Por favor, proporciona el nombre del proyecto KiCad como argumento."
+  exit 1
+fi
+
+basename=$(basename "$1")
+
+# Comando para exportar el esquema a SVG
+kicad-cli sch export svg --exclude-drawing-sheet --black-and-white "$1.kicad_sch" -o /tmp
+
+# Comando para optimizar el SVG con Inkscape
+inkscape --export-type=svg --export-plain-svg --export-area-drawing "/tmp/$basename.svg" -o "$1.svg"
+
+rm "/tmp/$basename.svg"
+}
+```
+
+donde `kicad_export` recibe como argumento el nombre del proyecto
+
+<div class='console'>
+
+```bash
+kicad_export esquematico_de_kicad
+```
+
+</div>
+
+<div class='console'>
+
+```bash
+kicad_export ./kicadFolder/FolderdelProyecto/esquematico_de_kicad
+```
+
+</div>
+
+Donde `esquematico_de_kicad` es el **nombre** del archivo del esquemático sin extension
+
 ## Referencias
 
 [Kicad - Schematic SVG export](https://docs.kicad.org/8.0/en/cli/cli.html#schematic_svg_export)

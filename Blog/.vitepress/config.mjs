@@ -5,7 +5,7 @@ let baseDir = '/Blog/'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: baseDir,
-  lang: 'es-ES',
+  lang: 'es',
   lastUpdated: true,
   title: "Jackestar Blog",
   description: "Electronics, Web Design and Technology",
@@ -23,13 +23,13 @@ export default defineConfig({
       { text: 'Home', link: 'https://jackestar.netlify.app/' }
     ],
     search: {
-      provider: 'local'
+      provider: 'local',
     },
     outline: {
       label: 'En esta página'
     },
     lastUpdated: {
-      text: 'Ultima Actualizacion',
+      text: 'Ultima Actualización',
       formatOptions: {
         dateStyle: 'medium',
         timeStyle: 'short'
@@ -79,7 +79,7 @@ export default defineConfig({
             { text: 'BJT', link: '/Ejercicios-Electronica-I/BJT' },
             { text: ' Anexos',
               items: [
-                { text: 'Carga-Divisor', link: '/Ejercicios-Electronica-I/Thevenin-01' },
+                { text: 'Carga-Divisor', link: '/Electronica/Thevenin-01' },
               ]
             },
           ]
@@ -93,13 +93,13 @@ export default defineConfig({
             { text: 'Introducción', link: '/Ejercicios-Electronica-II/' },
             { text: 'FET',
               items: [
-                {text: 'Ejercicios', link: '/Ejercicios-Electronica-II/FET/Ejercicios.md'},
-                {text: 'Prueba Corta', link: '/Ejercicios-Electronica-II/FET/PruebaCorta.md'}
+                {text: 'Ejercicios', link: '/Ejercicios-Electronica-II/FET/Ejercicios'},
+                {text: 'Prueba Corta', link: '/Ejercicios-Electronica-II/FET/PruebaCorta'}
               ]
             },
             { text: ' Anexos',
               items: [
-                { text: 'Guía'},
+                { text: 'Modelo Ebers-Moll', link: '/Electronica/ebers-moll'},
               ]
             },
           ]
@@ -123,48 +123,3 @@ export default defineConfig({
     ]
   }
 })
-
-// export const search = {
-//   es: {
-//     placeholder: 'Buscar Articulo/Documento',
-//     translations: {
-//       button: {
-//         buttonText: 'Buscar 🔍',
-//         buttonAriaLabel: 'Buscar 🔍'
-//       },
-//       modal: {
-//         searchBox: {
-//           resetButtonTitle: 'Limpiar búsqueda',
-//           resetButtonAriaLabel: 'Limpiar búsqueda',
-//           cancelButtonText: 'Cancelar',
-//           cancelButtonAriaLabel: 'Cancelar'
-//         },
-//         startScreen: {
-//           recentSearchesTitle: 'Historial',
-//           noRecentSearchesText: 'Ninguna búsqueda reciente',
-//           saveRecentSearchButtonTitle: 'Guardar en el historial de búsqueda',
-//           removeRecentSearchButtonTitle: 'Borrar del historial',
-//           favoriteSearchesTitle: 'Favoritos',
-//           removeFavoriteSearchButtonTitle: 'Borrar de favoritos'
-//         },
-//         errorScreen: {
-//           titleText: 'No fue posible obtener resultados',
-//           helpText: 'Verifique su conexión de red'
-//         },
-//         footer: {
-//           selectText: 'Seleccionar',
-//           navigateText: 'Navegar',
-//           closeText: 'Cerrar',
-//           searchByText: 'Búsqueda por'
-//         },
-//         noResultsScreen: {
-//           noResultsText: 'No fue posible encontrar resultados',
-//           suggestedQueryText: 'Puede intentar una nueva búsqueda',
-//           reportMissingResultsText:
-//             'Deberían haber resultados para esa consulta?',
-//           reportMissingResultsLinkText: 'Click para enviar feedback'
-//         }
-//       }
-//     }
-//   }
-// }
