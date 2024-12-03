@@ -300,3 +300,300 @@ I_{O_2}\approx 19.5527mA
 $$
 
 :::
+
+## Determine $V_o$ y las zonas de trabajo de los transistores asi como su punto de operación
+
+> [!CAUTION]
+> A espera de revision
+
+![Problema 2](img/PC3.svg)
+
+Donde $V_{CC}=24v$
+
+:::details Respuesta
+
+Analizamos, del lado derecho tenemos tres resistencias en paralelo, tomamos la corriente $V_{GS}\approx0$, podríamos utilizar un equivalente de Thevenin para la *base* del BJT. Pero no hace falta, la resistencia $R_3$ esta en paralelo con $V_{BE}$ el cual es $0.7v$ (asumiendo que esta polarizado), conocemos la tension y resistencia obtenemos la corriente
+
+$$
+I_{R_3}=\frac{7}{1.2M}\approx5.833\Omega
+$$
+
+Ahora hacemos realizamos una malla desde $V_{CC}$ por $R_1$ y $R_2$ hasta $V_B$ (o por $V_BE$ a tierra)
+
+$$
+\begin{gather}
+I_{R_{1-2}}=\frac{V_CC-V_B}{R_1+R_2}
+I_{R_{1-2}}=\frac{233}{2.4M}\approx97.0833\mu A
+\end{gather}
+$$
+
+![Corrientes](img/PC3-A.svg)
+
+Despejamos $I_B$ de las corrientes en el nodo y nos resulta
+
+$$
+I_B=91.25\mu A
+$$
+
+Calculamos $I_C$
+
+$$
+\begin{gather}
+I_C=I_B\cdot \beta
+I_C=9.125mA
+\end{gather}
+$$
+
+Para la tension $V_G$ tenemos un divisor de tension con $R_1$y $R_2$ entre $V_{CC}$ y $V_B$, al ser $R_1$y $R_2$ simétricos $V_G$ resulta
+
+$$
+\begin{gather}
+V_G=\frac{V_{CC}-V_B}{2}=11.65v
+\end{gather}
+$$
+
+Tenemos lo siguiente
+
+**$V_{GS}$**
+$$
+\begin{gather}
+V_{GS}=V_G-V_S\tag{1}
+\end{gather}
+$$
+
+**$V_{S}$**
+$$
+\begin{gather}
+V_{S}=I_L\cdot R_L\tag{2}
+\end{gather}
+$$
+
+**Corrientes del nodo $V_S$**
+$$
+\begin{gather}
+I_D-I_C-I_L=0\tag{3}
+\end{gather}
+$$
+
+**$I_D$** *Corriente del MOSFET en saturación*
+$$
+\begin{gather}
+I_D=\frac{\beta}{2}(V_{GS}-V_T)^2\tag{4}
+\end{gather}
+$$
+
+Despejando nos queda
+
+$$
+\begin{gather}
+I_D=\frac{\beta}{2}(V_G-(I_D-I_C)\cdot R_L-V_T)^2\\
+I_{D_1}=17.4538mA; V_{GS_2}=3.323115v\\
+I_{D_2}=20.1961mA; V_{GS_2}=578.863mv
+\end{gather}
+$$
+
+para que un MOSFET este en saturación se debe cumplir $V_{GS}>V_T$ por lo que los valores $I_{D_2}$ y $V_{GS_2}$ no son validos.
+
+Para comprobar estos resultados realizamos la malla de salida
+
+$$
+24=V_{R_D}+V_{GS}+V_{CE}
+$$
+
+ya que la alimentación es de $24v$ se cumple $V_{R_D}\le24$, $V_{GS}\le24$ y $V_{CE}\le24$. para $V_{R_D}$
+
+$$
+\begin{gather}
+V_{R_D}=I_D\cdot R_D\le24\\
+V_{R_D}=34.9076\nleq24
+\end{gather}
+$$
+
+esto nos comprueba que el MOSFET no puede estar en saturación por lo que probamos con la region lineal utilizamos la Ec. (1), Ec. (2) y Ec. (3) y en adición:
+
+**$I_D$** *Corriente del MOSFET en saturación*
+$$
+\begin{gather}
+I_D=\beta((V_{GS}-V_T)\cdot V_{DS}-\frac{V_{DS}^2}{2})\tag{5}
+\end{gather}
+$$
+
+**$V_{DS}$**
+$$
+\begin{gather}
+V_{CC}-V_{DS}-VS=0\tag{6}
+\end{gather}
+$$
+
+Despejando nos deja
+
+$$
+\begin{gather}
+I_{D_1}\approx-4.4345mA; V_{DS_1}\approx46.4287V; V_{GS_1}\approx25.2096V\\
+I_{D_2}\approx11.07179mA; V_{DS_2}\approx71.346mV; V_{GS_2}\approx9.75712V
+\end{gather}
+$$
+
+Ninguno de los valores 1 tiene sentido ya que las corrientes no pueden ser negativas y las tensiones no pueden ser mayores a la alimentación. 
+
+$$
+\begin{gather}
+I_{D}\approx11.07179mA\\
+V_{DS}\approx71.346mV\\
+V_{GS}\approx9.75712V\\
+V_o=V_S=V_{CE}\approx1.89288v
+\end{gather}
+$$
+
+Con estos valores se cumplen las condiciones para la region lineal del MOSFET y las condiciones para region lineal en el BJT
+
+**Punto de Trabajo BJT (Region Lineal)**
+$$
+V_{CE}\approx1.89288v; I_C=9.125mA
+$$
+
+**Punto de Trabajo MOSFET (Region Lineal)**
+$$
+I_{D}\approx11.07179mA; V_{DS}\approx71.346mV
+$$
+
+:::
+
+## Determine $A_v$, $Z_i$, $Z_o$ del amplificador multi-etapa:
+
+> [!CAUTION]
+> A espera de revision
+
+![multi-etapa](img/PC4.svg)
+
+**Para M1 a M4**
+* $V_T=2v$
+* $\beta = 20mA/v^2$
+* $r_d=200k\Omega$
+
+**Para M5**
+* $g_{ms}=2\cdot 10^{-3} S$
+* $r_d=200k\Omega$
+
+<!-- :::details Respuesta -->
+
+Realizamos el análisis en DC
+
+![multi-etapa DC](img/PC4-A.svg)
+
+M2 y M4 forman un espejo de corriente mientras M1 y M2 actúan como resistencias, preliminarmente:
+
+* $I_G\approx0$
+* $I_{D_1}=I_{D_2}$
+* $I_{D_3}=I_{D_4}$
+* $I_{G_1}=I_{D_1}$ **M1**
+* $I_{G_2}=I_{D_2}$ **M2**
+* $I_{G_3}=I_{D_3}$ **M3**
+* $V_{GS_2}=V_{GS_4}$
+
+Tenemos que para el MOSFET en estado de saturación la corriente $I_D$ esta en función de $V_GS$ por lo que al ser iguales podemos decir que
+
+$$
+I_{D_2}=I_{D_4}
+$$
+
+por lo que todas las corrientes $I_D$ y tensiones $V_{GS}$ de M1 a M4 son iguales. Para las tensiones $V_{GS}$ tenemos que:
+
+$$
+\begin{gather}
+10v=V_{GS_1}+V_{GS_2}\\
+V_{GS}=5v
+\end{gather}
+$$
+
+Para el analisis AC obtenemos $g_m$ y $\mu$
+
+$$
+\begin{gather}
+g_m=\beta(V_{GS}-V_T)\\
+g_m=60mS
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\mu=g_m\cdot r_d\\
+\mu=12k
+\end{gather}
+$$
+
+![Análisis AC](img/PC4-B.svg)
+
+Para la impedancia de entrada $Z_i$ vemos la impedancia hacia los gates de M1 y M4. Para un MOSFET cortocircuitado *gate-drain* la impedancia es:
+
+$$
+Zm=\frac{rd}{\mu+1}
+$$
+
+véase [Demostración Impedancias Transistores](../../Electronica/z-transistor)
+
+tanto M1 como M2 cumplen con la formula por lo que quedan en paralelo, al tener el mismo $\mu$, $Z_i$ queda
+
+$$
+\begin{gather}
+Zi=\frac{rd}{2(\mu+1)}\\
+Zi=8.3326\Omega
+\end{gather}
+$$
+
+Para la impedancia de salida tenemos $R_6$ en paralelo con R_7 reflejado al *source* junto a $r_d$, quedando
+
+$$
+Z_o=R_6||(R_7\cdot(\mu+1)+rd)
+$$
+
+véase [Demostración Reflection FET](../../Electronica/lost)
+
+**Demostración exhaustiva**
+
+Tenemos el nodo D
+
+$$
+I_p=I_{R_6}+I_{R_7}
+$$
+
+Hacemos el cambio de fuente de tension a corriente
+
+Para $I_{R_6}$
+$$
+I_{R_6}=\frac{V_p}{R_6}
+$$
+
+Despejamos $V_{GS}$
+
+$$
+V_{GS}=0-I_{R_7}\cdot R_7\
+$$
+
+Para $I_{R_7}$
+$$
+\begin{gather}
+V_p=V_{GS}\cdot\mu+I_{R_7}\cdot(r_d+R_7)\\
+V_p=-I_{R_7}\cdot R_7\cdot\mu+I_{R_7}\cdot(r_d+R_7)\\
+I_{R_7}=\frac{V_p}{r_d+R_7+R_7\cdot\mu}
+\end{gather}
+$$
+
+Volviendo al nodo D
+
+$$
+\begin{gather}
+I_p=\frac{V_p}{R_6}+\frac{V_p}{r_d+R_7+R_7\cdot\mu}\\
+\frac{I_p}{V_p}=\frac{1}{R_6}+\frac{1}{r_d+R_7+R_7\cdot\mu}\\
+\frac{1}{Z_o}=\frac{1}{R_6}+\frac{1}{r_d+R_7\cdot(\mu+1)}\\
+Z_o= R_6||(r_d+R_7\cdot(\mu+1))
+\end{gather}
+$$
+
+$$
+Z_o=80.2M\Omega
+$$
+
+Para la ganancia
+
+<!-- ::: -->
