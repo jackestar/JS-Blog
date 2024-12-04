@@ -212,7 +212,7 @@ $$
 
 Por simetría (al ser los transistores exactamente iguales) podemos asumir que las corrientes se reparten equitativamente, por lo menos en el caso de $Q_2$ y $Q_3$ que están en paralelo. Pero matemáticamente se requiere un criterio para aseverar esto. Aquí surge el modelo de Ebers-Moll
 
-[Abstracción Modelo Ebers Moll](/Electronica/ebers-moll)
+[Abstracción Modelo Ebers Moll](../../Electronica/ebers-moll.md)
 
 En base a este modelo $I_C\approx\alpha_F\cdot I_{ES}\cdot e^\frac{V_{BE}}{V_T}$, Donde hay una relación directa entre $V_{BE}$ y $I_C$ por ende al estar las tensiones $V_{BE}$ de $Q_1$, $Q_2$ y $Q_3$ en paralelo podemos asumir que poseen las mismas corrientes.
 
@@ -547,7 +547,7 @@ $$
 Z_o=R_6||(R_7\cdot(\mu+1)+rd)
 $$
 
-véase [Demostración Reflection FET](../../Electronica/lost)
+<!-- véase [Demostración Reflection FET](../../Electronica/lost) -->
 
 **Demostración exhaustiva**
 
