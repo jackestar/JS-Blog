@@ -18,9 +18,12 @@
         <meta name="description" content="Jackestar's Portfolio" />
         <link rel="shortcut icon" href="./manifest/favicon128.png" type="image/x-icon">
         <script> // Netlify
-            console.log('Branch actual:', process.env.BRANCH);
-            console.log('Commit actual:', process.env.COMMIT_REF);
-            console.log(process.env)
+            fetch('/env-config.json')
+              .then(response => response.json())
+              .then(envVars => {
+                console.log(envVars.BRANCH);
+                console.log(envVars.COMMIT_REF);
+              });
         </script>
     </head>
     <body>
