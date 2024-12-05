@@ -6,15 +6,18 @@ lastUpdated: true
 outline: deep
 ---
 
-## Impedancia FET ($V_G=V_S$)
+## Impedancia FET ($V_G=V_D$)
 
 ![Impedancia](img/impedancia-vg_vs.svg)
 
-> ![NOTE]
+> [!NOTE]
 > La impedancia es independiente de la polaridad y si es visto desde el *Source* o desde el *Gate-Drain*, pero a propósito de comprobarlo se analizaran ambos casos
 
-> ![NOTE]
+> [!NOTE]
 > El análisis también se puede llevar realizando una transformación de fuente
+
+> [!NOTE]
+> El análisis es independiente del tipo del FET (canal-N o canal-P)
 
 ![Impedancia](img/impedancia-vg_vsAC.svg)
 
@@ -72,6 +75,11 @@ Z_o=\frac{V_p}{I_p}\\
 Z_o=\frac{V_p}{V_p(1/r_d+g_m)}\\
 Z_o=\frac{1}{1/r_d+g_m}\\
 Z_o=\frac{r_d}{1+g_m\cdot r_d}\\
-Z_o=\frac{r_d}{1+\mu}\\
+Z_o=\frac{r_d}{\mu+1}\\
 \end{gather}
 $$
+
+## Impedancia BJT ($V_B=V_C$)
+
+> [!CAUTION]
+> En construcción

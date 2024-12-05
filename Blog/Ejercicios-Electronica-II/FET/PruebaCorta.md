@@ -303,8 +303,7 @@ $$
 
 ## Determine $V_o$ y las zonas de trabajo de los transistores asi como su punto de operación
 
-> [!CAUTION]
-> A espera de revision
+<Badge type="danger" text="no verificado" />
 
 ![Problema 2](img/PC3.svg)
 
@@ -461,8 +460,9 @@ $$
 
 ## Determine $A_v$, $Z_i$, $Z_o$ del amplificador multi-etapa:
 
-> [!CAUTION]
-> A espera de revision
+<Badge type="danger" text="incompleto" />
+
+<Badge type="danger" text="no verificado" />
 
 ![multi-etapa](img/PC4.svg)
 
@@ -541,7 +541,7 @@ Zi=8.3326\Omega
 \end{gather}
 $$
 
-Para la impedancia de salida tenemos $R_6$ en paralelo con R_7 reflejado al *source* junto a $r_d$, quedando
+Para la impedancia de salida tenemos $R_6$ en paralelo con $R_7$ reflejado al *source* junto a $r_d$, quedando
 
 $$
 Z_o=R_6||(R_7\cdot(\mu+1)+rd)
