@@ -5,13 +5,12 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
 import './custom.css'
-import founding from './Layout.vue'
+import './Layout.vue'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
   enhanceApp({ app, router, siteData }) {
@@ -27,13 +26,13 @@ let setupImageZoom = () => {
   overlay.className = 'zoom-overlay';
   document.body.appendChild(overlay);
 
-  const zoomedImage = document.createElement('img');
+  const zoomedImage :HTMLImageElement = document.createElement('img');
   zoomedImage.className = 'zoomed-image';
   overlay.appendChild(zoomedImage);
 
   // Función para añadir el evento de zoom a las imágenes
   const addZoomListeners = () => {
-    const images = document.querySelectorAll('.main div img');
+    const images:NodeListOf<HTMLImageElement> = document.querySelectorAll('.main div img');
     images.forEach(img => {
       img.addEventListener('click', () => {
         zoomedImage.src = img.src;

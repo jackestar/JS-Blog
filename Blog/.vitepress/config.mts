@@ -27,13 +27,12 @@ export default defineConfig({
       label: 'En esta página'
     },
     lastUpdated: {
-      text: 'Ultima Actualizacion',
+      text: 'Ultima Actualización',
       formatOptions: {
         dateStyle: 'medium',
         timeStyle: 'short'
       }
     },
-    aside: {},
     docFooter: {
       prev: 'Anterior',
       next: 'Siguiente'
