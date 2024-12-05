@@ -1,3 +1,3 @@
 [build]
-  command = "pnpm run build && python config.py"
+  command = "pnpm run build"
   publish = "dist"
