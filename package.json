@@ -12,5 +12,13 @@
     "prebuild": "git submodule update --remote",
     "build": "vitepress build Blog --outDir './dist/Blog'",
     "postbuild": "cp -r ./static/* ./dist"
+  },
+  "dependencies": {
+    "@types/node": "^22.10.2",
+    "canvas": "3.0.0-rc3",
+    "fs": "0.0.1-security",
+    "gray-matter": "^4.0.3",
+    "path": "^0.12.7",
+    "typescript": "^5.7.2"
   }
 }

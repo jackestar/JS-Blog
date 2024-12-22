@@ -4,13 +4,14 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
+import NotFound from './Layout.vue'
 import './custom.css'
-import './Layout.vue'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
+      'not-found': () => h(NotFound)
     })
   },
   enhanceApp({ app, router, siteData }) {
