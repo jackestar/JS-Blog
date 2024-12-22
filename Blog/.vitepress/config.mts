@@ -170,7 +170,8 @@ export default defineConfig({
       const { data } = matter(fileContent);
 
       const { title = defTitle, description = defDescription } = data;
-      const outputPath = path.resolve(__dirname, './dist/manifest', `${pagePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`);
+      const outputPath = path.resolve(__dirname, './../../dist/Blog/manifest', `${pagePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`);
+
       await generateImage(title, description, faviconPath, outputPath);
     }
   },
@@ -188,7 +189,7 @@ export default defineConfig({
   
       const title = data.title || defTitle;
       const description = data.description || defDescription;
-      const imagePath = `/manifest/${pageData.relativePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`;
+      const imagePath = `/Blog/manifest/${pageData.relativePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`;
   
       const ogTags = `
         <meta property="og:title" content="${title}">
