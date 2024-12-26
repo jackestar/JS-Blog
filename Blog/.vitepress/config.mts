@@ -3,17 +3,10 @@ import { defineConfig } from 'vitepress'
 import path from 'path';
 import generateImage from './generate-image';
 import matter from 'gray-matter';
-import { isConstructorDeclaration } from 'typescript';
 import fs from 'fs';
 
 const defTitle = 'Jackestar Blog';
 const defDescription = 'Electronica, Diseño Web y Tecnología';
-
-// interface PageData {
-//   title: string;
-//   description: string;
-//   path: string;
-// }
 
 const baseDir = '/Blog'
 
@@ -25,7 +18,7 @@ export default defineConfig({
   description: defDescription,
   head: [
     ['link', { rel: 'stylesheet', href: `${baseDir}/css/stylesU.css` }],
-    ['link', { rel: 'icon', href: `${baseDir}/favicon.ico` }]
+    ['link', { rel: 'icon', href: `${baseDir}/favicon.png` }]
   ],
   markdown: {
     math: true
@@ -162,7 +155,6 @@ export default defineConfig({
     const markdownPages = pages.filter(page => page.endsWith('.md'));
 
     const faviconPath = path.resolve(__dirname, '../', 'favicon.png');
-    // const faviconPath = '../favicon.ico';
 
     for (const pagePath of markdownPages) {
       const filePath = path.resolve(__dirname, '../' + pagePath);
@@ -178,6 +170,7 @@ export default defineConfig({
     transformHtml: async (html: string, id, {pageData,siteData}) => {
       const filePath = path.resolve(__dirname, `../${pageData.relativePath}`);
       const lang = siteData.lang || 'es-ES';
+
       // Check if the file exists before reading it
       if (!fs.existsSync(filePath)) {
         console.warn(`File not found: ${filePath}`);
@@ -189,7 +182,7 @@ export default defineConfig({
   
       const title = data.title || defTitle;
       const description = data.description || defDescription;
-      const imagePath = `/Blog/manifest/${pageData.relativePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`;
+      const imagePath = `${baseDir}/manifest/${pageData.relativePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`;
   
       const ogTags = `
         <meta property="og:title" content="${title}">
