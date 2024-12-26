@@ -1,7 +1,7 @@
 ---
 
 title: Acerca de
-
+description: Acerca de
 layout: page
 
 ---

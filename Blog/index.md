@@ -1,6 +1,7 @@
 ---
 
 title: Jackestar Blog
+description: Electronics, Web Design and Technology
 
 layout: home
 

@@ -1,5 +1,5 @@
 ---
-title: Instalación de Suit PAC22 en ArchLinux
+title: Instalación PAC22 en ArchLinux
 description: Instalación basada en wine para PAC Project y PAC SIM
 
 lastUpdated: true
@@ -53,7 +53,13 @@ para poder ejecutar correctamente la suite de PAC 22 se instalaran las siguiente
 <div class='console'>
 
 ```bash
-winetricks mfc42
+winetricks mfc42 comctl32 dxvk msvcrt40
+```
+
+Para el usar cualquier tipo de impresión "print..." asegúrate de tener `cups` para imprimir a PDF tener instalado `cups-pdf`, asi como tener configurada la impresora (o impresión en PDF), de tener algun problema reinicia el wine con el comando `wineboot`
+
+```bash
+wineboot
 ```
 
 </div>
@@ -85,8 +91,8 @@ WINEDEBUG=-all wine "$HOME/.wine/drive_c/Program Files (x86)/Opto22/PAC Project 
 ## PAC Control
 
 ### 9.4
-> [!NOTE]
-> Se ejecuta sin problemas, solo con algunos errores gráficos en el *toolbar* y el *listview*
+<!-- > [!NOTE]
+> Se ejecuta sin problemas, solo con algunos errores gráficos en el *toolbar* y el *listview* -->
 
 ## PAC Display
 
@@ -97,3 +103,7 @@ WINEDEBUG=-all wine "$HOME/.wine/drive_c/Program Files (x86)/Opto22/PAC Project 
 ### R10.5a
 > [!WARNING]
 > Parece funcionar con algunos bugs gráficos
+
+# Referencia
+
+[Guia en Github](https://github.com/enokson/opto22)

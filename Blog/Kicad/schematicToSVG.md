@@ -1,5 +1,5 @@
 ---
-title: Exportar esquemático de Kicad a SVG
+title: Exportar Kicad a SVG
 description: Exportar esquemático de Kicad a SVG usando Inkscape por linea de comandos de forma rápida
 
 lastUpdated: true

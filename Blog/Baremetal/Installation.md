@@ -1,5 +1,5 @@
 ---
-title: Program AVR (ATmega328P) in ArchLinux
+title: Program AVR in ArchLinux
 description: how to compile an upload to a Arduino UNO board
 
 lastUpdated: true

@@ -1,4 +1,6 @@
 ---
+title: Incremental Encoder
+description: Proyecto Baremetal para manejar un Encoder Rotatorio Relativo
 lastUpdated: true
 outline: deep
 ---

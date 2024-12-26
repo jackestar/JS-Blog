@@ -1,4 +1,7 @@
 ---
+title: Blink build-in LED
+description: El programa mas básico para comprobar el funcionamiento en una placa de desarrollo. Hacer parpadear a intervalos regulados el LED integrado.
+
 lastUpdated: true
 outline: deep
 ---
