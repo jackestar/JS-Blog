@@ -1,11 +1,9 @@
 .main div img {
     background: #fff;
     border-radius: 0.25em;
-    /* padding: 1em; */
     border: 10px solid #fff;
     color: #000;
     text-align: center;
-    /* font-variant: small-caps; */
 }
 
 .main p:has(img) {
@@ -18,17 +16,6 @@
     margin-bottom: 0.25em;
 }
 
-/* .main details.answer {
-    border: 0.2em solid var(--vp-c-text-3);
-    border-radius: 2em;
-    padding: 1em;
-}
-
-.main details.answer summary {
-    margin-left: 1em;
-    cursor: pointer;
-} */
-
 .main blockquote {
     background: #aaf2;
     border-left: 0.3em solid #aaf;
@@ -39,6 +26,7 @@
     display: none;
 }
 
+/* Console Bash */
 
 .main div.console div.language-bash code > span:first-child:before,
 .main div.language-console code > span:first-child:before {
@@ -135,11 +123,3 @@ mjx-container {
     background: #fff;
     border: solid 10px #fff;
 }
-
-/* body[data-theme="dark"] .zoom-overlay {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-body[data-theme="light"] .zoom-overlay {
-  background-color: rgba(255, 255, 255, 0.9);
-} */

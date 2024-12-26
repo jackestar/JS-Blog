@@ -1,6 +1,7 @@
 ---
 
 title: Documentos - Papers
+description: Informes y Artículos
 
 outline: deep
 
@@ -98,7 +99,7 @@ link
 
 *Abstract—* Resumen: Al momento de querer modelar un sistema de control es esencial conocer como parametrizar el sistema para así comprender modificar los parámetros para acercarse al valor esperado de salida. En base a un sistema cualquiera se puede tener solo un conjunto de parámetros limitados con el cual trabajar. Para el presente trabajo se hallaron los diferentes parámetros en distintos sistemas sus especificaciones en respuesta transitoria, plano en s y respuesta temporal gráficamente, en base a distintos parámetros conocidos. Calculando tanto de manera analítica como mediante algoritmos el uso del software Scilab.
 
-<Badge type="tip" text="" />
+<!-- <Badge type="tip" text="" /> -->
 
 [link](https://drive.google.com/file/d/1BHsepd8dT6pI_I0rg4moJrVN3GBeadTb/view?usp=sharing)
 

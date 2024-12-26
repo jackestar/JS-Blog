@@ -1,40 +1,39 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
+import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import './custom.css'
-import founding from './Layout.vue'
-// import '/css/stylesU.css'
 
-/** @type {import('vitepress').Theme} */
+import NotFound from './Layout.vue'
+import './custom.css'
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-      'not-found': () => h(founding)
+      'not-found': () => h(NotFound)
     })
   },
-  enhanceApp({ router }) {
+  enhanceApp({ app, router, siteData }) {
     if (typeof window !== 'undefined') {
       setupImageZoom()
     }
   }
-}
-// import { onMounted, onUpdated } from 'vue';
+} satisfies Theme
+
 // Zoom
 let setupImageZoom = () => {
   const overlay = document.createElement('div');
   overlay.className = 'zoom-overlay';
   document.body.appendChild(overlay);
 
-  const zoomedImage = document.createElement('img');
+  const zoomedImage :HTMLImageElement = document.createElement('img');
   zoomedImage.className = 'zoomed-image';
   overlay.appendChild(zoomedImage);
 
   // Función para añadir el evento de zoom a las imágenes
   const addZoomListeners = () => {
-    const images = document.querySelectorAll('.main div img');
+    const images:NodeListOf<HTMLImageElement> = document.querySelectorAll('.main div img');
     images.forEach(img => {
       img.addEventListener('click', () => {
         zoomedImage.src = img.src;

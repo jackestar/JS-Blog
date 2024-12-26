@@ -5,8 +5,8 @@
     "background_color": "#2c292d",
     "display":"standalone",
     "theme_color": "#a33",
-    "start_url":"./Pensum.html",
-    "description":"generador de pensum de carreras UNEFA autogerado, arbol de prelaciones, Electronica 2024, carga tu record academico",
+    "start_url":"./index.html",
+    "description":"Jackestar's Portfolio",
     "icons":[
         {
             "src":"manifest/favicon48.png",

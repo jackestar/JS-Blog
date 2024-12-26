@@ -1,0 +1,16 @@
+{
+    "name":"Jackestar's Portfolio",
+    "lang": "en",
+    "short_name":"Jackestar",
+    "background_color": "#2c292d",
+    "display":"standalone",
+    "theme_color": "#a33",
+    "start_url":"/Blog/index.html",
+    "description":"Electronica, Diseño Web y Tecnología",
+    "icons":[
+        {
+            "src":"./blogBanner.png",
+            "sizes":"329x334"
+        }
+    ]
+}
