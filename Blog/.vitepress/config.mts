@@ -7,7 +7,6 @@ import fs from 'fs';
 
 const defTitle = 'Jackestar Blog';
 const defDescription = 'Electronica, Diseño Web y Tecnología';
-
 const baseDir = '/Blog'
 
 export default defineConfig({
@@ -18,7 +17,8 @@ export default defineConfig({
   description: defDescription,
   head: [
     ['link', { rel: 'stylesheet', href: `${baseDir}/css/stylesU.css` }],
-    ['link', { rel: 'icon', href: `${baseDir}/favicon.png` }]
+    ['link', { rel: 'icon', href: `${baseDir}/favicon.png` }],
+    ['link', { rel: 'manifest', href: `${baseDir}/blog.json` }]
   ],
   markdown: {
     math: true
@@ -185,10 +185,11 @@ export default defineConfig({
       const imagePath = `${baseDir}/manifest/${pageData.relativePath.replace(/\//g, '_').replace(/\.md$/, '')}.png`;
   
       const ogTags = `
+        <meta property="og:locale" content="${lang}">
         <meta property="og:title" content="${title}">
         <meta property="og:description" content="${description}">
         <meta property="og:image" content="${imagePath}">
-        <meta property="og:locale" content="${lang}">
+        <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="400">
         <meta name="twitter:title" content="${title}">
