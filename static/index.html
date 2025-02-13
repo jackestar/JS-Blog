@@ -194,9 +194,12 @@
                     <p>Blog de ingeniería en español sobre microcontroladores, teoría de control, electronica, informática y tecnología en general</p>
                     <a href="./Blog">Visitar</a><a href="./Blog/papers">Documentos</a>
                 </div>
-                <div class="banner">
+                <div class="bannerLogo">
                     <div class="banimg">
-                        <img src="./src/blogBanner.png" alt="#">
+                        <div class="grad"></div>
+                        <img src="./src/Blog-control/chip.png" class="center">
+                        <img src="./src/Blog-control/Electro.png" class="float tl">
+                        <img src="./src/Blog-control/Control.png" class="float rb">
                     </div>
                 </div>
             </section>
@@ -205,7 +208,20 @@
         <script src="writer.js"></script>
         <script src="scroll.js"></script>
         <script>
+            const bannerBlog = document.querySelector(".banimg");
+            const bannerScale = element => {
+                const parent = element.parentElement;
+                const scaleX = parent.offsetWidth / element.offsetWidth;
+                const scaleY = parent.offsetHeight / element.offsetHeight;
+                const scale = (scaleX > scaleY ? scaleY : scaleX)*.75;
+                element.style.transform = `scale(${scale})`;
+            }
+
             document.addEventListener('DOMContentLoaded', ()=> {
+                bannerScale(bannerBlog);
+                observer = new ResizeObserver(() => bannerScale(bannerBlog));
+                observer.observe(document.body)
+
                 const title = document.querySelector("header h1")
                 const subtitle = document.querySelector("header div.title p")
                 subtitle.innerText = ""

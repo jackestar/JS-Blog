@@ -4,14 +4,16 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
-import NotFound from './Layout.vue'
+import NotFound from './404.vue'
+import HeroImage from './image-hero.vue'
 import './custom.css'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'not-found': () => h(NotFound)
+      'not-found': () => h(NotFound),
+      'home-hero-image': () => h(HeroImage),
     })
   },
   enhanceApp({ app, router, siteData }) {
@@ -31,7 +33,7 @@ let setupImageZoom = () => {
   zoomedImage.className = 'zoomed-image';
   overlay.appendChild(zoomedImage);
 
-  // Función para añadir el evento de zoom a las imágenes
+  // Event
   const addZoomListeners = () => {
     const images:NodeListOf<HTMLImageElement> = document.querySelectorAll('.main div img');
     images.forEach(img => {
@@ -46,14 +48,12 @@ let setupImageZoom = () => {
     overlay.classList.remove('show');
   });
 
-  // Usar un `MutationObserver` para detectar cambios en el contenido del DOM
+  // Changes in the document with observer
   const observer = new MutationObserver(() => {
     addZoomListeners();
   });
-
-  // Observar cambios en todo el documento
   observer.observe(document.body, { childList: true, subtree: true });
 
-  // Llamar inicialmente para cargar las imágenes en la página actual
+  // First Check
   addZoomListeners();
 }

@@ -330,17 +330,7 @@ section#blog .title {
     align-items: center;
     flex-wrap: wrap;
     padding: 2em;
-}
-
-section#blog .banner img {
-    max-width:45vw;
-    width: 45cqw;
-    image-rendering: pixelated;
-    padding: 2em;
-    /* background: #6aa7cd; */
-    border-radius: 1em 7em;
-    /* border-bottom: 1em solid #ea886c; */
-    margin: 0 1em;
+    flex: 2 50%;
 }
 
 /* Grid had some issues in mobile */
@@ -426,10 +416,10 @@ section#blog a:hover {
         justify-content: center;
     }
 
-    section#blog .banner img {
+    /* section#blog .banner img {
         width: 75cqw;
         max-width: 50vh;
-    }
+    } */
     
     section#blog p {
         padding: 0 0 1em 0;
