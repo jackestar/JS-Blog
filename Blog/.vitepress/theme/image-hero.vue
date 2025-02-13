@@ -18,9 +18,9 @@
 <template>
     <div class="bannerLogo">
         <div class="banimg">
-            <!-- <img src="../../src/Blog-control/chip.png" class="center" @load="inicio"/> -->
-            <!-- <img src="../../src/Blog-control/Electro.png" class="float tl"/> -->
-            <!-- <img src="../../src/Blog-control/Control.png" class="float rb"/> -->
+            <img src="../../src/Blog-control/chip.png" class="center" @load="inicio"/>
+            <img src="../../src/Blog-control/Electro.png" class="float tl"/>
+            <img src="../../src/Blog-control/Control.png" class="float rb"/>
         </div>
     </div>
 </template>
