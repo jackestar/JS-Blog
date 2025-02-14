@@ -125,7 +125,7 @@ $$
 I = (Vi - 3.5v)/13k
 \end{gather}
 $$
-lo que indica que cuando $Vi > 3.5$ hay corriente atravez de $D3$
+lo que indica que cuando $Vi > 3.5$ hay corriente a través de $D3$
 
 para $Vo$ cuando $D3$ conduce
 
@@ -154,7 +154,7 @@ V_o = \begin{cases}
 \end{cases}
 $$
 
-![Grafica Vo(Vi)](img/vivo.svg)
+![Gráfica Vo(Vi)](img/vivo.svg)
 
 :::
 
@@ -501,7 +501,7 @@ V_{C_2}\approx45.2830v_{rms}
 \end{gather}
 $$
 
-Obtenemos la tencion en el capacitor $C_2$ y por ende en el primario del transformador, dado su relacion de transformacion Eq. $(a)$ a su salida tenemos
+Obtenemos la tension en el capacitor $C_2$ y por ende en el primario del transformador, dado su relación de transformación Eq. $(a)$ a su salida tenemos
 
 $$
 \begin{gather}
@@ -544,7 +544,7 @@ $$
 Otro método valido es poner un diodo zener a la salida de puente rectificador
 
 > [!NOTE]
-> Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuraciónn de los mismos cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
+> Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuración de los mismos cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
 
 Sabemos que el valor pico a la salida del puente rectificador es $V_{O_{p}}=120\sqrt2 - 1.4$ de la primera parte del problema, por lo que se tiene que:
 
@@ -586,6 +586,8 @@ Si el capacitor de salida es de valor muy pequeño el rizo se hace muy grande y 
 
 ### 4. Dado el regulador zener
 
+<!-- <Badge type="danger" text="incompleto" /> -->
+
 ![Diagrama Ejercicio 4](img/parcial1-4a.svg)
 
 $$
@@ -604,11 +606,9 @@ $$
 
 > Que ocurre si $R_l=5k\Omega$
 
-> Que ocurre si $V_i$ aumenta al doble de su valor maximo
+> Que ocurre si $V_i$ aumenta al doble de su valor máximo
 
 :::details Respuesta
-<!-- <details class="answer"> -->
-<!-- <summary>Respuesta</summary> -->
 
 El limitante para el valor de $R_P$ es la potencia maxima que soporta el zener
 
@@ -646,6 +646,12 @@ R_p = 50\Omega
 \end{gather}
 $$
 
+> [!Warning]
+> Al no tener carga el diodo Zener estará disipando 1W lo cual no es un buen diseño la $R_p$ calculada representa el valor mínimo que puede tomar esta resistencia para un diseño real se debe tomar en cuenta un $R_p$ adecuada considerando la carga minima que va a tomar el circuito
+
+> [!Warning]
+> Tambien se debe tener en cuenta la potencia disipada por la resistencia $R_p$ la cual es $(V_{i_{max}}-V_Z)\cdot I_{ZM}=2W$ lo cual es una potencia considerables. Al no tener carga todo el circuito disipa 3W de potencia
+
 En base a estos valores de puede determinar los valores mínimos y máximos que puede tomar la carga, para el modelo anterior consideramos al circuito sin carga es decir con una carga de resistencia infinita, por lo que consideramos que no tiene limite superior, por otro lado el diodo zener requiere una corriente minima $I_{ZK}$ (Corriente de Codo (*knee current*)) para operar, la cual suele ser entre el 5% y 10% de la corriente maxima $I_{ZM}$. Para este caso asumimos un 10%
 
 $$
@@ -676,6 +682,45 @@ Con estos valores sabemos que $R_L=[\frac{250}{9},\infty]$ por lo que
 
 > [!NOTE]
 > al estar las resistencias dentro del rango no hace falta verificar $P_Z$, $V_L$ o $I_{ZK}$
+
+**Si $V_i$=30v**
+
+Para el circuito original el zener debe tener una carga maxima.
+
+$$
+\begin{gather}
+I_P=\frac{Vi-Vz}{R_p}\\
+I_P=500mA\\
+I_L=I_P-I_{ZM}\\
+I_L=300mA\\
+R_{L_{min}}=\frac{V_z}{I_L}\\
+R_{L_{min}}=\frac{50}{3}\approx16.7\Omega
+\end{gather}
+$$
+
+para este caso la potencia disipada por $R_p$ pasa a ser:
+
+$$
+\begin{gather}
+P_{R_p}=(V_{i_{max}}-V_Z)\cdot I_P\\
+P_{R_p}=12.5W
+\end{gather}
+$$
+
+Esto sumado a $1W$ de potencia disipada por el zener.
+
+para la carga minima tenemos
+
+$$
+\begin{gather}
+I_P=\frac{Vi-Vz}{R_p}\\
+I_P=500mA\\
+I_L=I_P-I_{ZK}\\
+I_L=480mA\\
+R_{L_{min}}=\frac{V_z}{I_L}\\
+R_{L_{min}}=\frac{125}{1}\approx10.417\Omega
+\end{gather}
+$$
 
 :::
 
