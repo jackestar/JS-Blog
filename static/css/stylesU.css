@@ -355,6 +355,8 @@ body {
 
 }
 
+/* Blog Shared */
+
 .bannerLogo {
   position: relative;
   width: 100%;
@@ -437,4 +439,15 @@ body {
   0% {transform: translateY(3%)}
   50% {transform: translateY(-1%)}
   100% {transform: translateY(3%)}
+}
+
+/* Title */
+
+@keyframes titleGradAnim {
+  to {
+      background-position: 0em;
+  }
+  from {
+      background-position: 15em;
+  }
 }

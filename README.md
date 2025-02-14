@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/74b08afd-bbd2-424c-b0c2-0dfa1dc0896e/deploy-status)](https://app.netlify.com/sites/jackestar/deploys)
 
-### Build Page
+## Build Page
 
 Clone repo (with submodules)
 
@@ -17,6 +17,12 @@ npm run build
 ```
 
 Deploy in `dist` folder
+
+### Translation
+
+``` bash
+npm run translate -- --input <input-folder> --output <output-folder> [--recursive] [--exceptions <expresion_regular>] [--defaultLang <idioma>] [--filenameLang] [--move]
+```
 
 ## Deploys
 

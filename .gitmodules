@@ -1,9 +1,6 @@
 [submodule "banner"]
 	path = static/Proyects/Banner
 	url = https://github.com/jackestar/bannerMaker
-[submodule "pensum"]
-	path = static/Proyects/Pensum
-	url = https://github.com/jackestar/Pensum
 [submodule "nomen"]
 	path = static/Proyects/Nomen
 	url = https://github.com/jackestar/Nomen

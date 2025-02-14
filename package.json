@@ -6,18 +6,21 @@
     "vue": "^3.5.13"
   },
   "scripts": {
+    "translate": "node translate.js --input ./Locale/ --output ./dist --filenameLang",
     "docs:dev": "vitepress dev Blog --host",
     "docs:build": "vitepress build Blog",
     "docs:preview": "vitepress preview Blog --host",
     "prebuild": "git submodule update --remote",
     "build": "vitepress build Blog --outDir './dist/Blog'",
-    "postbuild": "cp -r ./static/* ./dist"
+    "postbuild": "cp -r ./static/* ./dist && node translate.js --input ./Locale/ --output ./dist --filenameLang"
   },
   "dependencies": {
     "@types/node": "^22.10.2",
     "canvas": "3.0.0-rc3",
     "fs": "0.0.1-security",
+    "fs-extra": "^11.3.0",
     "gray-matter": "^4.0.3",
+    "minimist": "^1.2.8",
     "path": "^0.12.7",
     "typescript": "^5.7.2"
   }
