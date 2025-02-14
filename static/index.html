@@ -218,6 +218,7 @@
             }
 
             document.addEventListener('DOMContentLoaded', ()=> {
+                bannerBlog.value.style.display = "flex"
                 bannerScale(bannerBlog);
                 observer = new ResizeObserver(() => bannerScale(bannerBlog));
                 observer.observe(document.body)
