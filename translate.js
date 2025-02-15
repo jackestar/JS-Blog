@@ -12,7 +12,7 @@ async function main() {
     const outputFolder = args.output;
     const recursive = args.recursive || false;
     const exceptionsRegex = args.exceptions ? new RegExp(args.exceptions) : null;
-    const defaultLang = args.defaultLang || 'es';
+    const defaultLang = args.defaultLang || 'en';
     const filenameLang = args.filenameLang || false;
     const moveFiles = args.move || false; // Conservamos la opción 'move' por si se necesita en el futuro, pero ahora solo copiaremos los traducidos.
 
@@ -114,12 +114,11 @@ async function main() {
                     console.log(`Archivo traducido (copiado) a ${lang}: ${outputFilePathLang}`);
                 }
 
-
-                if (path.basename(filePath) === 'index.html' && lang === defaultLang) {
-                    const rootOutputIndex = path.join(outputFolder, 'index.html');
-                    await fs.copyFile(outputFilePathLang, rootOutputIndex);
-                    console.log(`Copia de index.html (idioma por defecto ${defaultLang}) creada en: ${rootOutputIndex}`);
-                }
+                // if (path.basename(filePath) === 'index.html' && lang === defaultLang) {
+                //     const rootOutputIndex = path.join(outputFolder, 'index.html');
+                //     await fs.copyFile(outputFilePathLang, rootOutputIndex);
+                //     console.log(`Copia de index.html (idioma por defecto ${defaultLang}) creada en: ${rootOutputIndex}`);
+                // }
             }
 
 
