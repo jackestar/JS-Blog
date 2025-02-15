@@ -12,7 +12,7 @@ async function main() {
     const outputFolder = args.output;
     const recursive = args.recursive || false;
     const exceptionsRegex = args.exceptions ? new RegExp(args.exceptions) : null;
-    const defaultLang = args.defaultLang || 'es';
+    const defaultLang = args.defaultLang || 'en';
     const filenameLang = args.filenameLang || false;
     const moveFiles = args.move || false; // Conservamos la opción 'move' por si se necesita en el futuro, pero ahora solo copiaremos los traducidos.
 
