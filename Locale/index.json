@@ -11,19 +11,20 @@
         "linkedinProfile": "Perfil de Linkedin",
         "circuitScanDes": "Sistema de reconocimiento óptico de símbolos electrónicos, enfocado al reconocimiento de circuitos electrónicos para exportación en formato SPICE",
         "ElectronicToolsDes": "Algunos programas realizados en diferentes lenguajes para diferentes problemas",
-        "pcbTraceTool": "Una librería para generar patrones de líneas tipo PCB en un lienzo HTML5.",
+        "pcbTraceTool": "Una librería para generar patrones de líneas tipo PCB en un canvas HTML5.",
         "jsBlogDes": "Sitio web, portafolio y varios proyectos y blog de Jackestar",
-        "pensumGeneratorDes": "Un organizador gráfico de pensum",
+        "pensumGeneratorDes": "Organizador gráfico de pensum",
         "RLCSdatasetDes": "Conjunto de datos: Consiste en componentes electrónicos dibujados a mano según el estándar IEC para resistencias, capacitores, inductores y fuentes de voltaje.",
         "nomenDes": "Interfaz gráfica moderna para codificar componentes de color por código numérico o de color (RLC)",
         "bannerMakerDes": "Personaliza y crea banner a partir del paquete de íconos seleccionado y personaliza estilos y color para crear una imagen",
         "biosPassDes": "Interfaz Gráfica y Traducción. Original de",
         "tableExperimentDes": "Generador de tablas para datos experimentales de laboratorio",
         "data64Des": "Interfaz para convertir imágenes a data64 y viceversa",
-        "jackestarBlogTitle": "Blog de Jackestar",
+        "jackestarBlogTitle": "Jackestar Blog",
         "jackestarBlogDes": "Blog de ingeniería en español sobre microcontroladores, teoría de control, electronica, informática y tecnología en general",
         "visit": "Visitar",
-        "papers": "Artículos"
+        "papers": "Artículos",
+        "projects":"Proyectos"
     },
     "en": {
         "lang":"en",
@@ -49,6 +50,7 @@
         "jackestarBlogTitle": "Jackestar Blog",
         "jackestarBlogDes": "Engineering blog in Spanish about microcontrollers, control theory, electronics, computing and technology in general",
         "visit": "Visit",
-        "papers": "Papers"
+        "papers": "Papers",
+        "projects":"Projects"
     }
 }
