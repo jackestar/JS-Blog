@@ -114,12 +114,11 @@ async function main() {
                     console.log(`Archivo traducido (copiado) a ${lang}: ${outputFilePathLang}`);
                 }
 
-
-                if (path.basename(filePath) === 'index.html' && lang === defaultLang) {
-                    const rootOutputIndex = path.join(outputFolder, 'index.html');
-                    await fs.copyFile(outputFilePathLang, rootOutputIndex);
-                    console.log(`Copia de index.html (idioma por defecto ${defaultLang}) creada en: ${rootOutputIndex}`);
-                }
+                // if (path.basename(filePath) === 'index.html' && lang === defaultLang) {
+                //     const rootOutputIndex = path.join(outputFolder, 'index.html');
+                //     await fs.copyFile(outputFilePathLang, rootOutputIndex);
+                //     console.log(`Copia de index.html (idioma por defecto ${defaultLang}) creada en: ${rootOutputIndex}`);
+                // }
             }
 
 
