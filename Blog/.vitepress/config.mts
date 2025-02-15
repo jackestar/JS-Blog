@@ -73,7 +73,7 @@ export default defineConfig({
       next: 'Siguiente'
     },
     footer: {
-      message: 'Jackestar 2024',
+      message: 'Jackestar 2025',
     },
     langMenuLabel: 'Cambiar Idioma (Change lang)',
     returnToTopLabel: 'Volver arriba',
@@ -107,7 +107,7 @@ export default defineConfig({
             { text: 'BJT', link: '/Ejercicios-Electronica-I/BJT' },
             { text: ' Anexos',
               items: [
-                { text: 'Carga-Divisor', link: '/Ejercicios-Electronica-I/Thevenin-01' },
+                { text: 'Carga-Divisor', link: '/Electronica/Thevenin-01' },
               ]
             },
           ]

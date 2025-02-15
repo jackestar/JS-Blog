@@ -43,6 +43,66 @@ header {
     scroll-snap-align: start;
     /* display: flex; */
     height: 100vh;
+    position: relative;
+}
+
+header nav {
+    position: absolute;
+    top: 0;
+    right: 1em;
+    z-index: 1020;
+    min-height: 10vh;
+    width: auto;
+    padding: .25em;
+}
+
+header nav div.img.rsIcon {
+    min-width: 2em;
+    max-width: 30vw;
+    min-height: 2em;
+    max-height: 30vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: .2;
+    cursor: pointer;
+}
+
+header nav div.img.rsIcon:hover {
+    opacity: 1;
+}
+
+header nav div.hideLang {
+    display: none;
+    position: fixed;
+    padding-top: .5em;
+    right: 1em;
+    height: 0;
+    overflow: hidden;
+}
+
+header nav:has(.web:hover) div.hideLang,header nav div.hideLang:hover {
+    display: flex;
+    height: auto;
+    animation: menu 1s ease-in;
+}
+
+@keyframes menu {
+    0% {max-height: 0;}
+    100% {max-height: 100%;}
+}
+
+header nav div.hideLang ul {
+    list-style: none;
+    padding: .3em;
+    border:#f66 .1em solid;
+    border-radius: 1em;
+}
+header nav div.hideLang ul li {
+    padding:.2em;
+}
+header nav div.hideLang a {
+    color: #000;
+    text-decoration: none;
 }
 header > * {
     /* flex:1 100%; */
@@ -147,10 +207,13 @@ section#proyects div.pcontain {
     padding: 2em;
     margin-bottom: 5em;
 }
+
+/* Cards */
+
 section#proyects div.pcontain div.elem {
     width: 35em;
     max-width:35em;
-    border: solid 0.1em #333;
+    /* border: solid 0.1em #333; */
     color: #eee;
     border-radius: 1em;
     transition: 0.5s ease-out;
@@ -185,10 +248,15 @@ section#proyects div.pcontain div.elem > div.frontcard {
     z-index: 1002;
     max-width:100%;
     overflow:hidden;
+    border: solid 0.1em #333;
+}
+
+section#proyects div.pcontain div.elem > div.frontcard:hover {
+    border: solid 0.1em var(--third);
 }
 
 section#proyects div.pcontain div.elem:hover {
-    border: solid 0.1em var(--third);
+    /* border: solid 0.1em var(--third); */
     z-index: 1024;
 }
 
@@ -196,6 +264,7 @@ section#proyects div.pcontain div.elem:hover a.backcard {
     background-color: var(--third);
     width: 110%;
     transition: 0.2s ease;
+    border: solid 0.1em var(--third);
 }
 
 section#proyects div.pcontain div.elem.glow {
@@ -210,7 +279,7 @@ section#proyects div.elem div.img {
     max-width:2em;
     height: 5cqw;
     max-height:2em;
-    margin-right: 2cqw;
+    /* margin-right: 2cqw; */
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -240,6 +309,7 @@ section#proyects p.des {
     letter-spacing: 0.1em;
     font-size: 1.2em;
     margin-top: 10px;
+    text-align: center;
 }
 section#proyects p.des a {
     color: #aaf;
@@ -253,8 +323,67 @@ section#proyects div.maintitle {
     font-size: 4em;
     position: sticky;
     top: 0;
+    opacity: .1;
+    transition:.2s ease-in;
 }
-section#proyects div.maintitle svg {
+section#proyects div.maintitle h1 {
+    /* padding-bottom: .25em; */
+    font-size: 9cqw;
+    color:#0000;
+    font-variant: all-petite-caps;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #aaf;
+    background: transparent;
+    background-position-y:0 ;
+}
+section#proyects div.maintitle hr {
+    border: solid 3px #333;
+}
+
+section#proyects.show div.maintitle {
+    opacity:1;
+    transition:.2s ease-in;
+}
+
+section#proyects.show div.maintitle h1{
+    animation:titleApear 2s ease-in;
+    transition:.2s ease-in;
+    background: linear-gradient(#a33 40%,#aaf 40% 60%,transparent 60%) text no-repeat 100% 5em;
+    background-position-y:5em;
+    /* background-size: 5em;
+    background-repeat: no-repeat; */
+}
+
+section#proyects.show div.maintitle h1:hover {
+    /* background-position-y:0; */
+    animation: titleApear 2s ease-in-out alternate infinite;
+    /* animation-direction: alternate; */
+    /* transition: 1s ease-out; */
+}
+
+@keyframes titleApear {
+    0% {
+        background-position-y:0;
+    }
+    /* 75% {
+        background-position-y:4em;
+    } */
+    100% {
+        background-position-y:5em;
+    }
+}
+/* 
+section#proyects:has(.pcontain:hover) div.maintitle h1 {
+    opacity: .1;
+    transition:.3s ease;
+} */
+
+section#proyects:has(.pcontain:hover) div.maintitle hr {
+    opacity: 0;
+    transition:.3s ease;
+}
+
+/* section#proyects div.maintitle svg {
     height: 10vh;
     max-width: 100%;
     justify-content: left;
@@ -289,7 +418,7 @@ section#proyects.show div.maintitle svg path {
         stroke-dashoffset: 1000;
         stroke-width: 0.2em;
     }
-}
+} */
 
 .skip-to-content-link {
     background: var(--third);
@@ -330,28 +459,23 @@ section#blog .title {
     align-items: center;
     flex-wrap: wrap;
     padding: 2em;
-}
-
-section#blog .banner img {
-    max-width:45vw;
-    width: 45cqw;
-    image-rendering: pixelated;
-    padding: 2em;
-    /* background: #6aa7cd; */
-    border-radius: 1em 7em;
-    /* border-bottom: 1em solid #ea886c; */
-    margin: 0 1em;
+    flex: 2 50%;
 }
 
 /* Grid had some issues in mobile */
 
 section#blog h2 {
-    font-size: 2em;
+    font-size: 4em;
     font-variant: all-petite-caps;
-    border-radius: 1em;
-    color:#fff;
+    color:#fff0;
     flex: 1 100%;
     text-align: right;
+    font-family: Montserrat Alternates;
+    background: linear-gradient(90deg, #b00 0, #ffc400 7.5em, #bb0000 15em) text;
+    transition: 0.5s ease-out;
+    background-size: 15em;
+    background-position: -2em;
+    animation: 10s titleGradAnim infinite;
 }
 
 section#blog a {
@@ -426,10 +550,10 @@ section#blog a:hover {
         justify-content: center;
     }
 
-    section#blog .banner img {
+    /* section#blog .banner img {
         width: 75cqw;
         max-width: 50vh;
-    }
+    } */
     
     section#blog p {
         padding: 0 0 1em 0;
