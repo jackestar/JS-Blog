@@ -41,12 +41,57 @@ pacman -Syu
 para mas información consulte [Official repositories](https://wiki.archlinux.org/title/Official_repositories#multilib)
 
 ```bash
-pacman -S wine wine-gecko wine-mono winetricks lib32-gnutls
+pacman -S wine wine-gecko wine-mono winetricks lib32-gnutls cups lib32-libcups cups-pdf
 ```
 
 </div>
 
 `wine` es el núcleo del programa, gecko/mono proveen compatibilidad con Internet Explorer y .NET, `winetricks` permite instalar fácilmente librerías y programas, `lib32-gnutls` es una implementación para SSL y TLS, la cual se requiera la version de 32bits.
+
+Para poder exportar gráficos asi como el correcto funcionamiento en PAC display se recomienda la instalación y configuración del servicio de impresión CUPS, con `cups lib32-libcups`, asi como `cups-pdf` para exportar a pdf (este paquete es necesario para algunas impresoras)
+
+::: details Configuración de CUPS
+
+una vez instalado se debe arrancar el servicio
+
+<div class='console'>
+
+```bash
+systemctl start cups
+```
+</div>
+
+y para que arranque automáticamente al inicio habilitarlo (Recomendado/Opcional)
+<div class='console'>
+
+```bash
+systemctl enable cups
+```
+
+</div>
+una vez iniciado se configura una impresora virtual desde la pagina del servicio (Login con usuario root por defecto).
+
+[http://localhost:631/admin](http://localhost:631/admin)
+
+```
+[Añadir Impresora] >
+Impresoras locales: (✓) CUPS-PDF (Virtual PDF Printer) [Siguiente] >
+Nombre/Descripción/Ubicación Opcional [Siguiente] >
+Marca: (Generic) [Siguiente] >
+Modelo (Generic CUPS-PDF Printer (w/ options)) [Añadir Impresora]
+```
+
+y reiniciamos wine
+
+<div class='console'>
+
+```bash
+wineboot
+```
+
+</div>
+
+:::
 
 para poder ejecutar correctamente la suite de PAC 22 se instalaran las siguientes librerías con winetricks, Visual C++ 6
 
@@ -56,7 +101,7 @@ para poder ejecutar correctamente la suite de PAC 22 se instalaran las siguiente
 winetricks mfc42 comctl32 dxvk msvcrt40
 ```
 
-Para el usar cualquier tipo de impresión "print..." asegúrate de tener `cups` para imprimir a PDF tener instalado `cups-pdf`, asi como tener configurada la impresora (o impresión en PDF), de tener algun problema reinicia el wine con el comando `wineboot`
+De tener algun problema reinicia el wine con el comando `wineboot`
 
 ```bash
 wineboot
@@ -64,9 +109,11 @@ wineboot
 
 </div>
 
-## PAC SIM
+## Ejecución/Compatibilidad <Badge type="info" text="Wine 10.2" /><Badge type="info" text="Wayland" />
 
-### 9.3
+### PAC SIM
+
+#### 9.3
 
 para ejecutar PAC SIM, de recomienda hacerlo desde consola, con el comando `wine` y la ruta al ejecutable. Ej.
 
@@ -88,19 +135,33 @@ WINEDEBUG=-all wine "$HOME/.wine/drive_c/Program Files (x86)/Opto22/PAC Project 
 
 </div>
 
-## PAC Control
+### PAC Control
 
-### 9.4
-<!-- > [!NOTE]
-> Se ejecuta sin problemas, solo con algunos errores gráficos en el *toolbar* y el *listview* -->
+#### 9.4
+> [!WARNING]
+> Parece funcionar con algunos bugs gráficos
 
-## PAC Display
+#### R10.5003
+> [!WARNING]
+> Parece funcionar con algunos bugs gráficos
 
-### 9.4
+### PAC Display Configurator
+
+#### 9.4
+> [!WARNING]
+> Parece funcionar con algunos bugs gráficos
+
+#### R10.5003
+> [!WARNING]
+> Parece funcionar con algunos bugs gráficos
+
+### PAC Display Runtime
+
+#### 9.4
 > [!CAUTION]
 > No funciona del todo
 
-### R10.5a
+#### R10.5003
 > [!WARNING]
 > Parece funcionar con algunos bugs gráficos
 
