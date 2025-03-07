@@ -71,7 +71,7 @@ systemctl enable cups
 </div>
 una vez iniciado se configura una impresora virtual desde la pagina del servicio (Login con usuario root por defecto).
 
-[http://localhost:631/admin](http://localhost:631/admin)
+http://localhost:631/admin
 
 ```
 [Añadir Impresora] >
@@ -90,6 +90,8 @@ wineboot
 ```
 
 </div>
+
+para mas información consulte [CUPS - ArchWiki](https://wiki.archlinux.org/title/CUPS)
 
 :::
 
