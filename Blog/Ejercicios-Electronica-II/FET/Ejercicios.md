@@ -37,11 +37,11 @@ El BF245A es un transistor JFET de canal N para aplicaciones de amplificación e
 
 :::details Respuesta
 
-Con los datos de la Fig. P1.9a conocemos que $V_p=-2V$ y $I_{DSS}=4mA$
+Con los datos de la Fig. P1.9a se sabe que $V_p=-2V$ y $I_{DSS}=4mA$
 
 #### P1-1
 
-Para el primer ejercicio analizamos la malla de entrada
+Para el primer ejercicio se analiza la malla de entrada
 
 $$
 
@@ -49,7 +49,7 @@ $$
 
 $$
 
-Tomamos $I_G$ como 0 ya que la impedancia entre *Gate* y *Source* es muy alta, a su ves $I_S = I_D$ por lo que queda:
+Se toma $I_G$ como 0 ya que la impedancia entre *Gate* y *Source* es muy alta, a su ves $I_S = I_D$ por lo que queda:
 
 $$
 \begin{gather}
@@ -57,7 +57,7 @@ V_{GS}=-600\cdot I_D\tag{1}
 \end{gather}
 $$
 
-Que describe la recta de carga que pasa por el origen. Luego tenemos la curva que define $I_D$ de saturación en función de $V_{GS}$
+Que describe la recta de carga que pasa por el origen. Luego se tiene la curva que define $I_D$ de saturación en función de $V_{GS}$
 
 $$
 \begin{gather}
@@ -66,7 +66,7 @@ I_D=1m\cdot\left(2+V_{GS}\right)^2
 \end{gather}
 $$
 
-Igualando la Ec. (1) y (a) obtenemos lo puntos de intersección de la recta
+Igualando la Ec. (1) y (a) se obtienen los puntos de intersección de la recta
 
 $$
 \begin{gather}
@@ -75,11 +75,11 @@ I_{D_{2}}\approx8.0671mA
 \end{gather}
 $$
 
-Al ser $I_{D_{2}}$ mayor al $I_{DSS}$ se descarta, lo que nos deja con la siguiente intersección.
+Al ser $I_{D_{2}}$ mayor al $I_{DSS}$ se descarta, lo que deja con la siguiente intersección.
 
 ![Intersección](img/p1-1a.svg)
 
-Donde el punto de trabajo es $V_{GS}\approx-0.8264v;I_D\approx1.3773mA$, con estos datos podemos calcular $V_{DS}$, tomando la maya de salida:
+Donde el punto de trabajo es $V_{GS}\approx-0.8264v;I_D\approx1.3773mA$, con estos datos se puede calcular $V_{DS}$, tomando la maya de salida:
 
 $$
 \begin{gather}
@@ -99,7 +99,7 @@ $$
 
 #### P1-2
 
-Para este caso $R_{G_1}$ y $R_{G_2}$ forman un divisor de tension, al ser la corriente de *Gate* despreciable, solo necesitamos la tension del *Gate* $V_G$
+Para este caso $R_{G_1}$ y $R_{G_2}$ forman un divisor de tension, al ser la corriente de *Gate* despreciable, solo se necesita la tension del *Gate* $V_G$
 
 $$
 \begin{gather}
@@ -124,7 +124,7 @@ V_{GS}\approx1.9186-1k\cdot I_D\tag{2}
 \end{gather}
 $$
 
-se toma la curva de saturación del ejercicio anterior (por ser el mismo transistor). Igualando la Ec. (2) y (a) obtenemos lo puntos de intersección de la recta.
+Se toma la curva de saturación del ejercicio anterior (por ser el mismo transistor). Igualando la Ec. (2) y (a) se obtienen los puntos de intersección de la recta.
 
 > [!NOTE]
 > A diferencia del ejercicio anterior se despejo $V_{GS}$
@@ -140,7 +140,7 @@ Al ser $V_{GS_1}$ mayor a $V_{GS_{(off)}}$ ($V_{p}$) se descarta.
 
 ![Intersección](img/P1-2g.svg)
 
-Donde el punto de trabajo es $V_{GS}\approx-0.4582V;I_D\approx2.3768mA$, con estos datos podemos calcular $V_{DS}$, tomando la maya de salida:
+Donde el punto de trabajo es $V_{GS}\approx-0.4582V;I_D\approx2.3768mA$, con estos datos se calcula $V_{DS}$, tomando la maya de salida:
 
 
 $$
@@ -161,7 +161,7 @@ $$
 
 #### P1-3
 
-Se numera al JFET superior como (1) y al inferior como (2), resolvemos la malla de entrada del JFET (2).
+Se numera al JFET superior como (1) y al inferior como (2), se resuelve la malla de entrada del JFET (2).
 
 
 $$
@@ -186,7 +186,7 @@ I_{D_1} = 4mA
 \end{gather}
 $$
 
-Se analiza el nodo entre JFETs y la carga $R_L$, lo identificaremos como nodo 1
+Se analiza el nodo entre JFETs y la carga $R_L$, se identifica arbitrariamente como nodo 1
 
 $$
 \begin{gather}
@@ -202,7 +202,7 @@ V_{R_L}=I_L\cdot R_L\\
 V_{R_L}=3v
 $$
 
-la resistencia $R_L$ esta en paralelo con los terminales *Drain* y *Source* del JFET 2, por lo que también sabemos que la tension $V_{DS_2}=3V$. Al completar la malla o al calcular la diferencia de potencial para con el JFET 1, obtenemos que $V_{DS_1}=12V$
+la resistencia $R_L$ esta en paralelo con los terminales *Drain* y *Source* del JFET 2, en consecuencia se tiene la tension $V_{DS_2}=3V$. Al completar la malla o al calcular la diferencia de potencial para con el JFET 1, resulta que $V_{DS_1}=12V$
 
 ![Intersección](img/P1-3g.svg)
 
@@ -237,7 +237,7 @@ V_G = 2.5v
 \end{gather}
 $$
 
-realizamos la malla de entrada del JFET, para obtener la recta de carga estática
+Se realiza la malla de entrada del JFET, para obtener la recta de carga estática
 
 $$
 \begin{gather}
@@ -246,7 +246,7 @@ V_{GS} = 2.5 - 3.3k\cdot I_D
 \end{gather}
 $$
 
-Tomamos la ecuación de curva de saturación.
+Se toma la ecuación de curva de saturación.
 
 $$
 \begin{gather}
@@ -268,7 +268,7 @@ $V_{GS_2}<V_P$ por lo que $I_{D_2}; V_{GS_2}$ no son soluciones por lo que el pu
 
 ![intersección](img/EBS-P3g.svg)
 
-Analizamos la malla de salida y la malla de entrada del BJT
+Se Analiza la malla de salida y la malla de entrada del BJT
 
 $$
 \begin{gather}
@@ -288,7 +288,7 @@ $$
 > $\beta = h_{fe}$
 > se puede considerar que $I_E\approx I_C$, pero para ser mas 1% mas precisos
 
-tomamos las siguientes consideraciones $I_E = I_D$, $I_B=I_C/\beta$, $I_E = I_b\cdot (\beta + 1)$
+Se toman las siguientes consideraciones $I_E = I_D$, $I_B=I_C/\beta$, $I_E = I_b\cdot (\beta + 1)$
 
 $$
 \begin{gather}
@@ -299,7 +299,7 @@ I_B\approx15.1210mA
 \end{gather}
 $$
 
-en base a la s ecuaciones anteriores tenemos que
+A consecuencia de las ecuaciones anteriores:
 
 $$
 \begin{gather}
@@ -308,7 +308,7 @@ V_{cc} - R_5\cdot I_D - V_{be} = R_3\cdot I_D\frac{1}{\beta+1}+V_{DS}\tag{2}
 \end{gather}
 $$
 
-Donde despejando la Ec. (2) obtenemos $V_{DS}\approx3.3215v$, con este valor despejando la Ec. (1) obtenemos $V_{ce}\approx5.1913v$
+Donde despejando la Ec. (2) se obtiene $V_{DS}\approx3.3215v$, con este valor despejando la Ec. (1) se obtiene $V_{ce}\approx5.1913v$
 
 :::
 

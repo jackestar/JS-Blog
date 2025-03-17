@@ -21,9 +21,7 @@ outline: deep
 
 ![Impedancia](img/impedancia-vg_vsAC.svg)
 
-Para Zi, analizamos la corrientes
-
-Encontramos $V_{GS}$
+Para Zi, se analizan las corrientes y se Encuentra $V_{GS}$:
 
 $$
 \begin{gather}
@@ -50,9 +48,7 @@ Z_o=\frac{r_d}{\mu+1}\\
 \end{gather}
 $$
 
-Para Zo, analizamos la corrientes
-
-Encontramos $V_{GS}$
+Para Zo, se analizan las corrientes y encuentra $V_{GS}$
 
 $$
 \begin{gather}

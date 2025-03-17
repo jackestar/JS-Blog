@@ -18,7 +18,7 @@ $V_{DD}=20v$, $\beta =20mA/V^2$, $V_T=2v$, $r_d=100k$
 
 :::details Respuesta
 
-La fuente corriente es una **Fuente de corriente de cascode** con MOSFET idénticos. Hacemos las siguientes aseveraciones solo por la configuración del circuito
+La fuente corriente es una **Fuente de corriente de cascode** con MOSFET idénticos. Se hacen las siguientes aseveraciones solo por la configuración del circuito
 
 * $I_G\approx 0$
 * $I_{D_1} = I_{D_2}$
@@ -28,9 +28,9 @@ La fuente corriente es una **Fuente de corriente de cascode** con MOSFET idénti
 * $V_{D_2} = V_{G_2}$
 
 > [!NOTE]
-> Asumimos que no hay corriente fluyendo por el *gate*, al estar los transistores $Q_1$ y $Q_2$; $Q_3$ y $Q_4$ en serie comparten la misma corriente, los transistores $Q_2$ y $Q_4$ tienen sus terminales $V_G$ y $V_S$ en paralelo por lo que tienen la misma tension
+> Se asume que no hay corriente fluyendo por el *gate*, al estar los transistores $Q_1$ y $Q_2$; $Q_3$ y $Q_4$ en serie comparten la misma corriente, los transistores $Q_2$ y $Q_4$ tienen sus terminales $V_G$ y $V_S$ en paralelo por lo que tienen la misma tension
 
-Primero sabemos que los transistores $Q_1$ y $Q_2$ al tener su *gate* cortocircuitada con su *drain* se cumple que
+Primero se conoce que los transistores $Q_1$ y $Q_2$ al tener su *gate* cortocircuitada con su *drain* se cumple que
 
 $$
 \begin{gather}
@@ -55,9 +55,9 @@ $$
 I_D=\frac{\beta}{2}\cdot(V_{GS}-V_T)^2
 $$
 
-Para que $I_{D_3} = I_{D_4}$ se debe cumplir que $V_{GS_3} = V_{GS_4}$. Esto nos delata que todos los MOSFET tienen el mismo $V_{GS}$ por ende la misma corriente.
+Para que $I_{D_3} = I_{D_4}$ se debe cumplir que $V_{GS_3} = V_{GS_4}$. Esto delata que todos los MOSFET tienen el mismo $V_{GS}$ por ende la misma corriente.
 
-Desarrollando las ecuaciones nos queda que
+Desarrollando las ecuaciones queda que:
 
 $$
 \begin{equation}
@@ -71,19 +71,19 @@ I_{ref}&=I_o
 \end{equation}
 $$
 
-Para calcular las impedancias nos trasladamos al modelo en AC asumiendo que $Z_o\approx R_o$, utilizando el modelo para pequeña señal tenemos:
+Para calcular las impedancias se pasa al modelo en AC asumiendo que $Z_o\approx R_o$, utilizando el modelo para pequeña señal tenemos:
 
 ![alt text](img/PC1_A.svg)
 
-Para simplificar el análisis hacemos una transformación de fuentes tomando en cuenta que $\mu = g_m\cdot r_d$
+Para simplificar el análisis se hace una transformación de fuentes tomando en cuenta que $\mu = g_m\cdot r_d$
 
 ![alt text](img/PC1_B.svg)
 
-Para calcular la impedancia de salida (habiendo fuentes dependientes), desconectamos la carga $R_L$ y colocamos una fuente de prueba $V_P$, por la cual para una corriente $I_P$
+Para calcular la impedancia de salida (habiendo fuentes dependientes),  se desconecta la carga $R_L$ y  se coloca una fuente de prueba $V_P$, por la cual para una corriente $I_P$
 
 ![alt text](img/PC1_C.svg)
 
-Realizando la malla tenemos que
+Realizando la malla:
 
 $$
 \begin{gather}
@@ -92,7 +92,7 @@ V_P = 2 \cdot r_d \cdot I_P + V_{GS_3}\cdot \mu + r_d \cdot I_P + V_{GS_4}\cdot 
 \end{gather}
 $$
 
-Para $V_{GS_3}$ y $V_{GS_4}$ tenemos que
+Para $V_{GS_3}$ y $V_{GS_4}$:
 
 $$
 \begin{gather}
@@ -101,7 +101,7 @@ V_{GS_4} = V_{G_4} - V_{S_4}
 \end{gather}
 $$
 
-Donde $V_{G_3}=0$ y $V_{G_4}=0$ al no pasar ninguna corriente por el circuito de $I_{ref}$ no hay tension. Ademas $V_{S_4}=0$ al estar a tierra, por lo que $V_{GS_4}=0$, para $V_{G_3}$ tenemos que
+Donde $V_{G_3}=0$ y $V_{G_4}=0$ al no pasar ninguna corriente por el circuito de $I_{ref}$ no hay tension. Ademas $V_{S_4}=0$ al estar a tierra, por lo que $V_{GS_4}=0$, para $V_{G_3}$:
 
 $$
 \begin{gather}
@@ -120,7 +120,7 @@ Z_o = \frac{V_P}{I_P} = r_d (2 + g_m\cdot r_d)\tag{2}
 \end{gather}
 $$
 
-para calcular el valor numérico tenemos que
+Para calcular el valor numérico:
 
 $$
 \begin{gather}
@@ -128,7 +128,7 @@ g_m=\sqrt{2I_D\cdot\beta}\tag{a}
 \end{gather}
 $$
 
-calculamos $I_D$ en DC tomando la malla de entrada
+Se calcula $I_D$ en DC tomando la malla de entrada
 
 $$
 \begin{gather}
@@ -158,7 +158,7 @@ $$
 
 Ya que para que un MOSFET sature se debe cumplir la condición $V_{GS}>V_T$ los valores $I_{D_1}$ y $V_{GS_1}$ son los verdaderos.
 
-Con el valor de $I_D$ determinamos $g_m$ con la Ec. (a)
+Con el valor de $I_D$ se determina $g_m$ con la Ec. (a)
 
 $$
 g_m\approx 10.2182m S
@@ -186,13 +186,13 @@ $$
 
 El circuito presenta un repetidor de corriente con dos salidas conectadas en la parte superior, y un repetidor de corriente mejorado de $N$ salidas en la parte inferior.
 
-Asumimos que todos los transistores son iguales en sus características por ende los transistores 1, 2 y 3 complementarios del resto. Por lo que tenemos que
+Se asume que todos los transistores son iguales en sus características por ende los transistores 1, 2 y 3 complementarios del resto. Resultando en:
 
 $$
 V_{BE}=V_{EB}
 $$
 
-Procedemos con el análisis y deducción de las ecuaciones. Primero realizamos la malla que pasa por $R$
+Se Procede con el análisis y deducción de las ecuaciones. Primero se realiza la malla que pasa por $R$:
 
 $$
 \begin{gather}
@@ -202,7 +202,7 @@ R = \frac{17.9}{I_{ref}}\tag{1}
 \end{gather}
 $$
 
-Luego analizamos las corrientes que pasan por el nodo de las bases de los BJT.
+Luego, las corrientes que pasan por el nodo de las bases de los BJT.
 
 $$
 \begin{gather}
@@ -210,11 +210,11 @@ I_{B_1} + I_{B_2} + I_{B_3} + I_{C_1} - I_{ref} = 0\\
 \end{gather}
 $$
 
-Por simetría (al ser los transistores exactamente iguales) podemos asumir que las corrientes se reparten equitativamente, por lo menos en el caso de $Q_2$ y $Q_3$ que están en paralelo. Pero matemáticamente se requiere un criterio para aseverar esto. Aquí surge el modelo de Ebers-Moll
+Por simetría (al ser los transistores exactamente iguales) se asume que las corrientes se reparten equitativamente, por lo menos en el caso de $Q_2$ y $Q_3$ que están en paralelo. Pero matemáticamente se requiere un criterio para aseverar esto. Aquí surge el modelo de Ebers-Moll
 
 [Abstracción Modelo Ebers Moll](../../Electronica/ebers-moll.md)
 
-En base a este modelo $I_C\approx\alpha_F\cdot I_{ES}\cdot e^\frac{V_{BE}}{V_T}$, Donde hay una relación directa entre $V_{BE}$ y $I_C$ por ende al estar las tensiones $V_{BE}$ de $Q_1$, $Q_2$ y $Q_3$ en paralelo podemos asumir que poseen las mismas corrientes.
+En base a este modelo $I_C\approx\alpha_F\cdot I_{ES}\cdot e^\frac{V_{BE}}{V_T}$, Donde hay una relación directa entre $V_{BE}$ y $I_C$ por ende al estar las tensiones $V_{BE}$ de $Q_1$, $Q_2$ y $Q_3$ en paralelo se asume que poseen las mismas corrientes.
 
 Teniendo en cuenta que $I_{C_1} = \beta I_{B_1}$
 
@@ -311,13 +311,13 @@ Donde $V_{CC}=24v$
 
 :::details Respuesta
 
-Analizamos, del lado derecho tenemos tres resistencias en paralelo, tomamos la corriente $V_{GS}\approx0$, podríamos utilizar un equivalente de Thevenin para la *base* del BJT. Pero no hace falta, la resistencia $R_3$ esta en paralelo con $V_{BE}$ el cual es $0.7v$ (asumiendo que esta polarizado), conocemos la tension y resistencia obtenemos la corriente
+Se analiza el lado derecho, con tres resistencias en paralelo, se aproxima la corriente $I_{G}\approx0$, se podría utilizar un equivalente de Thevenin para la *base* del BJT. Pero no hace falta, la resistencia $R_3$ esta en paralelo con $V_{BE}$ el cual es $0.7v$ (asumiendo que esta polarizado), se conoce la tension y la resistencia, se obtiene la corriente:
 
 $$
 I_{R_3}=\frac{7}{1.2M}\approx5.833\Omega
 $$
 
-Ahora hacemos realizamos una malla desde $V_{CC}$ por $R_1$ y $R_2$ hasta $V_B$ (o por $V_BE$ a tierra)
+Se realiza la malla desde $V_{CC}$ por $R_1$ y $R_2$ hasta $V_B$ (o por $V_BE$ a tierra)
 
 $$
 \begin{gather}
@@ -328,13 +328,13 @@ $$
 
 ![Corrientes](img/PC3-A.svg)
 
-Despejamos $I_B$ de las corrientes en el nodo y nos resulta
+Se Despeja $I_B$ de las corrientes en el nodo y resulta:
 
 $$
 I_B=91.25\mu A
 $$
 
-Calculamos $I_C$
+Se Calcula $I_C$:
 
 $$
 \begin{gather}
@@ -343,7 +343,7 @@ I_C=9.125mA
 \end{gather}
 $$
 
-Para la tension $V_G$ tenemos un divisor de tension con $R_1$y $R_2$ entre $V_{CC}$ y $V_B$, al ser $R_1$y $R_2$ simétricos $V_G$ resulta
+Para la tension $V_G$ se tiene un divisor de tension con $R_1$y $R_2$ entre $V_{CC}$ y $V_B$, al ser $R_1$y $R_2$ simétricos $V_G$ resulta
 
 $$
 \begin{gather}
@@ -351,7 +351,7 @@ V_G=\frac{V_{CC}-V_B}{2}=11.65v
 \end{gather}
 $$
 
-Tenemos lo siguiente
+Se tiene que:
 
 **$V_{GS}$**
 $$
@@ -381,7 +381,7 @@ I_D=\frac{\beta}{2}(V_{GS}-V_T)^2\tag{4}
 \end{gather}
 $$
 
-Despejando nos queda
+Despejando queda
 
 $$
 \begin{gather}
@@ -393,7 +393,7 @@ $$
 
 para que un MOSFET este en saturación se debe cumplir $V_{GS}>V_T$ por lo que los valores $I_{D_2}$ y $V_{GS_2}$ no son validos.
 
-Para comprobar estos resultados realizamos la malla de salida
+Para comprobar estos resultados se toma la malla de salida:
 
 $$
 24=V_{R_D}+V_{GS}+V_{CE}
@@ -408,7 +408,7 @@ V_{R_D}=34.9076\nleq24
 \end{gather}
 $$
 
-esto nos comprueba que el MOSFET no puede estar en saturación por lo que probamos con la region lineal utilizamos la Ec. (1), Ec. (2) y Ec. (3) y en adición:
+esto comprueba que el MOSFET no puede estar en saturación por lo que se prueba con la region lineal se utilizan las Ec. (1), Ec. (2) y Ec. (3) y en adición:
 
 **$I_D$** *Corriente del MOSFET en saturación*
 $$
@@ -424,7 +424,7 @@ V_{CC}-V_{DS}-VS=0\tag{6}
 \end{gather}
 $$
 
-Despejando nos deja
+Despejando deja
 
 $$
 \begin{gather}
@@ -477,7 +477,7 @@ $$
 
 <!-- :::details Respuesta -->
 
-Realizamos el análisis en DC
+Se realiza el análisis en DC
 
 ![multi-etapa DC](img/PC4-A.svg)
 
@@ -491,13 +491,13 @@ M2 y M4 forman un espejo de corriente mientras M1 y M2 actúan como resistencias
 * $I_{G_3}=I_{D_3}$ **M3**
 * $V_{GS_2}=V_{GS_4}$
 
-Tenemos que para el MOSFET en estado de saturación la corriente $I_D$ esta en función de $V_GS$ por lo que al ser iguales podemos decir que
+Se tiene que para el MOSFET en estado de saturación la corriente $I_D$ esta en función de $V_GS$ por lo que al ser iguales se puede decir que
 
 $$
 I_{D_2}=I_{D_4}
 $$
 
-por lo que todas las corrientes $I_D$ y tensiones $V_{GS}$ de M1 a M4 son iguales. Para las tensiones $V_{GS}$ tenemos que:
+por lo que todas las corrientes $I_D$ y tensiones $V_{GS}$ de M1 a M4 son iguales. Para las tensiones $V_{GS}$:
 
 $$
 \begin{gather}
@@ -506,7 +506,7 @@ V_{GS}=5v
 \end{gather}
 $$
 
-Para el analisis AC obtenemos $g_m$ y $\mu$
+Para el análisis AC se obtiene $g_m$ y $\mu$
 
 $$
 \begin{gather}
@@ -524,7 +524,7 @@ $$
 
 ![Análisis AC](img/PC4-B.svg)
 
-Para la impedancia de entrada $Z_i$ vemos la impedancia hacia los gates de M1 y M4. Para un MOSFET cortocircuitado *gate-drain* la impedancia es:
+Para la impedancia de entrada $Z_i$ se ve la impedancia hacia los gates de M1 y M4. Para un MOSFET cortocircuitado *gate-drain* la impedancia es:
 
 $$
 Zm=\frac{rd}{\mu+1}
@@ -541,7 +541,7 @@ Zi=8.3326\Omega
 \end{gather}
 $$
 
-Para la impedancia de salida tenemos $R_6$ en paralelo con $R_7$ reflejado al *source* junto a $r_d$, quedando
+Para la impedancia de salida se tiene $R_6$ en paralelo con $R_7$ reflejado al *source* junto a $r_d$, quedando
 
 $$
 Z_o=R_6||(R_7\cdot(\mu+1)+rd)
@@ -551,26 +551,27 @@ $$
 
 **Demostración exhaustiva**
 
-Tenemos el nodo D
+Nodo D:
 
 $$
 I_p=I_{R_6}+I_{R_7}
 $$
 
-Hacemos el cambio de fuente de tension a corriente
+Cambio de fuente de tension a corriente
 
 Para $I_{R_6}$
 $$
 I_{R_6}=\frac{V_p}{R_6}
 $$
 
-Despejamos $V_{GS}$
+$V_{GS}$:
 
 $$
 V_{GS}=0-I_{R_7}\cdot R_7\
 $$
 
-Para $I_{R_7}$
+$I_{R_7}$:
+
 $$
 \begin{gather}
 V_p=V_{GS}\cdot\mu+I_{R_7}\cdot(r_d+R_7)\\
@@ -579,7 +580,7 @@ I_{R_7}=\frac{V_p}{r_d+R_7+R_7\cdot\mu}
 \end{gather}
 $$
 
-Volviendo al nodo D
+Nodo D (Otra vez):
 
 $$
 \begin{gather}

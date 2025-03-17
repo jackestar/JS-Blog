@@ -51,7 +51,7 @@ $$
 
 <!-- :::details Respuesta -->
 
-Primero, analizamos las características en DC del circuito, y simplificamos el circuito. En este caso todos los capacitores en DC se comportan como circuitos abiertos.
+Primero, se analiza las características en DC del circuito, y simplifica el circuito. En este caso todos los capacitores en DC se comportan como circuitos abiertos.
 
 $$
 \begin{gather}
@@ -109,7 +109,7 @@ $$
 I_{C_1}\approx1.9446mA
 $$
 
-Analizamos la malla de salida, asumiendo que esta en region activa
+Se Analiza la malla de salida, asumiendo que esta en region activa
 
 $$
 \begin{gather}
@@ -118,7 +118,7 @@ V_{CE_1}=V_{CC}-R_C\cdot (I_{C_1}+I_{E_2})-R_E\cdot I_{E_1}\\
 \end{gather}
 $$
 
-En este caso tenemos que la corriente en $R_C$ es desconocida, por lo que hay buscar una relación respecto al PNP, en este caso es conveniente la malla de entrada (asumiendo activo también).
+En este caso tiene que la corriente en $R_C$ es desconocida, por lo que hay buscar una relación respecto al PNP, en este caso es conveniente la malla de entrada (asumiendo activo también).
 
 $$
 \begin{gather}
@@ -128,7 +128,7 @@ I_{B_2}\approx12.9557\mu A
 \end{gather}
 $$
 
-Con estos datos podemos calcular la corriente de saturación de ambos BJT para conocer el estado de los transistores.
+Con estos datos se puede calcular la corriente de saturación de ambos BJT para conocer el estado de los transistores.
 
 $$
 \begin{gather}
@@ -139,9 +139,9 @@ I_{C2(sat)}\approx1.1559mA\\
 \end{gather}
 $$
 
-Esto nos delata que el PNP esta en saturación, y el NPN en activo, pero desconocemos realmente la corriente $I_E$ ya que tenemos los datos para relacionar las corrientes en saturación ($\beta(sat)$). Asumimos que $\beta(sat)>>1$ (en un transistor real $I_{B(sat)}>>I_C/\beta$).
+Esto delata que el PNP esta en saturación, y el NPN en activo, pero se desconoce realmente la corriente $I_E$ ya que los datos para relacionar las corrientes en saturación ($\beta(sat)$). Se asume que $\beta(sat)>>1$ (en un transistor real $I_{B(sat)}>>I_C/\beta$).
 
-Verificamos $I_{C1(sat)}$ para con la corriente $I_{C2(sat)}$
+Se Verifica $I_{C1(sat)}$ para con la corriente $I_{C2(sat)}$
 
 $$
 \begin{gather}
@@ -150,7 +150,7 @@ I_{C1(sat)}\approx3.2204mA\\
 \end{gather}
 $$
 
-Lo que confirma que el NPN sigue en activo para un PNP en saturación, Calculamos $V_{CE_1}$
+Lo que confirma que el NPN sigue en activo para un PNP en saturación, Se Calcula $V_{CE_1}$
 
 $$
 \begin{gather}

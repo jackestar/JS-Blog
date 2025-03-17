@@ -8,13 +8,13 @@ outline: deep
 
 # Blink build-in LED
 
-[Codigo Github](https://github.com/jackestar/Baremetal/tree/main/BlinkLED)
+[Código Github](https://github.com/jackestar/Baremetal/tree/main/BlinkLED)
 
 El programa mas básico para comprobar el funcionamiento en una placa de desarrollo. Hacer parpadear a intervalos regulados el LED integrado.
 
 ## Arduino
 
-todos conocemos el tradicional programa para hacer que el led integrado de un Arduino parpadee.
+Todos conocen el tradicional programa para hacer que el led integrado de un Arduino parpadee.
 
 ```C
 void setup() {
@@ -944,11 +944,11 @@ while (1)
 
 ### Delay
 
-A pesar de poseer una perfecta y funcional librería en `avr-libc` para delay vamos a generar nuestro delay. En el caso del ATmega328P se puede establecer una frecuencia de trabajo con el macro `F_CPU` o incluso también cambiarlo en tiempo de ejecución con el registro `CLKPR`. Pudiendo tomar valores `16Mhz`, `8Mhz`, `4Mhz`, `2Mhz`, `1Mhz`, `500khz`, `250khz`, `125khz` y `62,5khz`.
+A pesar de poseer una perfecta y funcional librería en `avr-libc` para delay se diseñara una funcion desde cero. En el caso del ATmega328P se puede establecer una frecuencia de trabajo con el macro `F_CPU` o incluso también cambiarlo en tiempo de ejecución con el registro `CLKPR`. Pudiendo tomar valores `16Mhz`, `8Mhz`, `4Mhz`, `2Mhz`, `1Mhz`, `500khz`, `250khz`, `125khz` y `62,5khz`.
 
 la frecuencia determina cuantas instrucciones por segundo puede realizar el microcontrolador, por lo que para generar un delay hay que mantener el microcontrolador trabajando una cierta cantidad de tiempo. Para esto se usa un bucle `while` que en base a la frecuencia del procesador (F_CPU) producto al el retraso deseado (`ms`) en mili segundos entre `1000` (ya que la frecuencia esta en segundos), entre la cantidad de instrucciones por bucle.
 
-Primero declaramos una variable temporal de tipo `uint32_t` o `unsigned int` para 32bits, especificamos esto para tener explícitamente claro el tamaño de la variable ya que el microcontrolador es de 8bits y para procesar números grandes debe ejecutar varios ciclos (ejecutar varias instrucciones), y para que no evitar ambigüedades durante la compilación.
+Primero se declara una variable temporal de tipo `uint32_t` o `unsigned int` para 32bits, se especifica esto para tener explícitamente claro el tamaño de la variable ya que el microcontrolador es de 8bits y para procesar números grandes debe ejecutar varios ciclos (ejecutar varias instrucciones), y para evitar ambigüedades durante la compilación.
 
 > [!note]
 > los operadores tienen un orden de prioridad en que son procesados. Para los siguientes operadores en orden de prioridad se tiene
@@ -962,17 +962,17 @@ CiclosDeEspera = \frac{FrecuenciaCPU\cdot ms}{1000\cdot NroInstrucciones}
 
 $$
 
-siguiendo en orden prioridad de operadores la primera operación seria la frecuencia por la cantidad de mili segundos, pero aquí surge un problema, un entero sin signo de 32bits puede ser de un máximo de ${2^{32}}-1$ (4294967295) para una frecuencia de 16Mhz solo podríamos tener un delay no mayor a 268ms sin causar desbordamiento (*overflow*) ya los valores se calculan como enteros sin signo de 32bits `uint32_t`, para arreglar esto se aplican dos acercamientos. El primero es procesar con tipos de mayor tamaño para evitar el desbordamiento durante el procesado y luego asignar el resultado en un `uint32_t`. Lo segundo es cambiar el orden de operación.
+siguiendo en orden prioridad de operadores la primera operación seria la frecuencia por la cantidad de mili segundos, pero aquí surge un problema, un entero sin signo de 32bits puede ser de un máximo de ${2^{32}}-1$ (4294967295) para una frecuencia de 16Mhz solo se podria tener un delay no mayor a 268ms sin causar desbordamiento (*overflow*) ya los valores se calculan como enteros sin signo de 32bits `uint32_t`, para arreglar esto se aplican dos acercamientos. El primero es procesar con tipos de mayor tamaño para evitar el desbordamiento durante el procesado y luego asignar el resultado en un `uint32_t`. Lo segundo es cambiar el orden de operación.
 
-para el tipo durante el procesamiento se usaran valores `const unsigned long long`, lo que nos da valores constantes sin signo de 64bits, al ser constantes estos se procesan en tiempo de compilación por lo que el microcontrolador no tiene que procesar dichos números. En caso tal que los `ms` no puedan ser constantes el procesar el numero de ciclo de espera en tiempo de ejecución no altera el delay ni el numero de instrucciones por ciclo de espera.
+para el tipo durante el procesamiento se usaran valores `const unsigned long long`, lo que da valores constantes sin signo de 64bits, al ser constantes estos se procesan en tiempo de compilación por lo que el microcontrolador no tiene que procesar dichos números. En caso tal que los `ms` no puedan ser constantes el procesar el numero de ciclo de espera en tiempo de ejecución no altera el delay ni el numero de instrucciones por ciclo de espera.
 
-Para el orden operación es conveniente, que la frecuencia `F_CPU` se divida entre `1000` sea la primera operación, ya que para las frecuencias de trabajo del ATmega328p son divisibles exactas entre 1000, por lo que no se pierde precision. Luego el resultado multiplicado por la cantidad de mili segundos `ms` operación que no pierde precision y por ultimo se divide entre el numero de instrucciones `inst`. Asi se garantiza un orden de operación que pierde la menor cantidad de precision (ya que estamos operando sin decimales).
+Para el orden operación es conveniente, que la frecuencia `F_CPU` se divida entre `1000` sea la primera operación, ya que para las frecuencias de trabajo del ATmega328p son divisibles exactas entre 1000, por lo que no se pierde precision. Luego el resultado multiplicado por la cantidad de mili segundos `ms` operación que no pierde precision y por ultimo se divide entre el numero de instrucciones `inst`. Asi se garantiza un orden de operación que pierde la menor cantidad de precision (ya que se esta operando sin decimales).
 
 ```c
 uint32_t ciclos = ((F_CPU / 1000ULL) * (ms)) / inst;
 ```
 
-mientras no conozcamos el numero de instrucciones tomamos `inst` como 1
+mientras no se conozca el numero de instrucciones se toma `inst` como 1
 
 > [!note]
 > `ULL` es el sufijo literal para unsigned long long
@@ -986,9 +986,7 @@ while (ciclos) {
 }
 ```
 
-Aquí surge otro problema, para el compilador esta operación no hace nada, asignar una variable y hacer un bucle que solo opere sobre esa variable no altera al resto del codigo por lo que al compilar se ignora esta operación. para evadir esto una manera es inyectando una instrucción en assembler con la función `asm()`, dicha instrucción es `nop` cuya función es hacer un ciclo sin ninguna operación, lo que nos deja un codigo asi.
-
-resulta en el siguiente codigo
+Aquí surge otro problema, para el compilador esta operación no hace nada, asignar una variable y hacer un bucle que solo opere sobre esa variable no altera al resto del codigo por lo que al compilar se ignora esta operación. para evadir esto una manera es inyectando una instrucción en assembler con la función `asm()`, dicha instrucción es `nop` cuya función es hacer un ciclo sin ninguna operación lo que resulta en el siguiente codigo:
 
 ```c{28}
 inline void delay(const unsigned long long ms) {
@@ -1044,7 +1042,7 @@ las lineas resaltadas son la función delay, contiene las siguientes instruccion
   * 2 ciclos si el flag Z es igual a 1
   * 1 ciclo si el flag Z es igual a 0
 
-eso nos da un total de 7 instrucciones por ciclo por lo que el codigo queda asi
+Eso da un total de 7 instrucciones por ciclo por lo que el codigo queda asi
 
 ```c{3}
 inline void delay(const unsigned long long ms) {
@@ -1058,7 +1056,7 @@ inline void delay(const unsigned long long ms) {
 }
 ```
 
-lo ultimo es medir el alcance de la función delay (valores máximos). tomando ciclos con su valor máximo ${2^{32}-1}$ y despejando ms obtenemos los siguientes valores
+lo ultimo es medir el alcance de la función delay (valores máximos). tomando ciclos con su valor máximo ${2^{32}-1}$ y despejando ms se obtienen los siguientes valores
 | Frecuen. | ms          | seg      | min   | horas |
 |---------:|-------------|----------|-------|-------|
 | 16Mhz    | 1879048ms   | 1879s    | 31m   |       |
@@ -1073,7 +1071,7 @@ lo ultimo es medir el alcance de la función delay (valores máximos). tomando c
 
 ### Librerías
 
-Haciendo uso de las librería de *avr_libc* importamos `avr/io.h` los identificadores para todos los registros para un procesador particular. A través del macro `__AVR_ATmega328P__` que es definido por el compilador
+Haciendo uso de las librería de *avr_libc* se importa `avr/io.h` los identificadores para todos los registros para un procesador particular. A través del macro `__AVR_ATmega328P__` que es definido por el compilador
 
 ```c
 // Defino el dispositivo
@@ -1169,7 +1167,7 @@ Indica que no debe generar un punto de entrada `main` estándar.
 
 Cuando el programa entra en una condición critica e irrecuperable y requiere intervención externa se dice que el sistema entra en `panic`. Ya sea por un resultado inesperado o error del sistema.
 
-Para manejar estos estados se puede crear una función `panic`. El comportamiento mas simple que podemos dar a esta función es la de detener la ejecución del programa. Para esto ya existe un crate `panic-halt` cuya función es detener la ejecución en el estado de pánico.
+Para manejar estos estados se puede crear una función `panic`. El comportamiento mas simple que se le puede dar a esta función es la de detener la ejecución del programa. Para esto ya existe un crate `panic-halt` cuya función es detener la ejecución en el estado de pánico.
 
 ```rust
 use panic_halt as _;
@@ -1179,7 +1177,7 @@ importa el crate y vincula el "handler" (manejador) para `panic`
 
 ### Entry
 
-Indicamos la función que sera el punto de entrada, en este caso con el attributo `#[arduino_hal::entry]` para un Arduino uno.
+Se indica la función que sera el punto de entrada, en este caso con el attributo `#[arduino_hal::entry]` para un Arduino uno.
 
 ```rust
 #[arduino_hal::entry]
@@ -1194,7 +1192,7 @@ fn main() -> ! {
 let dp = arduino_hal::Peripherals::take().unwrap();
 ```
 
-desde el crate `arduino_hal` accedemos a los periféricos `Peripherals` y a su método `take()` y lo manejamos a través del método `unwrap();`, en caso de obtener un resultado se extrae en el caso contrario o de obtener un error causa `panic`.
+Desde el crate `arduino_hal` se accede a los periféricos `Peripherals` y a su método `take()` y se maneja a través del método `unwrap();`, en caso de obtener un resultado se extrae en el caso contrario o de obtener un error causa `panic`.
 
 ### Pines
 
@@ -1203,7 +1201,7 @@ let pins = arduino_hal::pins!(dp);
 let mut led = pins.d13.into_output();
 ```
 
-Desde los periféricos accedemos a los pines y seleccionamos el pin `d13` que es una abstracción para el puerto `PB5` para el arduino uno. Y lo establecemos como salida con el estado `LOW` por defecto.
+Desde los periféricos se accede a los pines y selecciona el pin `d13` que es una abstracción para el puerto `PB5` para el arduino uno. Se establece como salida con el estado `LOW` por defecto.
 
 ### Bucle
 

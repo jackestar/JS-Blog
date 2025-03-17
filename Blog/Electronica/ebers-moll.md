@@ -11,7 +11,7 @@ outline: deep
 > [!NOTE]
 > Esta deducción busca modelar el transistor con el comportamiento conocido del mismo, no describir el comportamiento del transistor con el modelo
 
-Un transistor BJT consiste en la union de tres materiales semiconductores (NPN o PNP), para corriente continua y pequeña señal se puede modelar como un par de diodos y fuentes de corriente, para ello partimos del **Modelo de Shockley** para el diodo
+Un transistor BJT consiste en la union de tres materiales semiconductores (NPN o PNP), para corriente continua y pequeña señal se puede modelar como un par de diodos y fuentes de corriente, para ello se parte del **Modelo de Shockley** para el diodo
 
 $$
 I_D=I_S(e^\frac{V_D}{n\cdot V_T}-1)
@@ -35,7 +35,7 @@ El transistor se puede modelar asi mismo como dos diodos (al ser estos la union 
 
 ![alt text](img/Ebers-Moll_Model_PNP.png)
 
-Obtenemos cada corriente para el modelo NPN
+Se obtiene cada corriente para el modelo NPN
 
 $$
 \begin{gather}
@@ -85,9 +85,7 @@ $$
 
 <!-- para muchos casos $I_E\approx IC$ al ser $I_B<<IC$ por lo que el parámetro $\alpha_F$ es aproximadamente 1 -->
 
-Si consideramos útiles toda corriente ($I_E$) $>1\mu A$ tenemos lo siguiente
-
-Si $I_D=I_S\cdot X$ donde $X=e^\frac{V_{BE}}{n\cdot V_T}-1$ entonces $1\mu=1p\cdot X \to X=1M$ por lo que el termino exponencial debe ser $1M-1$, lo cual es mucho mayor a 1. Con esta analogía esta simplificación sirve para cualquier corriente $I_D>>I_S$
+Si se considera útil toda corriente ($I_E$) $>1\mu A$ se tiene que si $I_D=I_S\cdot X$ donde $X=e^\frac{V_{BE}}{n\cdot V_T}-1$ entonces $1\mu=1p\cdot X \to X=1M$ por lo que el termino exponencial debe ser $1M-1$, lo cual es mucho mayor a 1. Con esta analogía esta simplificación sirve para cualquier corriente $I_D>>I_S$
 
 :::details Demostración exhaustiva
 $$
@@ -98,13 +96,13 @@ n = 2 \to V_{BE}\approx0.7184
 \end{gather}
 $$
 
-por lo que para con el exponencial para ambos casos tenemos que
+Por lo que para con el exponencial para ambos casos:
 
 $$
 e^\frac{V_{BE}}{n\cdot V_T} = 1000001
 $$
 
-por lo que para el termino $(e^\frac{V_{BE}}{n\cdot V_T}-1)$ $e^\frac{V_{BE}}{n\cdot V_T}>>1$ por lo que podemos simplificar dicho termino.
+Por lo que para el termino $(e^\frac{V_{BE}}{n\cdot V_T}-1)$ $e^\frac{V_{BE}}{n\cdot V_T}>>1$ por lo que se simplifica dicho termino.
 :::
 
 $$

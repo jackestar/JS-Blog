@@ -12,7 +12,7 @@ Esta guía busca cubrir la instalación para PAC Project 9.4 y 9.3 para sistemas
 
 ## Requisitos
 
-la suite de PAC 22 solo esta disponible en sistemas MS Windows, por lo que para ejecutar software windows en SO Linux es necesario el uso de una **Capa de Compatibilidad** para ejecutar estos programas. En este caso usaremos *wine*
+la suite de PAC 22 solo esta disponible en sistemas MS Windows, por lo que para ejecutar software windows en SO Linux es necesario el uso de una **Capa de Compatibilidad** para ejecutar estos programas. En este caso se usa *wine*
 
 > [!NOTE]
 > WINE "Wine Is Not an Emulator"
@@ -81,7 +81,7 @@ Marca: (Generic) [Siguiente] >
 Modelo (Generic CUPS-PDF Printer (w/ options)) [Añadir Impresora]
 ```
 
-y reiniciamos wine
+y se reinicia wine
 
 <div class='console'>
 

@@ -30,7 +30,7 @@ Donde $Vi$ se describe como una señal triangular de periodo $T$ de $8ms$ y Tens
 
 **Simplificación**
 
-El primera paso es simplificar el circuito si es posible. El teorema de Thevenin nos dice:
+El primera paso es simplificar el circuito si es posible. El teorema de Thevenin dice:
 
 > [!NOTE]
 > "Cualquier red eléctrica lineal que contenga únicamente fuentes de tensión, fuentes de corriente y resistencias puede sustituirse en los terminales A–B por una combinación equivalente de una fuente de tensión $V_{th}$ en una conexión en serie con una resistencia $R_{th}$".
@@ -39,7 +39,7 @@ Lo que significa que si una parte del circuito comprendida por dos terminales es
 
 ![alt text](./img/parcial1-1b.svg)
 
-En este caso como no tenemos fuentes dependientes podemos tomar el lado derecho del circuito de manera sencilla. Determinando la tension entre los terminales del circuito separado, con $Vi$ como constante, se obtiene $V_{th}$. Apagando las fuente del circuito y calculando la resistencia equivalente entre sus terminales se obtiene $R_{th}$.
+En este caso como no hay fuentes dependientes se tomar el lado derecho del circuito de manera sencilla. Determinando la tension entre los terminales del circuito separado, con $Vi$ como constante, se obtiene $V_{th}$. Apagando las fuente del circuito y calculando la resistencia equivalente entre sus terminales se obtiene $R_{th}$.
 
 Para $V_{th}$ se puede hacer un sistema de ecuaciones para conocer el valor de tension en los terminales. Pero el circuito se puede resolver con técnicas mas sencilla. Primero se puede hacer una transformación de fuente donde una fuente de tension en serie con una resistencia tiene un equivalente con una fuente corriente en serie con una resistencia del mismo valor.
 
@@ -56,12 +56,12 @@ $$
 
 Dichas formulas son fácilmente deducibles con análisis de circuito.
 
-Al tener todas las resistencias el mismo valor le asignaremos la constante $R$ para simplificar los cálculos. Primero transformamos la fuente $Vi$ que esta en serie con $R1$ a su equivalente con una fuente de corriente $Ia$ de valor $Ia = Vi/R$ en paralelo con la resistencia $R1$. Ahora $R1$ y $R2$ están en paralelo y tienen el mismo valor.
+Al tener todas las resistencias el mismo valor se asigna la constante $R$ para simplificar los cálculos. Primero se transforma la fuente $Vi$ que esta en serie con $R1$ a su equivalente con una fuente de corriente $Ia$ de valor $Ia = Vi/R$ en paralelo con la resistencia $R1$. Ahora $R1$ y $R2$ están en paralelo y tienen el mismo valor.
 
 > [!NOTE]
 > Para $n$ resistencias en paralelo con valor $R$, su equivalente es una resistencia de valor $R/n$
 
-Demostrando la formula general para resistencias en paralelo se tiene que
+En base la formula general para resistencias en paralelo se tiene que
 
 $$
 \begin{gather}
@@ -72,7 +72,7 @@ R_{eq} = \frac{R}2
 \end{gather}
 $$
 
-Ahora el paralelo de $R1$ y $R2$ le asignaremos una resistencia equivalente $Ra$ de valor $R/2$. Queda la fuente $Ia$ en paralelo con resistencia $Ra$ y a su vez el serie con la resistencia $R3$. Se transforma $Ia$ junto a $Ra$ a una fuente de tension $Va$ de valor $Vi/2$ en serie con $Ra$, la cual queda en serie con $R3$, cuyo equivalente ahora es $Rb$ de valor $3R/2$. Finalmente la fuente $Va$ en serie con $Rb$ se transforma a una fuente de corriente $Ith$ de valor $Vi/(3R)$ en paralelo con con $Rb$ y con $R4$. El equivalente de $Rb$ y $R4$ es $R_{th}$ con valor $3R/5$. Lo que resulta en un equivalente de Norton, por comodidad (y para que la fuente equivalente no quede en función del valor de las resistencias) se transforma una vez mas en un equivalente de Thevenin, quedando $V_{th}$ con valor $Vi/5$.
+Ahora el paralelo de $R1$ y $R2$ se asigna una resistencia equivalente $Ra$ de valor $R/2$. Queda la fuente $Ia$ en paralelo con resistencia $Ra$ y a su vez el serie con la resistencia $R3$. Se transforma $Ia$ junto a $Ra$ a una fuente de tension $Va$ de valor $Vi/2$ en serie con $Ra$, la cual queda en serie con $R3$, cuyo equivalente ahora es $Rb$ de valor $3R/2$. Finalmente la fuente $Va$ en serie con $Rb$ se transforma a una fuente de corriente $Ith$ de valor $Vi/(3R)$ en paralelo con con $Rb$ y con $R4$. El equivalente de $Rb$ y $R4$ es $R_{th}$ con valor $3R/5$. Lo que resulta en un equivalente de Norton, por comodidad (y para que la fuente equivalente no quede en función del valor de las resistencias) se transforma una vez mas en un equivalente de Thevenin, quedando $V_{th}$ con valor $Vi/5$.
 
 ![Thevenin Procedimiento](./img/parcial1-1c.svg)
 ![Thevenin Procedimiento](./img/parcial1-1d.svg)
@@ -99,7 +99,7 @@ Para conocer el comportamiento de $Vo$ y poder graficar se analizan las 3 ramas.
 
 ![Diodo](./img/Diode_symbol.svg)
 
-Analizaremos el ciclo positivo y negativo de cada rama
+Se analiza el ciclo positivo y negativo de cada rama
 
 Para la primera rama en el **ciclo positivo** para polarizar el diodo se debe superar la tension de polarización del diodo $Vk$ y ademas la tension de la fuente de $2v$, por lo que a partir de los $2.7v$ el diodo conduce. Para el **ciclo negativo** el diodo no conduce
 
@@ -320,7 +320,7 @@ El umbral entre un $1$ y $0$ lógico viene definido por la tecnología de dicha 
 > [!NOTE]
 > [1] J. F. Wakerly, Diseño Digital. Pearson Educación, 2001.
 
-A términos de un circuito digital podemos decir que sigue funcionando como compuerta, mas no cumple con las especificaciones TTL y CMOS.
+A términos de un circuito digital se puede decir que sigue funcionando como compuerta, mas no cumple con las especificaciones TTL y CMOS.
 
 :::
 
@@ -341,7 +341,7 @@ A términos de un circuito digital podemos decir que sigue funcionando como comp
 
 ![Pregunta 3](./img/parcial1-3a.svg)
 
-Para calcular $Vo$ vamos desde la entrada la fuente de tension $120v_{rms}\space⏦$, tomamos el transformador de manera ideal cumpliendo la siguiente relación.
+Para calcular $Vo$ se parte desde la entrada la fuente de tension $120v_{rms}\space⏦$, se evalúa el transformador de manera ideal cumpliendo la siguiente relación.
 
 $$
 
@@ -359,7 +359,7 @@ V_s=12v_{rms}
 
 $$
 
-en base a la tension RMS ($V_{rms}$) o eficaz ($V_{efz}$) podemos obtener la tension pico ${V_p}$ del transformador.
+En base a la tension RMS ($V_{rms}$) o eficaz ($V_{efz}$) se obtiene la tension pico ${V_p}$ del transformador.
 
 $$
 
@@ -379,7 +379,7 @@ v_p=12\sqrt2
 $$
 
 en el **ciclo positivo** a la salida del transformador la corriente fluye a través $D_1$ hasta el paralelo del capacitor y la carga (resistiva) y devuelta por el diodo $D_3$ hasta el secundario. En el **ciclo negativo** a la salida del transformador la corriente fluye a través $D_4$ hasta el paralelo del capacitor y la carga (resistiva) y devuelta por el diodo $D_2$ hasta el secundario.
-En ambos ciclos, la tension del secundario del transformador debe superar la tension de polarización de dos diodos, por lo que cuando la tension (del secundario) es mayor $±1.4v$ ambos diodos conducen, sabiendo la caída de tension de los diodos tenemos que:
+En ambos ciclos, la tension del secundario del transformador debe superar la tension de polarización de dos diodos, por lo que cuando la tension (del secundario) es mayor $±1.4v$ ambos diodos conducen, sabiendo la caída de tension de los diodos se resulta:
 
 $$
 \begin{gather}
@@ -389,7 +389,7 @@ V_{o_p} \approx 15.5705v
 \end{gather}
 $$
 
-Tomando $V_o$ como el voltaje pico a la salida, tenemos la ecuación de voltaje de rizo
+Tomando $V_o$ como el voltaje pico a la salida, se obtiene la ecuación de voltaje de rizo
 
 $$
 V_r=\frac{4V_{o_p}}{f\cdot c\cdot r}\tag{b}
@@ -403,13 +403,13 @@ $$
 
 ![Pregunta 3](./img/Parcial%201-3b.png)
 
-ya con estos valores tenemos que 
+Con estos valores se obtiene como resultado:
 
 $$
 V_r=\frac{2\cdot(60\sqrt2-7)}{141}\approx 1.1042v
 $$
 
-Para obtener el voltaje de salida tomamos el valor pico menos la mitad del voltaje de rizo, con la notación de ± la mitad del voltaje rizo
+Para obtener el voltaje de salida se toma el valor pico menos la mitad del voltaje de rizo, con la notación de ± la mitad del voltaje rizo
 
 $$
 \begin{gather}
@@ -418,7 +418,7 @@ V_o \approx 15.0184 ± 0.5521
 \end{gather}
 $$
 
-Para obtener un voltaje de $-5v$ (se tomara como voltaje pico) se pueden hacer utilizar varios métodos (sin alterar los elementos ya existente). Demostraremos dos métodos.
+Para obtener un voltaje de $-5v$ (se tomara como voltaje pico) se pueden hacer utilizar varios métodos (sin alterar los elementos ya existente). Se demuestra por dos métodos.
 
 *Primer método*
 
@@ -431,7 +431,7 @@ el primer método consiste en utilizar un divisor de tension capacitivo a la ent
 
 Tomando la referencia (tierra) como el cátodo de los diodos $D_1$ y $D_4$ se obtiene voltaje negativo respecto a la tierra. Como aclaratoria invertir el puente rectificador generaría el mismo circuito.
 
-La tension $V_{o_p}$ es 5v, la tension que cae en el puente rectificador es de $1.4v$ por lo que la en los terminales del secundario tenemos $6.4v$, ya que la relación del transformador es $10:1$ (a través de la formula de relación de transformación) el voltaje pico a en el primario del transformador ($V_p$) es $64v$ con un voltaje eficaz de $64/\sqrt2$.
+La tension $V_{o_p}$ es 5v, la tension que cae en el puente rectificador es de $1.4v$ por lo que la en los terminales del secundario el valor es $6.4v$, ya que la relación del transformador es $10:1$ (a través de la formula de relación de transformación) el voltaje pico a en el primario del transformador ($V_p$) es $64v$ con un voltaje eficaz de $64/\sqrt2$.
 
 Un divisor de tension viene dado por la siguiente expresión:
 
@@ -445,7 +445,7 @@ $$
 >[!NOTE]
 > Esta formula se obtiene con LVK y Ohm.
 
-Donde $V_{C_1}$ es la tension al primario del transformador, al analizar la malla la fuente de tension y los dos capacitores tenemos por LVK (Kirchhoff)
+Donde $V_{C_1}$ es la tension al primario del transformador, al analizar la malla la fuente de tension y los dos capacitores por LVK (Kirchhoff)
 
 $$
 \begin{gather}
@@ -455,7 +455,7 @@ V_{C_1}\approx 74.7451
 \end{gather}
 $$
 
-Para calcular el valor de los capacitores tenemos su valor en impedancia
+Para calcular el valor de los capacitores se parte de la formula de la impedancia para un capacitor.
 
 $$
 \begin{gather}
@@ -489,7 +489,7 @@ $$
 \end{gather}
 $$
 
-Obtenemos una proporción entre $C_1$ y $C_2$ y no un valor concreto. Se escoge el valor comercial de $33\mu F$ para $C_3$ lo que resulta para $C_1\approx19.98\mu F$ que aproximamos al valor comercial $20\mu F$.
+Se obtiene una proporción entre $C_1$ y $C_2$ y no un valor concreto. Se escoge el valor comercial de $33\mu F$ para $C_3$ lo que resulta para $C_1\approx19.98\mu F$ que se aproxima al valor comercial $20\mu F$.
 
 Ya con estos valores comprobamos. Dado $(3.1)$
 
@@ -501,7 +501,7 @@ V_{C_2}\approx45.2830v_{rms}
 \end{gather}
 $$
 
-Obtenemos la tension en el capacitor $C_2$ y por ende en el primario del transformador, dado su relación de transformación Eq. $(a)$ a su salida tenemos
+Se obtiene la tension en el capacitor $C_2$ y por ende en el primario del transformador, dado su relación de transformación Eq. $(a)$ a su salida tenemos
 
 $$
 \begin{gather}
@@ -544,9 +544,9 @@ $$
 Otro método valido es poner un diodo zener a la salida de puente rectificador
 
 > [!NOTE]
-> Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuración de los mismos cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
+> Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuración cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
 
-Sabemos que el valor pico a la salida del puente rectificador es $V_{O_{p}}=120\sqrt2 - 1.4$ de la primera parte del problema, por lo que se tiene que:
+Se conoce que valor pico a la salida del puente rectificador es $V_{O_{p}}=120\sqrt2 - 1.4$ de la primera parte del problema, por lo que se tiene que:
 
 $$
 \begin{gather}
@@ -650,9 +650,9 @@ $$
 > Al no tener carga el diodo Zener estará disipando 1W lo cual no es un buen diseño la $R_p$ calculada representa el valor mínimo que puede tomar esta resistencia para un diseño real se debe tomar en cuenta un $R_p$ adecuada considerando la carga minima que va a tomar el circuito
 
 > [!Warning]
-> Tambien se debe tener en cuenta la potencia disipada por la resistencia $R_p$ la cual es $(V_{i_{max}}-V_Z)\cdot I_{ZM}=2W$ lo cual es una potencia considerables. Al no tener carga todo el circuito disipa 3W de potencia
+> También se debe tener en cuenta la potencia disipada por la resistencia $R_p$ la cual es $(V_{i_{max}}-V_Z)\cdot I_{ZM}=2W$ lo cual es una potencia considerables. Al no tener carga todo el circuito disipa 3W de potencia
 
-En base a estos valores de puede determinar los valores mínimos y máximos que puede tomar la carga, para el modelo anterior consideramos al circuito sin carga es decir con una carga de resistencia infinita, por lo que consideramos que no tiene limite superior, por otro lado el diodo zener requiere una corriente minima $I_{ZK}$ (Corriente de Codo (*knee current*)) para operar, la cual suele ser entre el 5% y 10% de la corriente maxima $I_{ZM}$. Para este caso asumimos un 10%
+En base a estos valores de puede determinar los valores mínimos y máximos que puede tomar la carga, para el modelo anterior se considera el circuito sin carga es decir con una carga de resistencia infinita, por lo que no tiene limite superior, por otro lado el diodo zener requiere una corriente minima $I_{ZK}$ (Corriente de Codo (*knee current*)) para operar, la cual suele ser entre el 5% y 10% de la corriente maxima $I_{ZM}$. Para este caso se toma como criterio un 10%
 
 $$
 \begin{gather}
@@ -674,7 +674,7 @@ R_L\approx27.8\Omega
 \end{gather}
 $$
 
-Con estos valores sabemos que $R_L=[\frac{250}{9},\infty]$ por lo que
+Con estos valores se tiene que $R_L=[\frac{250}{9},\infty]$ por lo que
 
 **Si $R_L=5\Omega$** el circuito no regula
 

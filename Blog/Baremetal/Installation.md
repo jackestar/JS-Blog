@@ -17,9 +17,9 @@ Para programar una placa de desarrollo Arduino con procesador AVR (UNO R3, Nano)
 
 - Instalar el Toolchan *avr-gcc*, el cual contiene el compilador para la familia de microcontroladores AVR.
 
-- Instalar un programador, en este caso [*avrdude*](https://avrdudes.github.io/avrdude/) el cual nos permitirá cargar y comprobar el firmware en el microcontrolador. 
+- Instalar un programador, en este caso [*avrdude*](https://avrdudes.github.io/avrdude/) el cual permitirá cargar y comprobar el firmware en el microcontrolador. 
 
-- Disponer de un editor de código (opcional), proporciona una interfaz gráfica cómoda para editar el codigo
+- Disponer de un editor de código (opcional), proporciona una interfaz gráfica cómoda para editar el código
 
 <div class='console'>
 
@@ -118,7 +118,7 @@ avrdude -p m328p -c arduino -P /dev/ttyUSB0 -U flash:w:main.hex
 
 </div>
 
-avrdude permite recibir archivos ELF como entrada, pudiendo distinguir entre iHEX y ELF sin especificar el formato, lo que permitiría omitir el paso de convertir en iHEX
+avrdude permite recibir archivos ELF como entrada, pudiendo distinguir entre iHEX y ELF sin especificar el formato, lo que permite omitir el paso de convertir en iHEX
 
 <div class='console'>
 
