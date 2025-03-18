@@ -478,4 +478,4 @@ int main(void)
 
 ```
 
-<!-- Video de demostración -->
+YouTube Demo: [Rotary Encoder Library - example_rotary_encoder.cc [Test]](https://youtu.be/ZgM7oFhrcaU)
