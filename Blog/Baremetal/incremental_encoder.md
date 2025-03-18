@@ -265,9 +265,10 @@ OCR2A = encoder.position * 255 / encoder.stepPerRevolution;
 
 ### Librería
 
-rotaryEncoder.hpp
+Se demuestra en base a la explicación anterior la librería resultante. El código es iterado y optimizado para su producción en el [repositorio de Github](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder/C) esta actualizado y revisado por lo que difiere de la version a continuación.
+
+*rotaryEncoder.hpp*
 ```cpp
-// Rotary Relative Encoder
 
 #ifndef _ROTARY_ENCODER_
 
@@ -294,7 +295,7 @@ class RotaryEncoder
         volatile uint8_t *pinBPort;
         uint8_t pinBBit;
         uint8_t stepPerRevolution;
-        uint8_t position; // 8bit resolution
+        uint8_t position;
     
         RotaryEncoder(volatile uint8_t *pinAPort, uint8_t pinABit, volatile uint8_t *pinBPort, uint8_t pinBBit, uint8_t stepPerRevolution);
         void read();
@@ -310,14 +311,12 @@ class RotaryEncoder
 #endif
 ```
 
-rotaryEncoder.cpp
+*rotaryEncoder.cpp*
 ```cpp
 #include "rotaryEncoder.hpp"
 
 RotaryEncoder::RotaryEncoder(volatile uint8_t *pinAPort, uint8_t pinABit, volatile uint8_t *pinBPort, uint8_t pinBBit, uint8_t stepPerRevolution)
     : pinAPort(pinAPort), pinABit(pinABit), pinBPort(pinBPort), pinBBit(pinBBit), stepPerRevolution(stepPerRevolution), step(0), position(0), direction(ENCODER_STOPPED) {
-    // if (pinAPort == pinBPort && pinABit == pinBBit)
-    //     static_assert(true, "A signal and B signal cannot be the same");
 }
 
 inline void RotaryEncoder::positionInc() {
@@ -430,19 +429,17 @@ void RotaryEncoder::reset() {
 
 int main(void)
 {
+    // Entradas
     DDRD &= ~(1 << DDD5); // A (Pin 5)
     DDRD &= ~(1 << DDD6); // B (Pin 6)
     DDRD &= ~(1 << DDD7); // Swh (Pin 7)
 
-    // 13 as output to show direction
-    // 12 as output toggle button
-    // 11 as output to show errors
+    // Salidas
     DDRB |= (1 << DDB5); // Dir (Pin 13)
     DDRB |= (1 << DDB4); // Tgl (Pin 12)
     DDRB |= (1 << DDB3); // DIM (Pin 11)
 
-    // no-inverter mode
-    // Fix frequency PWM
+    // No inversor de frecuencia fija
     TCCR2A = 0 | (1 << COM2A1) | (1 << WGM21) | (1 << WGM20);
 
     // No prescaler
@@ -478,4 +475,12 @@ int main(void)
 
 ```
 
-YouTube Demo: [Rotary Encoder Library - example_rotary_encoder.cc [Test]](https://youtu.be/ZgM7oFhrcaU)
+### Video de Demostración
+
+<hr/>
+
+<div align="center">
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZgM7oFhrcaU?si=5afGIDUQ3yD4WHAB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</div>
