@@ -592,7 +592,7 @@ Z_o= R_6||(r_d+R_7\cdot(\mu+1))
 $$
 
 $$
-Z_o=80.2M\Omega
+Z_o=3921.56\Omega
 $$
 
 Para la ganancia
