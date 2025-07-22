@@ -7,6 +7,7 @@ import './style.css'
 import NotFound from './404.vue'
 import HeroImage from './image-hero.vue'
 import './custom.css'
+import Viewer3D from './Viewer3D.vue'
 
 export default {
   extends: DefaultTheme,
@@ -17,6 +18,7 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
+    app.component('Viewer3D', Viewer3D);
     if (typeof window !== 'undefined') {
       setupImageZoom()
     }

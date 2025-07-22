@@ -1,0 +1,1 @@
+Los modelos 3D son cargados desde otro servidor al momento de hacer el postbuild

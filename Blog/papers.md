@@ -9,8 +9,8 @@ outline: deep
 
 ## Laboratorios
 ### Electronica I
-<div class="paper">
-<div class="document">
+<div class="JSPaper">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #1 - Diodos<Badge type="info" text="Electronica I" />
 
@@ -21,7 +21,7 @@ outline: deep
 [link](https://drive.google.com/file/d/10qkPHjDs2vhW1Z7mUU3ZT5rNmc4637O4/view)
 
 </div>
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #2 – Integrado 555<Badge type="info" text="Electronica I" />
 
@@ -31,7 +31,7 @@ outline: deep
 
 [link](https://drive.google.com/file/d/1DGh52xdump_2K6owW0B6AVQ0c6uhBlWF/view)
 </div>
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #3 – Osciloscopio<Badge type="info" text="Electronica I" />
 
@@ -42,7 +42,7 @@ outline: deep
 [link](https://drive.google.com/file/d/1X9IAUqz6zMKAjsSWf2GePEk5Pr5vkBBe/view)
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #4 – Voltaje de Rizo<Badge type="info" text="Electronica I" />
 
@@ -52,7 +52,7 @@ outline: deep
 
 [link](https://drive.google.com/file/d/1fFwOWtftRTiVVk_RPD-Qi44edEFqXgTS/view)
 </div>
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #5 – Transistor y Relé<Badge type="info" text="Electronica I" />
 
@@ -62,7 +62,7 @@ outline: deep
 
 [link](https://drive.google.com/file/d/1yeJT9aQIcB3y-QjKWoXfbNXCjlF1FudO/view)
 </div>
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #6 – Fuente Regulable<Badge type="info" text="Electronica I" />
 
@@ -74,7 +74,7 @@ outline: deep
 
 </div>
 <!-- Template -->
-<!-- <div class="document"> -->
+<!-- <div class="JSDocument"> -->
 
 <!-- ### <Badge type="info" text="Electronica I" />
 
@@ -89,8 +89,8 @@ link
 
 ### Electronica II
 
-<div class="paper">
-<div class="document">
+<div class="JSPaper">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #1 – Amplificador de Doble Etapa<Badge type="info" text="Electronica II" />
 
@@ -102,7 +102,7 @@ link
 
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #2 – Amplificador Operacional<Badge type="info" text="Electronica II" />
 
@@ -114,7 +114,7 @@ link
 
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### Practica de Laboratorio #3 – Generador de Onda Triangular<Badge type="info" text="Electronica II" />
 
@@ -125,7 +125,7 @@ link
 
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### Diseño e implementación de un rectificador activo autoalimentado con MOSFETs para aplicaciones de alta corriente en DC<Badge type="info" text="Electronica II" />
 
@@ -138,12 +138,76 @@ link
 </div>
 </div>
 
+### Electronica III
+
+<div class="JSPaper">
+<div class="JSDocument">
+
+#### Practica de Laboratorio #1 – Rectificador de Precisión<Badge type="info" text="Electronica III" />
+
+*Abstract—* La rectificación de señales es una herramienta esencial en el diseño electrónico, especialmente en sistemas de medición y procesamiento de señales donde se requiere conocer el valor absoluto de una entrada de corriente alterna (CA). Los rectificadores tradicionales presentan limitaciones al trabajar con señales de baja amplitud debido a la caída de tensión en los diodos, lo que distorsiona la señal rectificada. Para superar estas limitaciones, se implementan rectificadores de precisión basados en amplificadores operacionales que permiten una rectificación lineal de señales débiles. Este trabajo presenta el diseño, análisis y verificación experimental de diferentes configuraciones de rectificadores de precisión: media onda inversor, separador de polaridad y rectificador de onda completa. Los resultados obtenidos validan el funcionamiento de los circuitos y permiten evaluar su desempeño considerando las limitaciones prácticas impuestas por los componentes utilizados.
+
+<Badge type="tip" text="amplificador operacional" /><Badge type="tip" text="rectificador de precisión" /><Badge type="tip" text="pequeña señal" />
+
+[link](https://drive.google.com/file/d/1Sx3LcCrTvkeeSCBGF5nQQhfitbi4e-E7/view)
+
+</div>
+
+<div class="JSDocument">
+
+#### Practica de Laboratorio #2 – Desfasador<Badge type="info" text="Electronica III" />
+
+*Abstract—* En este trabajo se presenta el diseño, análisis, simulación y construcción de un circuito desfasador de señales senoidales. Se utiliza una topología de filtro pasa-todo, implementada con un amplificador operacional, una red RC y una configuración de ganancia diferencial. El análisis teórico en el dominio de Laplace se emplea para derivar la función de transferencia del circuito, demostrando que su ganancia es unitaria y que el ángulo de desfase, con un rango de 0° a 180°, puede ser controlado ajustando un único componente resistivo. El diseño fue validado mediante simulación en LTspice y con un prototipo físico. Los resultados, tanto de la simulación como del montaje para desfases de 90° y 180°, muestran una correspondencia clara con el modelo teórico, logrando el cambio de fase deseado sin una atenuación significativa de la amplitud de la señal. El informe concluye que el diseño es efectivo para su propósito, aunque se discuten sus limitaciones inherentes, como la dependencia de la frecuencia y las características del amplificador operacional.
+
+<Badge type="tip" text="amplificador operacional" /><Badge type="tip" text="desfasador de onda" />
+
+[link](https://drive.google.com/file/d/1sme5Pjjo3Qbjrh3EtHatuXBcFqR8Ko-g/view)
+
+</div>
+<div class="JSDocument">
+
+#### Practica de Laboratorio #3 – Etapa de Potencia<Badge type="info" text="Electronica III" />
+
+*Abstract—* Este informe presenta el diseño, simulación y análisis comparativo de dos configuraciones de amplificadores de potencia Clase B y Clase AB. El objetivo principal es evaluar el impacto de la polarización en la fidelidad de la señal de salida, con un enfoque específico en la distorsión de cruce. Se implementaron ambos circuitos utilizando transistores de unión bipolar (BJT) en una configuración push-pull con el par complementario 2N3904/2N3906. Las simulaciones se realizaron en LTspice y los prototipos se montaron y probaron en un entorno de laboratorio. Los resultados demuestran que el amplificador Clase B presenta una notable distorsión de cruce, mientras que la configuración Clase AB, mediante una simple polarización con diodos, elimina eficazmente esta distorsión, mejorando significativamente la linealidad de la señal a costa de un ligero aumento en el consumo de potencia en reposo. El análisis valida la correspondencia entre los modelos teóricos, los resultados de la simulación y las mediciones experimentales
+
+<Badge type="tip" text="amplificador de potencia" /><Badge type="tip" text="clase B" /><Badge type="tip" text="clase AB" /><Badge type="tip" text="distorsión de cruce" /><Badge type="tip" text="push-pull" />
+
+[link](https://drive.google.com/file/d/1uxxwg03vQ5faeJ1FaZhVvd7sjQTiLBFs/view)
+
+</div>
+
+<div class="JSDocument">
+
+#### Practica de Laboratorio #4 – Respuesta de frecuencia<Badge type="info" text="Electronica III" />
+
+*Abstract—* Este informe detalla el análisis teórico y experimental de la respuesta en baja frecuencia de un amplificador en configuración de emisor común utilizando un transistor BJT 2N2222. El objetivo principal es determinar la frecuencia de corte inferior, punto en el cual la ganancia de voltaje cae 3 dB por debajo de su valor en la banda pasante. Se realizo simulación computacional en LTSpice para obtener el diagrama de Bode, y la implementación física del circuito para validación mediante mediciones con osciloscopio. Los resultados de la simulación arrojaron una frecuencia de corte de aproximadamente 104 Hz y una ganancia en la banda pasante de 16.97 dB. Las mediciones experimentales corroboraron visualmente la atenuación de la señal en la frecuencia de corte, validando la correspondencia entre el modelo teórico, la simulación y el comportamiento físico del circuito, y destacando la importancia de los capacitores en la definición del ancho de banda.
+
+<Badge type="tip" text="respuesta en frecuencia" /><Badge type="tip" text="amplificador" />
+
+[link](https://drive.google.com/file/d/1ivTN5iRfVidaAAxPEzZxVXLi0zhH7Ogb/view)
+
+</div>
+
+<div class="JSDocument">
+
+#### Amplificador Integrado<Badge type="info" text="Electronica III" />
+
+*Abstract—* Este informe detalla el diseño, construcción y análisis de un amplificador de audio de baja potencia en Clase AB, centrado en el uso del circuito integrado TDA2003. El objetivo principal fue alimentar una carga de baja impedancia, específicamente un subwoofer de 30W y 4Ω, siguiendo las recomendaciones del fabricante y las normativas relevantes como la IEC 60268-5. Se utilizó la hoja de datos del TDA2003 para configurar el circuito, establecer la ganancia y definir el ancho de banda, optimizándolo para la reproducción de bajas frecuencias. El prototipo fue ensamblado en una placa de baquelita perforada, incorporando un disipador de calor para garantizar la estabilidad térmica. Las pruebas funcionales, realizadas con una fuente de alimentación de 17V, demostraron que el amplificador entregó una potencia de salida estimada de 6W con una eficiencia aproximada del 70%, validando el diseño y mostrando un rendimiento de audio adecuado para la aplicación prevista.
+
+<Badge type="tip" text="amplificador integrado" /><Badge type="tip" text="amplificador de audio" />
+
+[link](https://drive.google.com/file/d/1ltxhlHkINpX9i3iqB7rqdJe4y8DbjUWM/view)
+
+</div>
+
+</div>
+
 ## Trabajos / Evaluaciones
 
 ### Teoría DE CONTROL Automático
 
-<div class="paper">
-<div class="document">
+<div class="JSPaper">
+<div class="JSDocument">
 
 #### EVALUACIÓN #1<Badge type="info" text="Teoría de Control Automático" />
 
@@ -155,7 +219,7 @@ link
 
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### EVALUACIÓN #2<Badge type="info" text="Teoría de Control Automático" />
 
@@ -165,7 +229,7 @@ link
 
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### EVALUACIÓN #3<Badge type="info" text="Teoría de Control Automático" />
 
@@ -175,7 +239,7 @@ link
 
 </div>
 
-<div class="document">
+<div class="JSDocument">
 
 #### EVALUACIÓN #4<Badge type="info" text="Teoría de Control Automático" />
 
@@ -189,9 +253,9 @@ link
 
 ### Control de Procesos
 
-<div class="paper">
+<div class="JSPaper">
 
-<div class="document">
+<div class="JSDocument">
 
 #### Implementación de una Estrategias de Control Estación Didáctica de Simulación<Badge type="info" text="Control de Procesos" />
 
@@ -201,11 +265,25 @@ link
 
 </div>
 
+### Sistemas de Control
+
+<div class="JSPaper">
+
+<div class="JSDocument">
+
+#### Diseño y Caracterización de un Sistema de Generación de Vapor por Caldera Industrial<Badge type="info" text="Control de Procesos" />
+
+[Proyecto Github](https://github.com/jackestar/Caldera-OPTO22) [Documento](https://drive.google.com/file/d/1Lnh10mwOLDUkblsc8ltqMbqDYub4qrca/view?usp=sharing)
+
+</div>
+
+</div>
+
 ## Artículos
 
-<div class="paper">
+<div class="JSPaper">
 
-<div class="document">
+<div class="JSDocument">
 
 ### Generador de Viento Iónico por Efecto Biefeld-Brown<Badge type="info" text="Física III" />
 

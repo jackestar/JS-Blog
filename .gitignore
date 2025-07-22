@@ -5,3 +5,4 @@ dist
 *.lockb
 cache
 test*
+*.glb

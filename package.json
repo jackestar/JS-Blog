@@ -12,7 +12,7 @@
     "docs:preview": "vitepress preview Blog --host",
     "prebuild": "git submodule update --remote",
     "build": "vitepress build Blog --outDir './dist/Blog'",
-    "postbuild": "cp -r ./static/* ./dist && node translate.js --input ./Locale/ --output ./dist --filenameLang"
+    "postbuild": "sh postbuild.sh"
   },
   "dependencies": {
     "@types/node": "^22.13.9",
@@ -22,9 +22,13 @@
     "gray-matter": "^4.0.3",
     "minimist": "^1.2.8",
     "path": "^0.12.7",
+    "three": "^0.178.0",
     "typescript": "^5.8.2"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["canvas","esbuild"]
+    "onlyBuiltDependencies": [
+      "canvas",
+      "esbuild"
+    ]
   }
 }

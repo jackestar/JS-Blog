@@ -42,47 +42,87 @@
     height: max-content;
 }
 
-.paper .document {
-    border: 0.2em solid var(--vp-c-default-2);
-    border-radius: 3em;
+/* Papers */
+
+.JSPaper .JSDocument,.JSElement {
+    border: 0.2em solid var(--vp-c-bg-soft);
+    background-color: var(--vp-c-bg-soft);
+    border-radius: 1.5em;
     padding: 1.5em;
     margin: 1em 0;
-    transition: 0.2s ease;
+    transition: 0.3s ease;
 }
 
-.paper .document:hover {
-    border: 0.2em solid var(--vp-button-brand-bg);
-    transition: 0.2s ease;
+.JSPaper .JSDocument:hover, .JSElement:hover {
+    border: 0.2em solid var(--vp-c-default-1);
+    transition: 0.3s ease;
 }
 
-.paper .document h2 {
+.JSPaper .JSDocument h2 {
     border: none;
     /*   padding: 0; */
     margin: 0;
 }
 
-.paper .document p {
+.JSPaper .JSDocument p {
     text-align: justify;
 }
 
-.paper .document p em {
+.JSPaper .JSDocument p em {
     color: var(--vp-c-brand-1);
 }
 
-.paper .document p > a {
-    padding: 0.75em;
-    color: var(--vp-c-text-1);
+.JSPaper .JSDocument p > a,.JSElement p a {
+    padding: .4em 0.95em;
+    margin-inline: .3em;
+    color: var(--vp-button-brand-text);
     text-decoration: none;
-    border: 0.2em solid var(--vp-c-brand-1);
-    border-radius: 0.5em;
+    background-color: var(--vp-button-brand-bg);
+    /* border: 0.2em solid var(--vp-button-brand-border); */
+    border-radius: 0.75em;
     transition: 0.2s ease;
 }
 
-.paper .document p > a:hover {
-    background-color: var(--vp-c-brand-1);
-    color: var(--vp-c-bg);
+.JSElement a:not(:first-of-type) {
+    background-color: var(--vp-button-alt-bg);
+}
+.JSElement a:not(:first-of-type):hover {
+    background-color: var(--vp-button-alt-hover-bg);
+}
+.JSPaper .JSDocument p > a:hover,.JSElement p a:hover {
+    background-color: var(--vp-button-brand-hover-bg);
+    color: var(--vp-button-brand-text);
     transition: 0.2s ease;
 }
+
+/* Kicad */
+
+/* .JSElement {
+    border: 0.2em solid var(--vp-c-default-2);
+    border-radius: 1.5em;
+    padding: 1.5em;
+    margin: 1em 0;
+    transition: 0.2s ease;
+} */
+
+.JSElement h3 {
+    margin: 0;
+}
+
+.JSElement img {
+    border: none !important;
+    border-radius: 2em !important;
+}
+
+.JSElement p:has(img) {
+/*    background-color: #f00;*/
+    align-items: center;
+/*    margin: 1em;*/
+}
+
+/* .JSElement:hover {
+    border: 0.2em solid var(--vp-button-brand-bg);
+    transition: 0.2s ease; */
 
 /* Majax Fix */
 

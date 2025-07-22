@@ -93,6 +93,8 @@ export default defineConfig({
                 { text: 'Blink', link: '/Baremetal/blink' },
                 { text: 'Debouncing', link: '/Baremetal/debouncing' },
                 { text: 'Encoder Rotatorio (Rotary Encoder)', link: '/Baremetal/incremental_encoder' },
+                { text: 'USART', link: '/Baremetal/USART' },
+                { text: 'HC-SR04', link: '/Baremetal/ultra_sonic' },
               ]
             },
           ]

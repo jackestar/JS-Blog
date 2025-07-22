@@ -36,6 +36,9 @@ features:
   - title: Ejercicios Electronica Part. 1
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
     link: ./Ejercicios-Electronica-I
+  - title: Proyectos en Kicad
+    details: Diversos proyectos de diseño electrónico implementados en PCB y prototipos en Kicad
+    link: ./Kicad
   - title: Exportar esquemático de Kicad a SVG
     details: Exportar esquemático de Kicad a SVG usando Inkscape por linea de comandos de forma rápida
     link: ./Kicad/schematicToSVG.md
