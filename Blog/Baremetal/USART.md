@@ -7,9 +7,9 @@ outline: deep
 
 ## Comunicación Serial (USART)
 
-<Badge type="danger" text="incompleto" />
+<!-- <Badge type="danger" text="incompleto" /> -->
 
-Se busca mostrar los datos en una consola, para esto se utilizara el USART (Universal Synchronous/Asynchronous Receiver/Transmitter\*) que es un dispositivo de comunicación embebido en el microcontrolador que permite realizar comunicaciones sincrónicas o asincronías. Para comunicarse por protocolo USB (y poder ver los datos en una consola) se requiere un intermediario entre USART y USB (diferentes protocolos), para esto las placas tipo Arduino UNO incluyen un ATmega16U2, ATmega8U2, CH340G o CH341G (según la version o si es un clon) o parecido que hace de intermediario.
+Se busca mostrar los datos en una consola, para esto se utilizara el USART (Universal Synchronous/Asynchronous Receiver/Transmitter) que es un dispositivo de comunicación embebido en el microcontrolador que permite realizar comunicaciones sincrónicas o asincronías. Para comunicarse por protocolo USB (y poder ver los datos en una consola) se requiere un intermediario entre USART y USB (diferentes protocolos), para esto las placas tipo Arduino UNO incluyen un ATmega16U2, ATmega8U2, CH340G o CH341G (según la version o si es un clon) o parecido que hace de intermediario.
 
 > [!NOTE]
 > Los puertos RS-232 presentes por defecto en algunos computadores antiguos (o en algunos de uso industrial) pueden comunicarse por USART lo que evita el uso de un intermediario, pero dicho puerto no es tan común hoy en dia.
@@ -20,14 +20,13 @@ En modo Asíncrono para USART (UART), en estado inactivo `TX` permanece en 1 ló
 
 ## Configuración
 
-Para el ATMega328p los pines `PD0` y `PD1` corresponden a `RX` y `TX` (entrada y salida) para USART, estos a su vez se comunican con un intermediario (USART-USB), que genera un puerto USB COM virtual, comunicación la cual es asíncrona, a su vez la conexión entre el micro y el intermediario solo posee las conexiones `RX` y `TX`, para una comunicación sincrónica se requeriría una tercera conexión para el reloj `XCK` (la cual no esta presente). Para la velocidad en Baudios por segundos (_bauds per second_ = bps) se utilizara por defecto 9800.
+Para el ATMega328p los pines `PD0` y `PD1` corresponden a `RX` y `TX` (entrada y salida) para USART, estos a su vez se comunican con un intermediario (USART-USB), que genera un puerto USB COM virtual, comunicación la cual es asíncrona, a su vez la conexión entre el micro y el intermediario solo posee las conexiones `RX` y `TX`, para una comunicación sincrónica se requeriría una tercera conexión para el reloj `XCK` (la cual no esta presente). Para la velocidad en Baudios por segundos (_bauds per second_ = bps) se utilizara por defecto 9600.
 
 Para calcular establecer la velocidad se utiliza el registro `UBRRn` cuyo valor se calcula:
 
 $$
 
-UBRRn = \frac{F_{OSC}}{16\cdot BAUD}-1
-
+UBRRn=\frac{F_{OSC}}{16\cdot BAUD}-1
 
 $$
 
@@ -71,7 +70,7 @@ Esta dirección de memoria es compartida, si se lee se obtiene el buffer recibid
 
 -   **Bit 7 – `RXCn`**: Receive Complete
     -   `1` cuando no se ha leído la data en el buffer, `0` de lo contrario
--   **Bit 6 – `TXCn`**:
+-   **Bit 6 – `TXCn`**: Transmit Complete
     -   `1` cuando la data ha sido enviado y no se actualizado el buffer, `0` de lo contrario
 -   **Bit 5 – `UDREn`**: Data Register Empty
     -   `1` cuando `UDRn` esta listo para recibir nueva data (no que la transmisión se completo)
@@ -234,7 +233,7 @@ Tamaño de Carácter (junto con UCSZn2 en UCSRnB)
 <tr>
 <td>UCSZn2</td>
 <td>UCSZn1</td>
-<td>UCSZn2</td>
+<td>UCSZn0</td>
 <td>Tamaño</td>
 </tr>
 <tr>
@@ -292,4 +291,201 @@ Tamaño de Carácter (junto con UCSZn2 en UCSRnB)
 
 ### UBRRn Baud Rate
 
-Registro de 12-bits (0-4096) que se utiliza para calcular el Baud Rate
+Registro de 12-bits (0-4096) que se utiliza para calcular el Baud Rate `UBRRnL 7:0` y `UBRRnH 11:8`
+
+### Programa C
+
+Se crean las funciones para imprimir caracteres, cadenas de texto, números enteros (int) y flotantes.
+
+Para los flotantes tener diferentes rangos de precision resulta en diferente código, si se require rendimiento y se tiene espacio en la memoria flash (~40 bytes en el peor caso) se puede utilizar LUT (tablas en con potencias base 10), si se quiere ahorrar espacio a coste de rendimiento se puede realizar los cálculos en tiempo de ejecución
+
+```cpp
+#define BAUD_RATE 9600ULL
+#define UBRR0_VALUE (F_CPU / ((16 * BAUD_RATE)) - 1)
+
+void send_chr(char c) {
+  while (!(UCSR0A & (1 << UDRE0)))
+    ; // Data Register Empty
+
+  UDR0 = c;
+}
+
+void send_str(char* str) {
+  uint8_t pos = 0;
+  while (str[pos] != '\0') {
+    send_chr(str[pos++]);
+    }
+}
+
+void send_int(int num) {
+  if (num < 0) {
+    send_chr('-');
+    num = -num;
+    }
+  int count = 10;
+  char str[11] = "0000000000";
+
+  while (num > 0) {
+    str[count--] = '0' + num % 10;
+    // send_chr(str[count]);
+    num /= 10;
+    }
+
+  // Print left
+  for (count++; count < 11; count++)
+    send_chr(str[count]);
+}
+
+// Up to 4 decimal points
+void send_flt_LUT16(float num, uint8_t mant) {
+  const int ent = int(num);
+  send_int(ent);
+  if (mant > 0) {
+    send_chr('.');
+
+    // if constrant time is needed Lookup Table (LUT) Method is the way
+    // to save space Iterative Loop is the way
+
+    // ~10 bytes in flash memory
+    static const uint16_t powers[] = {
+        1,      // 10^0
+        10,     // 10^1
+        100,    // 10^2
+        1000,   // 10^3
+        10000,  // 10^4
+      };
+
+    send_int(int((num - ent) * powers[mant]));
+    }
+}
+
+void setupUSART() {
+      UCSR0B |= (1 << TXEN0);
+
+  // 8N1
+
+  // Modo UART (Default)
+  UCSR0C &= ~(1 << UMSEL00) & ~(1 << UMSEL01);
+  // Without parity
+  UCSR0C &= ~(1 << UPM00) & ~(1 << UPM01);
+  // 1 Stop bit
+  UCSR0C &= ~(1 << USBS0);
+
+  // 8 bit character
+  UCSR0C |= (1 << UCSZ00) | (1 << UCSZ01);
+  UCSR0B &= ~(1 << UCSZ02);
+
+  UBRR0 = UBRR0_VALUE;
+}
+```
+## Librería
+
+Para las conversiones de tipo a char se genero una librería general
+
+```c
+#include "USART.h"
+
+USART::USART(uint32_t baud) {
+  setup(baud);
+}
+
+void USART::sendStr(const char* str) {
+  while (*str) sendChar(*str++);
+}
+
+void USART::sendInt(int num) {
+  if (num < 0) {
+    sendChar('-');
+    num = -num;
+  }
+  int count = 10;
+  char str[11] = "0000000000";
+  while (num > 0) {
+    str[count--] = '0' + num % 10;
+    num /= 10;
+  }
+  for (count++; count < 11; count++)
+    sendChar(str[count]);
+}
+
+void USART::sendFloat(float num, uint8_t mant) {
+  int ent = (int)num;
+  sendInt(ent);
+  if (mant > 0) {
+    sendChar('.');
+    static const uint16_t powers[] = { 1, 10, 100, 1000, 10000 };
+    sendInt((int)((num - ent) * powers[mant]));
+  }
+}
+
+```
+
+```c
+#ifndef USART_H
+#define USART_H
+
+#ifndef _AVR_IO_H_
+#include <avr/io.h>
+#endif
+
+class USART {
+ public:
+  /**
+   * @brief Constructor. Initializes USART with the given baud rate and F_CPU.
+   * @param baud Baud rate (default 9600)
+   */
+  USART(uint32_t baud = 9600);
+
+  /**
+   * @brief Send a single character.
+   * @param c Character to send
+   */
+  void sendChar(char c);
+
+  /**
+   * @brief Send a null-terminated string.
+   * @param str Pointer to string
+   */
+  void sendStr(const char* str);
+
+  /**
+   * @brief Send an integer as ASCII.
+   * @param num Integer to send
+   */
+  void sendInt(int num);
+
+  /**
+   * @brief Send a float with up to 4 decimal places.
+   * @param num Float to send
+   * @param mant Number of decimal places (0-4)
+   */
+  void sendFloat(float num, uint8_t mant = 4);
+
+ private:
+  void setup(uint32_t baud);
+};
+
+#endif // USART_H
+```
+
+## Librería (328p)
+
+para configurar la librería (setup y send char) para el atmega328p se agrega
+
+```c
+void USART::setup(uint32_t baud) {
+  uint16_t ubrr = (F_CPU / (16UL * baud)) - 1;
+  UBRR0 = ubrr;
+  UCSR0B |= (1 << TXEN0);
+  UCSR0C &= ~(1 << UMSEL00) & ~(1 << UMSEL01); // Async UART
+  UCSR0C &= ~(1 << UPM00) & ~(1 << UPM01);    // No parity
+  UCSR0C &= ~(1 << USBS0);                    // 1 stop bit
+  UCSR0C |= (1 << UCSZ00) | (1 << UCSZ01);    // 8 data bits
+  UCSR0B &= ~(1 << UCSZ02);
+}
+
+void USART::sendChar(char c) {
+  while (!(UCSR0A & (1 << UDRE0)));
+  UDR0 = c;
+}
+```
