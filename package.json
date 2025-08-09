@@ -3,7 +3,7 @@
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.13"
+    "vue": "^3.5.17"
   },
   "scripts": {
     "translate": "node translate.js --input ./Locale/ --output ./dist --filenameLang",
@@ -15,7 +15,7 @@
     "postbuild": "sh postbuild.sh"
   },
   "dependencies": {
-    "@types/node": "^22.13.9",
+    "@types/node": "^22.16.5",
     "canvas": "3.0.0-rc3",
     "fs": "0.0.1-security",
     "fs-extra": "^11.3.0",
@@ -23,7 +23,7 @@
     "minimist": "^1.2.8",
     "path": "^0.12.7",
     "three": "^0.178.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

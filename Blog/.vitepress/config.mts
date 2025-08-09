@@ -87,16 +87,29 @@ export default defineConfig({
           text: 'Desarrollo Baremetal en Microcontroladores',
           items: [
             { text: 'Introducción', link: '/Baremetal/' },
-            { text: 'Instalación', link: '/Baremetal/Installation' },
-            { text: 'Ejemplos',
+            { text: 'Instalación AVR', link: '/Baremetal/installation_AVR' },
+            { text: 'Instalación ESP32', link: '/Baremetal/installation_ESP32' },
+            { text: 'Instalación ESP8266', link: '/Baremetal/installation_ESP8266' },
+            {text: "Ejemplos",
               items: [
                 { text: 'Blink', link: '/Baremetal/blink' },
                 { text: 'Debouncing', link: '/Baremetal/debouncing' },
+              ]
+            },
+            { text: 'Librerías',
+              items: [
                 { text: 'Encoder Rotatorio (Rotary Encoder)', link: '/Baremetal/incremental_encoder' },
                 { text: 'USART', link: '/Baremetal/USART' },
                 { text: 'HC-SR04', link: '/Baremetal/ultra_sonic' },
               ]
             },
+            { text: 'Reverse Engineering',
+              items: [
+                { text: 'Introducción', link: '/Baremetal/reverse_engineering.md' },
+                { text: 'M220 (Display)', link: '/Baremetal/clover220-RI' },
+                { text: 'LCD Display (Cámara)', link: '/Baremetal/LCD_camara-RI' },
+              ]
+            }
           ]
         }
       ],

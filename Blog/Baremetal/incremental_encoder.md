@@ -261,14 +261,15 @@ OCR2A = encoder.position * 255 / encoder.stepPerRevolution;
 
 ## Resultado (C++)
 
-[Código Github](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder/C)
+[Código Github Optimizado](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder/C)
 
 ### Librería
 
 Se demuestra en base a la explicación anterior la librería resultante. El código es iterado y optimizado para su producción en el [repositorio de Github](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder/C) esta actualizado y revisado por lo que difiere de la version a continuación.
 
-*rotaryEncoder.hpp*
-```cpp
+::: code-group
+
+```cpp [rotaryEncoder.hpp]
 
 #ifndef _ROTARY_ENCODER_
 
@@ -311,8 +312,8 @@ class RotaryEncoder
 #endif
 ```
 
-*rotaryEncoder.cpp*
-```cpp
+
+```cpp [rotaryEncoder.cpp]
 #include "rotaryEncoder.hpp"
 
 RotaryEncoder::RotaryEncoder(volatile uint8_t *pinAPort, uint8_t pinABit, volatile uint8_t *pinBPort, uint8_t pinBBit, uint8_t stepPerRevolution)
@@ -411,9 +412,13 @@ void RotaryEncoder::reset() {
 }
 ```
 
+:::
+
 ### Test
 
-```cpp
+::: code-group
+
+```cpp [example_rotary_encoder.cc]
 #ifndef __AVR_ATmega328P__
     #define __AVR_ATmega328P__
 #endif
@@ -474,6 +479,8 @@ int main(void)
 }
 
 ```
+
+:::
 
 ### Video de Demostración
 

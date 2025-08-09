@@ -1104,7 +1104,7 @@ inline void delay(const unsigned long long);
 
 int main(void) {
     DDRB = DDRB | (1 << DDB5);
-    // CLKPR = (uint8_t)0b0000;
+
     while (1)
     {
         // Operación XOR

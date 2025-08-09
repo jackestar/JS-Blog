@@ -9,6 +9,8 @@ outline: deep
 
 <Badge type="danger" text="incompleto" />
 
+[Código Github](https://github.com/jackestar/Baremetal/tree/main/HC-SR04)
+
 Modulo sensor de distancia de ultra-sonido HC-SR04. Este modulo en particular funciona emitiendo 8 pulsos a 40khz, al recibir un pulso de 10us de entrada (trigger), colocando la salida (echo) en nivel alto, cuando los pulsos llegan al modulo la salida (echo) pasa a nivel bajo. el tiempo que dura la salida (echo) en alto determina el tiempo que tarda el sonido en salir del modulo y volver al mismo. Al ser la velocidad del sonido constante (para una temperatura constantes y un medio homogéneo).
 
 Este proyecto consistirá en:
@@ -65,9 +67,11 @@ Dicha operación es bloqueante y pierde precision si alguna interrupción se eje
 
 ### Conteo de ciclos para corrección del Delay
 
-para obtener la cantidad de ciclos se compila el siguiente código de prueba (para units de 16bits)
+para obtener la cantidad de ciclos se compila el siguiente código de prueba (para units de 16bits) y se extrae el siguiente segmento del código en ASM
 
-```c
+::: code-group
+
+```c [test.c]
 #ifndef __AVR_ATmega328P__
 #define __AVR_ATmega328P__
 #endif
@@ -130,9 +134,7 @@ int main() {
 }
 ```
 
-se extrae el siguiente segmento del código en ASM
-
-```asm
+```asm [test.asm]
   90:	19 9b       	sbis	0x03, 1	   ; 3     // Wait for Echo pin to go HIGH
   92:	16 c0       	rjmp	.+44     	;  0xc0 // If not, loop
   94:	8f e2       	ldi	r24, 0x2F	; 47    // Setup for echo timing loop (units counter)
@@ -155,6 +157,7 @@ se extrae el siguiente segmento del código en ASM
   c0:	00 00       	nop               ; Loop waiting for echo
   c2:	e6 cf       	rjmp	.-52     	;  0x90
 ```
+:::
 
 Contando del bucle del delay la declaración `LDI` y el `NOP` que se ejecutan una sola vez por bucle se tiene un total de 13 ciclos (mas 3 ciclos de configuración)
 
@@ -182,7 +185,9 @@ $$
 
 Esto genera un problema ya que esto son < de 3 ciclos en tiempo del procesador (para 16Mhz) comparado con las 13 instrucciones que ya incluye el ciclo, por lo que se podría hacer sin delay se plantea el siguiente código para obtener la cantidad de ciclos
 
-```c
+::: code-group
+
+```c [test.c]
 #ifndef __AVR_ATmega328P__
 #define __AVR_ATmega328P__
 #endif
@@ -219,7 +224,7 @@ int main()
 }
 ```
 
-```asm
+```asm [test.asm]
 ...
 ; --- Espera a que Echo sea alto ---
 ; while (!(PINB & (1 << PINB1))) asm("nop");
@@ -244,6 +249,8 @@ int main()
   a4:   f9 cf           rjmp    .-14        ;  0x98 ; repite bucle
 ...
 ```
+
+:::
 
 Resultando en 9 ciclo por ciclo y 4 ciclos iniciales. Al conocer el tiempo por cada ciclo y la velocidad obtenemos la distancia por cada ciclo
 

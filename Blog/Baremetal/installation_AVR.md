@@ -1,6 +1,6 @@
 ---
 title: Program AVR in ArchLinux
-description: how to compile an upload to a Arduino UNO board
+description: how to compile and upload to a Arduino UNO board
 
 lastUpdated: true
 outline: deep
@@ -9,7 +9,7 @@ outline: deep
 # Programación de AVR en ArchLinux
 
 > [!NOTE]
-> las herramientas señaladas en *cursiva* son paquetes disponibles en archlinux
+> las herramientas señaladas en *cursiva* son paquetes disponibles en ArchLinux
 
 ## Instalación
 
