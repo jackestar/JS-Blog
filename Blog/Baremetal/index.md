@@ -15,10 +15,11 @@ Un microcontrolador, es un circuito electrónico capaz de realizar una tarea esp
 
 Arduino es una plataforma de software y hardware open-source. Que proporciona una forma simple para el desarrollo en el area de la electronica. Provee un lenguaje de programación basado en **C++** y el framework [**wiring**](https://wiring.org.co/), generando una abstracción facilitando la programación del hardware de la plataforma. Dicha abstracción por otro lado a bajo nivel provee a través de funciones y métodos código complejo para soluciones sencillas.
 
-## Plataforma ESP32
+[Instalación AVR ArchLinux](./installation_AVR)
+
+## Plataforma Espressif
 
 <Badge type="danger" text="incompleto" />
 
-## Instalación
-
-[Instalación ArchLinux](./Installation)
+[Instalación ESP32 ArchLinux](./installation_ESP32)
+[Instalación ESP8266 ArchLinux](./installation_ESP8266)
