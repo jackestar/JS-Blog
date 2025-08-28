@@ -92,7 +92,8 @@ export default defineConfig({
             { text: 'Instalación ESP8266', link: '/Baremetal/installation_ESP8266' },
             {text: "Ejemplos",
               items: [
-                { text: 'Blink', link: '/Baremetal/blink' },
+                { text: 'Blink AVR', link: '/Baremetal/blink_AVR' },
+                { text: 'Blink ESP01S (ESP8266)', link: '/Baremetal/blink_ESP01S' },
                 { text: 'Debouncing', link: '/Baremetal/debouncing' },
               ]
             },

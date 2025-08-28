@@ -22,4 +22,5 @@ Arduino es una plataforma de software y hardware open-source. Que proporciona un
 <Badge type="danger" text="incompleto" />
 
 [Instalación ESP32 ArchLinux](./installation_ESP32)
+
 [Instalación ESP8266 ArchLinux](./installation_ESP8266)

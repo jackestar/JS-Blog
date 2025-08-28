@@ -84,7 +84,8 @@
 }
 
 .JSElement a:not(:first-of-type) {
-    background-color: var(--vp-button-alt-bg);
+    background-color: var(--vp-button-alt-active-bg);
+    color: var(--vp-button-alt-text);
 }
 .JSElement a:not(:first-of-type):hover {
     background-color: var(--vp-button-alt-hover-bg);
