@@ -7,7 +7,7 @@ outline: deep
 
 # Encoder Rotatorio Relativo (Incremental Encoder)
 
-[Código Github](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder)
+[Código Github](https://github.com/jackestar/Baremetal/tree/main/AVR/RotaryEncoder)
 
 Un encoder rotatorio relativo o encoder incremental es dispositivo electromecánico que mediante dos salidas indica la dirección de rotación, estos no indican la posición absoluta.
 
@@ -261,11 +261,11 @@ OCR2A = encoder.position * 255 / encoder.stepPerRevolution;
 
 ## Resultado (C++)
 
-[Código Github Optimizado](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder/C)
+[Código Github Optimizado](https://github.com/jackestar/Baremetal/tree/main/AVR/RotaryEncoder/C)
 
 ### Librería
 
-Se demuestra en base a la explicación anterior la librería resultante. El código es iterado y optimizado para su producción en el [repositorio de Github](https://github.com/jackestar/Baremetal/tree/main/RotaryEncoder/C) esta actualizado y revisado por lo que difiere de la version a continuación.
+Se demuestra en base a la explicación anterior la librería resultante. El código es iterado y optimizado para su producción en el [repositorio de Github](https://github.com/jackestar/Baremetal/tree/main/AVR/RotaryEncoder/C) esta actualizado y revisado por lo que difiere de la version a continuación.
 
 ::: code-group
 

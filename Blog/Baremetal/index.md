@@ -1,6 +1,6 @@
 ---
 title: Baremetal en microcontrollers
-description: Comparación entre Assambler C++ y rust. En ATmega328P (Arduino Uno/Nano) y ESP32 Devkit 1
+description: Desarrollo de librerías escritas en C/C++, Assembler y Rust para protocolos, periféricos, actuadores y sensores para microcontroladores (ESP32/ESP8266/328p), asi como el proceso de ingeniera inversa para modulo sin documentación.
 
 lastUpdated: true
 outline: deep

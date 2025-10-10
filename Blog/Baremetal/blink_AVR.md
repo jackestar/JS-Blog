@@ -8,7 +8,7 @@ outline: deep
 
 # Blink build-in LED
 
-[Código Github](https://github.com/jackestar/Baremetal/tree/main/BlinkLED)
+[Código Github](https://github.com/jackestar/Baremetal/tree/main/AVR/BlinkLED)
 
 El programa mas básico para comprobar el funcionamiento en una placa de desarrollo. Hacer parpadear a intervalos regulados el LED integrado.
 

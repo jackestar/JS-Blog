@@ -97,11 +97,17 @@ export default defineConfig({
                 { text: 'Debouncing', link: '/Baremetal/debouncing' },
               ]
             },
-            { text: 'Librerías',
+            { text: 'Librerías (AVR)',
               items: [
                 { text: 'Encoder Rotatorio (Rotary Encoder)', link: '/Baremetal/incremental_encoder' },
                 { text: 'USART', link: '/Baremetal/USART' },
                 { text: 'HC-SR04', link: '/Baremetal/ultra_sonic' },
+                { text: 'SLX24C', link: '/Baremetal/SLX24C' },
+              ]
+            },
+            { text: 'Librerías (ESP-idf)',
+              items: [
+                { text: 'Stepper Driver', link: '/Baremetal/stepper-idf' },
               ]
             },
             { text: 'Reverse Engineering',

@@ -9,7 +9,7 @@ outline: deep
 
 <!-- <Badge type="danger" text="incompleto" /> -->
 
-[Código Github](https://github.com/jackestar/Baremetal/tree/main/USART)
+[Código Github](https://github.com/jackestar/Baremetal/tree/main/AVR/USART)
 
 Se busca mostrar los datos en una consola, para esto se utilizara el USART (Universal Synchronous/Asynchronous Receiver/Transmitter) que es un dispositivo de comunicación embebido en el microcontrolador que permite realizar comunicaciones sincrónicas o asincronías. Para comunicarse por protocolo USB (y poder ver los datos en una consola) se requiere un intermediario entre USART y USB (diferentes protocolos), para esto las placas tipo Arduino UNO incluyen un ATmega16U2, ATmega8U2, CH340G o CH341G (según la version o si es un clon) o parecido que hace de intermediario.
 

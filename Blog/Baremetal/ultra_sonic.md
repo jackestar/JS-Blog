@@ -9,7 +9,7 @@ outline: deep
 
 <Badge type="danger" text="incompleto" />
 
-[Código Github](https://github.com/jackestar/Baremetal/tree/main/HC-SR04)
+[Código Github](https://github.com/jackestar/Baremetal/tree/main/AVR/HC-SR04)
 
 Modulo sensor de distancia de ultra-sonido HC-SR04. Este modulo en particular funciona emitiendo 8 pulsos a 40khz, al recibir un pulso de 10us de entrada (trigger), colocando la salida (echo) en nivel alto, cuando los pulsos llegan al modulo la salida (echo) pasa a nivel bajo. el tiempo que dura la salida (echo) en alto determina el tiempo que tarda el sonido en salir del modulo y volver al mismo. Al ser la velocidad del sonido constante (para una temperatura constantes y un medio homogéneo).
 
