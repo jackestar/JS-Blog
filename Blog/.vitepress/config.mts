@@ -164,6 +164,14 @@ export default defineConfig({
             { text: 'Instalación ArchLinux', link: '/PAC22/installation.md' },
           ]
         }
+      ],'/PLD/': [
+        {
+          text: 'PLD',
+          items: [
+            { text: 'Introducción', link: '/PLD/' },
+            { text: 'EB-136', link: '/PLD/EB-136.md' },
+          ]
+        }
       ]
     },
 

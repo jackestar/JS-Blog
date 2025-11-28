@@ -33,6 +33,9 @@ hero:
     alt: Jackestar Blog
 
 features:
+  - title: PLD (programmable logic device)
+    details: Guías, esquemáticos y proyectos con CPLD, EPLD y FPGA.
+    link: ./PLD
   - title: Ejercicios Electronica Part. 1
     details: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
     link: ./Ejercicios-Electronica-I
