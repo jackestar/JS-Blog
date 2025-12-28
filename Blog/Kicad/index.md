@@ -57,10 +57,9 @@ Opto Aislador para driver de Cocina, con ESP01S
 ![Ultrasonico](img/UltraSonic.png)
 
 Sensor de Ultrasonido Compacto
-<Badge type="danger" text="incompleto" />
 
-[Ver](./)
-[Repo](./)
+[Ver](./ultrasonic.md)
+[Repo](https://github.com/jackestar/mini-ultrasonic)
 
 </div>
 
