@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #0a0b10;
+    --card-bg: #14161f;
+    --filter:#0a0b10b3;
+    --text-main: #e0e0e0;
+    --text-muted: #8b9bb4;
+    --accent: #00ff9d;
+    /* EE Green */
+    --accent-dim: #00ff9d33;
+    --secondary: #00b8ff;
+    --font-main: Arial, Helvetica, sans-serif;
+    --font-code: 'Fira Code', monospace;
+}

@@ -1,0 +1,272 @@
+body {
+  background: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  font-family: var(--font-main);
+}
+
+header {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  /* Not fixed */
+  z-index: 10;
+}
+
+header nav {
+  display: flex;
+}
+
+header div.rrss {
+  display: flex;
+  min-width: 100px;
+  justify-content: right;
+  gap: 1em;
+  margin-right: 1em;
+}
+
+header div.rrss svg {
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+}
+
+header div.rrss a {
+  color: var(--accent);
+  text-decoration: none;
+  /* padding: 1em; */
+}
+
+header select {
+  text-align: center;
+  background: var(--filter);
+  padding: 5px;
+  border: 1px solid var(--accent);
+  backdrop-filter: blur(5px);
+  /* border-radius: 8px; */
+  color: var(--accent);
+  cursor: pointer;
+  transition:.2s linear;
+}
+
+header select:hover {
+  background: var(--accent);
+  color: var(--filter);
+  transition:.2s linear;
+}
+
+main section {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+section#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: var(--text-main);
+
+  --dot-color: #fff7;
+  --grid-spacing: 20px;
+  --major-grid-factor: 5;
+
+  background-image:
+    radial-gradient(var(--dot-color) 1px, transparent 1px),
+    radial-gradient(var(--dot-color) 0.5px, transparent 1px);
+
+  background-size:
+    calc(var(--grid-spacing) * var(--major-grid-factor)) calc(var(--grid-spacing) * var(--major-grid-factor)),
+    var(--grid-spacing) var(--grid-spacing);
+
+  background-position: 0 0;
+}
+
+section#home canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+section#home article.hero {
+  /* position: relative; */
+  z-index: 2;
+  text-align: center;
+  background: var(--filter);
+  padding: 40px;
+  border: 1px solid var(--accent);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  user-select: none;
+  z-index: 9;
+  transition: .2s ease-out;
+
+  will-change: transform, opacity;
+}
+
+section#home article.hero:hover {
+  backdrop-filter: blur(2px);
+  transition: .2s ease-in;
+}
+
+section#home article.hero h1 {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-size: 52px;
+  line-height: 1.4;
+  /* letter-spacing: 0.000em; */
+  font-weight: 900;
+  font-variant: small-caps;
+}
+
+section#home div.focus {
+  z-index: 8;
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle, transparent 20%, rgba(0, 0, 0, .5));
+
+  will-change: opacity, filter; 
+}
+
+section#kicad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, .5), transparent);
+}
+
+section#kicad figure {
+  /* max-width: 33% ; */
+  flex: 66% 1;
+  display: flex;
+  justify-content: space-around;
+  padding: 5em;
+}
+
+section#kicad figure img {
+  max-width: 50%;
+  max-height: 50%;
+  border-radius: 1em;
+  box-shadow: var(--card-bg) 0 0 1em;
+  flex: 2 10%;
+}
+
+section#kicad figcaption {
+  flex: 2 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2em;
+}
+
+section#kicad figcaption h3 {
+  font-size: 3em;
+  font-variant: small-caps;
+}
+
+section#kicad figure:nth-child(2) {
+  flex-direction: row-reverse;
+}
+
+/* GHR */
+
+/* Github Section Styling */
+#github {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 1em;
+}
+
+.repo-card {
+  background: var(--card-bg);
+  border: 1px solid #ffffff20;
+  padding: 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+  flex: 4 25%;
+}
+
+.repo-card:hover {
+  border-color: var(--secondary);
+  background: #1a1d29;
+}
+
+.repo-name {
+  font-family: var(--font-code);
+  font-weight: 700;
+  color: var(--secondary);
+  font-size: 1.1rem;
+}
+
+.repo-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 10px 0;
+  text-wrap: wrap;
+}
+
+.repo-stats {
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+  color: var(--text-main);
+  font-family: var(--font-code);
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+section#industrial {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+section#industrial figure {
+  /* width: 90vh; */
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+}
+
+section#industrial figcaption {
+  padding: 2em;
+}
+
+section#industrial h3 {
+  font-size: 3.5em;
+}
+
+section#industrial p {
+  font-size: 1.25em;
+}
+
+section#industrial figure img {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  opacity: .1;
+
+}
