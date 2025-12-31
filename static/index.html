@@ -7,9 +7,19 @@
     <title>Jackestar — Portfolio</title>
     <link rel="stylesheet" href="./styles/stylesU.css">
     <link rel="stylesheet" href="./styles/stylesH.css">
+    <link rel="stylesheet" href="./styles/viewer.css">
     <script src="pcb-trace-animation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+
+    <script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 
 <body>
@@ -17,7 +27,7 @@
     <header>
         <nav>
             <div class="rrss">
-                <a href="#github">
+                <a href="https://github.com/jackestar">
                     <svg viewBox="0 0 24 24">
                         <g id="iconGroup">
 
@@ -28,7 +38,7 @@
                         </g>
                     </svg>
                 </a>
-                <a href="#linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                <a href="https://www.linkedin.com/in/jackestar/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="#00ff9d">
                         <g id="iconGroup">
 
@@ -52,8 +62,8 @@
                 <p>HTML5?</p>
             </canvas>
             <article class="hero">
-                <h1>nameplace</h1>
-                <p>Developer, tinkerer, and writer building small things that matter.</p>
+                <h1 data-text="nameplace"></h1>
+                <p data-text="Developer, tinkerer, and writer building small things that matter."></p>
                 <div class="typer"></div>
             </article>
             <div class="focus"></div>
@@ -61,24 +71,26 @@
 
         <section id="kicad">
             <figure>
-                <!-- <img src="./img/TDA75610.png" alt=""> -->
-                 <code></code>
+                <div class="viewer3d" data-model-url="./models/TDA75610.glb" data-preview="./img/TDA75610.png"></div>
                 <figcaption>
                     <h3>TDA75610 Dev Board</h3>
-                    <p>El objetivo es el desarrollo de un PCB que sirva para utilizar y depurar el integrado TDA75610LV (montaje horizontal), que se pueda imprimir en una PCB de una cara.</p>
+                    <p>El objetivo es el desarrollo de un PCB que sirva para utilizar y depurar el integrado TDA75610LV
+                        (montaje horizontal), que se pueda imprimir en una PCB de una cara.</p>
                 </figcaption>
             </figure>
             <figure>
-                <!-- <img src="./img/UltraSonic.png" alt=""> -->
-                 <code></code>
+                <div class="viewer3d" data-model-url="./models/UltraSonic.glb" data-preview="./img/UltraSonic.png">
+                </div>
                 <figcaption>
                     <h3>Mini HC-SR04</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, at!</p>
+                    <p>El objetivo es crear una versión mini del módulo HC-SR04. Prueba de concepto equivalente en forma
+                        esquemática, que utiliza transceptores ultrasónicos más pequeños y un microcontrolador ATtiny404
+                        disponible comercialmente en lugar del EM78P153A, además de cuatro LED programables.</p>
                 </figcaption>
             </figure>
             <figure>
-                <!-- <img src="./img/termocouple.png" alt=""> -->
-                 <code></code>
+                <div class="viewer3d" data-model-url="./models/ESP01-Driver.glb" data-preview="./img/termocouple.png">
+                </div>
                 <figcaption>
                     <h3>Termocouple Driver</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, at!</p>
@@ -87,56 +99,14 @@
         </section>
 
         <section id="github">
-            <!-- pinned proyects from github https://github.com/jackestar -->
-        </section>
-
-        <section id="industrial">
-            <!-- Showcase of PLC, Ladder, Motor Control -->
-            <figure>
-                <img src="./img/line.webp" alt="">
-                <figcaption>
-                    <h3>PLC automation</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius asperiores quos expedita debitis
-                        officia magnam assumenda corrupti iure doloribus architecto, facere, itaque sint nisi nostrum
-                        aperiam tempora nesciunt, ratione dicta.</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="./img/ladder.webp" alt="">
-                <figcaption>
-                    <h3>Plan Design</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit fuga maxime, error voluptas
-                        obcaecati molestias exercitationem vero quam eius nulla modi nobis est quisquam quas nam at
-                        officiis recusandae iste.</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="./img/cade.webp" alt="">
-                <figcaption>
-                    <h3>Motor Control</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed libero quis, quo, nam id natus
-                        possimus perferendis officiis veritatis vitae ab odit itaque dignissimos omnis commodi eius
-                        temporibus blanditiis ratione.</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="./img/panel.webp" alt="">
-                <figcaption>
-                    <h3>Automation</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio nobis, eveniet labore dignissimos
-                        earum expedita unde accusantium culpa error amet asperiores fuga, minus numquam commodi sequi
-                        molestias quasi dolor exercitationem.</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="./img/circuit.webp" alt="">
-                <figcaption>
-                    <h3>IoT</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, doloribus cumque esse
-                        facilis vero, qui expedita perspiciatis voluptatibus nihil ipsum, earum fugiat eaque? Ipsa,
-                        nobis!</p>
-                </figcaption>
-            </figure>
+            <h2 class="code-title">
+                <span class="bracket"></span>
+                <span class="text">Github Projects</span>
+                <span class="bracket"></span>
+            </h2>
+            <div class="info">
+            </div>
+            <div class="cards"></div>
         </section>
 
         <section id="Hab">
@@ -218,6 +188,7 @@
     <footer>
         © 2025 jackestar
     </footer>
+    <script type="module" src="./js/viewer3d.js"></script>
     <script src="./js/main.js"></script>
 </body>
 

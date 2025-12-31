@@ -1,5 +1,8 @@
 # Static Files
 cp -r ./static/* ./dist
+
+cp node_modules/pcb-trace-animation/src/pcb-trace-animation.min.js ./dist
+
 models="./dist/Blog/Kicad/models"
 
 echo $models
