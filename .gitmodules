@@ -1,6 +1,0 @@
-[submodule "banner"]
-	path = static/Proyects/Banner
-	url = https://github.com/jackestar/bannerMaker
-[submodule "nomen"]
-	path = static/Proyects/Nomen
-	url = https://github.com/jackestar/Nomen

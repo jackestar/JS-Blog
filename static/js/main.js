@@ -1,100 +1,192 @@
-//  PCB
+gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
 
-const canvas = document.getElementById('pcbAnimation');
-const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00ff9d';
-const pcb = new PCBTraceAnimation(canvas, {
-    color: accent,
-    lineWidth: 3,
-    speed: 3,
-    lineSpacing: 5
-});
-
-let fitCanvas = () => {
-    pcb.initCanvas();
-}
-
-window.addEventListener('resize', fitCanvas);
-fitCanvas();
-
-
-pcb.drawLine(.35, .75, .30, true, false);
-pcb.drawLine(.35, .25, .30, true, true);
-pcb.drawLine(.65, .25, .50, false, false);
-pcb.drawLine(.35, .25, .50, false, true);
-
-pcb.start();
-
-// Github
-
-const animateTitle = () => {
-    const brackets = document.querySelectorAll('.code-title .bracket');
-    if (brackets.length < 2) return;
-
-    // List of symbol pairs to cycle through
-    const pairs = [
-        ['{', '}'],
-        ['[', ']'],
-        ['<', '/>'],
-        ['(', ')'],
-        ['/*', '*/'],
-        ['//', ''],
-        ['<!--', '-->'],
-        ['${', '}']
-    ];
-
-    let index = 0;
-
-    setInterval(() => {
-        // Option 1: Sequential (Predictable)
-        // index = (index + 1) % pairs.length;
-        // const [left, right] = pairs[index];
-
-        // Option 2: Random (More generic "hacker" feel)
-        const randomPair = pairs[Math.floor(Math.random() * pairs.length)];
-        const [left, right] = randomPair;
-
-        // Apply text
-        brackets[0].textContent = left;
-        brackets[1].textContent = right;
-
-        // Optional: Add a subtle color glitch effect randomly
-        brackets.forEach(b => {
-            b.style.opacity = Math.random() > 0.8 ? '0.75' : '1';
-        });
-
-    }, 1500); // Change speed here (ms)
+const CONFIG = {
+    accentColor: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00ff9d',
+    gitHubUsername: 'jackestar',
+    endpoints: {
+        pinnedRepos: 'https://pinned.berrysauce.dev/get/'
+    }
 };
 
-// Start the animation
-animateTitle();
+const Typer = {
 
-let fetchGitHub = async () => {
-    const container = document.querySelector('.cards');
-    const username = 'jackestar';
+    type: (el, text, speed = 60) => {
+        return new Promise(resolve => {
+            if (!el) return resolve();
+            el.textContent = "";
+            let i = 0;
+            const t = setInterval(() => {
+                el.textContent += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(t);
+                    resolve();
+                }
+            }, speed);
+        });
+    },
 
-    // Add loading state
-    let message = document.createElement('p')
+    startLoop: (container, list, cfg = {}) => {
+        if (!container || !list.length) return;
 
-    message.innerText = "Loading repositories..."
-    container.append(message)
-    // container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center;">Loading repositories...</p>';
+        container.innerHTML = '<span class="typer-text"></span><span class="cursor"></span>';
+        const textSpan = container.querySelector('.typer-text');
 
-    try {
-        const response = await fetch(`https://pinned.berrysauce.dev/get/${username}`);
-        const data = await response.json();
+        const settings = { typeSpeed: 60, deleteSpeed: 30, pause: 1200, ...cfg };
+        let idx = 0, char = 0, deleting = false;
 
-        if (!Array.isArray(data) || data.length === 0) throw new Error("No pinned repos found");
+        const tick = () => {
+            const currentWord = list[idx];
 
-        message.style.display = 'none'
-        // container.innerHTML = ''; // Clear loading text
+            if (!deleting) {
+                char++;
+                textSpan.textContent = currentWord.slice(0, char);
+                if (char === currentWord.length) {
+                    deleting = true;
+                    setTimeout(tick, settings.pause);
+                    return;
+                }
+            } else {
+                char--;
+                textSpan.textContent = currentWord.slice(0, char);
+                if (char === 0) {
+                    deleting = false;
+                    idx = (idx + 1) % list.length;
+                    setTimeout(tick, 300);
+                    return;
+                }
+            }
+            setTimeout(tick, deleting ? settings.deleteSpeed : settings.typeSpeed);
+        };
+        tick();
+    }
+};
 
-        // 1. Create DOM Elements
+const PCB = {
+    init: () => {
+        const canvas = document.getElementById('pcbAnimation');
+        if (!canvas) return;
+
+        const pcb = new PCBTraceAnimation(canvas, {
+            color: CONFIG.accentColor,
+            lineWidth: 3,
+            speed: 3,
+            lineSpacing: 5
+        });
+
+        const fitCanvas = () => pcb.initCanvas();
+        window.addEventListener('resize', fitCanvas);
+        fitCanvas();
+
+        pcb.drawLine(.35, .75, .30, true, false);
+        pcb.drawLine(.35, .25, .30, true, true);
+        pcb.drawLine(.65, .25, .50, false, false);
+        pcb.drawLine(.35, .25, .50, false, true);
+
+        pcb.start();
+    }
+};
+
+const Hero = {
+    init: () => {
+        const hero = document.querySelector("#home article.hero");
+        if (!hero) return;
+
+        const h1 = hero.querySelector('h1');
+        const p = hero.querySelector('p');
+        const typer = hero.querySelector('.typer');
+
+        const h1Text = h1?.dataset.text || h1?.textContent.trim() || '';
+        const pText = p?.dataset.text || p?.textContent.trim() || '';
+        const typerList = ['Web Developer', 'Graphic Designer', 'Electronic Engineering Student', 'AI enthusiast', 'Linux enthusiast'];
+
+        const isScrolled = window.scrollY > 100;
+
+        if (h1) h1.textContent = isScrolled ? h1Text : '';
+        if (p) p.textContent = isScrolled ? pText : '';
+
+        if (isScrolled) {
+            gsap.set(hero, { scale: 1, opacity: 1 });
+            Typer.startLoop(typer, typerList, { pause: 1100 });
+        } else {
+            gsap.set(hero, { scale: 0, opacity: 0 });
+
+            gsap.to(hero, {
+                duration: 0.9,
+                scale: 1,
+                opacity: 1,
+                ease: 'back.out(1.7)',
+                onComplete: async () => {
+                    await Typer.type(h1, h1Text, 70);
+                    await new Promise(r => setTimeout(r, 180));
+                    await Typer.type(p, pText, 28);
+                    Typer.startLoop(typer, typerList, { pause: 1100 });
+                }
+            });
+        }
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+
+        tl.to(hero, { y: -200, opacity: 0, ease: "none" }, 0)
+            .to(["#home canvas", "#home .focus"], { opacity: 0, filter: "blur(10px)", ease: "none" }, 0);
+    }
+};
+
+const GitHub = {
+    animateTitle: () => {
+        const brackets = document.querySelectorAll('.code-title .bracket');
+        if (brackets.length < 2) return;
+
+        const pairs = [
+            ['{', '}'], ['[', ']'], ['<', '/>'], ['(', ')'],
+            ['/*', '*/'], ['//', ''], ['<!--', '-->'], ['${', '}']
+        ];
+
+        setInterval(() => {
+            const [left, right] = pairs[Math.floor(Math.random() * pairs.length)];
+            brackets[0].textContent = left;
+            brackets[1].textContent = right;
+            brackets.forEach(b => b.style.opacity = Math.random() > 0.8 ? '0.75' : '1');
+        }, 1500);
+
+        gsap.fromTo(".code-title",
+            { autoAlpha: 0, filter: "blur(0px)" },
+            {
+                autoAlpha: 1,
+                filter: "blur(0px)",
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: { trigger: "#github", start: "top 70%" }
+            }
+        );
+
+        gsap.to(".code-title", {
+            y: -100,
+            filter: "blur(10px)",
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".code-title",
+                start: "top top",
+                end: "bottom top 45%",
+                scrub: 1
+            }
+        });
+    },
+
+    renderCards: (data, container) => {
         data.forEach(repo => {
             const card = document.createElement('a');
-            card.className = 'repo-card'; // We removed gsap-reveal class to handle it manually
-            card.href = `https://github.com/${username}/${repo.name}`;
+            card.className = 'repo-card';
+            card.href = `https://github.com/${CONFIG.gitHubUsername}/${repo.name}`;
             card.target = "_blank";
-            card.rel = "noopener noreferrer"; // Security best practice
+            card.rel = "noopener noreferrer";
 
             card.innerHTML = `
                 <div class="repo-content">
@@ -110,341 +202,366 @@ let fetchGitHub = async () => {
             `;
             container.appendChild(card);
         });
+    },
 
-        // 2. Animate with GSAP after elements exist
+    animateCards: () => {
         ScrollTrigger.refresh();
-        animateGitHub();
+        ScrollTrigger.batch(".repo-card", {
+            start: "top 90%",
+            scrub: 1,
+            onEnter: batch => {
+                gsap.to(batch, {
+                    autoAlpha: 1,
+                    y: 0,
+                    scale: 1,
+                    filter: "blur(0px)",
+                    duration: 0.6,
+                    stagger: 0.1,
+                    ease: "power2.out",
 
-    } catch (err) {
-        console.error(err);
-        message.innerHTML = `              <p>Could not load pinned repos.</p>
-                <a href="https://github.com/${username}" target="_blank" style="color: var(--secondary); text-decoration: underline;">
+                });
+            },
+            onLeaveBack: batch => gsap.to(batch, { y: 10, autoAlpha: 0, overwrite: false })
+        });
+
+
+        gsap.utils.toArray(".repo-card").forEach(card => {
+            gsap.to(card, {
+                scale: 1.1,
+                filter: "blur(10px)",
+                opacity: .1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top",
+                    end: "top -10%",
+                    scrub: 1
+                }
+            });
+        });
+    },
+
+    init: async () => {
+        GitHub.animateTitle();
+
+        const container = document.querySelector('.cards');
+        if (!container) return;
+
+        const message = document.createElement('p');
+        message.innerText = "Loading repositories...";
+        container.append(message);
+
+        try {
+            const response = await fetch(`${CONFIG.endpoints.pinnedRepos}${CONFIG.gitHubUsername}`);
+            const data = await response.json();
+
+            if (!Array.isArray(data) || data.length === 0) throw new Error("No pinned repos found");
+
+            message.remove();
+            GitHub.renderCards(data, container);
+            GitHub.animateCards();
+
+        } catch (err) {
+            console.error(err);
+            message.innerHTML = `
+                Could not load pinned repos.<br/>
+                <a href="https://github.com/${CONFIG.gitHubUsername}" target="_blank" style="color: var(--secondary); text-decoration: underline;">
                     Visit GitHub Profile
-                </a>`
+                </a>`;
+        }
     }
-}
-
-const animateGitHub = () => {
-
-    gsap.to(".repo-card", {
-        scrollTrigger: {
-            trigger: "#github",
-            start: "top 50%", // Starts when top of section hits 80% of viewport height
-            end: 'end 20%',
-            toggleActions: "play none none reverse",
-            scrub: 1
-        },
-        y: 0,
-        // opacity: 1,
-        autoAlpha: 1,
-        duration: 0.6,
-        stagger: 0.15, // Delay between each card appearing
-        ease: "power2.out"
-    });
-
-    gsap.to(".cards", {
-        scrollTrigger: {
-            trigger: "#github",
-            start: "end -20%",   // Start fading out when section hits top of screen
-            end: "end -50%",  // Finish when bottom of section hits top of screen
-            scrub: 1,           // Tie animation to scrollbar speed
-            toggleActions: "play none none reverse"
-        },
-        scale: 1.1,             // "Grow" effect
-        filter: "blur(5px)",   // "Blur out" effect
-        opacity: 0,             // Fade out
-        ease: "none"            // Linear ease is best for scrubbing
-    });
 };
 
-document.addEventListener("DOMContentLoaded", (event) => {
+const KiCad = {
+    init: () => {
 
-    gsap.registerPlugin(ScrollTrigger);
+        gsap.set("#slideIcon", { scale: 0, transformOrigin: "center center" });
 
-    // Hero intro: expand from center, then type H1 and P, then start the typer list
-    // (function heroIntro() {
-    const hero = document.querySelector("#home article.hero");
-    if (!hero) return;
-
-    const h1 = hero.querySelector('h1');
-    const p = hero.querySelector('p');
-    const typer = hero.querySelector('.typer');
-
-    const h1Text = (h1 && h1.dataset && h1.dataset.text) ? h1.dataset.text : (h1 ? h1.textContent.trim() : '');
-    const pText = (p && p.dataset && p.dataset.text) ? p.dataset.text : (p ? p.textContent.trim() : '');
-
-    // --- Helper Functions ---
-    let typeText = (el, text, speed = 60) => {
-        return new Promise(resolve => {
-            if (!el) return resolve();
-            let i = 0;
-            el.textContent = ""; // Ensure clear before typing
-            const t = setInterval(() => {
-                el.textContent += text.charAt(i);
-                i++;
-                if (i >= text.length) {
-                    clearInterval(t);
-                    resolve();
-                }
-            }, speed);
-        });
-    }
-
-    let startTyper = (list, container, cfg = {}) => {
-        if (!container || !Array.isArray(list) || list.length === 0) return;
-        const textSpan = document.createElement('span');
-        textSpan.className = 'typer-text';
-        const cursor = document.createElement('span');
-        cursor.className = 'cursor';
-        container.textContent = '';
-        container.appendChild(textSpan);
-        container.appendChild(cursor);
-
-        let idx = 0;
-        let char = 0;
-        let deleting = false;
-
-        const typeSpeed = cfg.typeSpeed || 60;
-        const deleteSpeed = cfg.deleteSpeed || 30;
-        const pause = cfg.pause || 1200;
-
-        let tick = () => {
-            const full = list[idx];
-            if (!deleting) {
-                char++;
-                textSpan.textContent = full.slice(0, char);
-                if (char === full.length) {
-                    deleting = true;
-                    setTimeout(tick, pause);
-                    return;
-                }
-            } else {
-                char--;
-                textSpan.textContent = full.slice(0, char);
-                if (char === 0) {
-                    deleting = false;
-                    idx = (idx + 1) % list.length;
-                    setTimeout(tick, 300);
-                    return;
-                }
-            }
-            setTimeout(tick, deleting ? deleteSpeed : typeSpeed);
-        }
-        tick();
-    }
-
-    let habTyper = () => {
-        startTyper([
-            'embedded systems',
-            'microcontrollers',
-            'electronics',
-            '3D viewer'
-        ], typer, { typeSpeed: 60, deleteSpeed: 30, pause: 1100 });
-    }
-    const isScrolled = window.scrollY > 100;
-
-    if (isScrolled) {
-        // SKIP ANIMATION: Set final state immediately
-        // This ensures scale is 1, so when you scroll back up, the element is there.
-        gsap.set(hero, { scale: 1, opacity: 1, transformOrigin: 'center center' });
-
-        // Restore text immediately (no typing effect)
-        if (h1) h1.textContent = h1Text;
-        if (p) p.textContent = pText;
-
-        // Start the looping typer immediately
-        habTyper();
-
-    } else {
-        // PLAY ANIMATION: User is at the top
-        if (h1) h1.textContent = '';
-        if (p) p.textContent = '';
-
-        gsap.set(hero, { scale: 0, opacity: 0, transformOrigin: 'center center' });
-
-        gsap.to(hero, {
-            duration: 0.9,
-            scale: 1,
-            opacity: 1,
-            ease: 'back.out(1.7)',
-            onComplete: async () => {
-                await typeText(h1, h1Text, 70);
-                await new Promise(r => setTimeout(r, 180));
-                await typeText(p, pText, 28);
-                habTyper();
-            }
-        });
-    }
-    // })
-    // ();
-
-
-    const homeScrollTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#home",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1 // Links animation to scrollbar
-        }
-    });
-
-    homeScrollTl.to("#home article.hero", {
-        y: -200,
-        opacity: 0,
-        ease: "none"
-    }, 0);
-
-    homeScrollTl.to(["#home canvas", "#home .focus"], {
-        opacity: 0,
-        filter: "blur(10px)",
-        ease: "none"
-    }, 0);
-
-    // Setup initial state
-    gsap.set("#slideIcon", {
-        scale: 0,
-        transformOrigin: "center center"
-    });
-
-    const iconTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#iconGroup",
-            start: "top 90%", // Starts when icon enters view
-            toggleActions: "play none none reverse"
-        }
-    });
-
-    iconTl.from("#iconGroup", {
-        x: 100,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out"
-    })
-        .to("#circleShape", {
-            scale: 0,
-            duration: 0.4,
-            ease: "back.in(1.7)",
-            transformOrigin: "center center"
-        }, "-=0.2")
-        .to("#slideIcon", {
-            opacity: 1,
-            scale: 1,
-            duration: 0.5,
-            ease: "back.out(1.7)"
-        }, "<");
-
-    const figures = document.querySelectorAll("section#kicad figure");
-
-    figures.forEach((fig, i) => {
-        const viewer = fig.querySelector(".viewer3d");
-        const caption = fig.querySelector("figcaption");
-        const isReverse = i % 2 !== 0; // Check if it's an even child (index 1, 3, etc)
-
-        // 1. Define Direction vectors
-        // If normal: Viewer goes Left (-), Caption goes Right (+)
-        // If reverse: Viewer goes Right (+), Caption goes Left (-)
-        // We start FROM the center (opposite of where they end up)
-
-        const viewerStartX = isReverse ? "-50%" : "50%"; // Viewer starts at center
-        const captionStartX = isReverse ? "50%" : "-50%"; // Caption starts at center
-
-        // 2. Create a Timeline for precise sequencing
-        const tl = gsap.timeline({
+        const iconTl = gsap.timeline({
             scrollTrigger: {
-                trigger: fig,
-                start: "top 75%", // begin when figure top is near bottom of viewport
-                end: "top 35%",   // finish before the viewport center (50%) — creates a gap
-                scrub: 1, // Smooth scrubbing linked to scrollbar
-                toggleActions: "play reverse play reverse"
+                trigger: "#iconGroup",
+                start: "top 90%",
+                toggleActions: "play none none reverse"
             }
         });
 
-        // 3. Animate Viewer
-        tl.fromTo(viewer,
+        iconTl.from("#iconGroup", { x: 100, opacity: 0, duration: 0.8, ease: "power2.out" })
+            .to("#circleShape", { scale: 0, duration: 0.4, ease: "back.in(1.7)", transformOrigin: "center center" }, "-=0.2")
+            .to("#slideIcon", { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, "<");
+
+
+        const figures = document.querySelectorAll("section#kicad figure");
+
+        figures.forEach((fig, i) => {
+            const viewer = fig.querySelector(".viewer3d");
+            const caption = fig.querySelector("figcaption");
+            const isReverse = i % 2 !== 0;
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: fig,
+                    start: "top 75%",
+                    end: "top 35%",
+                    scrub: 1,
+                    toggleActions: "play reverse play reverse"
+                }
+            });
+
+
+            tl.fromTo(viewer,
+                { x: isReverse ? "-50%" : "50%", opacity: 0.5, scale: 0.5, filter: "blur(10px)" },
+                { x: "0%", opacity: 1, scale: 1.1, filter: "blur(0px)", duration: 1, ease: "power2.out" },
+                0
+            );
+
+            tl.fromTo(caption,
+                { x: isReverse ? "50%" : "-50%", opacity: 0, scale: 0.8 },
+                { x: "0%", opacity: 1, scale: 1, duration: 1, ease: "power2.out" },
+                0
+            );
+
+            gsap.to(fig, {
+                opacity: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: fig,
+                    start: 'top -10%',
+                    end: 'top -50%',
+                    scrub: 1
+                }
+            });
+        });
+    }
+};
+
+const Skills = {
+    getCompoundPath: (group) => {
+        if (!group) return "";
+        let paths = group.querySelectorAll('path');
+        let compoundD = "";
+
+        paths.forEach(p => {
+
+
+            const d = p.getAttribute('d');
+            if (d && !d.includes('M0 0h24v24H0z')) {
+                compoundD += d + " ";
+            }
+        });
+        return compoundD.trim();
+    },
+    init: () => {
+        document.querySelectorAll('.skills-grid figure').forEach((card) => {
+            const iconContainer = card.querySelector('.icon');
+            const svg = iconContainer.querySelector('svg');
+            const groups = svg.querySelectorAll('g');
+
+            if (groups.length === 0) return;
+
+            const morpher = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            morpher.classList.add('morph-active');
+
+            const firstGroup = groups[0];
+            const initialD = Skills.getCompoundPath(firstGroup);
+
+            morpher.setAttribute('d', initialD);
+            morpher.setAttribute('stroke', firstGroup.getAttribute('stroke') || 'currentColor');
+            morpher.setAttribute('stroke-width', firstGroup.getAttribute('stroke-width') || '2');
+            morpher.setAttribute('stroke-linecap', 'round');
+            morpher.setAttribute('stroke-linejoin', 'round');
+            morpher.setAttribute('fill', 'none');
+
+            svg.appendChild(morpher);
+
+            const pathStates = [];
+            groups.forEach(g => pathStates.push(Skills.getCompoundPath(g)));
+
+            if (pathStates.length < 2) return;
+
+            let hovertl;
+
+            const scrollTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            for (let i = 1; i < pathStates.length; i++) {
+                scrollTl.to(morpher, {
+                    morphSVG: pathStates[i],
+                    duration: 0.6,
+                    ease: "power2.inOut"
+                });
+            }
+
+            scrollTl.to(morpher, {
+                morphSVG: pathStates[0],
+                duration: 0.6,
+                ease: "power2.inOut"
+            });
+
+            card.addEventListener('mouseenter', () => {
+
+
+                if (scrollTl.isActive()) scrollTl.pause();
+
+                hovertl = gsap.timeline();
+
+
+                pathStates.forEach((state) => {
+
+                    hovertl.to(morpher, {
+                        morphSVG: state,
+                        duration: 0.5,
+                        ease: "power1.inOut"
+                    }, "+=0.1");
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (hovertl) {
+                    hovertl.kill();
+
+                    gsap.to(morpher, {
+                        morphSVG: pathStates[0],
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        });
+        Skills.animateTitle();
+        Skills.animateCards()
+    },
+    animateTitle: () => {
+
+
+        gsap.fromTo(".hab-title",
+            { autoAlpha: 0, filter: "blur(0px)" },
             {
-                x: viewerStartX,
-                opacity: .5,
-                scale: 0.5, // Start small
-                filter: "blur(10px)"
-            },
-            {
-                x: "0%", // Slide out to natural position
-                opacity: 1,
-                scale: 1.1, // Grow slightly larger than natural to "stand out"
+                autoAlpha: 1,
                 filter: "blur(0px)",
                 duration: 1,
-                ease: "power2.out"
-            },
-            0 // Start time
+                ease: "power3.out",
+                scrollTrigger: { trigger: "#hab", start: "top 80%" }
+            }
         );
 
-        // 4. Animate Caption
-        tl.fromTo(caption,
-            {
-                x: captionStartX,
-                opacity: 0,
-                scale: 0.8
-            },
-            {
-                x: "0%",
-                opacity: 1,
-                scale: 1,
-                duration: 1,
-                ease: "power2.out"
-            },
-            0 // Sync with viewer
-        );
 
-        // Fade out the whole figure as it approaches the top of the viewport
-        gsap.to(fig, {
-            opacity: 0,
-            ease: 'none',
+        gsap.to(".hab-title", {
+            y: -100,
+            filter: "blur(10px)",
+            ease: "none",
             scrollTrigger: {
-                trigger: fig,
-                start: 'top -10%',
-                end: 'top -50%',
+                trigger: ".hab-title",
+                start: "top top",
+                end: "bottom top 45%",
                 scrub: 1
             }
         });
-    });
+    },
+    animateCards: () => {
 
-    gsap.fromTo(".code-title",
-        {
-            autoAlpha: 0,
-            y: 0,
-            filter: "blur(0px)"
-        },
-        {
-            autoAlpha: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 1,
-            ease: "power3.out",
+
+        ScrollTrigger.batch("#hab figure", {
+            start: "top 90%",
+            scrub: 1,
+            onEnter: batch => {
+                gsap.to(batch, {
+                    autoAlpha: 1,
+                    y: 0,
+                    scale: 1,
+                    filter: "blur(0px)",
+                    duration: 0.6,
+                    stagger: 0.1,
+                    ease: "power2.out",
+
+                });
+            },
+            onLeaveBack: batch => gsap.to(batch, { y: 10, autoAlpha: 0, overwrite: false })
+        });
+
+
+        gsap.utils.toArray("#hab figure").forEach(card => {
+            gsap.to(card, {
+                scale: 1.1,
+                filter: "blur(10px)",
+                opacity: .1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top",
+                    end: "bottom",
+                    scrub: 1
+                }
+            });
+        });
+
+        const habFigures = gsap.utils.toArray("#hab .skills-grid figure");
+        habFigures.forEach((fig) => {
+            const icon = fig.querySelector('.icon');
+            const caption = fig.querySelector('figcaption');
+            const tags = fig.querySelector('.tags');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: fig,
+                    start: "top 85%",
+                    end: "top 50%",
+                    scrub: 1,
+                    toggleActions: "play reverse play reverse"
+                }
+            });
+
+            tl.fromTo(fig,
+                { autoAlpha: 0, y: 40, scale: 0.98 },
+                { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, ease: "power2.out" }
+            );
+
+            tl.from(icon, { y: -6, scale: 0.9, autoAlpha: 0, duration: 0.5, ease: "back.out(1.2)" }, "<0.1");
+            tl.from(caption, { y: 8, autoAlpha: 0, duration: 0.45, ease: "power2.out" }, "<0.1");
+            tl.from(tags.querySelectorAll('span'), { y: 6, autoAlpha: 0, stagger: 0.06, duration: 0.33 }, "-=" + 0.25);
+        });
+    },
+}
+
+const Blog = {
+    init: () => {
+        const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: "#github",
-                start: "top 70%", // Trigger when title is near bottom of viewport
-                toggleActions: "play none none reverse"
+                trigger: "#blog",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play reverse play reverse",
             }
-        }
-    );
+        });
 
-    // Title Exit: Slide Up + Blur + Fade Out (triggered by scroll)
-    gsap.to(".code-title", {
-        scrollTrigger: {
-            trigger: ".code-title",
-            start: "top top",
-            end: "bottom top 45%",
-            toggleActions: "play none none reverse",
-            scrub: 1
-        },
-        y: -100,                  // Move UP
-        // duration:1,
-        // autoAlpha: 0,            // Fade Out
-        filter: "blur(10px)",    // Blur
-        ease: "none"
-    });
+        tl.from("#blog article", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
 
+
+        tl.from("#blog .card", {
+            y: 100,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+        }, "-=0.5");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    PCB.init();
+    Hero.init();
+    KiCad.init();
+    GitHub.init();
+    Skills.init();
+    Blog.init();
 });
-
-
-fetchGitHub();

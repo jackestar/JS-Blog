@@ -6,4 +6,4 @@ dist
 cache
 test*
 *.glb
-./static/*.js
+static/*.js

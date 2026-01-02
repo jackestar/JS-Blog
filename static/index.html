@@ -11,7 +11,11 @@
     <script src="pcb-trace-animation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/MorphSVGPlugin.min.js"></script>
+    <link rel="manifest" href="./mainpage.json" />
+    <meta property="og:title" content="Jackestar" />
+    <meta name="theme-color" content="#00ff9d" />
+    <link rel="shortcut icon" href="./manifest/favicon128.png" type="image/x-icon">
     <script type="importmap">
 {
   "imports": {
@@ -38,8 +42,8 @@
                         </g>
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/jackestar/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="#00ff9d">
+                <a href="https://www.linkedin.com/in/jackestar/"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="#00ff9d">
                         <g id="iconGroup">
 
                             <circle id="circleShape" cx="12" cy="12" r="11" fill="#00ff9d" />
@@ -62,40 +66,51 @@
                 <p>HTML5?</p>
             </canvas>
             <article class="hero">
-                <h1 data-text="nameplace"></h1>
+                <h1 data-text="Jackestar"></h1>
                 <p data-text="Developer, tinkerer, and writer building small things that matter."></p>
                 <div class="typer"></div>
             </article>
             <div class="focus"></div>
         </section>
-
         <section id="kicad">
-            <figure>
-                <div class="viewer3d" data-model-url="./models/TDA75610.glb" data-preview="./img/TDA75610.png"></div>
-                <figcaption>
-                    <h3>TDA75610 Dev Board</h3>
-                    <p>El objetivo es el desarrollo de un PCB que sirva para utilizar y depurar el integrado TDA75610LV
-                        (montaje horizontal), que se pueda imprimir en una PCB de una cara.</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <div class="viewer3d" data-model-url="./models/UltraSonic.glb" data-preview="./img/UltraSonic.png">
-                </div>
-                <figcaption>
-                    <h3>Mini HC-SR04</h3>
-                    <p>El objetivo es crear una versión mini del módulo HC-SR04. Prueba de concepto equivalente en forma
-                        esquemática, que utiliza transceptores ultrasónicos más pequeños y un microcontrolador ATtiny404
-                        disponible comercialmente en lugar del EM78P153A, además de cuatro LED programables.</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <div class="viewer3d" data-model-url="./models/ESP01-Driver.glb" data-preview="./img/termocouple.png">
-                </div>
-                <figcaption>
-                    <h3>Termocouple Driver</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, at!</p>
-                </figcaption>
-            </figure>
+            <a href="/Blog/Kicad/TDA75610.html">
+                <figure>
+                    <div class="viewer3d" data-model-url="./models/TDA75610.glb" data-preview="./img/TDA75610.png">
+                    </div>
+                    <figcaption>
+                        <h3>TDA75610 Dev Board</h3>
+                        <p>El objetivo es el desarrollo de un PCB que sirva para utilizar y depurar el integrado
+                            TDA75610LV
+                            (montaje horizontal), que se pueda imprimir en una PCB de una cara.</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="/Blog/Kicad/ultrasonic.html">
+                <figure>
+                    <div class="viewer3d" data-model-url="./models/UltraSonic.glb" data-preview="./img/UltraSonic.png">
+                    </div>
+                    <figcaption>
+                        <h3>Mini HC-SR04</h3>
+                        <p>El objetivo es crear una versión mini del módulo HC-SR04. Prueba de concepto equivalente en
+                            forma
+                            esquemática, que utiliza transceptores ultrasónicos más pequeños y un microcontrolador
+                            ATtiny404
+                            disponible comercialmente en lugar del EM78P153A, además de cuatro LED programables.</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#">
+                <figure>
+                    <div class="viewer3d" data-model-url="./models/ESP01-Driver.glb"
+                        data-preview="./img/termocouple.png">
+                    </div>
+                    <figcaption>
+                        <h3>Termocouple Driver</h3>
+                        <p>Driver board to handle termocouples with a ESP32-S2</p>
+                    </figcaption>
+                </figure>
+            </a>
+
         </section>
 
         <section id="github">
@@ -109,84 +124,376 @@
             <div class="cards"></div>
         </section>
 
-        <section id="Hab">
-            <figure>
-                <img src="" alt="">
-                <figcaption>
-                    <h3>Control Systems</h3>
-                    <p>Matlab, Scilab</p>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="" alt="">
-                <figcaption>
-                    <h3>Electronic Simulation</h3>
-                    <p>LTSpice, Multisim, Falstad, Proteus</p>
-                </figcaption>
-            </figure>
-            <figure>
+        <section id="hab">
+
+            <div class="hab-title">
+                <h2>Technical Expertise</h2>
+                <p>
+                    A comprehensive toolkit spanning hardware design, embedded systems,
+                    software development, and industrial automation engineering.
+                </p>
+            </div>
+
+            <!-- Skills Grid (figure/figcaption structure) -->
+            <div class="skills-grid" id="skills-grid">
+
+                <!-- Card 1: HDL -->
                 <figure>
-                    <img src="" alt="">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Chip -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                            </g>
+                            <!-- Icon 2: Grid 4x4 -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18" />
+                                <path d="M3 12h18" />
+                                <path d="M3 18h18" />
+                                <path d="M6 3v18" />
+                                <path d="M12 3v18" />
+                                <path d="M18 3v18" />
+                            </g>
+                            <!-- Icon 3: Logic And -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-5" />
+                                <path d="M2 9h5" />
+                                <path d="M2 15h5" />
+                                <path d="M9 5c6 0 8 3.5 8 7s-2 7 -8 7h-2v-14h2z" />
+                            </g>
+                        </svg>
+                    </div>
                     <figcaption>
-                        <h3>Design</h3>
-                        <p>Gimp, Inkscape, AutoCAD, Revit</p>
+                        <h3 class="category-title">Hardware Description</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#000;">VHDL</span>
+                            <span style="--tag-bg:#0066a4;">Quartus</span>
+                            <span style="--tag-bg:#ec1a4c;">Max+Plus II</span>
+                            <span style="--tag-bg:#876;">EPLD</span>
+                            <span style="--tag-bg:#678;">CPLD</span>
+                        </div>
                     </figcaption>
                 </figure>
+
+                <!-- Card 2: Microcontrollers -->
                 <figure>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Chip -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                            </g>
+                            <!-- Icon 2: Router -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M3 13m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                <path d="M17 17l0 .01" />
+                                <path d="M13 17l0 .01" />
+                                <path d="M15 13l0 -2" />
+                                <path d="M11.75 8.75a4 4 0 0 1 6.5 0" />
+                                <path d="M8.5 6.5a8 8 0 0 1 13 0" />
+                            </g>
+                        </svg>
+                    </div>
                     <figcaption>
-                        <h3>HDL</h3>
-                        <p>FPGA, PLD, VHDL, Quartus, Max+Plus II</p>
+                        <h3 class="category-title">Microcontrollers</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#79c943;">FreeRTOS</span>
+                            <span style="--tag-bg:#838;">AVR</span>
+                            <span style="--tag-bg:#e7352c;">ESP32</span>
+                            <span style="--tag-bg:#e7352c;">IDF</span>
+                            <span style="--tag-bg:#00979d;">Arduino</span>
+                            <span style="--tag-bg:#229;">ASM</span>
+                            <span style="--tag-bg:#062e39;">MPASM</span>
+                            <span style="--tag-bg:#36e;">Bare-metal</span>
+                            <span style="--tag-bg:#33e;">Embedded Linux</span>
+                        </div>
                     </figcaption>
                 </figure>
+
+                <!-- Card 3: Electronic Design -->
                 <figure>
-                    <img src="" alt="">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Electronic component -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </g>
+                            <!-- Icon 2: Diode Zener -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-6" />
+                                <path d="M2 12h6" />
+                                <path d="M8 7l8 5l-8 5z" />
+                                <path d="M14 7h2v10h2" />
+                            </g>
+                        </svg>
+                    </div>
                     <figcaption>
-                        <h3>Microcontrollers</h3>
-                        <p>Library Design, FreeRTOS IDF, Arduino, Baremetal, ASM, MPASM, C/C++, Rust</p>
+                        <h3 class="category-title">Electronic Design</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#222;">Library Design</span>
+                            <span style="--tag-bg:#314cb0;">KiCad</span>
+                            <span style="--tag-bg:#d33;">Technology Selection</span>
+                            <span style="--tag-bg:#827;">Industrial</span>
+                            <span style="--tag-bg:#552;">Power</span>
+                            <span style="--tag-bg:#000;">Circuits</span>
+                            <span style="--tag-bg:#058;">PCB Design</span>
+                        </div>
                     </figcaption>
                 </figure>
+
+                <!-- Card 4: Simulation -->
                 <figure>
-                    <img src="" alt="">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Generic Graph -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </g>
+                            <!-- Icon 2: Scatter -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v18h18" />
+                                <path d="M8 15.015v.015" />
+                                <path d="M16 16.015v.015" />
+                                <path d="M8 7.03v.015" />
+                                <path d="M12 11.03v.015" />
+                                <path d="M19 11.03v.015" />
+                            </g>
+                            <!-- Icon 3: Histogram -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v18h18" />
+                                <path d="M20 18v3" />
+                                <path d="M16 16v5" />
+                                <path d="M12 13v8" />
+                                <path d="M8 16v5" />
+                                <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" />
+                            </g>
+                        </svg>
+                    </div>
                     <figcaption>
-                        <h3>Linux</h3>
-                        <p>Embeded kernel, Archlinux, Debian, Ubuntu, Android, UI</p>
+                        <h3 class="category-title">Simulation</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#94082e;">LTSpice</span>
+                            <span style="--tag-bg:#63211c;">MATLAB</span>
+                            <span style="--tag-bg:#30296d;">NI MultiSim</span>
+                            <span style="--tag-bg:#103552;">Scilab</span>
+                        </div>
                     </figcaption>
                 </figure>
+
+                <!-- Card 5: Programming -->
+                <figure>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Code Tags -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </g>
+                            <!-- Icon 2: Shield Code -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M12 21a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.078 7.024" />
+                                <path d="M20 21l2 -2l-2 -2" />
+                                <path d="M17 17l-2 2l2 2" />
+                            </g>
+                            <!-- Icon 3: Cloud Code -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M11 18.004h-4.343c-2.572 -.004 -4.657 -2.011 -4.657 -4.487c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99a3.468 3.468 0 0 1 3.307 2.444" />
+                                <path d="M20 21l2 -2l-2 -2" />
+                                <path d="M17 17l-2 2l2 2" />
+                            </g>
+                        </svg>
+                    </div>
+                    <figcaption>
+                        <h3 class="category-title">Programming</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#084985;">C/C++</span>
+                            <span style="--tag-bg:#080808;">Rust</span>
+                            <span style="--tag-bg:#3e72a0;">Python</span>
+                            <span style="--tag-bg:#222;">Bash</span>
+                            <span style="--tag-bg:#f7e025;">JavaScript</span>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <!-- Card 6: Linux -->
+                <figure>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Terminal/Folder -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </g>
+                            <!-- Icon 2: Prompt -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 7l5 5l-5 5" />
+                                <path d="M13 17l6 0" />
+                            </g>
+                        </svg>
+                    </div>
+                    <figcaption>
+                        <h3 class="category-title">Linux Systems</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#333;">Custom Kernel</span>
+                            <span style="--tag-bg:#1e96d2;">Arch Linux</span>
+                            <span style="--tag-bg:#aa0836;">Debian</span>
+                            <span style="--tag-bg:#e95515;">Ubuntu</span>
+                            <span style="--tag-bg:#292;">OS Management</span>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <!-- Card 7: Design & CAD -->
+                <figure>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Layers -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                            </g>
+                            <!-- Icon 2: Filters -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 8m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" />
+                                <path d="M8 11a5 5 0 1 0 3.998 1.997" />
+                                <path d="M12.002 19.003a5 5 0 1 0 3.998 -8.003" />
+                            </g>
+                        </svg>
+                    </div>
+                    <figcaption>
+                        <h3 class="category-title">Design & CAD</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#8f8477;">GIMP</span>
+                            <span style="--tag-bg:#e51755;">AutoCAD</span>
+                            <span style="--tag-bg:#1f6fff;">Revit</span>
+                            <span style="--tag-bg:#000;">Inkscape</span>
+                            <span style="--tag-bg:#55e;">Web Design</span>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <!-- Card 8: Industrial Engineering -->
+                <figure>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Icon 1: Machine/Gear -->
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </g>
+                            <!-- Icon 2: Engine -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 10v6" />
+                                <path d="M12 5v3" />
+                                <path d="M10 5h4" />
+                                <path d="M5 13h-2" />
+                                <path
+                                    d="M6 10h2l2 -2h3.382a1 1 0 0 1 .894 .553l1.448 2.894a1 1 0 0 0 .894 .553h1.382v-2h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2v-2h-3v2a1 1 0 0 1 -1 1h-3.465a1 1 0 0 1 -.832 -.445l-1.703 -2.555h-2v-6z" />
+                            </g>
+                            <!-- Icon 3: Capacitor -->
+                            <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-8" />
+                                <path d="M2 12h8" />
+                                <path d="M10 7v10" />
+                                <path d="M14 7v10" />
+                            </g>
+                        </svg>
+                    </div>
+                    <figcaption>
+                        <h3 class="category-title">Industrial Engineering</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#400;">Motor Control</span>
+                            <span style="--tag-bg:#040;">Industrial Instrumentation</span>
+                            <span style="--tag-bg:#384957;">Step7</span>
+                            <span style="--tag-bg:#004;">Ladder Logic</span>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <!-- Card 9: Documentation & Research -->
+                <figure>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                <path
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </g>
+                            <g>
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                                <path
+                                    d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                                <path d="M5 8h4" />
+                                <path d="M9 16h4" />
+                                <path
+                                    d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z" />
+                                <path d="M14 9l4 -1" />
+                                <path d="M16 16l3.923 -.98" />
+                            </g>
+                        </svg>
+                    </div>
+                    <figcaption>
+                        <h3 class="category-title">Documentation & Research</h3>
+                        <div class="tags">
+                            <span style="--tag-bg:#850;">Technology Selection</span>
+                            <span style="--tag-bg:#085;">Blueprint</span>
+                            <span style="--tag-bg:#508;">Process Automation</span>
+                            <span style="--tag-bg:#580;">Schematic</span>
+                            <span style="--tag-bg:#805;">Optimization</span>
+                            <span style="--tag-bg:#855;">Control Systems</span>
+                            <span style="--tag-bg:#585;">Electronic Assembly</span>
+                            <span style="--tag-bg:#558;">Drafting</span>
+                        </div>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </section>
         </section>
         <section id="blog">
             <article>
                 <figure>
-                    <img src="" alt="Logo">
+                    <img src="./img/favicon.png" alt="Logo">
                     <figcaption>
                         <h2>Blog</h2>
-                        <p></p>
+                        <p>Electronica y Computer Science</p>
                     </figcaption>
                 </figure>
+                <div class="cont">
+                    <a href="/Blog/">Home</a>
+                    <a href="/Blog/papers.html">Papers</a>
+                </div>
             </article>
-            <figure>
-                <img src="" alt="">
-                <figcaption>
-                    <h3>Papers</h3>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="" alt="">
-                <figcaption>
-                    <h3>Articles</h3>
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="" alt="">
-                <figcaption>
-                    <h3>Excersices</h3>
-                </figcaption>
-            </figure>
+            <div class="card">
+                <a href="/Blog/Kicad">
+                    <h3>Proyectos en Kicad</h3>
+                    <p>Diversos proyectos de diseño electrónico implementados en PCB y prototipos en Kicad</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/Blog/Baremetal">
+                    <h3>Baremetal Microcontrollers</h3>
+                    <p>Programación de microcontroladores baremetal C++ Rust y assembler</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/Blog/Ejercicios-Electronica-I">
+                    <h3>Ejercicios Electronica Part. 1</h3>
+                    <p>Ejercicios de Electronica con planteamiento de resolución rápida con trucos </p>
+                </a>
+            </div>
         </section>
 
     </main>
 
     <footer>
-        © 2025 jackestar
+        © 2026 jackestar
     </footer>
     <script type="module" src="./js/viewer3d.js"></script>
     <script src="./js/main.js"></script>
