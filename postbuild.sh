@@ -13,5 +13,6 @@ curl -L -o $models/TDA75610.glb "https://drive.google.com/uc?export=download&id=
 curl -L -o $models/ESP01-Driver.glb "https://drive.google.com/uc?export=download&id=1sb9Hfd1ILrwnXJWMcObeMpFSFNX6RJ4Q"
 curl -L -o $models/UltraSonic.glb "https://drive.google.com/uc?export=download&id=19QxXfrL7RRCJn_lSFvxieGpd3TcvdyOa"
 
+cp -r $models ./dist
 # Translations
 # node translate.js --input ./Locale/ --output ./dist --filenameLang
