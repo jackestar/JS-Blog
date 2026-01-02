@@ -20,4 +20,4 @@
 
 # models
 
-/models /blog/Kicad/models
+/models/* /blog/Kicad/models/*
