@@ -17,3 +17,7 @@
 
 / /index.en.html 200 Language=en
 / /index.es.html 200 Language=es
+
+# models
+
+/models /blog/Kicad/models
