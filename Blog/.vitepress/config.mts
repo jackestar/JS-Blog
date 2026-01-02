@@ -16,7 +16,7 @@ export default defineConfig({
   title: defTitle,
   description: defDescription,
   head: [
-    ['link', { rel: 'stylesheet', href: `${baseDir}/css/stylesU.css` }],
+    // ['link', { rel: 'stylesheet', href: `${baseDir}/css/stylesU.css` }],
     ['link', { rel: 'icon', href: `${baseDir}/favicon.png` }],
     ['link', { rel: 'manifest', href: `${baseDir}/blog.json` }]
   ],

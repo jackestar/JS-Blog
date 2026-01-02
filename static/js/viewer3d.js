@@ -249,11 +249,9 @@ class Viewer3D {
     }
 }
 
-// Auto-initialize viewers for elements with class `viewer3d`
 const initAll = () => {
     const els = document.querySelectorAll('.viewer3d')
     els.forEach(el => {
-        // attach instance to element for possible future cleanup
         if (!el.__viewer3d) el.__viewer3d = new Viewer3D(el)
     })
 }
