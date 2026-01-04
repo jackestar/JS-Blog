@@ -1,0 +1,39 @@
+---
+const {href, title, description} = Astro.props;
+---
+
+<div class="card">
+    <a href={href}>
+        <h3>{title}</h3>
+        <p>
+            {description}
+        </p>
+    </a>
+</div>
+
+<style>
+    .card {
+        flex: 200px 3;
+        height: 150px;
+        border: #fff2 solid 1px;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        font-variant: small-caps;
+        border-radius: 5px;
+    }
+
+    .card:hover {
+        border-color: var(--secondary);
+        transition: 0.2s ease-in;
+    }
+
+    .card h3 {
+        margin-bottom: 1em;
+        font-size: 1.5em;
+    }
+
+    .card p {
+        line-height: 1.45;
+    }
+</style>

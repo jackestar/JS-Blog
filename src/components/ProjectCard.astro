@@ -1,0 +1,312 @@
+---
+const { modelUrl, previewImg, title, description, href } = Astro.props;
+
+// Default fallbacks for CSS variables if not defined globally
+const bgColor = "var(--bg-color, #0a0b10)";
+---
+
+<div class="projectCard-container">
+  <figure>
+    <!-- 
+      We add 'viewer3d-container' directly here.
+      We pass the model URL via data attribute.
+    -->
+    <div class="viewer3d viewer3d-container" data-model-url={modelUrl}>
+      
+      <!-- 1. PREVIEW WRAPPER (Generated at Build Time) -->
+      <div class="viewer-preview-wrapper">
+        <img 
+          class="viewer-preview" 
+          src={previewImg.src} 
+          alt={`Preview of ${title}`} 
+          loading="lazy"
+        />
+        
+        <!-- Start Button & SVG -->
+        <div class="viewer-start-banner">
+          <div 
+            class="startBanner" 
+            role="button" 
+            tabindex="0" 
+            aria-label={modelUrl ? 'Abrir vista 3D' : 'Sin modelo 3D'}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" d="M 0,0 H 24 V 24 H 0 Z" fill="none" />
+              <path class="cube-outer" d="M 21,16.008 V 7.99 A 1.98,1.98 0 0 0 20,6.273 L 13,2.265 a 2.016,2.016 0 0 0 -2,0 L 4,6.273 C 3.381,6.628 3,7.283 3,7.991 v 8.018 c 0,0.709 0.381,1.363 1,1.717 l 7,4.008 a 2.016,2.016 0 0 0 2,0 l 7,-4.008 c 0.619,-0.355 1,-1.01 1,-1.718 z" />
+              <g class="cube-inner">
+                <path class="inner-line line-bottom" d="M 12,22 V 17" />
+                <path class="inner-line line-right" d="M 16.65913,9.3049675 20.73,6.96" />
+                <path class="inner-line line-left" d="M 3.27,6.96 6.878365,9.0432905" />
+              </g>
+              <path class="cube-play" d="m 10,9 5,3 -5,3 z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. LOADING INDICATOR (Hidden by default via CSS) -->
+      <div class="loadProgress">
+        <p>Cargando...</p>
+      </div>
+
+      <!-- 3. CANVAS CONTAINER 
+           We let JS generate this on click to save WebGL context memory 
+           until strictly necessary. 
+      -->
+
+    </div>
+
+    <figcaption>
+      <a href={href}>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </a>
+    </figcaption>
+  </figure>
+</div>
+
+<style>
+figure {
+  width: 95%;
+  max-width: 1200px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  gap:1em;
+}
+
+a {
+  text-decoration: none !important;
+  text-decoration-color: transparent;
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+figure:hover {
+  opacity: 1 !important;
+  visibility: 1 !important;
+  filter: blur(0) !important;
+  transition: .2s ease-in;
+}
+
+figure .viewer3d {
+  flex: 0 0 45%;
+
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+  z-index: 2;
+}
+
+figcaption {
+  flex: 0 0 35%;
+  padding: 0 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+figcaption h3 {
+  font-size: 3.5em;
+  margin: 0;
+  line-height: 1;
+  font-family: sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+figcaption p {
+  color: #aaa;
+  font-size: 1.1em;
+  margin-top: 1em;
+  border-left: 2px solid #333;
+  padding-left: 1em;
+}
+
+figure:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.viewer3d-container {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--card-bg, #14161f); /* Fallback added */
+}
+
+.viewer-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills container nicely */
+    display: block;
+    cursor: pointer;
+    opacity: .6;
+}
+
+.viewer-preview-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.viewer-start-banner {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Let clicks pass through to container, except the button */
+}
+
+.startBanner {
+    pointer-events: auto; /* Re-enable clicks */
+    background: rgba(34, 34, 34, 0.95);
+    color: var(--accent);
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--accent);
+}
+
+.startBanner svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+    overflow: visible;
+}
+
+/* Loading State */
+.loadProgress {
+    display: none; /* JS toggles this to flex */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    color: #fff;
+    padding: 0.8em 1.2em;
+    border-radius: 6px;
+    font-size: 1em;
+    z-index: 1002;
+    border: 1px solid var(--accent);
+}
+
+/* Canvas Wrapper - Created dynamically by JS, so we need global or :global */
+:global(.viewer-canvas) {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+}
+
+:global(.viewer-canvas > canvas) {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    outline: none;
+}
+
+/* Buttons */
+:global(.viewer-unload-btn),
+:global(.viewer-fullscreen-btn) {
+    position: absolute;
+    top: 10px;
+    background: var(--accent);
+    color: var(--bg-color);
+    font-weight: 900;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:.2s ease;
+    z-index: 1010;
+}
+
+:global(.viewer-unload-btn:hover),
+:global(.viewer-fullscreen-btn:hover) {
+    background: var(--bg-color);
+    color: var(--accent);
+    transition:.2s ease;
+}
+
+:global(.viewer-unload-btn) { right: 12px; }
+:global(.viewer-fullscreen-btn) { right: 56px; }
+
+/* SVG Animations */
+.cube-outer, 
+.cube-play, 
+.inner-line {
+    transform-origin: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cube-play {
+    fill: transparent;
+    stroke: currentColor;
+}
+
+.startBanner:hover {
+    transform: translateY(-4px) scale(1.05);
+    background: rgba(34, 34, 34, 1);
+    border-color: rgba(0, 255, 157, 0.5);
+    box-shadow: 0 15px 25px -5px rgba(0, 255, 157, 0.25);
+}
+
+.startBanner:hover .cube-play {
+    fill: var(--accent);
+    stroke: var(--accent);
+    transform: scale(1.3);
+}
+
+.startBanner:hover .line-bottom { transform: translateY(5px); opacity: 0.5; }
+.startBanner:hover .line-right { transform: translate(4px, -4px); opacity: 0.5; }
+.startBanner:hover .line-left { transform: translate(-4px, -4px); opacity: 0.5; }
+.startBanner:hover .cube-outer { stroke-width: 1.5px; transform: scale(1.05); }
+
+.startBanner:active {
+    transform: translateY(0) scale(0.95);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    transition: 0.1s;
+}
+
+.startBanner:active .cube-play {
+    transform: scale(1.0) rotate(90deg);
+}
+
+/* Fullscreen Styles */
+:global(.viewer3d-container:fullscreen),
+:global(.viewer3d-container:-webkit-full-screen),
+:global(.viewer3d-container:-moz-full-screen) {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+}
+</style>

@@ -1,0 +1,29 @@
+body {
+  background: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  font-family: var(--font-main);
+}
+
+main section {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+
+  section#kicad figure,
+  section#kicad figure:nth-child(even) {
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  section#kicad figure .viewer3d {
+    width: 90%;
+    flex: auto;
+  }
+
+  .code-title {
+    font-size: 1.8rem;
+  }
+}

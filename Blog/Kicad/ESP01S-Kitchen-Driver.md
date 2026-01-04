@@ -35,5 +35,5 @@ import previewImg from './img/ESP01-Driver.jpg'
 </script>
 
 <ClientOnly>
-  <Viewer3D modelUrl="models/ESP01-Driver.glb" :previewImg="previewImg" />
+  <Viewer3D modelUrl="/models/ESP01-Driver.glb" :previewImg="previewImg" />
 </ClientOnly>

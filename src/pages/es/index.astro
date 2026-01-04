@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Sectionkicad from "../../components/Sectionkicad.astro";
+import SectionBlog from "../../components/SectionBlog.astro";
+import SectionSkills from "../../components/SectionSkills.astro";
+import SectionGithub from "../../components/SectionGithub.astro";
+import SectionHome from "../../components/SectionHome.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../styles/stylesU.css";
+import "../styles/stylesH.css";
+---
+
+<Layout title="Jackestar — Portfolio">
+	<Header />
+
+	<main>
+		<SectionHome />
+		<Sectionkicad />
+		<SectionGithub />
+		<SectionSkills />
+		<SectionBlog />
+	</main>
+	<Footer />
+</Layout>
+
+<script>
+	// import "./js/main.js";
+	import { initMain } from "../js/main.js";
+	initMain();
+</script>

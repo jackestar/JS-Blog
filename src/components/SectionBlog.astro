@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+
+import BlogFavicon from "../assets/favicon.png";
+import BlogCard from "./BlogCard.astro";
+
+const posts = [
+    {
+        title: "Proyectos en Kicad",
+        description:
+            "Diversos proyectos de diseño electrónico implementados en PCB y prototipos en Kicad",
+        href: "./Blog/Kicad",
+    },
+    {
+        title: "Baremetal Microcontrollers",
+        description:
+            "Programación de microcontroladores baremetal C++ Rust y assembler",
+        href: "./Blog/Baremetal",
+    },
+    {
+        title: "Ejercicios Electronica Part. 1",
+        description:
+            "Ejercicios de Electronica con planteamiento de resolución rápida con trucos",
+        href: "./Blog/Ejercicios-Electronica-I",
+    },
+];
+---
+
+<section id="blog">
+    <article>
+        <figure>
+            <Image src={BlogFavicon} alt="Blog Logo" />
+            <!-- <img src="./img/favicon.png" alt="Logo"> -->
+            <figcaption>
+                <h2>Blog</h2>
+                <p>Electronica y Computer Science</p>
+            </figcaption>
+        </figure>
+        <div class="cont">
+            <a href="./Blog/">Home</a>
+            <a href="./Blog/papers.html">Papers</a>
+        </div>
+    </article>
+    {posts.map((card) => <BlogCard href={card.href} title={card.title} description={card.description} />)}
+</section>
+<style>
+    section#blog {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2em;
+        padding: 1em;
+        overflow: hidden;
+    }
+
+     article {
+        flex: 100% 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1em;
+    }
+
+     figure {
+        text-align: center;
+    }
+
+     figure h2 {
+        font-size: 5em;
+    }
+
+     .cont {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+    }
+
+     .cont a {
+        border: #fff2 solid 1px;
+        background: transparent;
+        color: var(--text-main);
+        padding: 1em;
+        border-radius: 5px;
+    }
+
+     .cont a:hover {
+        background: var(--secondary);
+        color: var(--bg-color);
+        transition: 0.2s ease-in;
+    }
+
+</style>
+
+<style is:global>
+    section#blog a {
+        color: var(--text-main);
+        text-decoration: none;
+    }
+</style>

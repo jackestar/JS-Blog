@@ -1,8 +1,9 @@
 {
   "homepage": "https://jackestar.netlify.dev",
   "devDependencies": {
+    "@types/three": "^0.182.0",
     "markdown-it-mathjax3": "^4.3.2",
-    "pcb-trace-animation": "^2.0.0",
+    "pcb-trace-animation": "^2.0.2",
     "vitepress": "^1.6.4",
     "vue": "^3.5.26"
   },
@@ -13,16 +14,23 @@
     "docs:preview": "vitepress preview Blog --host",
     "prebuild": "git submodule update --remote",
     "build": "vitepress build Blog --outDir './dist/Blog'",
-    "postbuild": "sh postbuild.sh"
+    "postbuild": "sh postbuild.sh",
+    "astro:dev": "astro dev",
+    "astro:build": "astro build",
+    "astro:preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
     "@types/node": "^25.0.3",
+    "astro": "^5.16.6",
     "canvas": "3.0.0-rc3",
     "fs": "0.0.1-security",
     "fs-extra": "^11.3.3",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.14.2",
     "minimist": "^1.2.8",
     "path": "^0.12.7",
+    "sharp": "^0.34.5",
     "three": "^0.178.0",
     "typescript": "^5.9.3"
   },

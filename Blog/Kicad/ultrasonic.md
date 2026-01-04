@@ -24,5 +24,5 @@ import previewImg from './img/UltraSonic.png'
 </script>
 
 <ClientOnly>
-  <Viewer3D modelUrl="models/UltraSonic.glb" :previewImg="previewImg" />
+  <Viewer3D modelUrl="/models/UltraSonic.glb" :previewImg="previewImg" />
 </ClientOnly>

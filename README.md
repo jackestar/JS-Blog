@@ -4,25 +4,18 @@
 
 ## Build Page
 
-Clone repo (with submodules)
-
 ```bash
-git clone --recurse-submodules https://github.com/jackestar/JS-Blog 
+git clone https://github.com/jackestar/JS-Blog 
 ```
 
 Build static vitepress and copy static files
 
 ```bash
+npm i
 npm run build
 ```
 
 Deploy in `dist` folder
-
-### Translation
-
-``` bash
-npm run translate -- --input <input-folder> --output <output-folder> [--recursive] [--exceptions <expresion_regular>] [--defaultLang <idioma>] [--filenameLang] [--move]
-```
 
 ## Deploys
 
@@ -33,6 +26,7 @@ npm run translate -- --input <input-folder> --output <output-folder> [--recursiv
 ~~github~~
 
 [**cloudfare**](https://jackestar.pages.dev/)
+
 
 ## Vitepress Blog Enhance and TODO
 
@@ -84,40 +78,13 @@ localization for spanish and english
 
 ## TODO
 
-### Color Scheme
-
-Light and dark new color scheme
-
-### Better Readme
-
-### Lang static Redirect (es/en)
-
-Detect local language and allow language switching for static sites and blog
-
-### Status page
-
-both the status of the page, status of future services and future developments
-
-### Appropriate Snippet Injection
-
-injection of universal styles and scripts for all pages, either on the provider side or through a "build" process (target)
-
-### Page transition
-
-Transition animation between pages, possibly multiple animations
-
-### Appropriate Minify
-
-Preprocessing static files and minifying them, plus some processing to check for browser compatibility (result that will be visible on the status page), code errors, comments etc.
-
-### Github deploy
-
-A proper deploy with github actions
-
-### "Env file" to configure
-
-Create an environment file to specify the domain, provider, minify or not minify...
-
-### Main page an portfolio separates
-
-One page as a personal portfolio for reasons of promoting myself, another website as a "company" or "personality"
+* Better Readme
+* Better color scheme
+* Global color scheme
+* Migrate from vitepress to astro
+* Status page?
+* Page transition
+* Proper Github CI/CD
+* ENV file (to set different build enviroment and configs for easy migration)
+* MD formatter and style
+* fr translation

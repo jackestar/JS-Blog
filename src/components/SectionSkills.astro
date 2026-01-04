@@ -1,0 +1,516 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+import SkillCard from "./SkillCard.astro";
+
+interface Tag {
+    label: string;
+    color: string;
+}
+
+let colorKey = (labelArray: string[], colorArray: string[]): Tag[] =>
+    labelArray.map((l, i) => ({ label: l, color: colorArray[i] }));
+---
+
+<section id="hab">
+    <div class="hab-title">
+        <h2>{t("skills.title")}</h2>
+        <p>
+            {t("skills.desc")}
+        </p>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+        <!-- Card 1: HDL -->
+        <SkillCard
+            title={t("skill.card1").title}
+            tags={colorKey(t("skill.card1").tags, [
+                "#000",
+                "#0066a4",
+                "#ec1a4c",
+                "#876",
+                "#678",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M3 6h18"></path>
+                    <path d="M3 12h18"></path>
+                    <path d="M3 18h18"></path>
+                    <path d="M6 3v18"></path>
+                    <path d="M12 3v18"></path>
+                    <path d="M18 3v18"></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M22 12h-5"></path>
+                    <path d="M2 9h5"></path>
+                    <path d="M2 15h5"></path>
+                    <path d="M9 5c6 0 8 3.5 8 7s-2 7 -8 7h-2v-14h2z"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 2: Microcontrollers -->
+        <SkillCard
+            title={t("skill.card2").title}
+            tags={colorKey(t("skill.card2").tags, [
+                "#79c943",
+                "#838",
+                "#e7352c",
+                "#e7352c",
+                "#00979d",
+                "#229",
+                "#062e39",
+                "#36e",
+                "#33e",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M3 13m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
+                    ></path>
+                    <path d="M17 17l0 .01"></path>
+                    <path d="M13 17l0 .01"></path>
+                    <path d="M15 13l0 -2"></path>
+                    <path d="M11.75 8.75a4 4 0 0 1 6.5 0"></path>
+                    <path d="M8.5 6.5a8 8 0 0 1 13 0"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 3: Electronic Design -->
+        <SkillCard
+            title={t("skill.card3").title}
+            tags={colorKey(t("skill.card3").tags, [
+                "#222",
+                "#314cb0",
+                "#d33",
+                "#827",
+                "#552",
+                "#000",
+                "#058",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M22 12h-6"></path>
+                    <path d="M2 12h6"></path>
+                    <path d="M8 7l8 5l-8 5z"></path>
+                    <path d="M14 7h2v10h2"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 4: Simulation -->
+        <SkillCard
+            title={t("skill.card4").title}
+            tags={colorKey(t("skill.card4").tags, [
+                "#94082e",
+                "#63211c",
+                "#30296d",
+                "#103552",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M3 3v18h18"></path>
+                    <path d="M8 15.015v.015"></path>
+                    <path d="M16 16.015v.015"></path>
+                    <path d="M8 7.03v.015"></path>
+                    <path d="M12 11.03v.015"></path>
+                    <path d="M19 11.03v.015"></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M3 3v18h18"></path>
+                    <path d="M20 18v3"></path>
+                    <path d="M16 16v5"></path>
+                    <path d="M12 13v8"></path>
+                    <path d="M8 16v5"></path>
+                    <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 5: Programming -->
+        <SkillCard
+            title={t("skill.card5").title}
+            tags={colorKey(t("skill.card5").tags, [
+                "#084985",
+                "#080808",
+                "#3e72a0",
+                "#222",
+                "#f7e025",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M12 21a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.078 7.024"
+                    ></path>
+                    <path d="M20 21l2 -2l-2 -2"></path>
+                    <path d="M17 17l-2 2l2 2"></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M11 18.004h-4.343c-2.572 -.004 -4.657 -2.011 -4.657 -4.487c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99a3.468 3.468 0 0 1 3.307 2.444"
+                    ></path>
+                    <path d="M20 21l2 -2l-2 -2"></path>
+                    <path d="M17 17l-2 2l2 2"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 6: Linux -->
+        <SkillCard
+            title={t("skill.card6").title}
+            tags={colorKey(t("skill.card6").tags, [
+                "#333",
+                "#1e96d2",
+                "#aa0836",
+                "#e95515",
+                "#292",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M5 7l5 5l-5 5"></path>
+                    <path d="M13 17l6 0"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 7: Design & CAD -->
+        <SkillCard
+            title={t("skill.card7").title}
+            tags={colorKey(t("skill.card7").tags, [
+                "#8f8477",
+                "#e51755",
+                "#1f6fff",
+                "#000",
+                "#55e",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M12 8m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"></path>
+                    <path d="M8 11a5 5 0 1 0 3.998 1.997"></path>
+                    <path d="M12.002 19.003a5 5 0 1 0 3.998 -8.003"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 8: Industrial Engineering -->
+        <SkillCard
+            title={t("skill.card8").title}
+            tags={colorKey(t("skill.card8").tags, [
+                "#400",
+                "#040",
+                "#384957",
+                "#004",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M3 10v6"></path>
+                    <path d="M12 5v3"></path>
+                    <path d="M10 5h4"></path>
+                    <path d="M5 13h-2"></path>
+                    <path
+                        d="M6 10h2l2 -2h3.382a1 1 0 0 1 .894 .553l1.448 2.894a1 1 0 0 0 .894 .553h1.382v-2h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2v-2h-3v2a1 1 0 0 1 -1 1h-3.465a1 1 0 0 1 -.832 -.445l-1.703 -2.555h-2v-6z"
+                    ></path>
+                </g>
+                <g
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M22 12h-8"></path>
+                    <path d="M2 12h8"></path>
+                    <path d="M10 7v10"></path>
+                    <path d="M14 7v10"></path>
+                </g>
+            </svg>
+        </SkillCard>
+
+        <!-- Card 9: Documentation & Research -->
+        <SkillCard
+            title={t("skill.card9").title}
+            tags={colorKey(t("skill.card9").tags, [
+                "#850",
+                "#085",
+                "#508",
+                "#580",
+                "#805",
+                "#855",
+                "#558",
+                "#558",
+            ])}
+        >
+            <svg
+                slot="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <g
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                >
+                    <path
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    ></path>
+                </g>
+                <g>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                        d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"
+                    ></path>
+                    <path
+                        d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"
+                    ></path>
+                    <path d="M5 8h4"></path>
+                    <path d="M9 16h4"></path>
+                    <path
+                        d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z"
+                    ></path>
+                    <path d="M14 9l4 -1"></path>
+                    <path d="M16 16l3.923 -.98"></path>
+                </g>
+            </svg>
+        </SkillCard>
+    </div>
+</section>
+
+<style>
+    section#hab {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        min-height: 125vh;
+        position: relative;
+        justify-content: center;
+        overflow: hidden;
+        padding-block: 5em;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3C!-- Log Grid Lines --%3E%3Cpath d='M30.1 0v100M47.7 0v100M60.2 0v100M69.9 0v100M77.8 0v100M84.5 0v100M90.3 0v100M95.4 0v100 M0 30.1h100M0 47.7h100M0 60.2h100M0 69.9h100M0 77.8h100M0 84.5h100M0 90.3h100M0 95.4h100' stroke='rgba(255,255,255,0.1)' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+        background-size: 100px 100px;
+    }
+
+    .hab-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        font-family: var(--font-code, "Courier New", monospace);
+        text-align: center;
+        color: var(--text-main, #fff);
+        margin-bottom: 1.5rem;
+        gap: 10px;
+        user-select: none;
+        will-change: transform, opacity, filter;
+    }
+
+    .hab-title h2 {
+        font-family: var(--font-code, "Courier New", monospace);
+        text-align: center;
+        font-size: 3rem;
+        color: var(--text-main, #fff);
+        font-weight: 700;
+        letter-spacing: -1px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        user-select: none;
+    }
+
+    svg {
+        width: 50px;
+        height: auto;
+    }
+
+    div.skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+        padding: 2em;
+    }
+
+    svg g {
+        visibility: hidden;
+        display: none;
+    }
+
+    svg path.morph-active {
+        visibility: visible;
+        display: block;
+        vector-effect: non-scaling-stroke;
+    }
+
+    svg {
+        overflow: visible;
+    }
+</style>
