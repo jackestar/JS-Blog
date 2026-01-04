@@ -9,19 +9,19 @@ const posts = [
         title: "Proyectos en Kicad",
         description:
             "Diversos proyectos de diseño electrónico implementados en PCB y prototipos en Kicad",
-        href: "./Blog/Kicad",
+        href: "/Blog/Kicad",
     },
     {
         title: "Baremetal Microcontrollers",
         description:
             "Programación de microcontroladores baremetal C++ Rust y assembler",
-        href: "./Blog/Baremetal",
+        href: "/Blog/Baremetal",
     },
     {
         title: "Ejercicios Electronica Part. 1",
         description:
             "Ejercicios de Electronica con planteamiento de resolución rápida con trucos",
-        href: "./Blog/Ejercicios-Electronica-I",
+        href: "/Blog/Ejercicios-Electronica-I",
     },
 ];
 ---
@@ -37,8 +37,8 @@ const posts = [
             </figcaption>
         </figure>
         <div class="cont">
-            <a href="./Blog/">Home</a>
-            <a href="./Blog/papers.html">Papers</a>
+            <a href="/Blog/">Home</a>
+            <a href="/Blog/papers.html">Papers</a>
         </div>
     </article>
     {posts.map((card) => <BlogCard href={card.href} title={card.title} description={card.description} />)}
