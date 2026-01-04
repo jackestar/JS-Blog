@@ -7,7 +7,7 @@ export const defaultLang = 'en';
 
 export const ui = {
     en: {
-        'hero.desc': 'Developer, tinkerer, and writer building small things that matter.',
+        'hero.desc': 'Developer, Designer, and Inventor',
         'typerList': 'Web Developer,Graphic Designer,Electronic Engineering Student,AI enthusiast,Linux enthusiast',
         'kicad.card1': { title: 'TDA75610 Development Board', desc: 'DIY single-sided PCB for using and debugging the TDA75610LV integrated circuit (horizontal mounting)' },
         'kicad.card2': { title: 'Mini HC-SR04', desc: 'Mini version of the HC-SR04 module. Schematic equivalent proof of concept, using smaller ultrasonic transceivers and an ATtiny404 microcontroller.' },
@@ -116,9 +116,11 @@ export const ui = {
                 'Drafting',
             ]
         },
+        'blog.title':'Blog',
+        'blog.desc':'Electronics & Computer Science'
     },
     es: {
-        'hero.desc': 'Desarrollador, inventor y escritor que crea pequeñas cosas que importan.',
+        'hero.desc': 'Desarrollador, Diseñador e Inventor',
         'typerList': 'Desarrollador web,Diseñador gráfico,Estudiante de ingeniería electrónica,Entusiasta de la IA,Entusiasta de Linux',
         'kicad.card1': { title: 'TDA75610 Placa de Desarrollo', desc: 'DIY PCB de una cara para utilizar y depurar el integrado TDA75610LV (montaje horizontal)' },
         'kicad.card2': { title: 'Mini HC-SR04', desc: 'Versión mini del módulo HC-SR04. Prueba de concepto equivalente en forma esquemática, que utiliza transceptores ultrasónicos más pequeños y un microcontrolador ATtiny404.' },
@@ -227,5 +229,7 @@ export const ui = {
                 'Dibujo Técnico',
             ]
         },
+        'blog.title':'Blog',
+        'blog.desc':'Electronica & Informatica'
     },
 } as const;

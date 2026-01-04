@@ -74,6 +74,12 @@ const t = useTranslations(getLangFromUrl(Astro.url));
         transform-origin: center center;
         perspective: 1000px;
     }
+      @media (max-width: 768px) {
+
+    .code-title {
+      font-size: 1.8rem;
+    }
+  }
 </style>
 
 <style is:global>

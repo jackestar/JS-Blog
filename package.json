@@ -12,7 +12,6 @@
     "docs:dev": "vitepress dev Blog --host",
     "docs:build": "vitepress build Blog",
     "docs:preview": "vitepress preview Blog --host",
-    "prebuild": "git submodule update --remote",
     "build": "vitepress build Blog --outDir './dist/Blog' && astro build",
     "postbuild": "sh postbuild.sh",
     "astro:dev": "astro dev",

@@ -4,6 +4,10 @@ import { Image } from "astro:assets";
 import BlogFavicon from "../assets/favicon.png";
 import BlogCard from "./BlogCard.astro";
 
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+// Imported From Blog
 const posts = [
     {
         title: "Proyectos en Kicad",
@@ -32,8 +36,8 @@ const posts = [
             <Image src={BlogFavicon} alt="Blog Logo" />
             <!-- <img src="./img/favicon.png" alt="Logo"> -->
             <figcaption>
-                <h2>Blog</h2>
-                <p>Electronica y Computer Science</p>
+                <h2>{t('blog.title')}</h2>
+                <p>{t('blog.desc')}</p>
             </figcaption>
         </figure>
         <div class="cont">
