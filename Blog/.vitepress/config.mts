@@ -73,7 +73,7 @@ export default defineConfig({
       next: 'Siguiente'
     },
     footer: {
-      message: 'Jackestar 2025',
+      message: 'Jackestar 2026',
     },
     langMenuLabel: 'Cambiar Idioma (Change lang)',
     returnToTopLabel: 'Volver arriba',
