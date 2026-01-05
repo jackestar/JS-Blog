@@ -1,9 +1,14 @@
 node_modules
 minify*
 .vscode
-dist
+dist/
+*.tsbuildinfo
 *.lockb
 cache
 test*
 *.glb
 static/*.js
+.astro/
+.eslintcache
+.pnpm-store
+*.env
