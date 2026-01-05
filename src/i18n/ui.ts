@@ -7,6 +7,7 @@ export const defaultLang = 'en';
 
 export const ui = {
     en: {
+        'skiptocontent':'Skip to Content',
         'hero.desc': 'Developer, Designer, and Inventor',
         'typerList': 'Web Developer,Graphic Designer,Electronic Engineering Student,AI enthusiast,Linux enthusiast',
         'kicad.card1': { title: 'TDA75610 Development Board', desc: 'DIY single-sided PCB for using and debugging the TDA75610LV integrated circuit (horizontal mounting)' },
@@ -120,6 +121,7 @@ export const ui = {
         'blog.desc':'Electronics & Computer Science'
     },
     es: {
+        'skiptocontent':'Saltar al Contenido',
         'hero.desc': 'Desarrollador, Diseñador e Inventor',
         'typerList': 'Desarrollador web,Diseñador gráfico,Estudiante de ingeniería electrónica,Entusiasta de la IA,Entusiasta de Linux',
         'kicad.card1': { title: 'TDA75610 Placa de Desarrollo', desc: 'DIY PCB de una cara para utilizar y depurar el integrado TDA75610LV (montaje horizontal)' },

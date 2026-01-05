@@ -1,0 +1,42 @@
+---
+// src/components/SkipLink.astro
+
+interface Props {
+  targetId?: string;
+}
+
+// Default to linking to an element with id="main-content"
+const { targetId = "main-content"} = Astro.props;
+
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<a href={`#${targetId}`} class="skip-link">{t('skiptocontent')}</a>
+
+<style>
+  .skip-link {
+    /* Absolute position allows it to sit on top of other elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    z-index: 9999; /* Ensure it stays on top */
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom-right-radius: 8px;
+    
+    /* Hide visually but keep accessible to screen readers */
+    transform: translateY(-100%);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  /* Show the link when it receives keyboard focus */
+  .skip-link:focus {
+    transform: translateY(0);
+    outline: 3px solid var(--accent); /* High visibility outline */
+    outline-offset: -3px;
+  }
+</style>

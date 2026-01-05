@@ -8,13 +8,15 @@ import SectionHome from "../../components/SectionHome.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import CTA from "../../components/CTA.astro";
+import SkipToContent from "../../components/SkipToContent.astro";
 import "../styles/stylesU.css";
-// import "../styles/stylesH.css";
 ---
 
 <PortfolioLayout title="Jackestar — Portfolio">
+	<SkipToContent targetId="kicad"/>
 	<Header />
 	<CTA />
+
 
 	<main>
 		<SectionHome />
@@ -27,7 +29,6 @@ import "../styles/stylesU.css";
 </PortfolioLayout>
 
 <script>
-	// import "./js/main.js";
 	import { initMain } from "../js/main.js";
 	initMain();
 </script>
