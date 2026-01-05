@@ -1,0 +1,106 @@
+---
+
+---
+
+<button id="scroll-cta" class="scroll-arrow" aria-label="Scroll to next section">
+  <svg 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  >
+    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+  </svg>
+</button>
+
+<style>
+  .scroll-arrow {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    
+    /* Aesthetics */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #aaa;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.3s ease;
+    
+    /* Animation */
+    animation: float 2s ease-in-out infinite;
+  }
+
+  /* Hover effect */
+  .scroll-arrow:hover {
+    animation-play-state: paused;
+    transform: translateX(-50%) translateY(5px);
+  }
+
+  .scroll-arrow.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate(-50%, 0px);
+    }
+    50% {
+      transform: translate(-50%, 10px);
+    }
+    100% {
+      transform: translate(-50%, 0px);
+    }
+  }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const arrow = document.getElementById('scroll-cta');
+    const sections = document.querySelectorAll('section');
+
+    if (!arrow || sections.length === 0) return;
+    arrow.addEventListener('click', () => {
+      const currentScroll = window.scrollY;
+      let nextSection = null;
+
+      for (const section of sections) {
+        // small buffer (10px) to handle rounding errors
+        if (section.offsetTop > currentScroll + 10) {
+          nextSection = section;
+          break;
+        }
+      }
+
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    const handleVisibility = () => {
+      const lastSection = sections[sections.length - 1];
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      
+      const lastSectionTop = lastSection.offsetTop;
+
+      if (window.scrollY >= lastSectionTop - (window.innerHeight / 2) || (scrollPosition >= docHeight - 10)) {
+        arrow.classList.add('hidden');
+      } else {
+        arrow.classList.remove('hidden');
+      }
+    };
+
+    window.addEventListener('scroll', handleVisibility);
+    
+    handleVisibility();
+  });
+</script>

@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import PortfolioLayout from "../../layouts/PortfolioLayout.astro";
 import Sectionkicad from "../../components/Sectionkicad.astro";
 import SectionBlog from "../../components/SectionBlog.astro";
 import SectionSkills from "../../components/SectionSkills.astro";
@@ -7,12 +7,14 @@ import SectionGithub from "../../components/SectionGithub.astro";
 import SectionHome from "../../components/SectionHome.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import CTA from "../../components/CTA.astro";
 import "../styles/stylesU.css";
-import "../styles/stylesH.css";
+// import "../styles/stylesH.css";
 ---
 
-<Layout title="Jackestar — Portfolio">
+<PortfolioLayout title="Jackestar — Portfolio">
 	<Header />
+	<CTA />
 
 	<main>
 		<SectionHome />
@@ -22,10 +24,24 @@ import "../styles/stylesH.css";
 		<SectionBlog />
 	</main>
 	<Footer />
-</Layout>
+</PortfolioLayout>
 
 <script>
 	// import "./js/main.js";
 	import { initMain } from "../js/main.js";
 	initMain();
 </script>
+
+<style is:global>
+	body {
+		background: var(--bg-color);
+		color: var(--text-main);
+		overflow-x: hidden;
+		font-family: var(--font-main);
+	}
+
+	main section {
+		min-width: 100vw;
+		min-height: 100vh;
+	}
+</style>

@@ -49,6 +49,11 @@ const t = useTranslations(getLangFromUrl(Astro.url));
         will-change: transform, opacity, filter;
     }
 
+    .code-title:hover {
+        filter: blur(0) !important;
+        transition:.2s ease;
+    }
+
     .code-title .bracket {
         color: var(--secondary, #58a6ff);
         display: inline-block;

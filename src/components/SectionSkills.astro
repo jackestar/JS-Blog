@@ -474,6 +474,11 @@ let colorKey = (labelArray: string[], colorArray: string[]): Tag[] =>
         will-change: transform, opacity, filter;
     }
 
+    .hab-title:hover {
+        filter: blur(0) !important;
+        transition: 0.2s ease;
+    }
+
     .hab-title h2 {
         font-family: var(--font-code, "Courier New", monospace);
         text-align: center;

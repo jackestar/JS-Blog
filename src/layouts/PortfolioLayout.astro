@@ -4,10 +4,12 @@ interface Prop {
 }
 
 const {title} = Astro.props;
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
 
 <head>
 	<meta charset="UTF-8">

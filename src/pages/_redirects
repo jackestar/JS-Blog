@@ -1,23 +1,18 @@
 # Old Links Redir
-
 /Tools/Pensum.html https://pensum.netlify.app
 /Proyects/Pensum/Pensum.html https://pensum.netlify.app
 
 # Info Redir
-
 /about  https://jackestar.netlify.app/ 301
 /status https://github.com/jackestar/JS-Blog/ 301
 
 # 404
-
 /Blog/* /Blog/404 404
 /blog/* /Blog/404 404
 
 # Lang Redir
+/ /en/index.html 200 Language=en
+/ /es/index.html 200 Language=es
 
-/ /index.en.html 200 Language=en
-/ /index.es.html 200 Language=es
-
-# models
-
+# Models
 /models/ /blog/Kicad/models/

@@ -88,3 +88,6 @@ localization for spanish and english
 * ENV file (to set different build enviroment and configs for easy migration)
 * MD formatter and style
 * fr translation
+* better CTA (maybe for the blog too)
+* check hover unblur
+* portfolio contact me section
