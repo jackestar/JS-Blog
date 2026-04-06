@@ -5,6 +5,7 @@
     "pcb-trace-animation": "^2.0.2"
   },
   "scripts": {
+    "build" : "astro build",
     "astro:dev": "astro dev",
     "astro:build": "astro build",
     "astro:preview": "astro preview",
