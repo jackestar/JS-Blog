@@ -1,0 +1,8 @@
+.sidebar {
+  display: none;
+  width: 0;
+}
+
+.main-frame {
+    padding-inline-start:0;
+}
