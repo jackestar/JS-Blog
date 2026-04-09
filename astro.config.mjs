@@ -49,9 +49,10 @@ export default defineConfig({
             icon: 'rocket',
             items: [
               { label: 'Introducción', link: '/blog/baremetal/' },
-              { label: 'Instalación AVR', link: '/blog/baremetal/installation_avr/' },
-              { label: 'Instalación ESP32', link: '/blog/baremetal/installation_esp32/' },
-              { label: 'Instalación ESP8266', link: '/blog/baremetal/installation_esp8266/' },
+              { label: 'Instalación AVR', link: '/blog/baremetal/installation_avr' },
+              { label: 'Instalación ESP32', link: '/blog/baremetal/installation_esp32' },
+              { label: 'Instalación ESP8266', link: '/blog/baremetal/installation_esp8266' },
+              { label: 'Instalación ESP8266', link: '/blog/baremetal/installation_esp01' },
               {
                 label: 'Ejemplos',
                 items: [
@@ -112,6 +113,7 @@ export default defineConfig({
                   {
                     label: 'FET',
                     items: [
+                      { label: 'Introducción', link: '/blog/ejercicios-electronica-ii/fet' },
                       { label: 'Ejercicios', link: '/blog/ejercicios-electronica-ii/fet/ejercicios/' },
                       { label: 'Prueba Corta', link: '/blog/ejercicios-electronica-ii/fet/pruebacorta/' }
                     ]
@@ -119,7 +121,8 @@ export default defineConfig({
                   {
                     label: 'Anexos',
                     items: [
-                      { label: 'Guía', link: '/blog/ejercicios-electronica-ii/guia/' }
+                      { label: 'Ebers Moll', link: '/blog/electronica/ebers-moll/' },
+                      { label: 'Equivalente Z FET', link: '/blog/electronica/z-transistor' },
                     ]
                   }
                 ]
