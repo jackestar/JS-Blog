@@ -1,0 +1,23 @@
+---
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/PortfolioLayout.astro";
+---
+
+<Layout>
+	<Hero />
+</Layout>
+
+<style is:global>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	*:root {
+		--font-color: #222;
+		--font-color-highlight: #000;
+		--highlight-color: #eee;
+		--border-color: #aaa;
+		--background-color: #fefefe;
+	}
+</style>

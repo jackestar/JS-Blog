@@ -1,0 +1,86 @@
+---
+type Trace = [
+  x: number,
+  y: number,
+  length: number,
+  horizontal?: boolean,
+  inverted?: boolean,
+];
+
+interface Props {
+  color?: string;
+  lineWidth?: number;
+  speed?: number;
+  lineSpacing?: number;
+  traces?: Trace[];
+}
+
+const {
+  color = "#00e6ff",
+  lineWidth = 3,
+  speed = 3,
+  lineSpacing = 5,
+  traces = [
+    [0.35, 0.75, 0.3, true, false],
+    [0.35, 0.25, 0.3, true, true],
+    [0.65, 0.25, 0.5, false, false],
+    [0.35, 0.25, 0.5, false, true],
+  ],
+} = Astro.props;
+
+const config = JSON.stringify({
+  options: { color, lineWidth, speed, lineSpacing },
+  traces,
+});
+---
+
+<pcb-trace-background data-config={config}>
+  <canvas aria-hidden="true"></canvas>
+</pcb-trace-background>
+
+<style>
+  pcb-trace-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  import PCBTraceAnimation from "pcb-trace-animation";
+
+  class PCBTraceBackground extends HTMLElement {
+    #pcb?: PCBTraceAnimation;
+
+    connectedCallback() {
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const canvas = this.querySelector("canvas")!;
+      const { options, traces } = JSON.parse(this.dataset.config ?? "{}");
+
+      this.#pcb = new PCBTraceAnimation(canvas, {
+        ...options,
+        onComplete: () => this.dispatchEvent(new CustomEvent("pcb:complete")),
+      });
+
+      this.#pcb.initCanvas();
+      for (const t of traces) this.#pcb.drawLine(...t);
+      this.#pcb.start();
+    }
+
+    disconnectedCallback() {
+      this.#pcb?.stop();
+      this.#pcb = undefined;
+    }
+  }
+
+  if (!customElements.get("pcb-trace-background")) {
+    customElements.define("pcb-trace-background", PCBTraceBackground);
+  }
+</script>
