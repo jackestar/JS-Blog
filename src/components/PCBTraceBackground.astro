@@ -55,6 +55,8 @@ const config = JSON.stringify({
 <script>
   import PCBTraceAnimation from 'pcb-trace-animation';
 
+  type Trace = [number, number, number, boolean?, boolean?];
+
   class PCBTraceBackground extends HTMLElement {
     #pcb?: PCBTraceAnimation;
 
@@ -62,7 +64,10 @@ const config = JSON.stringify({
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       const canvas = this.querySelector('canvas')!;
-      const {options, traces} = JSON.parse(this.dataset.config ?? '{}');
+      const {options, traces} = JSON.parse(this.dataset.config ?? '{}') as {
+        options: {color: string; lineWidth: number; speed: number; lineSpacing: number};
+        traces: Trace[];
+      };
 
       this.#pcb = new PCBTraceAnimation(canvas, {
         ...options,
