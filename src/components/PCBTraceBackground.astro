@@ -65,7 +65,12 @@ const config = JSON.stringify({
 
       const canvas = this.querySelector('canvas')!;
       const {options, traces} = JSON.parse(this.dataset.config ?? '{}') as {
-        options: {color: string; lineWidth: number; speed: number; lineSpacing: number};
+        options: {
+          color: string;
+          lineWidth: number;
+          speed: number;
+          lineSpacing: number;
+        };
         traces: Trace[];
       };
 
