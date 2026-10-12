@@ -16,7 +16,7 @@ interface Props {
 }
 
 const {
-  color = "#00e6ff",
+  color = '#00e6ff',
   lineWidth = 3,
   speed = 3,
   lineSpacing = 5,
@@ -29,7 +29,7 @@ const {
 } = Astro.props;
 
 const config = JSON.stringify({
-  options: { color, lineWidth, speed, lineSpacing },
+  options: {color, lineWidth, speed, lineSpacing},
   traces,
 });
 ---
@@ -53,20 +53,20 @@ const config = JSON.stringify({
 </style>
 
 <script>
-  import PCBTraceAnimation from "pcb-trace-animation";
+  import PCBTraceAnimation from 'pcb-trace-animation';
 
   class PCBTraceBackground extends HTMLElement {
     #pcb?: PCBTraceAnimation;
 
     connectedCallback() {
-      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      const canvas = this.querySelector("canvas")!;
-      const { options, traces } = JSON.parse(this.dataset.config ?? "{}");
+      const canvas = this.querySelector('canvas')!;
+      const {options, traces} = JSON.parse(this.dataset.config ?? '{}');
 
       this.#pcb = new PCBTraceAnimation(canvas, {
         ...options,
-        onComplete: () => this.dispatchEvent(new CustomEvent("pcb:complete")),
+        onComplete: () => this.dispatchEvent(new CustomEvent('pcb:complete')),
       });
 
       this.#pcb.initCanvas();
@@ -80,7 +80,7 @@ const config = JSON.stringify({
     }
   }
 
-  if (!customElements.get("pcb-trace-background")) {
-    customElements.define("pcb-trace-background", PCBTraceBackground);
+  if (!customElements.get('pcb-trace-background')) {
+    customElements.define('pcb-trace-background', PCBTraceBackground);
   }
 </script>

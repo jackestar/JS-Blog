@@ -1,124 +1,136 @@
 ---
-import { Icon } from "astro-icon/components";
+import {Icon} from 'astro-icon/components';
 ---
 
 <header>
-    <div class="brand">
-        <a href="#"><h3>Jackestar</h3></a>
+  <div class="brand">
+    <a href="#">
+      <h3>Jackestar</h3>
+    </a>
+  </div>
+  <nav>
+    <div class="item">
+      <a href="#">About</a>
     </div>
-    <nav>
-        <div class="item"><a href="#">About</a></div>
-        <div class="item"><a href="#">Projects</a></div>
-        <div class="item"><a href="#">Blog</a></div>
-    </nav>
-    <div class="social">
-        <div class="item">
-            <a><Icon name="tabler:brand-github" size={20} class="icon" /></a>
-        </div>
-        <div class="item">
-            <a><Icon name="tabler:brand-linkedin" size={20} class="icon" /></a>
-        </div>
+    <div class="item">
+      <a href="#">Projects</a>
     </div>
-    <div class="menu">
-        <div class="item">
-            <a href="#"><Icon name="tabler:menu-2" size={20} class="icon" /></a>
-        </div>
+    <div class="item">
+      <a href="#">Blog</a>
     </div>
-    <div class="controls">
-        <div class="item">
-            <a href="#"
-                ><Icon
-                    name="tabler:language-hiragana"
-                    size={20}
-                    class="icon"
-                /></a
-            >
-        </div>
-        <div class="item">
-            <a href="#"><Icon name="tabler:moon-2" size={20} class="icon" /></a>
-        </div>
+  </nav>
+  <div class="social">
+    <div class="item">
+      <a>
+        <Icon name="tabler:brand-github" size={20} class="icon" />
+      </a>
     </div>
+    <div class="item">
+      <a>
+        <Icon name="tabler:brand-linkedin" size={20} class="icon" />
+      </a>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="item">
+      <a href="#">
+        <Icon name="tabler:menu-2" size={20} class="icon" />
+      </a>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="item">
+      <a href="#">
+        <Icon name="tabler:language-hiragana" size={20} class="icon" />
+      </a>
+    </div>
+    <div class="item">
+      <a href="#">
+        <Icon name="tabler:moon-2" size={20} class="icon" />
+      </a>
+    </div>
+  </div>
 </header>
 
 <style>
+  header {
+    display: flex;
+    justify-content: end;
+    border-bottom: 0.1rem solid var(--border-color);
+    margin-inline: 3rem;
+    max-width: 1000px;
+    min-width: 50%;
+    width: 100%;
+    color: var(--font-color);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    padding: 1em;
+    user-select: none;
+    background: var(--background-color);
+  }
+  div.brand {
+    margin-right: auto;
+  }
+
+  div.brand h3 {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  header > * {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+
+  div.menu {
+    display: none;
+  }
+
+  header a {
+    text-decoration: none;
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header a:hover,
+  div.item:hover {
+    color: var(--font-color-highlight);
+  }
+
+  div.item {
+    padding: 0.3rem;
+    border-radius: 1rem;
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+
+  div.controls .item:hover,
+  div.social .item:hover {
+    background: var(--highlight-color);
+    transition: 0.2s ease;
+  }
+
+  header > *:not(:first-child):not(:last-child) {
+    border-right: 0.1rem solid var(--border-color);
+  }
+
+  @media (orientation: portrait) {
+    nav,
+    .controls {
+      display: none !important;
+    }
+
+    header div.menu {
+      padding-right: 2rem;
+      display: flex;
+    }
+
     header {
-        display: flex;
-        justify-content: end;
-        border-bottom: 0.1rem solid var(--border-color);
-        margin-inline: 3rem;
-        max-width: 1000px;
-        min-width: 50%;
-        width: 100%;
-        color: var(--font-color);
-        font-family: "Outfit", sans-serif;
-        font-weight: 300;
-        padding: 1em;
-        user-select: none;
-        background: var(--background-color);
+      margin: 0;
     }
-    div.brand {
-        margin-right: auto;
-    }
-
-    div.brand h3 {
-        font-weight: 600;
-        margin: 0;
-    }
-
-    header > * {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding-inline: 1rem;
-    }
-
-    div.menu {
-        display: none;
-    }
-
-    header a {
-        text-decoration: none;
-        color: var(--font-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header a:hover,
-    div.item:hover {
-        color: var(--font-color-highlight);
-    }
-
-    div.item {
-        padding: 0.3rem;
-        border-radius: 1rem;
-        transition: 0.2s ease;
-        cursor: pointer;
-    }
-
-    div.controls .item:hover,
-    div.social .item:hover {
-        background: var(--highlight-color);
-        transition: 0.2s ease;
-    }
-
-    header > *:not(:first-child):not(:last-child) {
-        border-right: 0.1rem solid var(--border-color);
-    }
-
-    @media (orientation: portrait) {
-        nav,
-        .controls {
-            display: none !important;
-        }
-
-        header div.menu {
-            padding-right: 2rem;
-            display: flex;
-        }
-
-        header {
-            margin: 0;
-        }
-    }
+  }
 </style>
