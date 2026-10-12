@@ -1,5 +1,47 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "extends": [
+    "astro/tsconfigs/strict",
+    "./node_modules/gts/tsconfig-google.json"
+  ],
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "rootDir": ".",
+    "outDir": "build",
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      },
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    ".astro/types.d.ts",
+    "src/**/*.astro"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "settings": {
+    "import/core-modules": [
+      "astro:content",
+      "astro:transitions"
+    ],
+    "import/parsers": {
+      "astro-eslint-parser": [
+        ".astro"
+      ],
+      "espree": [
+        ".js",
+        ".mjs",
+        ".cjs"
+      ],
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    }
+  }
 }

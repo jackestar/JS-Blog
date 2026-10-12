@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import {defineConfig} from 'astro/config';
 
 import icon from 'astro-icon';
 
@@ -13,7 +13,7 @@ export default defineConfig({
         ignored: [
           '**/node_modules/**',
           '**/node_modules/@iconify-json/**',
-          '**/.git/**'
+          '**/.git/**',
         ],
       },
     },
