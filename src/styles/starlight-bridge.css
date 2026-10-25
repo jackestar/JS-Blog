@@ -1,0 +1,88 @@
+/* ==========================================================================
+   starlight-bridge.css — blog only. Import AFTER theme.css.
+   Maps the shared tokens onto Starlight's --sl-* variables.
+   Starlight's gray scale flips between themes: in dark, "white" is the
+   strongest text and "black" the page; in light it is the reverse.
+   ========================================================================== */
+
+/* ---- Dark (Starlight default) ------------------------------------------ */
+:root,
+:root[data-theme='dark'] {
+  --sl-color-white:  var(--gray-50);
+  --sl-color-gray-1: var(--gray-100);
+  --sl-color-gray-2: var(--gray-300);
+  --sl-color-gray-3: var(--gray-500);
+  --sl-color-gray-4: var(--gray-700);
+  --sl-color-gray-5: var(--gray-800);
+  --sl-color-gray-6: var(--gray-900);
+  --sl-color-gray-7: var(--gray-925);
+  --sl-color-black:  var(--gray-950);
+
+  --sl-color-accent-low:  var(--gray-850);
+  --sl-color-accent:      var(--gray-500);
+  --sl-color-accent-high: var(--gray-200);
+}
+
+/* ---- Light -------------------------------------------------------------- */
+:root[data-theme='light'] {
+  --sl-color-white:  var(--gray-900);
+  --sl-color-gray-1: var(--gray-800);
+  --sl-color-gray-2: var(--gray-700);
+  --sl-color-gray-3: var(--gray-600);
+  --sl-color-gray-4: var(--gray-500);
+  --sl-color-gray-5: var(--gray-300);
+  --sl-color-gray-6: var(--gray-100);
+  --sl-color-gray-7: var(--gray-25);
+  --sl-color-black:  var(--gray-50);
+
+  --sl-color-accent-low:  var(--gray-150);
+  --sl-color-accent:      var(--gray-600);
+  --sl-color-accent-high: var(--gray-800);
+}
+
+/* ---- Semantic mapping (theme-independent: tokens already switch) ------- */
+:root {
+  --sl-color-bg:             var(--bg);
+  --sl-color-bg-nav:         var(--nav-bg);
+  --sl-color-bg-sidebar:     var(--bg-subtle);
+  --sl-color-bg-inline-code: var(--code-inline-bg);
+  --sl-color-text:           var(--text-body);
+  --sl-color-text-accent:    var(--bg-selection);
+  --sl-color-text-invert:    var(--text-inverse);
+  --sl-color-hairline-light: var(--border-subtle);
+  --sl-color-hairline:       var(--border);
+  --sl-color-hairline-shade: var(--border-strong);
+  --sl-color-backdrop-overlay: var(--bg-overlay);
+
+  --sl-font:      var(--font-body);
+  --sl-font-mono: var(--font-mono);
+
+  /* Asides: Starlight's note=blue, tip=purple, caution=orange, danger=red.
+     low = background, base = border/icon, high = title/text. */
+  --sl-color-blue-low:   var(--callout-note-bg);
+  --sl-color-blue:       var(--callout-note-border);
+  --sl-color-blue-high:  var(--callout-note);
+
+  --sl-color-purple-low:  var(--callout-tip-bg);
+  --sl-color-purple:      var(--callout-tip-border);
+  --sl-color-purple-high: var(--callout-tip);
+
+  --sl-color-orange-low:  var(--callout-warning-bg);
+  --sl-color-orange:      var(--callout-warning-border);
+  --sl-color-orange-high: var(--callout-warning);
+
+  --sl-color-red-low:   var(--callout-caution-bg);
+  --sl-color-red:       var(--callout-caution-border);
+  --sl-color-red-high:  var(--callout-caution);
+
+  /* "important" has no Starlight slot: use --callout-important-* in a
+     custom component or a GitHub-alerts plugin. */
+}
+
+/* ---- File tree (Starlight <FileTree>) ----------------------------------- */
+starlight-file-tree {
+  --sl-color-gray-3: var(--tree-file);
+}
+starlight-file-tree .directory > details > summary { color: var(--tree-folder); }
+starlight-file-tree .highlight { background: var(--tree-highlight-bg); color: var(--tree-highlight-fg); }
+starlight-file-tree ul ul { border-inline-start-color: var(--tree-guide); }

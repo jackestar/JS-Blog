@@ -1,0 +1,330 @@
+/* ==========================================================================
+   theme.css — shared tokens for portfolio + blog (Astro / Starlight)
+   Dark is the default. Light is activated with <html data-theme="light">.
+   Rule: components only use semantic tokens (section 2). Never the ramp.
+   No pure #000 / #fff anywhere: darkest is gray-975, lightest is gray-25.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. PRIMITIVES — neutral ramp (slight cool tint, identical in both themes)
+   ========================================================================== */
+:root {
+  --gray-25:  #fafafb;
+  --gray-50:  #f6f6f7;
+  --gray-100: #ededef;
+  --gray-150: #e4e4e7;
+  --gray-200: #d9d9dd;
+  --gray-300: #c2c2c8;
+  --gray-400: #9d9da5;
+  --gray-500: #7a7a82;
+  --gray-600: #5c5c64;
+  --gray-700: #44444b;
+  --gray-800: #2f2f35;
+  --gray-850: #26262c;
+  --gray-900: #1d1d22;
+  --gray-925: #18181c;
+  --gray-950: #131316;
+  --gray-975: #0e0e11;
+
+  /* Typography (swap for your real typefaces) */
+  --font-title: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:  ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:  ui-monospace, "JetBrains Mono", "Cascadia Code", Menlo, monospace;
+  --font-math:  "KaTeX_Main", "Latin Modern Math", "STIX Two Math", serif;
+
+  /* Radii / motion — optional but keeps both sites consistent */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+
+/* ==========================================================================
+   2. SEMANTIC TOKENS — DARK (default)
+   ========================================================================== */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* --- Surfaces --------------------------------------------------------- */
+  --bg:            var(--gray-950);   /* page */
+  --bg-subtle:     var(--gray-925);   /* sidebars, alt sections */
+  --bg-raised:     var(--gray-900);   /* cards, popovers */
+  --bg-sunken:     var(--gray-975);   /* wells, inputs, code */
+  --bg-hover:      var(--gray-850);
+  --bg-active:     var(--gray-800);
+  --bg-overlay:    rgb(14 14 17 / 0.72);
+  --bg-selection:  rgb(194 194 200 / 0.18);
+
+  /* Background details: dot grids, noise, divider washes, decorative lines */
+  --bg-detail:        var(--gray-850);
+  --bg-detail-strong: var(--gray-800);
+
+  /* --- Text ------------------------------------------------------------- */
+  --text-title:       var(--gray-100);  /* h1–h3, hero */
+  --text-body:        var(--gray-300);  /* paragraphs, glanceable text */
+  --text-muted:       var(--gray-400);  /* captions, meta, dates */
+  --text-faint:       var(--gray-500);  /* placeholders, disabled, decorative */
+  --text-inverse:     var(--gray-950);  /* text on primary buttons */
+
+  --text-nav:         var(--gray-400);
+  --text-nav-active:  var(--gray-100);
+
+  --text-math:        var(--gray-200);  /* KaTeX / equations */
+  --text-math-muted:  var(--gray-500);  /* equation numbers, \tag */
+
+  --text-link:          var(--gray-100);
+  --text-link-hover:    var(--gray-50);
+  --text-link-visited:  var(--gray-300);
+  --link-underline:     var(--gray-600);
+  --link-underline-hover: var(--gray-300);
+
+  /* --- Borders & focus -------------------------------------------------- */
+  --border-subtle: var(--gray-850);   /* hairlines, table rows */
+  --border:        var(--gray-800);   /* cards, inputs, code blocks */
+  --border-strong: var(--gray-700);   /* hover, emphasis */
+  --focus-ring:    var(--gray-300);
+
+  /* --- Buttons ---------------------------------------------------------- */
+  --btn-primary-bg:        var(--gray-150);
+  --btn-primary-bg-hover:  var(--gray-50);
+  --btn-primary-fg:        var(--gray-950);
+
+  --btn-secondary-bg:       var(--gray-900);
+  --btn-secondary-bg-hover: var(--gray-850);
+  --btn-secondary-fg:       var(--gray-100);
+  --btn-secondary-border:   var(--gray-800);
+
+  --btn-ghost-fg:       var(--gray-300);
+  --btn-ghost-bg-hover: var(--gray-850);
+
+  --btn-disabled-bg: var(--gray-900);
+  --btn-disabled-fg: var(--gray-600);
+
+  /* --- Inputs / text boxes --------------------------------------------- */
+  --input-bg:           var(--gray-975);
+  --input-fg:           var(--gray-100);
+  --input-border:       var(--gray-800);
+  --input-border-focus: var(--gray-400);
+  --input-placeholder:  var(--gray-500);
+
+  /* --- Nav -------------------------------------------------------------- */
+  --nav-bg:     color-mix(in srgb, var(--gray-950) 82%, transparent);
+  --nav-border: var(--gray-850);
+
+  /* --- Images (they carry the color; dark mode just tames brightness) ---- */
+  --img-filter: brightness(0.92);
+  --img-border: var(--gray-850);
+
+  /* --- 3D models / scene (read from JS, see notes) ---------------------- */
+  --scene-bg:         var(--gray-975);
+  --scene-bg-top:     var(--gray-925);
+  --scene-bg-bottom:  var(--gray-975);
+  --scene-floor:      var(--gray-950);
+  --scene-grid:       var(--gray-850);
+  --scene-grid-major: var(--gray-800);
+
+  /* --- Code blocks ------------------------------------------------------ */
+  --code-bg:             var(--gray-975);
+  --code-header-bg:      var(--gray-925);
+  --code-border:         var(--gray-850);
+  --code-fg:             var(--gray-200);
+  --code-line-number:    var(--gray-600);
+  --code-line-highlight: rgb(194 194 200 / 0.07);
+  --code-selection:      rgb(194 194 200 / 0.16);
+  --code-inline-bg:      var(--gray-900);
+  --code-inline-fg:      var(--gray-100);
+
+  /* Syntax: mostly gray, a few desaturated tints so code stays readable */
+  --syn-comment:     var(--gray-600);
+  --syn-punctuation: var(--gray-400);
+  --syn-variable:    var(--gray-200);
+  --syn-keyword:     #c5c5cf;
+  --syn-string:      #9fb4a6;  /* sage  */
+  --syn-number:      #c2a98f;  /* sand  */
+  --syn-function:    #a5b4c8;  /* steel */
+  --syn-type:        #b5a8c4;  /* mauve */
+
+  /* --- File tree -------------------------------------------------------- */
+  --tree-bg:           var(--gray-925);
+  --tree-border:       var(--gray-850);
+  --tree-guide:        var(--gray-800);
+  --tree-folder:       var(--gray-300);
+  --tree-file:         var(--gray-400);
+  --tree-highlight-bg: var(--gray-850);
+  --tree-highlight-fg: var(--gray-100);
+
+  /* --- Callouts / admonitions (GitHub-style, muted) -------------------- */
+  --callout-note:      #8fa8cc;
+  --callout-tip:       #8fb8a0;
+  --callout-important: #b4a4d4;
+  --callout-warning:   #c8aa72;
+  --callout-caution:   #d09490;
+}
+
+
+/* ==========================================================================
+   3. SEMANTIC TOKENS — LIGHT
+   ========================================================================== */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg:            var(--gray-50);
+  --bg-subtle:     var(--gray-100);
+  --bg-raised:     var(--gray-25);
+  --bg-sunken:     var(--gray-150);
+  --bg-hover:      var(--gray-100);
+  --bg-active:     var(--gray-150);
+  --bg-overlay:    rgb(246 246 247 / 0.78);
+  --bg-selection:  rgb(29 29 34 / 0.14);
+
+  --bg-detail:        var(--gray-150);
+  --bg-detail-strong: var(--gray-200);
+
+  --text-title:       var(--gray-900);
+  --text-body:        var(--gray-700);
+  --text-muted:       var(--gray-600);
+  --text-faint:       var(--gray-500);
+  --text-inverse:     var(--gray-50);
+
+  --text-nav:         var(--gray-600);
+  --text-nav-active:  var(--gray-900);
+
+  --text-math:        var(--gray-800);
+  --text-math-muted:  var(--gray-500);
+
+  --text-link:          var(--gray-900);
+  --text-link-hover:    var(--gray-975);
+  --text-link-visited:  var(--gray-700);
+  --link-underline:     var(--gray-300);
+  --link-underline-hover: var(--gray-600);
+
+  --border-subtle: var(--gray-150);
+  --border:        var(--gray-200);
+  --border-strong: var(--gray-300);
+  --focus-ring:    var(--gray-600);
+
+  --btn-primary-bg:        var(--gray-900);
+  --btn-primary-bg-hover:  var(--gray-800);
+  --btn-primary-fg:        var(--gray-50);
+
+  --btn-secondary-bg:       var(--gray-25);
+  --btn-secondary-bg-hover: var(--gray-100);
+  --btn-secondary-fg:       var(--gray-900);
+  --btn-secondary-border:   var(--gray-200);
+
+  --btn-ghost-fg:       var(--gray-700);
+  --btn-ghost-bg-hover: var(--gray-100);
+
+  --btn-disabled-bg: var(--gray-100);
+  --btn-disabled-fg: var(--gray-400);
+
+  --input-bg:           var(--gray-25);
+  --input-fg:           var(--gray-900);
+  --input-border:       var(--gray-300);
+  --input-border-focus: var(--gray-600);
+  --input-placeholder:  var(--gray-500);
+
+  --nav-bg:     color-mix(in srgb, var(--gray-50) 82%, transparent);
+  --nav-border: var(--gray-150);
+
+  --img-filter: none;
+  --img-border: var(--gray-150);
+
+  --scene-bg:         var(--gray-100);
+  --scene-bg-top:     var(--gray-50);
+  --scene-bg-bottom:  var(--gray-150);
+  --scene-floor:      var(--gray-100);
+  --scene-grid:       var(--gray-200);
+  --scene-grid-major: var(--gray-300);
+
+  --code-bg:             var(--gray-100);
+  --code-header-bg:      var(--gray-150);
+  --code-border:         var(--gray-200);
+  --code-fg:             var(--gray-800);
+  --code-line-number:    var(--gray-400);
+  --code-line-highlight: rgb(29 29 34 / 0.06);
+  --code-selection:      rgb(29 29 34 / 0.12);
+  --code-inline-bg:      var(--gray-100);
+  --code-inline-fg:      var(--gray-900);
+
+  --syn-comment:     var(--gray-500);
+  --syn-punctuation: var(--gray-600);
+  --syn-variable:    #22222a;
+  --syn-keyword:     var(--gray-800);
+  --syn-string:      #4f7060;
+  --syn-number:      #8a6540;
+  --syn-function:    #3f5878;
+  --syn-type:        #6d5a85;
+
+  --tree-bg:           var(--gray-100);
+  --tree-border:       var(--gray-200);
+  --tree-guide:        var(--gray-300);
+  --tree-folder:       var(--gray-700);
+  --tree-file:         var(--gray-600);
+  --tree-highlight-bg: var(--gray-150);
+  --tree-highlight-fg: var(--gray-900);
+
+  --callout-note:      #3f5f8a;
+  --callout-tip:       #3f7457;
+  --callout-important: #6d5a9a;
+  --callout-warning:   #8a6a2a;
+  --callout-caution:   #9a4a47;
+}
+
+
+/* ==========================================================================
+   4. DERIVED TOKENS — computed from the tokens above, so they follow the
+   theme automatically (declared on :root, same element as data-theme).
+   ========================================================================== */
+:root {
+  --callout-note-bg:      color-mix(in srgb, var(--callout-note)      10%, var(--bg));
+  --callout-tip-bg:       color-mix(in srgb, var(--callout-tip)       10%, var(--bg));
+  --callout-important-bg: color-mix(in srgb, var(--callout-important) 10%, var(--bg));
+  --callout-warning-bg:   color-mix(in srgb, var(--callout-warning)   10%, var(--bg));
+  --callout-caution-bg:   color-mix(in srgb, var(--callout-caution)   10%, var(--bg));
+
+  --callout-note-border:      color-mix(in srgb, var(--callout-note)      40%, var(--bg));
+  --callout-tip-border:       color-mix(in srgb, var(--callout-tip)       40%, var(--bg));
+  --callout-important-border: color-mix(in srgb, var(--callout-important) 40%, var(--bg));
+  --callout-warning-border:   color-mix(in srgb, var(--callout-warning)   40%, var(--bg));
+  --callout-caution-border:   color-mix(in srgb, var(--callout-caution)   40%, var(--bg));
+}
+
+
+/* ==========================================================================
+   5. BASE APPLICATION — minimal, safe for both sites
+   ========================================================================== */
+body {
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-title);
+  font-family: var(--font-title);
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  color: var(--text-link-hover);
+  text-decoration-color: var(--link-underline-hover);
+}
+
+::selection { background: var(--bg-selection); }
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+img { filter: var(--img-filter); }
+
+.katex { color: var(--text-math); font-family: var(--font-math); }
