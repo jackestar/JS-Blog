@@ -2,7 +2,9 @@
 title: M220 PCB V2.0 (Clover Display)
 description: Proyecto Baremetal para manejar un display M220 (Clover Display)
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Display M220 PCB V2.0 (Clover Display LTD)
@@ -186,7 +188,7 @@ Siendo los primeros 16 caracteres un espacio en memoria personalizable, a partir
 
 [LCD module data](http://www.projects.scorchingbay.nz/dokuwiki/electronic/lcd/pfup1188ya)
 
-::: tip
+:::tip
 En el proyecto anterior comprueba por otro autor las características del display en su version v1.0, el cual posee el firmware japones y caracteres de 5x7.
 :::
 

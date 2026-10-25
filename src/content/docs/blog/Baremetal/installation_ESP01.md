@@ -3,10 +3,12 @@ title: Program ESP in ArchLinux
 description: how to compile and upload to a ESP8266 board
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
 # Programación de ESP01 Utilizando ESP32 (DevkitV1 30 pins) como puente
 
@@ -25,16 +27,16 @@ Las placas ESP01 y ESP01S (también las ESP02 y ESP05) poseen un microcontrolado
 | RST     | NC(VCC) |
 | GPIO0 (IO0) | GND |
 
-
 ## Por que no usar placas Arduino
 
 Los Arduino Uno y Nano utilizan lógica 5v la cual inutilizaría el ESP01 si se utiliza directamente, la opción recomendada seria utilizar un convertidor integrado de lógica 5v a 3.3v.
 
-::: warning
+:::caution
 Muchos esquemáticos mal utilizan divisores de tension (alguno no en todos los puertos), esto debe considerar que la corriente que consumen los puertos altera el divisor de tension
 :::
 
-::: warning
+:::caution
+
 Algunos clones de Arduino **NO TIENEN ALIMENTACIÓN 3.3V REAL**, si no que esta al aire o cableada a VCC (5V)
 :::
 

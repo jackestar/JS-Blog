@@ -3,13 +3,16 @@ title: Ejercicios Electronica Part. 2
 description: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 ## Ejercicios
 
-> [!NOTE]
-> Los ejercicios a continuación son del libro *Electronica Básica para Ingenieros* y *Electronica Básica para Ingenieros problemas resueltos*, con la aclaración de que uno no es el solucionario del otro
+:::note
+Los ejercicios a continuación son del libro *Electronica Básica para Ingenieros* y *Electronica Básica para Ingenieros problemas resueltos*, con la aclaración de que uno no es el solucionario del otro
+:::
 
 ### Electronica Básica para Ingenieros P 1.9
 
@@ -35,7 +38,8 @@ El BF245A es un transistor JFET de canal N para aplicaciones de amplificación e
 
 *<p style="text-align:center">Fig P1.9.3</p>*
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 Con los datos de la Fig. P1.9a se sabe que $V_p=-2V$ y $I_{DSS}=4mA$
 
@@ -126,8 +130,9 @@ $$
 
 Se toma la curva de saturación del ejercicio anterior (por ser el mismo transistor). Igualando la Ec. (2) y (a) se obtienen los puntos de intersección de la recta.
 
-> [!NOTE]
-> A diferencia del ejercicio anterior se despejo $V_{GS}$
+:::note
+A diferencia del ejercicio anterior se despejo $V_{GS}$
+:::
 
 $$
 \begin{gather}
@@ -141,7 +146,6 @@ Al ser $V_{GS_1}$ mayor a $V_{GS_{(off)}}$ ($V_{p}$) se descarta.
 ![Intersección](img/P1-2g.svg)
 
 Donde el punto de trabajo es $V_{GS}\approx-0.4582V;I_D\approx2.3768mA$, con estos datos se calcula $V_{DS}$, tomando la maya de salida:
-
 
 $$
 \begin{gather}
@@ -162,7 +166,6 @@ $$
 #### P1-3
 
 Se numera al JFET superior como (1) y al inferior como (2), se resuelve la malla de entrada del JFET (2).
-
 
 $$
 0 + V_{GG} - V_{GS_2} - 0\\
@@ -216,7 +219,8 @@ V_{DS_2} \geq - 1 - (-2)\\
 3 \geq 1\\
 \end{gather}
 $$
-:::
+
+</details>
 
 ### Electronica Básica para Ingenieros - Problemas resueltos P 3
 
@@ -226,7 +230,8 @@ Calcular el punto de trabajo de transistores $Q_1$, $Q_2$ de la figura
 
 $V_{CC}=15v$, $R_1=10k\Omega$, $R_2=50k\Omega$, $R_3=400k\Omega$, $R_4=1k\Omega$, $R_5=3k3\Omega$, $V_{BE}=0.7$, $h_{fe}=100$, $I_{DSS}=6mA$, $V_P=-5V$
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 La tension en el *gate* del JFET viene dado por el divisor de tension formado por $R_1$ y $R_2$. La corriente de *gate* $I_G\approx 0$ por lo que se calcula solo la tension en el punto $V_G$. Ademas $I_S=I_D$
 
@@ -284,9 +289,10 @@ V_{cc} - R_5\cdot I_D - V_{be} = R_3\cdot I_B+V_{DS}\\
 \end{gather}
 $$
 
-> [!NOTE]
-> $\beta = h_{fe}$
-> se puede considerar que $I_E\approx I_C$, pero para ser mas 1% mas precisos
+:::note
+$\beta = h_{fe}$
+se puede considerar que $I_E\approx I_C$, pero para ser mas 1% mas precisos
+:::
 
 Se toman las siguientes consideraciones $I_E = I_D$, $I_B=I_C/\beta$, $I_E = I_b\cdot (\beta + 1)$
 
@@ -310,6 +316,6 @@ $$
 
 Donde despejando la Ec. (2) se obtiene $V_{DS}\approx3.3215v$, con este valor despejando la Ec. (1) se obtiene $V_{ce}\approx5.1913v$
 
-:::
+</details>
 
 <!-- ## Parcial -->

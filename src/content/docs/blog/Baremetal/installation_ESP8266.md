@@ -3,10 +3,12 @@ title: Program ESP in ArchLinux
 description: how to compile and upload to a ESP8266 board
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
 # Programación de ESP8266 en ArchLinux
 
@@ -14,7 +16,7 @@ La forma rápida es utilizar el paquete AUR `esp8266-rtos-sdk` la unica desventa
 
 ## Instalación (Manual git)
 
-::: tip
+:::tip
 
 [ESpressif Guide - RTOS SDK)](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/index.html)
 
@@ -22,7 +24,6 @@ La forma rápida es utilizar el paquete AUR `esp8266-rtos-sdk` la unica desventa
 :::
 
 La instalación consiste en la Toolchain (compilador), Build tools (CMake and Ninja) y SDK (RTOS SKD)
-
 
 ### Pre-requisitos
 
@@ -62,11 +63,12 @@ O en su defecto cambiar los permisos UDEV
 
 ## API/Librerías (utilizando python3)
 
-::: tip
+:::tip
 Selecciona un directorio de trabajo para el repositorio
 :::
 
-::: tip
+:::tip
+
 Si no se usa el argumento `--depth 1` puede saltarse el paso [Version FIX](#version_fix). Se establece `--depth 1` para solo obtener la ultima version de la API (~190MB).
 :::
 
@@ -95,13 +97,9 @@ Para corregir el siguiente error, descrito en [menuconfig script fails for ncurs
 
 Se aplica el parche para el paquete AUR `esp8266-rtos-sdk`
 
-::: code-group
-
-```bash [wget]
+```bash title="wget"
 wget https://aur.archlinux.org/cgit/aur.git/plain/esp8266-rtos-sdk-aur-ncurses-fix.patch?h=esp8266-rtos-sdk -O esp8266-rtos-sdk-aur-ncurses-fix.patch
 ```
-
-:::
 
 ``` bash
 patch --forward --strip=1 --input=./esp8266-rtos-sdk-aur-ncurses-fix.patch
@@ -149,7 +147,7 @@ echo v3.5 > version.txt
 
 </div>
 
-::: tip
+:::tip
 
 También se pueden extraer los tags (nótese que se descargaran los tags de todos los repositorios ~+47MB)
 
@@ -160,7 +158,6 @@ git fetch --tags
 ```
 
 </div>
-
 
 :::
 
@@ -196,17 +193,13 @@ Se descarga el toolchain
 
 <div class='console'>
 
-::: code-group
-
-```bash [wget]
+```bash title="wget"
 wget -P ~/.espressif/dist https://dl.espressif.com/dl/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64.tar.gz
 ```
 
-```bash [curl]
+```bash title="curl"
 curl -o ~/.espressif/dist https://dl.espressif.com/dl/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64.tar.gz
 ```
-
-:::
 
 Se descomprime
 
@@ -217,12 +210,11 @@ tar -xvf ~/.espressif/dist/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64.tar.
 
 Por compatibilidad se puede trabajar en el directorio `~/esp`, se elije trabajar en el directorio `~/.espressif` (para tener todas las toolchain bajo un mismo directorio)
 
-
 ### Errores en Submódulos
 
 Algunos submódulos pertenecen a repositorios que están migrados entre otros errores, la recomendación es revisar [issues](https://github.com/espressif/ESP8266_RTOS_SDK/issues) y [pull request](https://github.com/espressif/ESP8266_RTOS_SDK/pulls)
 
-::: info
+:::note
 A términos del commit [d412ac6](https://github.com/espressif/ESP8266_RTOS_SDK/commit/d412ac601befc4dd024d2d2adcfaa319c7463e36) aplicar el pull request [#1306](https://github.com/espressif/ESP8266_RTOS_SDK/pull/1306) y actualizar los submódulos corrige los errores de compilación relacionado a módulos faltantes
 
 ```bash

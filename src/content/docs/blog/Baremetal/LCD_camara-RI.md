@@ -2,7 +2,9 @@
 title: LCD Multiplexado
 description: Proyecto Baremetal para manejar un display LCD 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Display LCD (Cámara/Multiplexado)
@@ -36,9 +38,7 @@ De esta forma, la tensión aplicada entre ambos extremos del segmento alterna si
 
 Se genera el siguiente código para un Arduino UNO, el cual genera un común
 
-::: code-group
-
-```cpp [ACTest.cc]
+```cpp title="ACTest.cc"
 #ifndef __AVR_ATmega328P__
 #define __AVR_ATmega328P__
 #endif
@@ -89,7 +89,7 @@ int main(void) {
 }
 ```
 
-::: tip
+:::tip
 No se utiliza PWM ya que el atmega328p no posee tantos puertos capaces de hacer PWM, esto en otros microcontroladores es posible. El costo agregado solo vale la pena si se requiere computo mientras se muestran los digitos o si la multiplexacion es mas extensa
 :::
 

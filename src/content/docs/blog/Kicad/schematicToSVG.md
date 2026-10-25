@@ -3,7 +3,9 @@ title: Exportar Kicad a SVG
 description: Exportar esquemático de Kicad a SVG usando Inkscape por linea de comandos de forma rápida
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Exportar esquemático de Kicad a SVG
@@ -48,8 +50,9 @@ Plot Current Page
 
 Selecciona el menu `File` y selecciona el item `Plot...`.  En la sección de `Output Format` selecciona `SVG`, en la sección 'Options' desmarca el checkbox `Plot Drawing Sheet`. Presiona el botón `Plot Current Page`
 
-> [!NOTE]
-> por defecto la imagen se guarda en el directorio del proyecto de Kicad
+:::note
+por defecto la imagen se guarda en el directorio del proyecto de Kicad
+:::
 
 **Resultado**
 ![kicad](src/toSVGorig.svg)

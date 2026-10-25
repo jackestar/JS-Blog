@@ -3,7 +3,9 @@ title: Ejercicios Electronica Part. 2
 description: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 <!-- Como anécdota la "prueba corta" duro aproximadamente 4h nadie la completo en su totalidad y el docente al terminar la prueba corta la explico y resolvió en aproximadamente 5min-->
@@ -16,7 +18,8 @@ outline: deep
 
 $V_{DD}=20v$, $\beta =20mA/V^2$, $V_T=2v$, $r_d=100k$
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 La fuente corriente es una **Fuente de corriente de cascode** con MOSFET idénticos. Se hacen las siguientes aseveraciones solo por la configuración del circuito
 
@@ -27,8 +30,9 @@ La fuente corriente es una **Fuente de corriente de cascode** con MOSFET idénti
 * $V_{D_1} = V_{G_1}$
 * $V_{D_2} = V_{G_2}$
 
-> [!NOTE]
-> Se asume que no hay corriente fluyendo por el *gate*, al estar los transistores $Q_1$ y $Q_2$; $Q_3$ y $Q_4$ en serie comparten la misma corriente, los transistores $Q_2$ y $Q_4$ tienen sus terminales $V_G$ y $V_S$ en paralelo por lo que tienen la misma tension
+:::note
+Se asume que no hay corriente fluyendo por el *gate*, al estar los transistores $Q_1$ y $Q_2$; $Q_3$ y $Q_4$ en serie comparten la misma corriente, los transistores $Q_2$ y $Q_4$ tienen sus terminales $V_G$ y $V_S$ en paralelo por lo que tienen la misma tension
+:::
 
 Primero se conoce que los transistores $Q_1$ y $Q_2$ al tener su *gate* cortocircuitada con su *drain* se cumple que
 
@@ -170,7 +174,7 @@ $$
 Z_o\approx 102.3824M\Omega
 $$
 
-:::
+</details>
 
 ## Dada las fuentes de corriente determine
 
@@ -182,7 +186,8 @@ $$
 * $V_{CC} = 10V$
 * $\beta=150$
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 El circuito presenta un repetidor de corriente con dos salidas conectadas en la parte superior, y un repetidor de corriente mejorado de $N$ salidas en la parte inferior.
 
@@ -212,7 +217,7 @@ $$
 
 Por simetría (al ser los transistores exactamente iguales) se asume que las corrientes se reparten equitativamente, por lo menos en el caso de $Q_2$ y $Q_3$ que están en paralelo. Pero matemáticamente se requiere un criterio para aseverar esto. Aquí surge el modelo de Ebers-Moll
 
-[Abstracción Modelo Ebers Moll](../../Electronica/ebers-moll.md)
+[Abstracción Modelo Ebers Moll](../../Electronica/ebers-moll)
 
 En base a este modelo $I_C\approx\alpha_F\cdot I_{ES}\cdot e^\frac{V_{BE}}{V_T}$, Donde hay una relación directa entre $V_{BE}$ y $I_C$ por ende al estar las tensiones $V_{BE}$ de $Q_1$, $Q_2$ y $Q_3$ en paralelo se asume que poseen las mismas corrientes.
 
@@ -242,13 +247,13 @@ $$
 R=\frac{895K}{51}\approx 17.549K\Omega
 $$
 
-> [!TIP]
->Mas concretamente al ser un repetidor de corriente se modela en base a la siguiente ecuación
->$$
->I_c = \frac{I_{ref}}{1+\frac{N}{\beta}}
->$$
->Donde $N$ es el numero de transistores conectados por la base
-
+:::tip
+Mas concretamente al ser un repetidor de corriente se modela en base a la siguiente ecuación
+$$
+I_c = \frac{I_{ref}}{1+\frac{N}{\beta}}
+$$
+Donde $N$ es el numero de transistores conectados por la base
+:::
 
 Para el repetidor de corriente mejorado, se cumple la misma condición de las corrientes al estar las tensiones $V_{BE}$ los transistores de $Q_5$ a $Q_n$ en paralelo. Para las corrientes de base tenemos
 
@@ -299,17 +304,18 @@ $$
 I_{O_2}\approx 19.5527mA
 $$
 
-:::
+</details>
 
 ## Determine $V_o$ y las zonas de trabajo de los transistores asi como su punto de operación
 
-<Badge type="danger" text="no verificado" />
+<span class="badge badge--danger">no verificado</span>
 
 ![Problema 2](img/PC3.svg)
 
 Donde $V_{CC}=24v$
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 Se analiza el lado derecho, con tres resistencias en paralelo, se aproxima la corriente $I_{G}\approx0$, se podría utilizar un equivalente de Thevenin para la *base* del BJT. Pero no hace falta, la resistencia $R_3$ esta en paralelo con $V_{BE}$ el cual es $0.7v$ (asumiendo que esta polarizado), se conoce la tension y la resistencia, se obtiene la corriente:
 
@@ -456,13 +462,13 @@ $$
 I_{D}\approx11.07179mA; V_{DS}\approx71.346mV
 $$
 
-:::
+</details>
 
 ## Determine $A_v$, $Z_i$, $Z_o$ del amplificador multi-etapa:
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
-<Badge type="danger" text="no verificado" />
+<span class="badge badge--danger">no verificado</span>
 
 ![multi-etapa](img/PC4.svg)
 

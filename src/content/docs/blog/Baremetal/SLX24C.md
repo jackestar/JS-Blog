@@ -2,7 +2,9 @@
 title: SLA24C AVR driver
 description: Proyecto Baremetal para manejar una memoria EEPROM SLA24C
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # SLA24C (AVR driver)
@@ -26,7 +28,7 @@ Memoria EEPROM de 4 Kbit (512 × 8 bit) Serial CMOS-EEPROM con I2C sincrónico d
 | 7 | WP  | Entrada protección contra escritura |
 | 8 | Vcc | Alimentación + |
 
-::: tip
+:::tip
 En la ultima revision del datasheet los pines 1,2,3 fueron marcados como NC, originalmente funcionaban para seleccionar que chip esta activo (en el caso de tener varios) se asume que su función desaparece al usarse I2C
 :::
 
@@ -43,4 +45,3 @@ Se establece la velocidad de la comunicación, se utilizan preprocesadores para 
 #define TW_RATE  (F_CPU/SLC_FREQ - 16)/(2 * PRESCALER)
 
 ```
-

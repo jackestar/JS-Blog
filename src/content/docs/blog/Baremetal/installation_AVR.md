@@ -3,13 +3,16 @@ title: Program AVR in ArchLinux
 description: how to compile and upload to a Arduino UNO board
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Programación de AVR en ArchLinux
 
-> [!NOTE]
-> las herramientas señaladas en *cursiva* son paquetes disponibles en ArchLinux
+:::note
+las herramientas señaladas en *cursiva* son paquetes disponibles en ArchLinux
+:::
 
 ## Instalación
 
@@ -131,11 +134,14 @@ avrdude -p m328p -c arduino -P /dev/ttyUSB0 -U flash:w:main.elf:e
 
 Para los argumentos de cada microcontrolador, programador y demás configuraciones consulte la documentación de [avrdude](https://github.com/avrdudes/avrdude/)
 
-> [!note]
-> También se suele especificar el baudrate, esta suele ser provista por el programador, de ser necesario se puede especificar con el argumento `-b`
+:::note
+También se suele especificar el baudrate, esta suele ser provista por el programador, de ser necesario se puede especificar con el argumento `-b`
+:::
 
-> [!warning]
-> Habitualmente se encuentra el uso de el argumento `-F` el cual ignora la firma del microcontrolador, lo cual puede ser util bajo ciertos casos (errores de dispositivo, memoria corrupta o sin formato etc.). Y también es habitual la opción `-V` que no comprueba si los datos fueron escritos correctamente. **No se recomienda su uso si no es necesario.**
+:::caution
+
+Habitualmente se encuentra el uso de el argumento `-F` el cual ignora la firma del microcontrolador, lo cual puede ser util bajo ciertos casos (errores de dispositivo, memoria corrupta o sin formato etc.). Y también es habitual la opción `-V` que no comprueba si los datos fueron escritos correctamente. **No se recomienda su uso si no es necesario.**
+:::
 
 ## Para programar con RUST
 
@@ -178,16 +184,18 @@ Para crear nuevo proyecto con la plantilla `avr-hal-template`
 ```bash
 cargo generate --git https://github.com/Rahix/avr-hal-template.git
 ```
-> [!NOTE]
-> Esta plantilla por defecto proporciona dos perfiles de compilación `dev` (predeterminado) y `release`, ambos con información de depuración. Para obtener una compilación optimizada y sin información para depuración puede crear o modificar el `profile`
-> ```toml
->[profile.release]
->panic = "abort"
->codegen-units = 1
->debug = false
->lto = true
->opt-level = "s"
->```
+
+:::note
+Esta plantilla por defecto proporciona dos perfiles de compilación `dev` (predeterminado) y `release`, ambos con información de depuración. Para obtener una compilación optimizada y sin información para depuración puede crear o modificar el `profile`
+```toml
+[profile.release]
+panic = "abort"
+codegen-units = 1
+debug = false
+lto = true
+opt-level = "s"
+```
+:::
 
 ##### Solo compilar
 
@@ -207,7 +215,6 @@ cargo install ravedude
 ```
 
 </div>
-
 
 ## Para Programar sketch Arduino con Arduino CLI
 
@@ -256,10 +263,11 @@ Port         Protocol Type              Board Name FQBN Core
 arduino-cli board search nombreABuscar
 ```
 
-> [!NOTE]
-> dicho comando busca entre los `Board Name`, `Platform ID` y `FQBN Core` de buscar mas de una palabra debe estar entre comillas
-> ```bash arduino-cli board search "UNO R4" ``` 
-> no se suele identificar la plataforma por el microcontrolador ni arquitectura. Se recomienda solo usar palabras claves en la búsqueda.
+:::note
+dicho comando busca entre los `Board Name`, `Platform ID` y `FQBN Core` de buscar mas de una palabra debe estar entre comillas
+`bash arduino-cli board search "UNO R4"`
+no se suele identificar la plataforma por el microcontrolador ni arquitectura. Se recomienda solo usar palabras claves en la búsqueda.
+:::
 
 Ejemplo de resultado
 
@@ -294,11 +302,15 @@ Para compilar un sketch se usa la siguiente nomenclatura, reemplazando `FQBN` y 
 ```bash
 arduino-cli compile --fqbn FQBN NombreDelSketch
 ```
-> [!NOTE]
-> Adicionalmente su puede agregar el argumento `--build-path ./build` para definir el directorio de trabajo del compilador. **para la version 1.0.3 de Arduino CLI no es posible programar desde un `--build-path` definido por el usuario**
 
-> [!NOTE]
-> De necesitar solo el resultado de la compilación se puede usar el argumento `-e`, o el argumento `--output-dir ./build` para exportar los resultados de la compilación en un directorio especifico
+:::note
+Adicionalmente su puede agregar el argumento `--build-path ./build` para definir el directorio de trabajo del compilador. **para la version 1.0.3 de Arduino CLI no es posible programar desde un `--build-path` definido por el usuario**
+:::
+
+:::note
+
+De necesitar solo el resultado de la compilación se puede usar el argumento `-e`, o el argumento `--output-dir ./build` para exportar los resultados de la compilación en un directorio especifico
+:::
 
 para el Arduino UNO como ejemplo
 
@@ -314,13 +326,11 @@ Siguiendo la siguiente nomenclatura reemplazando `Puerto`, `FQBN` y `NombreDelSk
 arduino-cli upload -p Puerto --fqbn FQBN NombreDelSketch
 ```
 
-
 Ejemplo
 
 ```bash
 arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:uno Blink
 ```
-
 
 </div>
 

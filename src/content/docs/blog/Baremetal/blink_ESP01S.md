@@ -3,10 +3,12 @@ title: Blink build-in LED ESP01S
 description: El programa mas básico para comprobar el funcionamiento en una placa de desarrollo. Hacer parpadear a intervalos regulados el LED integrado.
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
 # Blink build-in LED
 
@@ -16,7 +18,7 @@ outline: deep
 
 ### Crear Proyecto
 
-::: tip
+:::tip
 copiar los makefiles, establecer entorno
 :::
 

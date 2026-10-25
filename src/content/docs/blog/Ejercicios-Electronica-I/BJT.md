@@ -3,7 +3,9 @@ title: Ejercicios Electronica Part. 1
 description: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Transistores BJT
@@ -18,14 +20,15 @@ Inserte Ejercicios Durante el Semestre
 
 ## Parcial
 
-> [!NOTE]
-> La primera pregunta del parcial original es un cuestionario.
+:::note
+La primera pregunta del parcial original es un cuestionario.
+:::
 
 ### 1. Dado el amplificador determine
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
-<Badge type="danger" text="no verificado" />
+<span class="badge badge--danger">no verificado</span>
 
 > a. Zona de trabajo
 
@@ -100,8 +103,9 @@ I_{B_1}=41\mu /2.53\approx16.2055\mu A
 \end{gather}
 $$
 
-> [!NOTE]
-> $\beta>>1$ por lo que se puede hacer la simplificación $I_E\approx I_C$, lo cual resultaría en $I_{B_1}=41\mu /2.52\approx16.2698\mu A$
+:::note
+$\beta>>1$ por lo que se puede hacer la simplificación $I_E\approx I_C$, lo cual resultaría en $I_{B_1}=41\mu /2.52\approx16.2698\mu A$
+:::
 
 Como $I_C=I_B\beta$
 

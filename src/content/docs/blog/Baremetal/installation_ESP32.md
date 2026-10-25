@@ -3,14 +3,16 @@ title: Program ESP in ArchLinux
 description: how to compile and upload to a ESP32 board
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Programación de ESP32 en ArchLinux
 
 ## Instalación
 
-::: tip
+:::tip
 Para una guía mas completa actualizada y para otras plataformas consulte
 
 [ESpressif Guide - Toolchain (per board)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#introduction)
@@ -34,7 +36,7 @@ sudo pacman -S --needed gcc git make flex bison gperf python cmake ninja ccache 
 
 ### git clone
 
-::: tip
+:::tip
 Selecciona un directorio de trabajo para el repositorio
 :::
 
@@ -44,7 +46,7 @@ git clone --recursive https://github.com/espressif/esp-idf.git --depth 1
 
 <div class='console'>
 
-::: tip
+:::tip
 Se establece `--depth 1` para solo obtener la ultima version de la API (>1.7GB)
 :::
 

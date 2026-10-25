@@ -3,7 +3,9 @@ title: ESP01S Kitchen Driver
 description: Opto Aislador para driver de Cocina, con ESP01S
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # ESP01S Kitchen Driver - Opto Aislador
@@ -30,10 +32,13 @@ la alimentación entra en el rango de 3 a 3.6V, se utiliza un zener para protege
 
 ## Modelo 3D
 
-<script setup>
-import previewImg from './img/ESP01-Driver.jpg'
-</script>
-
-<ClientOnly>
-  <Viewer3D modelUrl="/models/ESP01-Driver.glb" :previewImg="previewImg" />
-</ClientOnly>
+<!-- The <model-viewer> web component is loaded globally from astro.config. -->
+<model-viewer
+  src="/models/ESP01-Driver.glb"
+  poster="/models/ESP01-Driver.jpg"
+  alt="ESP01S Kitchen Driver"
+  camera-controls
+  auto-rotate
+  shadow-intensity="1"
+  loading="lazy">
+</model-viewer>

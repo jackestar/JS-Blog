@@ -3,8 +3,10 @@ title: Baremetal en microcontrollers
 description: Desarrollo de librerías escritas en C/C++, Assembler y Rust para protocolos, periféricos, actuadores y sensores para microcontroladores (ESP32/ESP8266/328p), asi como el proceso de ingeniera inversa para modulo sin documentación.
 
 lastUpdated: true
-outline: deep
-sidebar: true
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+
 ---
 
 # Desarrollo Baremetal en microcontroladores
@@ -19,7 +21,7 @@ Arduino es una plataforma de software y hardware open-source. Que proporciona un
 
 ## Plataforma Espressif
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
 [Instalación ESP32 ArchLinux](./installation_ESP32)
 

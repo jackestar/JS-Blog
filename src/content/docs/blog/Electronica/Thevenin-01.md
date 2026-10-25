@@ -3,7 +3,9 @@ title: Guías Electronica
 description: Abstracciones para la rápida resolución de circuitos eléctricos
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Método de Simplificación Efecto de Carga - Divisor de tension (Método Galíndez)

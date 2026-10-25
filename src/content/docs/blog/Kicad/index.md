@@ -3,7 +3,9 @@ title: Proyectos y Herramientas para Kicad
 description: Proyectos y Herramientas para Kicad
 
 lastUpdated: true
-outline: 2
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
 ---
 
 # Proyectos y Herramientas para Kicad
@@ -32,7 +34,7 @@ Description
 
 Placa de desarrollo para Amplificador Integrado TDA75610
 
-[Ver](TDA75610.md)
+[Ver](TDA75610)
 [Repo](https://github.com/jackestar/TDA75610)
 
 </div>
@@ -45,7 +47,7 @@ Placa de desarrollo para Amplificador Integrado TDA75610
 
 Opto Aislador para driver de Cocina, con ESP01S
 
-[Ver](ESP01S-Kitchen-Driver.md)
+[Ver](ESP01S-Kitchen-Driver)
 [Repo](https://github.com/jackestar/ESP01S-Kitchen/)
 
 </div>
@@ -58,11 +60,11 @@ Opto Aislador para driver de Cocina, con ESP01S
 
 Sensor de Ultrasonido Compacto
 
-[Ver](./ultrasonic.md)
+[Ver](./ultrasonic)
 [Repo](https://github.com/jackestar/mini-ultrasonic)
 
 </div>
 
 ## Herramientas
 
-[Esquemático a SVG Consola](schematicToSVG.md)
+[Esquemático a SVG Consola](schematicToSVG)

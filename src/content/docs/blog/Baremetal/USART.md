@@ -2,19 +2,22 @@
 title: USART
 description: Proyecto Baremetal para manejar USART AVR
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Comunicación Serial (USART)
 
-<!-- <Badge type="danger" text="incompleto" /> -->
+<!-- <span class="badge badge--danger">incompleto</span> -->
 
 [Código Github](https://github.com/jackestar/Baremetal/tree/main/AVR/USART)
 
 Se busca mostrar los datos en una consola, para esto se utilizara el USART (Universal Synchronous/Asynchronous Receiver/Transmitter) que es un dispositivo de comunicación embebido en el microcontrolador que permite realizar comunicaciones sincrónicas o asincronías. Para comunicarse por protocolo USB (y poder ver los datos en una consola) se requiere un intermediario entre USART y USB (diferentes protocolos), para esto las placas tipo Arduino UNO incluyen un ATmega16U2, ATmega8U2, CH340G o CH341G (según la version o si es un clon) o parecido que hace de intermediario.
 
-> [!NOTE]
-> Los puertos RS-232 presentes por defecto en algunos computadores antiguos (o en algunos de uso industrial) pueden comunicarse por USART lo que evita el uso de un intermediario, pero dicho puerto no es tan común hoy en dia.
+:::note
+Los puertos RS-232 presentes por defecto en algunos computadores antiguos (o en algunos de uso industrial) pueden comunicarse por USART lo que evita el uso de un intermediario, pero dicho puerto no es tan común hoy en dia.
+:::
 
 ### Modo UART (Universal Asynchronous Receiver/Transmitter)
 
@@ -34,8 +37,9 @@ $$
 
 Según el datasheet para modo asíncrono normal con un 0.2% de error, por simplicidad no se configurara un bit de paridad
 
-> [!NOTE]
-> Cuando los estos puertos son configurados para USART se configuran como entrada y salida independientemente del valor de `DDDn`.
+:::note
+Cuando los estos puertos son configurados para USART se configuran como entrada y salida independientemente del valor de `DDDn`.
+:::
 
 ## Registros
 
@@ -384,9 +388,7 @@ void setupUSART() {
 
 Para las conversiones de tipo a char se genero una librería general
 
-::: code-group
-
-```c [USART.cc]
+```c title="USART.cc"
 #include "USART.h"
 
 USART::USART(uint32_t baud) {
@@ -424,7 +426,7 @@ void USART::sendFloat(float num, uint8_t mant) {
 
 ```
 
-```c [USART.h]
+```c title="USART.h"
 #ifndef USART_H
 #define USART_H
 
@@ -472,15 +474,11 @@ class USART {
 #endif // USART_H
 ```
 
-:::
-
 ## Librería (328p)
 
 para configurar la librería (setup y send char) para el atmega328p se agrega
 
-::: code-group
-
-```c [USART_328p.cc]
+```c title="USART_328p.cc"
 void USART::setup(uint32_t baud) {
   uint16_t ubrr = (F_CPU / (16UL * baud)) - 1;
   UBRR0 = ubrr;
@@ -497,5 +495,3 @@ void USART::sendChar(char c) {
   UDR0 = c;
 }
 ```
-
-:::

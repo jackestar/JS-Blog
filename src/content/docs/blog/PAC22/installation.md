@@ -3,7 +3,9 @@ title: Instalación PAC22 en ArchLinux
 description: Instalación basada en wine para PAC Project y PAC SIM
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Instalación en ArchLinux
@@ -14,8 +16,9 @@ Esta guía busca cubrir la instalación para PAC Project 9.4 y 9.3 para sistemas
 
 la suite de PAC 22 solo esta disponible en sistemas MS Windows, por lo que para ejecutar software windows en SO Linux es necesario el uso de una **Capa de Compatibilidad** para ejecutar estos programas. En este caso se usa *wine*
 
-> [!NOTE]
-> WINE "Wine Is Not an Emulator"
+:::note
+WINE "Wine Is Not an Emulator"
+:::
 
 Dependiendo de la distribución de Linux sera necesario instalar los siguientes paquetes: *wine* *wine gecko*, *wine mono* y *winetricks*.
 
@@ -50,7 +53,8 @@ pacman -S wine wine-gecko wine-mono winetricks lib32-gnutls cups lib32-libcups c
 
 Para poder exportar gráficos asi como el correcto funcionamiento en PAC display se recomienda la instalación y configuración del servicio de impresión CUPS, con `cups lib32-libcups`, asi como `cups-pdf` para exportar a pdf (este paquete es necesario para algunas impresoras)
 
-::: details Configuración de CUPS
+<details>
+<summary>Configuración de CUPS</summary>
 
 una vez instalado se debe arrancar el servicio
 
@@ -93,7 +97,7 @@ wineboot
 
 para mas información consulte [CUPS - ArchWiki](https://wiki.archlinux.org/title/CUPS)
 
-:::
+</details>
 
 para poder ejecutar correctamente la suite de PAC 22 se instalaran las siguientes librerías con winetricks, Visual C++ 6
 
@@ -111,7 +115,7 @@ wineboot
 
 </div>
 
-## Ejecución/Compatibilidad <Badge type="info" text="Wine 10.2" /><Badge type="info" text="Wayland" />
+## Ejecución/Compatibilidad <span class="badge badge--info">Wine 10.2</span><span class="badge badge--info">Wayland</span>
 
 ### PAC SIM
 
@@ -140,32 +144,44 @@ WINEDEBUG=-all wine "$HOME/.wine/drive_c/Program Files (x86)/Opto22/PAC Project 
 ### PAC Control
 
 #### 9.4
-> [!WARNING]
-> Parece funcionar con algunos bugs gráficos
+
+:::caution
+Parece funcionar con algunos bugs gráficos
+:::
 
 #### R10.5003
-> [!WARNING]
-> Parece funcionar con algunos bugs gráficos
+
+:::caution
+Parece funcionar con algunos bugs gráficos
+:::
 
 ### PAC Display Configurator
 
 #### 9.4
-> [!WARNING]
-> Parece funcionar con algunos bugs gráficos
+
+:::caution
+Parece funcionar con algunos bugs gráficos
+:::
 
 #### R10.5003
-> [!WARNING]
-> Parece funcionar con algunos bugs gráficos
+
+:::caution
+Parece funcionar con algunos bugs gráficos
+:::
 
 ### PAC Display Runtime
 
 #### 9.4
-> [!CAUTION]
-> No funciona del todo
+
+:::caution
+No funciona del todo
+:::
 
 #### R10.5003
-> [!WARNING]
-> Parece funcionar con algunos bugs gráficos
+
+:::caution
+Parece funcionar con algunos bugs gráficos
+:::
 
 # Referencia
 

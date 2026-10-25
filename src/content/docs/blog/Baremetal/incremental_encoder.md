@@ -2,7 +2,9 @@
 title: Incremental Encoder
 description: Proyecto Baremetal para manejar un Encoder Rotatorio Relativo
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Encoder Rotatorio Relativo (Incremental Encoder)
@@ -32,8 +34,9 @@ Para este proyecto se utilizara un encoder genérico con botón. Leds Rojos 3mm 
 |  2  | Señal B |
 |  3  | Vcc     |
 
-> [!NOTE]
-> Este pinout es arbitrario y puede variar según el datasheet del encoder
+:::note
+Este pinout es arbitrario y puede variar según el datasheet del encoder
+:::
 
 ![rotary encoder](img/Quadrature_Diagram.svg)
 
@@ -133,20 +136,24 @@ switch (step) {
 step = step_new;
 ```
 
->[!NOTE]
-> Para propósitos prácticos el estado de error se puede omitir
+:::note
+Para propósitos prácticos el estado de error se puede omitir
+:::
 
+:::note
 
->[!NOTE]
-> `x` se refiere al puerto (A, B o C) y `n` a la posición en especifico
+`x` se refiere al puerto (A, B o C) y `n` a la posición en especifico
+:::
 
->[!NOTE]
-> Al referirse a una dirección especifica se utiliza por ejemplo `PINxn` para `PINx`, `DDxn` para `DDRx`, `PORTxn` para `PORTx`. Estos se refieren a la misma dirección (es decir pueden ser usados para cualquier registro sin problemas), se usan de esta manera para facilitar la lectura del código. Ej. la librería io para Atmega328p `iom328p.h`
-> ```c
->#define PINB0 0
->#define DDB0 0
->#define PORTB0 0
->```
+:::note
+
+Al referirse a una dirección especifica se utiliza por ejemplo `PINxn` para `PINx`, `DDxn` para `DDRx`, `PORTxn` para `PORTx`. Estos se refieren a la misma dirección (es decir pueden ser usados para cualquier registro sin problemas), se usan de esta manera para facilitar la lectura del código. Ej. la librería io para Atmega328p `iom328p.h`
+```c
+#define PINB0 0
+#define DDB0 0
+#define PORTB0 0
+```
+:::
 
 ## Pasos para 1 revolución (vuelta)
 
@@ -154,8 +161,9 @@ Para el encoder de muestra se tienen 30 pasos para una revolución (se puede con
 
 ## Librería C++
 
-> [!NOTE]
-> Se eligió C++ sobre C (a pesar que las librerías de avr-lib están en C) ya que este puede manejar las librerías de C, ademas C++ tiene mejor manejo para objetos facilitando la escritura del código y evitando choque entre declaraciones de funciones (y nombres mas sencillos al usar métodos en vez de funciones)
+:::note
+Se eligió C++ sobre C (a pesar que las librerías de avr-lib están en C) ya que este puede manejar las librerías de C, ademas C++ tiene mejor manejo para objetos facilitando la escritura del código y evitando choque entre declaraciones de funciones (y nombres mas sencillos al usar métodos en vez de funciones)
+:::
 
 ### Estado
 
@@ -193,8 +201,9 @@ private:
     uint8_t step;
 ```
 
-> [!NOTE]
-> la resolución (numero pasos por vuelta) esta limitado a 8bits -> 255 pasos. de necesitar una resolución mayor se puede usar `uint16_t` o mayor
+:::note
+la resolución (numero pasos por vuelta) esta limitado a 8bits -> 255 pasos. de necesitar una resolución mayor se puede usar `uint16_t` o mayor
+:::
 
 la clase debe contar con un constructor, un método para leer el estado del encoder, opcionalmente manejar si la dirección genera incremento o decremento, y un método para reiniciar la posición y dirección si hace falta
 
@@ -267,9 +276,7 @@ OCR2A = encoder.position * 255 / encoder.stepPerRevolution;
 
 Se demuestra en base a la explicación anterior la librería resultante. El código es iterado y optimizado para su producción en el [repositorio de Github](https://github.com/jackestar/Baremetal/tree/main/AVR/RotaryEncoder/C) esta actualizado y revisado por lo que difiere de la version a continuación.
 
-::: code-group
-
-```cpp [rotaryEncoder.hpp]
+```cpp title="rotaryEncoder.hpp"
 
 #ifndef _ROTARY_ENCODER_
 
@@ -312,8 +319,7 @@ class RotaryEncoder
 #endif
 ```
 
-
-```cpp [rotaryEncoder.cpp]
+```cpp title="rotaryEncoder.cpp"
 #include "rotaryEncoder.hpp"
 
 RotaryEncoder::RotaryEncoder(volatile uint8_t *pinAPort, uint8_t pinABit, volatile uint8_t *pinBPort, uint8_t pinBBit, uint8_t stepPerRevolution)
@@ -412,13 +418,9 @@ void RotaryEncoder::reset() {
 }
 ```
 
-:::
-
 ### Test
 
-::: code-group
-
-```cpp [example_rotary_encoder.cc]
+```cpp title="example_rotary_encoder.cc"
 #ifndef __AVR_ATmega328P__
     #define __AVR_ATmega328P__
 #endif
@@ -479,8 +481,6 @@ int main(void)
 }
 
 ```
-
-:::
 
 ### Video de Demostración
 

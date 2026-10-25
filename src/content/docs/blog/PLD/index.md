@@ -3,8 +3,10 @@ title: PLD
 description: Estudio de tecnologías PLD
 
 lastUpdated: true
-outline: deep
-sidebar: true
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+
 ---
 
 # PLD (CPLD-EPLD-FPGA)

@@ -3,13 +3,16 @@ title: Guías Electronica
 description: Abstracciones para la rápida resolución de circuitos eléctricos
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Modelo de Ebers-Moll
 
-> [!NOTE]
-> Esta deducción busca modelar el transistor con el comportamiento conocido del mismo, no describir el comportamiento del transistor con el modelo
+:::note
+Esta deducción busca modelar el transistor con el comportamiento conocido del mismo, no describir el comportamiento del transistor con el modelo
+:::
 
 Un transistor BJT consiste en la union de tres materiales semiconductores (NPN o PNP), para corriente continua y pequeña señal se puede modelar como un par de diodos y fuentes de corriente, para ello se parte del **Modelo de Shockley** para el diodo
 
@@ -61,9 +64,10 @@ Tomando $\beta_F$ como el parámetro $h_{fe}$
 
 Modelando el transistor para su funcionamiento en las zonas de corte, zona de saturación y zona lineal. Donde para un transistor NPN la tension $V_{BE}$ es positiva y la tension $V_BC$ es negativa. Por lo que para el segundo termino de las Ec. (a) y (b) el exponencial siempre toma valores entre 0 y 1. Sin importar que tan grande o pequeño sea $V_{BC}$
 
-> [!NOTE]
-> $a^0=1$ donde $0$ representa un numero arbitrariamente pequeño
-> $a^{-\infty}=0$ donde $\infty$ representa un numero arbitrariamente grande
+:::note
+$a^0=1$ donde $0$ representa un numero arbitrariamente pequeño
+$a^{-\infty}=0$ donde $\infty$ representa un numero arbitrariamente grande
+:::
 
 $$
 \begin{equation}
@@ -87,7 +91,9 @@ $$
 
 Si se considera útil toda corriente ($I_E$) $>1\mu A$ se tiene que si $I_D=I_S\cdot X$ donde $X=e^\frac{V_{BE}}{n\cdot V_T}-1$ entonces $1\mu=1p\cdot X \to X=1M$ por lo que el termino exponencial debe ser $1M-1$, lo cual es mucho mayor a 1. Con esta analogía esta simplificación sirve para cualquier corriente $I_D>>I_S$
 
-:::details Demostración exhaustiva
+<details>
+<summary>Demostración exhaustiva</summary>
+
 $$
 \begin{gather}
 1\mu\approx I_{E_S}(e^\frac{V_{BE}}{n\cdot V_T}-1)\\
@@ -103,7 +109,8 @@ e^\frac{V_{BE}}{n\cdot V_T} = 1000001
 $$
 
 Por lo que para el termino $(e^\frac{V_{BE}}{n\cdot V_T}-1)$ $e^\frac{V_{BE}}{n\cdot V_T}>>1$ por lo que se simplifica dicho termino.
-:::
+
+</details>
 
 $$
 \begin{gather}

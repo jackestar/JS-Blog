@@ -3,7 +3,9 @@ title: Blink build-in LED
 description: El programa mas básico para comprobar el funcionamiento en una placa de desarrollo. Hacer parpadear a intervalos regulados el LED integrado.
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Blink build-in LED
@@ -16,7 +18,7 @@ El programa mas básico para comprobar el funcionamiento en una placa de desarro
 
 Todos conocen el tradicional programa para hacer que el led integrado de un Arduino parpadee.
 
-```C
+```c
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 }
@@ -42,7 +44,6 @@ pero no necesariamente es la forma mas optima de hacerlo (en términos de Arduin
 * esperar 1seg
 * repetir
 
-
 ```c
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -60,7 +61,7 @@ void loop() {
 
 **Para el codigo original**
 
-```asm:line-numbers
+```asm
 00000000 <.sec1>:
    0:	0c 94 5c 00 	jmp	0xb8	;  0xb8
    4:	0c 94 6e 00 	jmp	0xdc	;  0xdc
@@ -439,7 +440,7 @@ void loop() {
 
 **Para el codigo optimizado**
 
-```asm:line-numbers
+```asm
 00000000 <.sec1>:
    0:	0c 94 61 00 	jmp	0xc2	;  0xc2
    4:	0c 94 73 00 	jmp	0xe6	;  0xe6
@@ -950,9 +951,10 @@ la frecuencia determina cuantas instrucciones por segundo puede realizar el micr
 
 Primero se declara una variable temporal de tipo `uint32_t` o `unsigned int` para 32bits, se especifica esto para tener explícitamente claro el tamaño de la variable ya que el microcontrolador es de 8bits y para procesar números grandes debe ejecutar varios ciclos (ejecutar varias instrucciones), y para evitar ambigüedades durante la compilación.
 
-> [!note]
-> los operadores tienen un orden de prioridad en que son procesados. Para los siguientes operadores en orden de prioridad se tiene
-> `()`, `[]`, `*`, `/`, `%`, `+`, `-`, `=`, `,`. evaluados de izquierda a derecha.
+:::note
+los operadores tienen un orden de prioridad en que son procesados. Para los siguientes operadores en orden de prioridad se tiene
+`()`, `[]`, `*`, `/`, `%`, `+`, `-`, `=`, `,`. evaluados de izquierda a derecha.
+:::
 
 naturalmente la operación a realizar seria la siguiente
 
@@ -974,8 +976,9 @@ uint32_t ciclos = ((F_CPU / 1000ULL) * (ms)) / inst;
 
 mientras no se conozca el numero de instrucciones se toma `inst` como 1
 
-> [!note]
-> `ULL` es el sufijo literal para unsigned long long
+:::note
+`ULL` es el sufijo literal para unsigned long long
+:::
 
 lo siguiente es hacer un bucle que cuente dicha cantidad de ciclos
 
@@ -988,7 +991,7 @@ while (ciclos) {
 
 Aquí surge otro problema, para el compilador esta operación no hace nada, asignar una variable y hacer un bucle que solo opere sobre esa variable no altera al resto del codigo por lo que al compilar se ignora esta operación. para evadir esto una manera es inyectando una instrucción en assembler con la función `asm()`, dicha instrucción es `nop` cuya función es hacer un ciclo sin ninguna operación lo que resulta en el siguiente codigo:
 
-```c{28}
+```c {28}
 inline void delay(const unsigned long long ms) {
     // ciclos es calculado en tiempo de compilación
     uint32_t ciclos = ((F_CPU / 1000ULL) * (ms)) / 1ULL; // Overflow
@@ -999,18 +1002,21 @@ inline void delay(const unsigned long long ms) {
 }
 ```
 
-> [!NOTE]
-> la función delay se hace `inline` ya que al ser usada una sola vez no hace falta llamar una función, ademas genera codigo estático lo que evita (en este caso) que el microcontrolador haga cálculos innecesarios.
+:::note
+la función delay se hace `inline` ya que al ser usada una sola vez no hace falta llamar una función, ademas genera codigo estático lo que evita (en este caso) que el microcontrolador haga cálculos innecesarios.
+:::
 
-> [!IMPORTANT]
-> Al compilar sin optimizar (Ej. argumentos `-O3`, `-Os` en gcc) la función `delay` con `inline` puede generar errores de definición, para corregirlo se puede convertir la función en `static`, o en su defecto usar una función normal.
->```c
->static inline void delay(const unsigned long long);
->```
+:::tip
+
+Al compilar sin optimizar (Ej. argumentos `-O3`, `-Os` en gcc) la función `delay` con `inline` puede generar errores de definición, para corregirlo se puede convertir la función en `static`, o en su defecto usar una función normal.
+```c
+static inline void delay(const unsigned long long);
+```
+:::
 
 el cual genera el siguiente codigo en assembler
 
-```asm{6-10}
+```asm {6-10}
   ...
    a:	80 e0       	ldi	r24, 0x00	; 0
    c:	94 e2       	ldi	r25, 0x24	; 36
@@ -1044,7 +1050,7 @@ las lineas resaltadas son la función delay, contiene las siguientes instruccion
 
 Eso da un total de 7 instrucciones por ciclo por lo que el codigo queda asi
 
-```c{3}
+```c {3}
 inline void delay(const unsigned long long ms) {
     // temp es calculado en tiempo de compilación
     uint32_t ciclos = ((F_CPU / 1000ULL) * (ms)) / 7ULL; // Overflow
@@ -1150,8 +1156,9 @@ compilando con el compilador `avr-gcc` con el argumento `-O3`
 
 A simple vista son menos lineas de codigo que su contraparte en Arduino, lo cual es lógico para un codigo tan sencillo, pero faltan ciertas consideraciones como el vector de interrupciones.
 
-> [!WARNING]
-> el codigo sin optimizar resulta en un codigo en assembler de ~400 lineas
+:::caution
+el codigo sin optimizar resulta en un codigo en assembler de ~400 lineas
+:::
 
 ## Rust en baremetal
 

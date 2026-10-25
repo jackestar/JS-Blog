@@ -3,7 +3,9 @@ title: TDA75610 Development Board
 description: Placa de desarrollo para Amplificador Integrado TDA75610
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Mini Ultrasonico HC-SR04 equivalente
@@ -12,17 +14,19 @@ El objetivo es crear una versión mini del módulo HC-SR04. La primera versión 
 
 [Repo](https://github.com/jackestar/mini-ultrasonic)
 
-
 ## Esquemático
 
 [Schematic](https://drive.google.com/file/d/1bva3lENikmoGt62UBOM4qWOGih0VifjZ/view)
 
 ## Modelo 3D
 
-<script setup>
-import previewImg from './img/UltraSonic.png'
-</script>
-
-<ClientOnly>
-  <Viewer3D modelUrl="/models/UltraSonic.glb" :previewImg="previewImg" />
-</ClientOnly>
+<!-- The <model-viewer> web component is loaded globally from astro.config. -->
+<model-viewer
+  src="/models/UltraSonic.glb"
+  poster="/models/UltraSonic.png"
+  alt="Mini Ultrasonico HC-SR04"
+  camera-controls
+  auto-rotate
+  shadow-intensity="1"
+  loading="lazy">
+</model-viewer>

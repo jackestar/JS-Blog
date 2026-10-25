@@ -2,12 +2,14 @@
 title: HC-SR04
 description: Proyecto Baremetal para manejar un modulo HC-SR04
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Modulo HC-SR04
 
-<Badge type="danger" text="incompleto" />
+<span class="badge badge--danger">incompleto</span>
 
 [Código Github](https://github.com/jackestar/Baremetal/tree/main/AVR/HC-SR04)
 
@@ -48,7 +50,7 @@ $$
 Units = \frac{Echo_{Max}-Echo_{Min}}{Echo'_{\Delta}} \approx 1625
 $$
 
-::: tip
+:::tip
 1625 entra dentro de un uint16 para un rango completo, si el rango de medición es de ~70cm puede entrar dentro de un uint8 para simplificar el computo
 :::
 
@@ -61,7 +63,7 @@ Echo_{\Delta Fix}=Echo'_{\Delta} - Inst_{time}
 \end{gather}
 $$
 
-::: warning
+:::caution
 Dicha operación es bloqueante y pierde precision si alguna interrupción se ejecuta.
 :::
 
@@ -69,9 +71,7 @@ Dicha operación es bloqueante y pierde precision si alguna interrupción se eje
 
 para obtener la cantidad de ciclos se compila el siguiente código de prueba (para units de 16bits) y se extrae el siguiente segmento del código en ASM
 
-::: code-group
-
-```c [test.c]
+```c title="test.c"
 #ifndef __AVR_ATmega328P__
 #define __AVR_ATmega328P__
 #endif
@@ -134,7 +134,7 @@ int main() {
 }
 ```
 
-```asm [test.asm]
+```asm title="test.asm"
   90:	19 9b       	sbis	0x03, 1	   ; 3     // Wait for Echo pin to go HIGH
   92:	16 c0       	rjmp	.+44     	;  0xc0 // If not, loop
   94:	8f e2       	ldi	r24, 0x2F	; 47    // Setup for echo timing loop (units counter)
@@ -157,11 +157,10 @@ int main() {
   c0:	00 00       	nop               ; Loop waiting for echo
   c2:	e6 cf       	rjmp	.-52     	;  0x90
 ```
-:::
 
 Contando del bucle del delay la declaración `LDI` y el `NOP` que se ejecutan una sola vez por bucle se tiene un total de 13 ciclos (mas 3 ciclos de configuración)
 
-::: info
+:::note
 Si se toma un units de 8bits (`uint8_t`) el compilador usara la instrucción `SUBI` o `DEC` en vez de `SBIW`. tanto `SUBI` como `DEC` utilizan 1 ciclo por instrucción envés de 2, por lo que el conteo se reduce a 12 ciclos
 :::
 
@@ -185,9 +184,7 @@ $$
 
 Esto genera un problema ya que esto son < de 3 ciclos en tiempo del procesador (para 16Mhz) comparado con las 13 instrucciones que ya incluye el ciclo, por lo que se podría hacer sin delay se plantea el siguiente código para obtener la cantidad de ciclos
 
-::: code-group
-
-```c [test.c]
+```c title="test.c"
 #ifndef __AVR_ATmega328P__
 #define __AVR_ATmega328P__
 #endif
@@ -224,7 +221,7 @@ int main()
 }
 ```
 
-```asm [test.asm]
+```asm title="test.asm"
 ...
 ; --- Espera a que Echo sea alto ---
 ; while (!(PINB & (1 << PINB1))) asm("nop");
@@ -249,8 +246,6 @@ int main()
   a4:   f9 cf           rjmp    .-14        ;  0x98 ; repite bucle
 ...
 ```
-
-:::
 
 Resultando en 9 ciclo por ciclo y 4 ciclos iniciales. Al conocer el tiempo por cada ciclo y la velocidad obtenemos la distancia por cada ciclo
 

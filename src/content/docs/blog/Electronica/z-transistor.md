@@ -3,21 +3,28 @@ title: Guías Electronica
 description: Abstracciones para la rápida resolución de circuitos eléctricos
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 ## Impedancia FET ($V_G=V_D$)
 
 ![Impedancia](img/impedancia-vg_vs.svg)
 
-> [!NOTE]
-> La impedancia es independiente de la polaridad y si es visto desde el *Source* o desde el *Gate-Drain*, pero a propósito de comprobarlo se analizaran ambos casos
+:::note
+La impedancia es independiente de la polaridad y si es visto desde el *Source* o desde el *Gate-Drain*, pero a propósito de comprobarlo se analizaran ambos casos
+:::
 
-> [!NOTE]
-> El análisis también se puede llevar realizando una transformación de fuente
+:::note
 
-> [!NOTE]
-> El análisis es independiente del tipo del FET (canal-N o canal-P)
+El análisis también se puede llevar realizando una transformación de fuente
+:::
+
+:::note
+
+El análisis es independiente del tipo del FET (canal-N o canal-P)
+:::
 
 ![Impedancia](img/impedancia-vg_vsAC.svg)
 
@@ -77,5 +84,6 @@ $$
 
 ## Impedancia BJT ($V_B=V_C$)
 
-> [!CAUTION]
-> En construcción
+:::caution
+En construcción
+:::

@@ -2,7 +2,9 @@
 title: Stepper Driver (ESP con idf)
 description: Driver para manejar motor stepper para idf con timers
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Stepper Driver

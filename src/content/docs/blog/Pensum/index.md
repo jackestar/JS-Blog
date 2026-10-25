@@ -3,7 +3,9 @@ title: PensumJS
 description: Organizador de Pensum Académico
 
 lastUpdated: true
-outline: 2
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
 ---
 
 # PensumJS

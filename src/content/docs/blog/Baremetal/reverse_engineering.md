@@ -2,7 +2,9 @@
 title: Introducción
 description: Introducción a la sección de ingeniería inversa
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Ingeniería Inversa y Documentación

@@ -3,7 +3,9 @@ title: Ejercicios Electronica Part. 1
 description: Ejercicios de Electronica con planteamiento de resolución rápida con trucos sencillos ejercicios complejos, sin tener que recurrir a herramientas de calculo complejo o plantear sistemas complejos de resolución
 
 lastUpdated: true
-outline: deep
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 
 # Diodos
@@ -26,14 +28,16 @@ Donde $Vi$ se describe como una señal triangular de periodo $T$ de $8ms$ y Tens
 
 ![Pregunta 1b](./img/Parcial%201-1a.png)
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 **Simplificación**
 
 El primera paso es simplificar el circuito si es posible. El teorema de Thevenin dice:
 
-> [!NOTE]
-> "Cualquier red eléctrica lineal que contenga únicamente fuentes de tensión, fuentes de corriente y resistencias puede sustituirse en los terminales A–B por una combinación equivalente de una fuente de tensión $V_{th}$ en una conexión en serie con una resistencia $R_{th}$".
+:::note
+"Cualquier red eléctrica lineal que contenga únicamente fuentes de tensión, fuentes de corriente y resistencias puede sustituirse en los terminales A–B por una combinación equivalente de una fuente de tensión $V_{th}$ en una conexión en serie con una resistencia $R_{th}$".
+:::
 
 Lo que significa que si una parte del circuito comprendida por dos terminales es independiente de la otra parte y solo contiene elementos lineales se puede simplificar por un equivalente de Thevenin.
 
@@ -58,15 +62,15 @@ Dichas formulas son fácilmente deducibles con análisis de circuito.
 
 Al tener todas las resistencias el mismo valor se asigna la constante $R$ para simplificar los cálculos. Primero se transforma la fuente $Vi$ que esta en serie con $R1$ a su equivalente con una fuente de corriente $Ia$ de valor $Ia = Vi/R$ en paralelo con la resistencia $R1$. Ahora $R1$ y $R2$ están en paralelo y tienen el mismo valor.
 
-> [!NOTE]
-> Para $n$ resistencias en paralelo con valor $R$, su equivalente es una resistencia de valor $R/n$
+:::note
+Para $n$ resistencias en paralelo con valor $R$, su equivalente es una resistencia de valor $R/n$
+:::
 
 En base la formula general para resistencias en paralelo se tiene que
 
 $$
 \begin{gather}
 R_{eq} = \frac{1}{(\frac{1}R + \frac{1}R)}\\
-
 
 R_{eq} = \frac{R}2
 \end{gather}
@@ -77,25 +81,29 @@ Ahora el paralelo de $R1$ y $R2$ se asigna una resistencia equivalente $Ra$ de v
 ![Thevenin Procedimiento](./img/parcial1-1c.svg)
 ![Thevenin Procedimiento](./img/parcial1-1d.svg)
 
-> [!TIP]
->El objetivo de este procedimiento es poder realizar simplificaciones rápidas sin tener que plantear sistemas de ecuaciones, de manera que se pueda resolver el ejercicio con un calculadora de sencilla o mentalmente.
+:::tip
+El objetivo de este procedimiento es poder realizar simplificaciones rápidas sin tener que plantear sistemas de ecuaciones, de manera que se pueda resolver el ejercicio con un calculadora de sencilla o mentalmente.
+:::
 
 Lo que resulta en una $R_{th}$ de valor $600Ω$, y para un valor de tension pico pico $Vpp_th$ de $4v$ lo que se traduce en un voltaje pico $Vp_th$ de $2v$ y $-2v$ en el ciclo positivo y ciclo negativo respectivamente
-
 
 **Resolución**
 
 Para conocer el comportamiento de $Vo$ y poder graficar se analizan las 3 ramas. considerando lo siguiente.
 
-> [!NOTE]
-> Se consider un modelo de diodo simplificado donde el diodo conduce corriente en polarización directa cuando la tension entre sus terminales alcanza una tension $Vk$, equivalente a una fuente de tension polarizada inversamente. Y cuando la tension entre sus terminales no alcanza la corriente de polarización o esta polarizada inversamente se comporta como un circuito abierto.
+:::note
+Se consider un modelo de diodo simplificado donde el diodo conduce corriente en polarización directa cuando la tension entre sus terminales alcanza una tension $Vk$, equivalente a una fuente de tension polarizada inversamente. Y cuando la tension entre sus terminales no alcanza la corriente de polarización o esta polarizada inversamente se comporta como un circuito abierto.
+:::
 
-> [!NOTE]
-> Al no estar indicado en el ejercicio se asumen diodos de silicio con valor $Vk = 0.7v$
+:::note
 
-> [!NOTE]
-> Para los diodos Zener se tiene el mismo comportamiento con la adición que al superar el umbral de $Vz$ en polarización inversa el diodo conduce
+Al no estar indicado en el ejercicio se asumen diodos de silicio con valor $Vk = 0.7v$
+:::
 
+:::note
+
+Para los diodos Zener se tiene el mismo comportamiento con la adición que al superar el umbral de $Vz$ en polarización inversa el diodo conduce
+:::
 
 ![Diodo](./img/Diode_symbol.svg)
 
@@ -105,8 +113,9 @@ Para la primera rama en el **ciclo positivo** para polarizar el diodo se debe su
 
 Para la segunda rama en el **ciclo positivo** el diodo no conduce, y en el **ciclo negativo** a partir de los $-2.7v$ el diodo conduce, después de superar la tension de polarización del diodo y de la fuente de tension.
 
-> [!TIP]
-> se denota que la simetría inversa que poseen las primeras dos ramas
+:::tip
+se denota que la simetría inversa que poseen las primeras dos ramas
+:::
 
 Para la tercera rama el diodo Zener en el **ciclo positivo** al superar los $0.7v$ el diodo conduce y para el **ciclo negativo** a partir de los $-5v$ el diodo conduce.
 
@@ -156,7 +165,7 @@ $$
 
 ![Gráfica Vo(Vi)](img/vivo.svg)
 
-:::
+</details>
 
 ### 2. Determine que compuerta lógica digital forman estos circuitos, considere A y B entradas lógicas.
 $1 = 5v (H)$ ; $0 = 0v (L)$
@@ -173,7 +182,8 @@ $1 = 5v (H)$ ; $0 = 0v (L)$
 
 > b. Si los diodos fueran de silicio siguen funcionando ambas compuertas?
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 Análisis Para determinar el tipo de compuerta simplemente se realiza la tabla de la verdad para cada caso tomando $A$ y $B$ como entrada y $V_o$ como salida.
 
@@ -317,12 +327,13 @@ En el caso de la compuerta `b` si alguna entrada es $0v$ la corriente va desde l
 
 El umbral entre un $1$ y $0$ lógico viene definido por la tecnología de dicha compuerta, tanto para la tecnología TTL y CMOS, cumplen para los valores de entrada (es decir para la tension aplicada a la entrada de otra compuerta), pero no cumple con las especificaciones de margenes de ruido para la tension de salida, de la misma.
 
-> [!NOTE]
-> [1] J. F. Wakerly, Diseño Digital. Pearson Educación, 2001.
+:::note
+[1] J. F. Wakerly, Diseño Digital. Pearson Educación, 2001.
+:::
 
 A términos de un circuito digital se puede decir que sigue funcionando como compuerta, mas no cumple con las especificaciones TTL y CMOS.
 
-:::
+</details>
 
 ### 3. Una fuente DC esta formada por un transformador de relación $10:1$, un puente rectificador de diodos soportan un max $2A$, un condensador de $47\mu F$ y una carga de $10K\Omega$.
 > a. Dibuje el circuito para que la salida sea positiva. Determine el valor de Vo y el voltaje de rizo, sabiendo que $Vr=\frac{4V_o}{fcr}$
@@ -331,13 +342,17 @@ A términos de un circuito digital se puede decir que sigue funcionando como com
 
 > c. Que ocurre si el capacitor a la salida tiene un valor muy pequeño
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
-> [!NOTE]
-> La fuente recibe a la entrada $120v_{rms}\space⏦$ AC a $60hz$
+:::note
+La fuente recibe a la entrada $120v_{rms}\space⏦$ AC a $60hz$
+:::
 
-> [!NOTE]
-> Se toman todos los diodos bajo el modelo simplificado, con diodos de silicio
+:::note
+
+Se toman todos los diodos bajo el modelo simplificado, con diodos de silicio
+:::
 
 ![Pregunta 3](./img/parcial1-3a.svg)
 
@@ -424,8 +439,9 @@ Para obtener un voltaje de $-5v$ (se tomara como voltaje pico) se pueden hacer u
 
 el primer método consiste en utilizar un divisor de tension capacitivo a la entrada, para asi no tener perdidas de potencia.
 
->[!NOTE]
-> Se toman los capacitores como reactancias
+:::note
+Se toman los capacitores como reactancias
+:::
 
 ![Pregunta 3b Método 1](./img/parcial1-3b.svg)
 
@@ -442,8 +458,9 @@ V_{C_2}=\frac{Z_2\cdot V_i}{Z_1+Z_2} \tag{1.2}
 \end{gather}
 $$
 
->[!NOTE]
-> Esta formula se obtiene con LVK y Ohm.
+:::note
+Esta formula se obtiene con LVK y Ohm.
+:::
 
 Donde $V_{C_1}$ es la tension al primario del transformador, al analizar la malla la fuente de tension y los dos capacitores por LVK (Kirchhoff)
 
@@ -476,8 +493,9 @@ V_{C_1}=\frac{C_2\cdot V_i}{C_1+C_2} \tag{3.2}
 \end{gather}
 $$
 
->[!NOTE]
-> la Eq $(3.2)$ se obtiene de la misma manera con las ecuaciones Eq. $(1.2)$ y $(2)$
+:::note
+la Eq $(3.2)$ se obtiene de la misma manera con las ecuaciones Eq. $(1.2)$ y $(2)$
+:::
 
 Con los valores de $V_{C_2}$ y $V_{C_2}$ obtenemos
 
@@ -535,16 +553,15 @@ $$
 V_o=-5.0039±0.1774V
 $$
 
-
-
 *Segundo Método*
 
 ![Método 2](img/parcial1-3c.svg)
 
 Otro método valido es poner un diodo zener a la salida de puente rectificador
 
-> [!NOTE]
-> Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuración cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
+:::note
+Este acercamiento tiene algunas desventajas, requiere encontrar un diodo zener o una configuración cuya caída de tension sea la que se busca, ademas que los diodos zener no suelen soportar altas corrientes
+:::
 
 Se conoce que valor pico a la salida del puente rectificador es $V_{O_{p}}=120\sqrt2 - 1.4$ de la primera parte del problema, por lo que se tiene que:
 
@@ -582,11 +599,11 @@ $$
 
 Si el capacitor de salida es de valor muy pequeño el rizo se hace muy grande y el voltage de salida pasa a tener una variación notable.
 
-:::
+</details>
 
 ### 4. Dado el regulador zener
 
-<!-- <Badge type="danger" text="incompleto" /> -->
+<!-- <span class="badge badge--danger">incompleto</span> -->
 
 ![Diagrama Ejercicio 4](img/parcial1-4a.svg)
 
@@ -608,7 +625,8 @@ $$
 
 > Que ocurre si $V_i$ aumenta al doble de su valor máximo
 
-:::details Respuesta
+<details>
+<summary>Respuesta</summary>
 
 El limitante para el valor de $R_P$ es la potencia maxima que soporta el zener
 
@@ -618,8 +636,10 @@ P_Z=V_Z\cdot I_{ZM}\\
 I_{ZM}=200mA
 \end{gather}
 $$
-> [!NOTE]
-> El circuito esta compuestos por dos nodos por donde pasan las mismas corrientes, por lo que se referirá al "nodo" como cualquiera de estos
+
+:::note
+El circuito esta compuestos por dos nodos por donde pasan las mismas corrientes, por lo que se referirá al "nodo" como cualquiera de estos
+:::
 
 por el nodo pasa las siguientes corrientes
 
@@ -646,11 +666,14 @@ R_p = 50\Omega
 \end{gather}
 $$
 
-> [!Warning]
-> Al no tener carga el diodo Zener estará disipando 1W lo cual no es un buen diseño la $R_p$ calculada representa el valor mínimo que puede tomar esta resistencia para un diseño real se debe tomar en cuenta un $R_p$ adecuada considerando la carga minima que va a tomar el circuito
+:::caution
+Al no tener carga el diodo Zener estará disipando 1W lo cual no es un buen diseño la $R_p$ calculada representa el valor mínimo que puede tomar esta resistencia para un diseño real se debe tomar en cuenta un $R_p$ adecuada considerando la carga minima que va a tomar el circuito
+:::
 
-> [!Warning]
-> También se debe tener en cuenta la potencia disipada por la resistencia $R_p$ la cual es $(V_{i_{max}}-V_Z)\cdot I_{ZM}=2W$ lo cual es una potencia considerables. Al no tener carga todo el circuito disipa 3W de potencia
+:::caution
+
+También se debe tener en cuenta la potencia disipada por la resistencia $R_p$ la cual es $(V_{i_{max}}-V_Z)\cdot I_{ZM}=2W$ lo cual es una potencia considerables. Al no tener carga todo el circuito disipa 3W de potencia
+:::
 
 En base a estos valores de puede determinar los valores mínimos y máximos que puede tomar la carga, para el modelo anterior se considera el circuito sin carga es decir con una carga de resistencia infinita, por lo que no tiene limite superior, por otro lado el diodo zener requiere una corriente minima $I_{ZK}$ (Corriente de Codo (*knee current*)) para operar, la cual suele ser entre el 5% y 10% de la corriente maxima $I_{ZM}$. Para este caso se toma como criterio un 10%
 
@@ -680,8 +703,9 @@ Con estos valores se tiene que $R_L=[\frac{250}{9},\infty]$ por lo que
 
 **Si $R_L=5k\Omega$** el circuito regula
 
-> [!NOTE]
-> al estar las resistencias dentro del rango no hace falta verificar $P_Z$, $V_L$ o $I_{ZK}$
+:::note
+al estar las resistencias dentro del rango no hace falta verificar $P_Z$, $V_L$ o $I_{ZK}$
+:::
 
 **Si $V_i$=30v**
 
@@ -722,6 +746,6 @@ R_{L_{min}}=\frac{125}{1}\approx10.417\Omega
 \end{gather}
 $$
 
-:::
+</details>
 
 ---
