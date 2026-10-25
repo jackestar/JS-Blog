@@ -8,6 +8,8 @@
     "moduleResolution": "bundler",
     "rootDir": ".",
     "outDir": "build",
+    "declaration": false,
+    "composite": false,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"

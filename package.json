@@ -21,9 +21,17 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
+    "@astrojs/markdown-satteri": "^0.4.3",
+    "@astrojs/starlight": "^0.42.6",
+    "@google/model-viewer": "^4.4.0",
     "astro": "^7.3.8",
     "astro-icon": "^1.2.0",
-    "pcb-trace-animation": "^2.0.4"
+    "mathjax": "^4.1.3",
+    "pcb-trace-animation": "^2.0.4",
+    "satteri": "^0.10.5",
+    "sharp": "^0.35.5",
+    "starlight-image-zoom": "^0.16.2",
+    "starlight-sidebar-topics": "^0.9.0"
   },
   "allowScripts": {
     "esbuild": true

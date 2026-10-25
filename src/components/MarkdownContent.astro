@@ -1,0 +1,16 @@
+---
+import StarlightMarkdownContent from '@astrojs/starlight/components/MarkdownContent.astro';
+import ImageZoom from 'starlight-image-zoom/components/ImageZoom.astro';
+---
+
+<ImageZoom />
+<StarlightMarkdownContent>
+  <slot />
+  <script>
+    // The 3D viewer is only needed on the pages that embed a model, so the
+    // component is loaded on demand instead of on every page.
+    if (document.querySelector('model-viewer')) {
+      await import('@google/model-viewer');
+    }
+  </script>
+</StarlightMarkdownContent>

@@ -13,6 +13,8 @@ export default [
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parserOptions: {
+        // `gts` enables `project`, which conflicts with `projectService`.
+        project: false,
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },

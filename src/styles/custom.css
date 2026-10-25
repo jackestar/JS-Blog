@@ -1,0 +1,168 @@
+/* Custom styles ported from the VitePress theme. */
+
+/* Badges (replaces the VitePress `<Badge>` component). */
+.badge {
+	display: inline-block;
+	padding: 0.1em 0.6em;
+	border-radius: 0.75em;
+	font-size: 80%;
+	margin:0 1em 0 0;
+	line-height: 1.4;
+	vertical-align: middle;
+	border: 1px solid var(--sl-color-accent-low);
+	background-color: var(--sl-color-accent-low);
+	color: var(--sl-color-white);
+	white-space: nowrap;
+}
+
+.badge--info {
+	border-color: var(--sl-color-accent);
+	background-color: var(--sl-color-accent);
+}
+
+.badge--tip {
+	border-color: var(--sl-color-green);
+	background-color: var(--sl-color-green);
+}
+
+.badge--danger {
+	border-color: var(--sl-color-red);
+	background-color: var(--sl-color-red);
+}
+
+/* Papers (papers.md) */
+.JSPaper .JSDocument,
+.JSElement {
+	border: 0.2em solid var(--sl-color-gray-5);
+	background-color: var(--sl-color-gray-6);
+	border-radius: 1.5em;
+	padding: 1.5em;
+	margin: 1em 0;
+	transition: 0.3s ease;
+}
+
+.JSPaper .JSDocument:hover,
+.JSElement:hover {
+	border-color: var(--sl-color-accent);
+	transition: 0.3s ease;
+}
+
+.JSPaper .JSDocument h2 {
+	border: none;
+	margin: 0;
+}
+
+.JSPaper .JSDocument p {
+	text-align: justify;
+}
+
+.JSPaper .JSDocument p em {
+	color: var(--sl-color-accent);
+}
+
+.JSPaper .JSDocument p > a,
+.JSElement p a {
+	padding: 0.4em 0.95em;
+	margin-inline: 0.3em;
+	color: var(--sl-color-white);
+	text-decoration: none;
+	background-color: var(--sl-color-accent);
+	border-radius: 0.75em;
+	transition: 0.2s ease;
+}
+
+.JSElement a:not(:first-of-type) {
+	background-color: var(--sl-color-accent-high);
+	color: var(--sl-color-white);
+}
+
+.JSElement a:not(:first-of-type):hover {
+	background-color: var(--sl-color-accent-high);
+}
+
+.JSPaper .JSDocument p > a:hover,
+.JSElement p a:hover {
+	background-color: var(--sl-color-accent-high);
+	transition: 0.2s ease;
+}
+
+.JSElement h3 {
+	margin: 0;
+}
+
+.JSElement img {
+	border: none !important;
+	border-radius: 2em !important;
+}
+
+.JSElement p:has(img) {
+	align-items: center;
+}
+
+/* Images */
+.sl-markdown-content img {
+	background: #fff;
+	border-radius: 0.25em;
+	border: 10px solid #fff;
+	color: #000;
+	text-align: center;
+}
+
+.sl-markdown-content p:has(img) {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.sl-markdown-content p img {
+	margin-bottom: 0.25em;
+}
+
+/* Long code blocks (e.g. the AVR listings) stay scrollable. */
+.longBlock {
+	overflow-y: scroll;
+	max-height: 45vh;
+}
+
+.longBlock .expressive-code {
+	max-height: none;
+}
+
+/* Terminal style code blocks: add the `$` prompt. */
+.expressive-code .frame.is-terminal pre[data-language='console'] .ec-line:first-child .code::before {
+	content: '$ ';
+	user-select: none;
+	opacity: 0.6;
+}
+
+/* Math */
+mjx-container {
+	overflow-x: unset;
+}
+
+mjx-container[display='true'] {
+	margin: 1em 0;
+}
+
+/* The 3D viewer. */
+model-viewer {
+	width: 100%;
+	max-width: 640px;
+	height: 480px;
+	margin: 1em auto;
+	display: block;
+	background-color: var(--sl-color-gray-6);
+	border-radius: 0.5em;
+}
+
+.MathJax svg {
+  display: inline !important;
+}
+
+.starlight-image-zoom-image {
+	background: #fff;
+}
+
+.starlight-sidebar-topics li:not(:has(.starlight-sidebar-topics-current)) {
+ display:none;
+}
