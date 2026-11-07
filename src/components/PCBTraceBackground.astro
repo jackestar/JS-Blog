@@ -14,9 +14,8 @@ interface Props {
   lineSpacing?: number;
   traces?: Trace[];
 }
-
 const {
-  color = '#00e6ff',
+  color,
   lineWidth = 3,
   speed = 3,
   lineSpacing = 5,
@@ -51,7 +50,6 @@ const config = JSON.stringify({
     height: 100%;
   }
 </style>
-
 <script>
   import PCBTraceAnimation from 'pcb-trace-animation';
 
@@ -59,14 +57,38 @@ const config = JSON.stringify({
 
   class PCBTraceBackground extends HTMLElement {
     #pcb?: PCBTraceAnimation;
+    #observer?: MutationObserver;
 
     connectedCallback() {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+      this.#render();
+
+      // Redraw whenever the theme attribute changes
+      this.#observer = new MutationObserver(() => this.#render());
+      this.#observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme'],
+      });
+    }
+
+    disconnectedCallback() {
+      this.#observer?.disconnect();
+      this.#observer = undefined;
+      this.#pcb?.stop();
+      this.#pcb = undefined;
+    }
+
+    #render() {
+      // Stop the previous run and wipe the canvas
+      this.#pcb?.stop();
+
       const canvas = this.querySelector('canvas')!;
+      canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
+
       const {options, traces} = JSON.parse(this.dataset.config ?? '{}') as {
         options: {
-          color: string;
+          color?: string;
           lineWidth: number;
           speed: number;
           lineSpacing: number;
@@ -74,19 +96,20 @@ const config = JSON.stringify({
         traces: Trace[];
       };
 
+      // Read the variable again, so it reflects the new theme
+      const color =
+        options.color ??
+        getComputedStyle(this).getPropertyValue('--bg-hover').trim();
+
       this.#pcb = new PCBTraceAnimation(canvas, {
         ...options,
+        color,
         onComplete: () => this.dispatchEvent(new CustomEvent('pcb:complete')),
       });
 
       this.#pcb.initCanvas();
       for (const t of traces) this.#pcb.drawLine(...t);
       this.#pcb.start();
-    }
-
-    disconnectedCallback() {
-      this.#pcb?.stop();
-      this.#pcb = undefined;
     }
   }
 

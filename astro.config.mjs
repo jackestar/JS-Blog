@@ -218,6 +218,7 @@ export default defineConfig({
         './src/styles/starlight-bridge.css',
       ],
       components: {
+        Header: './src/components/Header.astro',
         MarkdownContent: './src/components/MarkdownContent.astro',
       },
       plugins: [starlightImageZoom(), starlightSidebarTopics(sidebar)],
