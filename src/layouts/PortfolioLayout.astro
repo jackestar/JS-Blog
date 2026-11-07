@@ -1,26 +1,38 @@
 ---
 import Header from '../components/Header.astro';
+import '../styles/theme.css';
+import {Font} from 'astro:assets';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <Font cssVariable="--font-outline" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="../assets/Brand-Clear.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Portfolio</title>
     <!-- TEMPORAL -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <!-- <link -->
+    <!--   href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" -->
+    <!--   rel="stylesheet" -->
+    <!-- /> -->
+    <script is:inline>
+      const stored = localStorage.getItem('starlight-theme');
+      const theme =
+        stored ||
+        (matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light'
+          : 'dark');
+      document.documentElement.dataset.theme = theme;
+    </script>
   </head>
   <body>
-    <Header />
+    <Header mode="site" />
     <slot />
   </body>
 </html>
@@ -33,7 +45,7 @@ import Header from '../components/Header.astro';
     height: 100vh;
     overflow: hidden;
 
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body), 'Outfit', sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;

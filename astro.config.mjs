@@ -1,5 +1,5 @@
 // @ts-check
-import {defineConfig} from 'astro/config';
+import {defineConfig, fontProviders} from 'astro/config';
 
 import icon from 'astro-icon';
 
@@ -164,6 +164,13 @@ const sidebar = [
 // https://astro.build/config
 export default defineConfig({
   site,
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Outfit',
+      cssVariable: '--font-outline',
+    },
+  ],
   markdown: {
     // Sätteri is Astro's native Markdown pipeline. Math support is enabled so
     // that `$…$` and `$$…$$` are parsed as formulas instead of plain text.
