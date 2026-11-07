@@ -1,11 +1,4 @@
-/* ==========================================================================
-   starlight-bridge.css — blog only. Import AFTER theme.css.
-   Maps the shared tokens onto Starlight's --sl-* variables.
-   Starlight's gray scale flips between themes: in dark, "white" is the
-   strongest text and "black" the page; in light it is the reverse.
-   ========================================================================== */
-
-/* ---- Dark (Starlight default) ------------------------------------------ */
+/* --- Dark (Starlight default) --- */
 :root,
 :root[data-theme='dark'] {
   --sl-color-white:  var(--gray-50);
@@ -23,7 +16,7 @@
   --sl-color-accent-high: var(--gray-200);
 }
 
-/* ---- Light -------------------------------------------------------------- */
+/* --- Light --- */
 :root[data-theme='light'] {
   --sl-color-white:  var(--gray-900);
   --sl-color-gray-1: var(--gray-800);
@@ -40,7 +33,7 @@
   --sl-color-accent-high: var(--gray-800);
 }
 
-/* ---- Semantic mapping (theme-independent: tokens already switch) ------- */
+/* --- Semantic mapping (theme-independent: tokens already switch) --- */
 :root {
   --sl-color-bg:             var(--bg);
   --sl-color-bg-nav:         var(--nav-bg);
@@ -80,13 +73,19 @@
      custom component or a GitHub-alerts plugin. */
 }
 
-/* ---- File tree (Starlight <FileTree>) ----------------------------------- */
+/* --- File tree (Starlight <FileTree>) --- */
 starlight-file-tree {
   --sl-color-gray-3: var(--tree-file);
 }
+
 starlight-file-tree .directory > details > summary { color: var(--tree-folder); }
+
 starlight-file-tree .highlight { background: var(--tree-highlight-bg); color: var(--tree-highlight-fg); }
+
 starlight-file-tree ul ul { border-inline-start-color: var(--tree-guide); }
+
+/* --- header sidebar and menu --- */
+
 sl-sidebar-pane, .right-sidebar {
   border:none;
 }
@@ -103,7 +102,14 @@ button.sl-menu-button {
   background: var(--sl-color-accent);
   box-shadow: none;
 }
+
 sl-sidebar-pane.sidebar-pane {
   top: calc(var(--sl-nav-height) + var(--sl-mobile-toc-height));
   height: calc(100dvh - var(--sl-nav-height) - var(--sl-mobile-toc-height));
+}
+
+.console .code::before {
+  content: '$ ';
+  user-select: none;
+  opacity: 0.6;
 }

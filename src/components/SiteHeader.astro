@@ -1,0 +1,262 @@
+---
+import {Icon} from 'astro-icon/components';
+
+interface Props {
+  mode?: 'site' | 'blog';
+  lang?: string;
+  altLangHref?: string;
+  homeHref?: string;
+}
+const {
+  mode = 'blog',
+  lang = 'en',
+  altLangHref = '#',
+  homeHref = '/',
+} = Astro.props;
+const isBlog = mode === 'blog';
+---
+
+<header data-mode={mode}>
+  <div class="brand">
+    <a href={homeHref}>
+      <h3>Jackestar</h3>
+    </a>
+  </div>
+
+  {isBlog && (
+    <div class="search">
+      <slot name="search" />
+    </div>
+  )}
+
+  <div class="social">
+    <div class="item">
+      <a>
+        <Icon name="tabler:brand-github" size={20} class="icon" />
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <Icon name="tabler:brand-linkedin" size={20} class="icon" />
+      </a>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="item">
+      <button
+        class="icon-button"
+        type="button"
+        aria-label="Menu"
+        popovertarget="header-panel"
+      >
+        <Icon name="tabler:menu-2" size={20} class="icon" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Single source of truth: dropdown in portrait, inline in landscape -->
+  <div class="panel" id="header-panel" popover>
+    <nav>
+      <div class="item">
+        <a href="#">About</a>
+      </div>
+      <div class="item">
+        <a href="#">Projects</a>
+      </div>
+      <div class="item">
+        <a href="./blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="controls">
+      <div class="item">
+        <a
+          href={altLangHref}
+          aria-label="Change language"
+          hreflang={lang === 'en' ? 'es' : 'en'}
+        >
+          <Icon name="tabler:language-hiragana" size={20} class="icon" />
+        </a>
+      </div>
+      <div class="item">
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          <Icon name="tabler:moon-2" size={20} class="icon icon-moon" />
+          <Icon name="tabler:sun" size={20} class="icon icon-sun" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const KEY = 'starlight-theme';
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const next =
+      document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem(KEY, next);
+    } catch {}
+  });
+  const panel = document.getElementById('header-panel');
+  matchMedia('(orientation: landscape)').addEventListener('change', e => {
+    if (e.matches && panel?.matches(':popover-open')) panel.hidePopover();
+  });
+  const header = document.querySelector<HTMLElement>('header[data-mode]');
+</script>
+
+<style>
+  header {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border-bottom: 0.1rem solid var(--border);
+    min-width: 50%;
+    width: 100%;
+    color: var(--text-body);
+    font-weight: 300;
+    padding: 1em;
+    user-select: none;
+    background: var(--bg);
+    z-index: 1000;
+  }
+
+  div.brand {
+    margin-right: auto;
+  }
+  div.brand h3 {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* Shared layout for every header block, including those inside .panel */
+  header > :not(.panel, .menu),
+  .panel > * {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+
+  /* Landscape: the panel disappears from layout, its children join the header flex */
+  .panel {
+    display: contents;
+  }
+
+  /* Visual order, since nav/controls now sit after social in the DOM */
+  nav {
+    order: 1;
+  }
+  .social {
+    order: 2;
+  }
+  .controls {
+    order: 3;
+  }
+  .menu {
+    order: 4;
+    display: none;
+  }
+
+  /* Dividers */
+  .search,
+  nav,
+  .social {
+    border-right: 0.1rem solid var(--border);
+  }
+
+  header a {
+    text-decoration: none;
+    color: var(--text-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  header a:hover,
+  div.item:hover {
+    color: var(--text-title);
+  }
+
+  div.item {
+    padding: 0.3rem;
+    border-radius: 1rem;
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+  div.controls .item:hover,
+  div.social .item:hover {
+    background: var(--bg-subtle);
+  }
+
+  .icon-button {
+    all: unset;
+    display: flex;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .icon-sun {
+    display: none;
+  }
+  :global(:root[data-theme='light']) .icon-moon {
+    display: none;
+  }
+  :global(:root[data-theme='light']) .icon-sun {
+    display: inline;
+  }
+
+  @media (orientation: portrait) {
+    .menu {
+      display: flex;
+      padding-right: 2rem;
+    }
+    .social,
+    .search {
+      border-right: 0;
+    }
+
+    /* Same elements, now a dropdown */
+    .panel {
+      /* override the popover UA styles */
+      position: fixed;
+      inset: var(--sl-nav-height) 0 auto 0; /* top-layer elements position against the viewport */
+      width: auto;
+      height: auto;
+      margin: 0;
+      border: 0;
+      border-bottom: 0.1rem solid var(--border);
+      padding: 1rem;
+      overflow: visible;
+      color: inherit;
+      background: var(--bg);
+
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+    .panel:not(:popover-open) {
+      display: none;
+    }
+    .panel:popover-open {
+      display: flex;
+    }
+    header[data-open] .panel {
+      display: flex;
+    }
+
+    .panel nav {
+      flex-direction: column;
+      align-items: flex-start;
+      border-right: 0;
+    }
+    .panel > * {
+      padding-inline: 0;
+    }
+  }
+</style>

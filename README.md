@@ -23,7 +23,6 @@
 ### General
 
 * Better Readme
-* Color scheme
 * Status page
 * Themes
 * OG (portfolio and auto generated in blog)
@@ -35,8 +34,6 @@
 
 * Blog (Migration)
 * Untranslated page badge (blog mostly)
-* console style code snippets
-* image zoom
 * 3d models
 * equations (yes check every one)
 * layouts (article, doc, hero, list, journal?...)

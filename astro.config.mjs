@@ -21,8 +21,6 @@ const site = 'https://jackestar.netlify.app';
 const mathjaxStylesheet = await getMathJaxStylesheet();
 
 /**
- * Sidebar ported from the VitePress configuration.
- *
  * @type {import('@astrojs/starlight').StarlightUserConfig['sidebar']}
  */
 const sidebar = [
@@ -172,8 +170,6 @@ export default defineConfig({
     },
   ],
   markdown: {
-    // Sätteri is Astro's native Markdown pipeline. Math support is enabled so
-    // that `$…$` and `$$…$$` are parsed as formulas instead of plain text.
     processor: satteri({
       features: {math: true},
       hastPlugins: [mathjaxPlugin()],

@@ -1,13 +1,4 @@
-/* ==========================================================================
-   theme.css — shared tokens for portfolio + blog (Astro / Starlight)
-   Dark is the default. Light is activated with <html data-theme="light">.
-   Rule: components only use semantic tokens (section 2). Never the ramp.
-   No pure #000 / #fff anywhere: darkest is gray-975, lightest is gray-25.
-   ========================================================================== */
-
-/* ==========================================================================
-   1. PRIMITIVES — neutral ramp (slight cool tint, identical in both themes)
-   ========================================================================== */
+/* --- Primitives --- */
 :root {
   --gray-25:  #fafafb;
   --gray-50:  #f6f6f7;
@@ -39,14 +30,12 @@
 }
 
 
-/* ==========================================================================
-   2. SEMANTIC TOKENS — DARK (default)
-   ========================================================================== */
+/* --- Semantics - Dark --- */
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  /* --- Surfaces --------------------------------------------------------- */
+  /* --- Surfaces --- */
   --bg:            var(--gray-950);   /* page */
   --bg-subtle:     var(--gray-925);   /* sidebars, alt sections */
   --bg-raised:     var(--gray-900);   /* cards, popovers */
@@ -60,7 +49,7 @@
   --bg-detail:        var(--gray-850);
   --bg-detail-strong: var(--gray-800);
 
-  /* --- Text ------------------------------------------------------------- */
+  /* --- Text --- */
   --text-title:       var(--gray-100);  /* h1–h3, hero */
   --text-body:        var(--gray-300);  /* paragraphs, glanceable text */
   --text-muted:       var(--gray-400);  /* captions, meta, dates */
@@ -79,13 +68,13 @@
   --link-underline:     var(--gray-600);
   --link-underline-hover: var(--gray-300);
 
-  /* --- Borders & focus -------------------------------------------------- */
+  /* --- Borders & focus --- */
   --border-subtle: var(--gray-850);   /* hairlines, table rows */
   --border:        var(--gray-800);   /* cards, inputs, code blocks */
   --border-strong: var(--gray-700);   /* hover, emphasis */
   --focus-ring:    var(--gray-300);
 
-  /* --- Buttons ---------------------------------------------------------- */
+  /* --- Buttons --- */
   --btn-primary-bg:        var(--gray-150);
   --btn-primary-bg-hover:  var(--gray-50);
   --btn-primary-fg:        var(--gray-950);
@@ -101,22 +90,22 @@
   --btn-disabled-bg: var(--gray-900);
   --btn-disabled-fg: var(--gray-600);
 
-  /* --- Inputs / text boxes --------------------------------------------- */
+  /* --- Inputs / text boxes --- */
   --input-bg:           var(--gray-975);
   --input-fg:           var(--gray-100);
   --input-border:       var(--gray-800);
   --input-border-focus: var(--gray-400);
   --input-placeholder:  var(--gray-500);
 
-  /* --- Nav -------------------------------------------------------------- */
+  /* --- Nav --- */
   --nav-bg:     color-mix(in srgb, var(--gray-950) 82%, transparent);
   --nav-border: var(--gray-850);
 
-  /* --- Images (they carry the color; dark mode just tames brightness) ---- */
+  /* --- Images (they carry the color; dark mode just tames brightness) --- */
   --img-filter: brightness(0.92);
   --img-border: var(--gray-850);
 
-  /* --- 3D models / scene (read from JS, see notes) ---------------------- */
+  /* --- 3D models / scene (read from JS, see notes) --- */
   --scene-bg:         var(--gray-975);
   --scene-bg-top:     var(--gray-925);
   --scene-bg-bottom:  var(--gray-975);
@@ -124,7 +113,7 @@
   --scene-grid:       var(--gray-850);
   --scene-grid-major: var(--gray-800);
 
-  /* --- Code blocks ------------------------------------------------------ */
+  /* --- Code blocks --- */
   --code-bg:             var(--gray-975);
   --code-header-bg:      var(--gray-925);
   --code-border:         var(--gray-850);
@@ -145,7 +134,7 @@
   --syn-function:    #a5b4c8;  /* steel */
   --syn-type:        #b5a8c4;  /* mauve */
 
-  /* --- File tree -------------------------------------------------------- */
+  /* --- File tree --- */
   --tree-bg:           var(--gray-925);
   --tree-border:       var(--gray-850);
   --tree-guide:        var(--gray-800);
@@ -154,7 +143,7 @@
   --tree-highlight-bg: var(--gray-850);
   --tree-highlight-fg: var(--gray-100);
 
-  /* --- Callouts / admonitions (GitHub-style, muted) -------------------- */
+  /* --- Callouts / admonitions (GitHub-style, muted) --- */
   --callout-note:      #8fa8cc;
   --callout-tip:       #8fb8a0;
   --callout-important: #b4a4d4;
@@ -163,9 +152,7 @@
 }
 
 
-/* ==========================================================================
-   3. SEMANTIC TOKENS — LIGHT
-   ========================================================================== */
+/* --- Semantics - Light --- */
 :root[data-theme='light'] {
   color-scheme: light;
 
@@ -273,10 +260,7 @@
 }
 
 
-/* ==========================================================================
-   4. DERIVED TOKENS — computed from the tokens above, so they follow the
-   theme automatically (declared on :root, same element as data-theme).
-   ========================================================================== */
+/* --- Derived Tokens --- */
 :root {
   --callout-note-bg:      color-mix(in srgb, var(--callout-note)      10%, var(--bg));
   --callout-tip-bg:       color-mix(in srgb, var(--callout-tip)       10%, var(--bg));
@@ -292,9 +276,7 @@
 }
 
 
-/* ==========================================================================
-   5. BASE APPLICATION — minimal, safe for both sites
-   ========================================================================== */
+/* --- Base Styles --- */
 body {
   background: var(--bg);
   color: var(--text-body);
