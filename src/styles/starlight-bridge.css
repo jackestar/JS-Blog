@@ -51,6 +51,7 @@
   --sl-color-text-invert:    var(--text-inverse);
   --sl-color-hairline-light: var(--border-subtle);
   --sl-color-hairline:       var(--border);
+  /* --sl-color-hairline-shade: transparent; */
   --sl-color-hairline-shade: var(--border-strong);
   --sl-color-backdrop-overlay: var(--bg-overlay);
 
@@ -86,3 +87,23 @@ starlight-file-tree {
 starlight-file-tree .directory > details > summary { color: var(--tree-folder); }
 starlight-file-tree .highlight { background: var(--tree-highlight-bg); color: var(--tree-highlight-fg); }
 starlight-file-tree ul ul { border-inline-start-color: var(--tree-guide); }
+sl-sidebar-pane, .right-sidebar {
+  border:none;
+}
+
+.header {
+  padding:0;
+  border:none;
+  display:flex;
+}
+
+button.sl-menu-button {
+  top: calc(var(--sl-nav-height) + (var(--sl-mobile-toc-height) - var(--sl-menu-button-size)) / 2);
+  inset-inline-end: var(--sl-nav-pad-x);
+  background: var(--sl-color-accent);
+  box-shadow: none;
+}
+sl-sidebar-pane.sidebar-pane {
+  top: calc(var(--sl-nav-height) + var(--sl-mobile-toc-height));
+  height: calc(100dvh - var(--sl-nav-height) - var(--sl-mobile-toc-height));
+}
