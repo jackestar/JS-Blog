@@ -9,7 +9,7 @@ interface Props {
 }
 const {
   mode = 'blog',
-  lang = 'en',
+  lang = 'es',
   altLangHref = '#',
   homeHref = '/',
 } = Astro.props;
@@ -54,7 +54,6 @@ const isBlog = mode === 'blog';
     </div>
   </div>
 
-  <!-- Single source of truth: dropdown in portrait, inline in landscape -->
   <div class="panel" id="header-panel" popover>
     <nav>
       <div class="item">
@@ -107,7 +106,6 @@ const isBlog = mode === 'blog';
   matchMedia('(orientation: landscape)').addEventListener('change', e => {
     if (e.matches && panel?.matches(':popover-open')) panel.hidePopover();
   });
-  const header = document.querySelector<HTMLElement>('header[data-mode]');
 </script>
 
 <style>

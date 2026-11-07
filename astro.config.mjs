@@ -103,6 +103,7 @@ const sidebar = [
       {
         label: 'FET',
         items: [
+          {label: 'Introducción', link: '/blog/ejercicios-electronica-ii/fet/'},
           {
             label: 'Ejercicios',
             link: '/blog/ejercicios-electronica-ii/fet/ejercicios/',
