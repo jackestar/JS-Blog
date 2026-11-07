@@ -3,3 +3,5 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - pcb-trace-animation@2.0.4
+overrides:
+  "@emnapi/runtime": 1.11.3
