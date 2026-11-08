@@ -4,30 +4,30 @@
 .badge {
 	display: inline-block;
 	padding: 0.1em 0.6em;
-	border-radius: 0.75em;
+	border-radius: 0.2em;
 	font-size: 80%;
 	margin:0 1em 0 0;
 	line-height: 1.4;
 	vertical-align: middle;
-	border: 1px solid var(--sl-color-accent-low);
-	background-color: var(--sl-color-accent-low);
+	border-bottom: .2rem solid var(--sl-color-accent-low);
+	/* background-color: var(--sl-color-accent-low); */
 	color: var(--sl-color-white);
 	white-space: nowrap;
 }
 
 .badge--info {
 	border-color: var(--sl-color-accent);
-	background-color: var(--sl-color-accent);
+	/* background-color: var(--sl-color-accent); */
 }
 
 .badge--tip {
 	border-color: var(--sl-color-green);
-	background-color: var(--sl-color-green);
+	/* background-color: var(--sl-color-green); */
 }
 
 .badge--danger {
 	border-color: var(--sl-color-red);
-	background-color: var(--sl-color-red);
+	/* background-color: var(--sl-color-red); */
 }
 
 /* Papers (papers.md) */
@@ -66,24 +66,24 @@
 	margin-inline: 0.3em;
 	color: var(--sl-color-white);
 	text-decoration: none;
-	background-color: var(--sl-color-accent);
+	border: solid .2em var(--sl-color-accent);
 	border-radius: 0.75em;
 	transition: 0.2s ease;
 }
 
 .JSElement a:not(:first-of-type) {
 	background-color: var(--sl-color-accent-high);
-	color: var(--sl-color-white);
+  color:var(--sl-color-text-invert);
 }
 
-.JSElement a:not(:first-of-type):hover {
-	background-color: var(--sl-color-accent-high);
-}
-
+/*  { */
+/* 	background-color: var(--sl-color-accent-high); */
+/* } */
+.JSElement a:not(:first-of-type):hover,
 .JSPaper .JSDocument p > a:hover,
 .JSElement p a:hover {
 	background-color: var(--sl-color-accent-high);
-	transition: 0.2s ease;
+  color:var(--sl-color-text-invert);
 }
 
 .JSElement h3 {
@@ -97,6 +97,12 @@
 
 .JSElement p:has(img) {
 	align-items: center;
+}
+
+.JSDocument h4:has(.badge) {
+  display:inline-flex;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
 /* Images */
