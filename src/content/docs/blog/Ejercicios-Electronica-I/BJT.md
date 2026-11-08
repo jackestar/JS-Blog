@@ -26,9 +26,7 @@ La primera pregunta del parcial original es un cuestionario.
 
 ### 1. Dado el amplificador determine
 
-<span class="badge badge--danger">incompleto</span>
-
-<span class="badge badge--danger">no verificado</span>
+<span class="badge badge--danger">incompleto</span> <span class="badge badge--danger">no verificado</span>
 
 > a. Zona de trabajo
 

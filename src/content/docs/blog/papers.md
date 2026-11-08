@@ -5,11 +5,10 @@ description: Informes y Artículos
 
 tableOfContents:
   minHeadingLevel: 2
-  maxHeadingLevel: 4
+  maxHeadingLevel: 3
 
 sidebar:
-  hidden: true
-  label: Cannon
+  hidden: false
 ---
 
 ## Laboratorios
@@ -209,7 +208,7 @@ link
 
 ## Trabajos / Evaluaciones
 
-### Teoría DE CONTROL Automático
+### Teoría de Control Automático
 
 <div class="JSPaper">
 <div class="JSDocument">

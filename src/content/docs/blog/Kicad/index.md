@@ -8,7 +8,7 @@ tableOfContents:
   maxHeadingLevel: 2
 ---
 
-# Proyectos y Herramientas para Kicad
+<!-- # Proyectos y Herramientas para Kicad -->
 
 ## PCBs
 
