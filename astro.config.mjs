@@ -160,6 +160,10 @@ const sidebar = [
   },
 ];
 
+const excludes = {
+  exclude: ['/blog/papers/', '/blog/pensum/', '/blog/about/'],
+};
+
 // https://astro.build/config
 export default defineConfig({
   site,
@@ -193,6 +197,7 @@ export default defineConfig({
         },
       ],
       // sidebar,
+      routeMiddleware: './src/routeData.ts',
       head: [
         {
           tag: 'script',
@@ -218,7 +223,10 @@ export default defineConfig({
         Header: './src/components/Header.astro',
         MarkdownContent: './src/components/MarkdownContent.astro',
       },
-      plugins: [starlightImageZoom(), starlightSidebarTopics(sidebar)],
+      plugins: [
+        starlightImageZoom(),
+        starlightSidebarTopics(sidebar, excludes),
+      ],
     }),
   ],
   vite: {
