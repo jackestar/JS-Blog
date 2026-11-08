@@ -151,7 +151,7 @@ mjx-container[display='true'] {
 }
 
 /* The 3D viewer. */
-model-viewer {
+model-player {
 	width: 100%;
 	max-width: 640px;
 	height: 480px;

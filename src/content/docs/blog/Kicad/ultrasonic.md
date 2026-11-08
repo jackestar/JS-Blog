@@ -20,13 +20,9 @@ El objetivo es crear una versión mini del módulo HC-SR04. La primera versión 
 
 ## Modelo 3D
 
-<!-- The <model-viewer> web component is loaded globally from astro.config. -->
-<model-viewer
+<!-- The <model-player> web component is loaded globally from astro.config. -->
+<model-player
   src="/models/UltraSonic.glb"
   poster="/models/UltraSonic.png"
-  alt="Mini Ultrasonico HC-SR04"
-  camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  loading="lazy">
-</model-viewer>
+  alt="Mini Ultrasonico HC-SR04">
+</model-player>

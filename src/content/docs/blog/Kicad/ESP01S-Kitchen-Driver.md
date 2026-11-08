@@ -32,13 +32,8 @@ la alimentación entra en el rango de 3 a 3.6V, se utiliza un zener para protege
 
 ## Modelo 3D
 
-<!-- The <model-viewer> web component is loaded globally from astro.config. -->
-<model-viewer
+<model-player
   src="/models/ESP01-Driver.glb"
   poster="/models/ESP01-Driver.jpg"
-  alt="ESP01S Kitchen Driver"
-  camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  loading="lazy">
-</model-viewer>
+  alt="ESP01S Kitchen Driver">
+</model-player>

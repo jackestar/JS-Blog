@@ -34,7 +34,7 @@ Description
 
 Placa de desarrollo para Amplificador Integrado TDA75610
 
-[Ver](TDA75610)
+[Ver](tda75610)
 [Repo](https://github.com/jackestar/TDA75610)
 
 </div>
@@ -47,7 +47,7 @@ Placa de desarrollo para Amplificador Integrado TDA75610
 
 Opto Aislador para driver de Cocina, con ESP01S
 
-[Ver](ESP01S-Kitchen-Driver)
+[Ver](esp01s-kitchen-driver)
 [Repo](https://github.com/jackestar/ESP01S-Kitchen/)
 
 </div>
