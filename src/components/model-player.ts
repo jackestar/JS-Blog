@@ -364,7 +364,10 @@ export class ModelPlayer extends HTMLElement {
     this.#play.addEventListener('click', () => void this.#load());
     this.#play.addEventListener('pointerenter', () => this.#warmUp());
     this.#play.addEventListener('focus', () => this.#warmUp());
-    this.#fsButton.addEventListener('click', () => void this.#toggleFullscreen());
+    this.#fsButton.addEventListener(
+      'click',
+      () => void this.#toggleFullscreen(),
+    );
     this.#closeButton.addEventListener('click', () => this.#unload());
   }
 
@@ -499,7 +502,7 @@ export class ModelPlayer extends HTMLElement {
       viewer.setAttribute('auto-rotate', '');
     }
 
-    viewer.addEventListener('progress', event => {
+    viewer.addEventListener('progress', (event: Event) => {
       if (token !== this.#token) return;
       const {totalProgress} = (event as CustomEvent<{totalProgress: number}>)
         .detail;
@@ -547,7 +550,9 @@ export class ModelPlayer extends HTMLElement {
   // --- Fullscreen ----------------------------------------------------------
 
   #isFullscreen(): boolean {
-    return this.#pseudoFullscreen || this.#root.fullscreenElement === this.#frame;
+    return (
+      this.#pseudoFullscreen || this.#root.fullscreenElement === this.#frame
+    );
   }
 
   async #toggleFullscreen(): Promise<void> {
