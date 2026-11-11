@@ -14,7 +14,11 @@
       {
         "name": "@astrojs/ts-plugin"
       },
-    ]
+    ],
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"]
+    }
   },
   "include": [
     "src/**/*.ts",
