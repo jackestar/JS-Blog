@@ -71,6 +71,8 @@
 
   /* "important" has no Starlight slot: use --callout-important-* in a
      custom component or a GitHub-alerts plugin. */
+
+  --sl-shadow-md: transparent;
 }
 
 /* --- File tree (Starlight <FileTree>) --- */
