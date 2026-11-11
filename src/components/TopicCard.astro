@@ -1,0 +1,85 @@
+---
+import {Icon} from 'astro-icon/components';
+import type {ImageMetadata} from 'astro';
+
+interface Props {
+  title: string;
+  icon?: string;
+  /** Image URL or imported image. Optional, shown instead of the icon. */
+  image?: string | ImageMetadata;
+  imageAlt?: string;
+  /** Makes the whole card a link. Optional. */
+  href?: string;
+}
+
+const {title, icon, image, imageAlt = '', href} = Astro.props;
+const imageSrc = typeof image === 'string' ? image : image?.src;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class="topic-card" href={href}>
+  {imageSrc ? (
+    <img class="media" src={imageSrc} alt={imageAlt} loading="lazy" />
+  ) : (
+    icon && <Icon name={icon} size={40} class="media icon" />
+  )}
+  <h3>{title}</h3>
+  <div class="text">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .topic-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    background: var(--bg-raised);
+    border: 0.1rem solid var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--text-body);
+    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  a.topic-card:hover {
+    border-color: var(--border-strong);
+    background: var(--bg-hover);
+  }
+
+  .icon {
+    color: var(--text-title);
+  }
+
+  img.media {
+    width: 100%;
+    max-height: 9rem;
+    object-fit: cover;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--bg-sunken);
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-title);
+  }
+
+  .text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .text :global(p) {
+    margin: 0;
+  }
+</style>

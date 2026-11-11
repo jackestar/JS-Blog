@@ -1,0 +1,64 @@
+---
+title: Jackestar Blog
+description: Electronics, Web Design and Technology
+
+template: splash
+
+head:
+  - tag: meta
+    attrs:
+      property: og:title
+      content: 'Jackestar Blog'
+  - tag: meta
+    attrs:
+      property: og:description
+      content: 'Electronics, Web Design and Technology'
+
+hero:
+  title: 'Jackestar Blog'
+  tagline: 'Electronics, Web Design and Technology'
+  actions:
+    - variant: primary
+      text: Portfolio
+      link: https://jackestar.netlify.app/
+    - variant: secondary
+      text: Blog Repo
+      link: https://github.com/jackestar/JS-Blog/
+    - variant: secondary
+      text: Documentos
+      link: /blog/papers/
+
+  image:
+    file: ./blogBanner.png
+    alt: Jackestar Blog
+
+---
+
+import TopicGrid from '../../../components/TopicGrid.astro';
+import TopicCard from '../../../components/TopicCard.astro';
+
+<TopicGrid>
+  <TopicCard
+    title="Desarrollo Baremetal"
+    icon="tabler:cpu"
+    href="/blog/baremetal/"
+  >
+    AVR, ESP32 y ESP8266 sin frameworks: registros, periféricos y librerías.
+  </TopicCard>
+
+  <TopicCard title="Proyectos Kicad" icon="tabler:circuit-resistor" href="/blog/kicad/">
+    PCBs, modelos 3D y herramientas de exportación.
+  </TopicCard>
+
+  <TopicCard title="Electrónica I" icon="tabler:wave-sine" href="/blog/ejercicios-electronica-i/">
+    Ejercicios de diodos y BJT.
+  </TopicCard>
+
+  <TopicCard title="Electrónica II" icon="tabler:chart-line" href="/blog/ejercicios-electronica-ii/">
+    Ejercicios de FET.
+  </TopicCard>
+
+  <TopicCard title="Documentos" icon="tabler:file-text" href="/blog/papers/">
+    Informes y artículos.
+  </TopicCard>
+</TopicGrid>

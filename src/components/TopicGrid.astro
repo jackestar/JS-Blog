@@ -1,0 +1,30 @@
+---
+---
+
+<div class="topic-grid">
+  <slot />
+</div>
+
+<style>
+  .topic-grid {
+    --gap: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* last row stays centered */
+    gap: var(--gap);
+    margin: 2rem auto;
+    max-width: 70rem;
+  }
+
+  /* Portrait / small: one per row */
+  .topic-grid > :global(*) {
+    flex: 1 1 100%;
+  }
+
+  /* Landscape: 3 per row */
+  @media (orientation: landscape) and (min-width: 50rem) {
+    .topic-grid > :global(*) {
+      flex: 0 1 calc((100% - 2 * var(--gap)) / 3);
+    }
+  }
+</style>
