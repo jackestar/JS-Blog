@@ -1,10 +1,10 @@
 ---
-import PCBTraceBackground from './PCBTraceBackground.astro';
-import brandLogo from '../assets/Brand-Clear.svg';
+import PCBTraceBackground from '../PCBTraceBackground.astro';
+import brandLogo from '@assets/Brand-Clear.svg';
 ---
 
 <main>
-  <PCBTraceBackground speed={3} />
+  <PCBTraceBackground speed={3} target="[data-pcb-target]" />
   <div class="card">
     <div class="hab">
       <strong>Ingeniero Electrónico · Programador · Diseñador</strong>
@@ -15,7 +15,7 @@ import brandLogo from '../assets/Brand-Clear.svg';
     <div class="pseud">JACKESTAR</div>
   </div>
   <div class="hero">
-    <div class="profile">
+    <div class="profile" data-pcb-target>
       <img src="#" alt="Profile" />
       <div class="brand">
         <img src={brandLogo.src} alt="Brand" />
