@@ -12,7 +12,12 @@ interface Props {
   lineWidth?: number;
   speed?: number;
   lineSpacing?: number;
+  /** Traces for landscape (canvas = full viewport). */
   traces?: Trace[];
+  /** Traces for portrait (canvas = the target element's box). */
+  portraitTraces?: Trace[];
+  /** CSS selector of the element the canvas covers in portrait. */
+  target?: string;
 }
 const {
   color,
@@ -25,11 +30,21 @@ const {
     [0.65, 0.25, 0.5, false, false],
     [0.35, 0.25, 0.5, false, true],
   ],
+  // Same square outline, but spread over the whole (square) target.
+  portraitTraces = [
+    [-0.06, 1.06, 1.12, true, false],
+    [-0.06, -0.06, 1.12, true, true],
+    [1.06, -0.06, 1.12, false, false],
+    [-0.06, -0.06, 1.12, false, true],
+  ],
+  target,
 } = Astro.props;
 
 const config = JSON.stringify({
   options: {color, lineWidth, speed, lineSpacing},
   traces,
+  portraitTraces,
+  target,
 });
 ---
 
@@ -55,46 +70,104 @@ const config = JSON.stringify({
 
   type Trace = [number, number, number, boolean?, boolean?];
 
+  interface Config {
+    options: {
+      color?: string;
+      lineWidth: number;
+      speed: number;
+      lineSpacing: number;
+    };
+    traces: Trace[];
+    portraitTraces: Trace[];
+    target?: string;
+  }
+
   class PCBTraceBackground extends HTMLElement {
     #pcb?: PCBTraceAnimation;
-    #observer?: MutationObserver;
+    #themeObserver?: MutationObserver;
+    #resizeObserver?: ResizeObserver;
+    #portrait = matchMedia('(orientation: portrait)');
+    #config: Config = {} as Config;
+    /** Last layout signature, to avoid restarting the animation for nothing. */
+    #layoutKey = '';
 
     connectedCallback() {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      this.#render();
+      this.#config = JSON.parse(this.dataset.config ?? '{}') as Config;
+
+      this.#portrait.addEventListener('change', this.#layout);
+      addEventListener('resize', this.#layout);
 
       // Redraw whenever the theme attribute changes
-      this.#observer = new MutationObserver(() => this.#render());
-      this.#observer.observe(document.documentElement, {
+      this.#themeObserver = new MutationObserver(() => {
+        this.#layoutKey = ''; // force a render
+        this.#layout();
+      });
+      this.#themeObserver.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ['data-theme'],
       });
+
+      this.#layout();
     }
 
     disconnectedCallback() {
-      this.#observer?.disconnect();
-      this.#observer = undefined;
+      this.#portrait.removeEventListener('change', this.#layout);
+      removeEventListener('resize', this.#layout);
+      this.#themeObserver?.disconnect();
+      this.#resizeObserver?.disconnect();
       this.#pcb?.stop();
       this.#pcb = undefined;
     }
 
-    #render() {
+    /** Position the host (full screen or over the target) and render. */
+    #layout = () => {
+      const {target} = this.#config;
+      const el = target ? document.querySelector(target) : null;
+      const portrait = this.#portrait.matches && el !== null;
+
+      // Keep watching the target so size/position changes re-run the layout.
+      this.#resizeObserver?.disconnect();
+      if (portrait) {
+        this.#resizeObserver ??= new ResizeObserver(this.#layout);
+        this.#resizeObserver.observe(el);
+      }
+
+      const r = portrait ? el.getBoundingClientRect() : undefined;
+      const theme = document.documentElement.dataset.theme ?? '';
+      const key = r
+        ? `p:${Math.round(r.left)}:${Math.round(r.top)}:${Math.round(r.width)}:${Math.round(r.height)}:${innerWidth}:${innerHeight}:${theme}`
+        : `l:${innerWidth}:${innerHeight}:${theme}`;
+      if (key === this.#layoutKey) return;
+      this.#layoutKey = key;
+
+      this.#render(portrait ? el : undefined);
+    };
+
+    #mapToCanvas(traces: Trace[], box: DOMRect, canvas: HTMLCanvasElement) {
+      const c = canvas.getBoundingClientRect();
+      return traces.map(
+        ([x, y, length, horizontal = true, inverted = false]): Trace => [
+          (box.left - c.left + x * box.width) / c.width,
+          (box.top - c.top + y * box.height) / c.height,
+          horizontal
+            ? (length * box.width) / c.width
+            : (length * box.height) / c.height,
+          horizontal,
+          inverted,
+        ],
+      );
+    }
+
+    #render(target?: Element) {
       // Stop the previous run and wipe the canvas
       this.#pcb?.stop();
 
       const canvas = this.querySelector('canvas')!;
       canvas.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
 
-      const {options, traces} = JSON.parse(this.dataset.config ?? '{}') as {
-        options: {
-          color?: string;
-          lineWidth: number;
-          speed: number;
-          lineSpacing: number;
-        };
-        traces: Trace[];
-      };
+      const {options, traces, portraitTraces} = this.#config;
 
       // Read the variable again, so it reflects the new theme
       const color =
@@ -107,8 +180,16 @@ const config = JSON.stringify({
         onComplete: () => this.dispatchEvent(new CustomEvent('pcb:complete')),
       });
 
+      const lines = target
+        ? this.#mapToCanvas(
+            portraitTraces,
+            target.getBoundingClientRect(),
+            canvas,
+          )
+        : traces;
+
       this.#pcb.initCanvas();
-      for (const t of traces) this.#pcb.drawLine(...t);
+      for (const t of lines) this.#pcb.drawLine(...t);
       this.#pcb.start();
     }
   }
