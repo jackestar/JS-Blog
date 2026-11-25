@@ -30,7 +30,7 @@ Description
 
 ### TDA75610 Development Board
 
-![TDA75610](img/TDA75610.png)
+![TDA75610](/models/TDA75610LV-v2.png)
 
 Placa de desarrollo para Amplificador Integrado TDA75610
 
@@ -43,7 +43,7 @@ Placa de desarrollo para Amplificador Integrado TDA75610
 
 ### ESP01S Kitchen Driver
 
-![ESP01Kitchen](img/ESP01-Driver.jpg)
+![ESP01Kitchen](/models/ESP01-Driver-v2.png)
 
 Opto Aislador para driver de Cocina, con ESP01S
 
@@ -56,7 +56,7 @@ Opto Aislador para driver de Cocina, con ESP01S
 
 ### Sensor Ultrasonido
 
-![Ultrasonico](img/UltraSonic.png)
+![Ultrasonico](/models/UltraSonic.png)
 
 Sensor de Ultrasonido Compacto
 
