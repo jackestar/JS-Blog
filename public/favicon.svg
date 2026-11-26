@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="667.55402"
+   height="667.55396"
+   version="1.1"
+   viewBox="0 0 333.77701 333.77698"
+   id="svg1"
+   sodipodi:docname="JackestarLogoV1.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   inkscape:export-filename="JackestarLogoV1.png"
+   inkscape:export-xdpi="147.25999"
+   inkscape:export-ydpi="147.25999"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showguides="false"
+     inkscape:zoom="0.3320927"
+     inkscape:cx="150.56037"
+     inkscape:cy="156.58279"
+     inkscape:window-width="1024"
+     inkscape:window-height="574"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1">
+    <sodipodi:guide
+       position="166.8885,83.111511"
+       orientation="-1,0"
+       id="guide1"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="41.888504,208.11151"
+       orientation="0,-1"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="138.82425,121.73863"
+       orientation="1,0"
+       id="guide4"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="93.41534,-18.015625"
+       orientation="1,0"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="240.36166,-18.015629"
+       orientation="1,0"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="194.95275,121.73863"
+       orientation="1,0"
+       id="guide7"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <ellipse
+     style="display:inline;fill:#000000;fill-opacity:1;stroke:#ff896e;stroke-width:16;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     id="path2"
+     cx="166.8885"
+     cy="166.88849"
+     rx="158.8885"
+     ry="158.88849"
+     inkscape:label="Circle" />
+  <g
+     id="g7"
+     inkscape:label="Logo"
+     style="stroke-width:16;stroke-dasharray:none"
+     transform="translate(41.888504,41.888489)">
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#ff896e;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 96.935747,193.13563 -45.408912,32.9915 v 0 L 125,0 198.47316,226.12714 153.06425,193.13563 M 51.526835,119.36438 6.117929,86.37288 l 237.764151,5e-6 v 0 l -45.40892,32.991505"
+       id="path4"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:label="Star" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#ff896e;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 125,86.37288 V 125 H 96.935745"
+       id="path5"
+       inkscape:label="J"
+       sodipodi:nodetypes="ccc" />
+  </g>
+</svg>
