@@ -1,5 +1,5 @@
 ---
-import Header from '../components/Header.astro';
+import Header from '@components/Header.astro';
 import '../styles/theme.css';
 import {Font} from 'astro:assets';
 ---
@@ -11,9 +11,8 @@ import {Font} from 'astro:assets';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="../assets/Brand-Clear.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portfolio</title>
+    <title>Portfolio Juan (Jackestar) Galindez</title>
     <script is:inline>
       const stored = localStorage.getItem('starlight-theme');
       const theme =
@@ -33,21 +32,17 @@ import {Font} from 'astro:assets';
 <style>
   html,
   body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    width: 100%;
+    margin: 0;
+  }
 
+  body {
+    overflow-x: clip;
+    overflow-y: auto;
+    background: var(--bg);
     font-family: var(--font-body), 'Outfit', sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-  }
-
-  body {
-    background: var(--bg);
   }
 </style>

@@ -106,6 +106,16 @@ const isBlog = mode === 'blog';
   matchMedia('(orientation: landscape)').addEventListener('change', e => {
     if (e.matches && panel?.matches(':popover-open')) panel.hidePopover();
   });
+
+  const header = document.querySelector('header');
+  if (header) {
+    new ResizeObserver(() => {
+      document.documentElement.style.setProperty(
+        '--header-h',
+        `${header.offsetHeight}px`,
+      );
+    }).observe(header);
+  }
 </script>
 
 <style>
