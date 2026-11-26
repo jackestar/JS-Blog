@@ -172,6 +172,7 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: 'Outfit',
       cssVariable: '--font-outline',
+      weights: [300, 400, 600, 700],
     },
   ],
   markdown: {
@@ -221,6 +222,7 @@ export default defineConfig({
       ],
       components: {
         Header: './src/components/Header.astro',
+        Head: './src/components/Head.astro',
         MarkdownContent: './src/components/MarkdownContent.astro',
       },
       plugins: [
