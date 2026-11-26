@@ -54,7 +54,7 @@ const config = JSON.stringify({
 
 <style>
   pcb-trace-background {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: -1;
     pointer-events: none;
@@ -86,7 +86,7 @@ const config = JSON.stringify({
     #pcb?: PCBTraceAnimation;
     #themeObserver?: MutationObserver;
     #resizeObserver?: ResizeObserver;
-    #portrait = matchMedia('(orientation: portrait)');
+    #portrait = matchMedia('(max-width: 767.98px)');
     #config: Config = {} as Config;
     /** Last layout signature, to avoid restarting the animation for nothing. */
     #layoutKey = '';
@@ -127,24 +127,26 @@ const config = JSON.stringify({
       const el = target ? document.querySelector(target) : null;
       const portrait = this.#portrait.matches && el !== null;
 
-      // Keep watching the target so size/position changes re-run the layout.
-      this.#resizeObserver?.disconnect();
-      if (portrait) {
-        this.#resizeObserver ??= new ResizeObserver(this.#layout);
-        this.#resizeObserver.observe(el);
-      }
+      // Watch the host too: `main` can change height independently of the window.
+      this.#resizeObserver ??= new ResizeObserver(this.#layout);
+      this.#resizeObserver.disconnect();
+      this.#resizeObserver.observe(this);
+      if (portrait) this.#resizeObserver.observe(el);
 
+      const host = this.getBoundingClientRect();
       const r = portrait ? el.getBoundingClientRect() : undefined;
       const theme = document.documentElement.dataset.theme ?? '';
+      const hostKey = `${Math.round(host.width)}:${Math.round(host.height)}`;
+
+      // Target position relative to the host: constant while scrolling.
       const key = r
-        ? `p:${Math.round(r.left)}:${Math.round(r.top)}:${Math.round(r.width)}:${Math.round(r.height)}:${innerWidth}:${innerHeight}:${theme}`
-        : `l:${innerWidth}:${innerHeight}:${theme}`;
+        ? `p:${Math.round(r.left - host.left)}:${Math.round(r.top - host.top)}:${Math.round(r.width)}:${Math.round(r.height)}:${hostKey}:${theme}`
+        : `l:${hostKey}:${theme}`;
       if (key === this.#layoutKey) return;
       this.#layoutKey = key;
 
       this.#render(portrait ? el : undefined);
     };
-
     #mapToCanvas(traces: Trace[], box: DOMRect, canvas: HTMLCanvasElement) {
       const c = canvas.getBoundingClientRect();
       return traces.map(
