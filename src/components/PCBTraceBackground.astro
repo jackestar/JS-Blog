@@ -49,6 +49,7 @@ const config = JSON.stringify({
 ---
 
 <pcb-trace-background data-config={config}>
+  <div class="shadow"></div>
   <canvas aria-hidden="true"></canvas>
 </pcb-trace-background>
 
@@ -63,6 +64,12 @@ const config = JSON.stringify({
     display: block;
     width: 100%;
     height: 100%;
+  }
+  div.shadow {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(#0000 95%, var(--bg));
   }
 </style>
 <script>
