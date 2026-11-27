@@ -1,0 +1,279 @@
+---
+import {Image, getImage} from 'astro:assets';
+import type {CollectionEntry} from 'astro:content';
+
+interface Props {
+  media: CollectionEntry<'showcases'>['data']['media'];
+}
+
+const {media} = Astro.props;
+
+// Video posters go through the image pipeline too, so the browser doesn't
+// download the original file.
+const slides = await Promise.all(
+  media.map(async item => {
+    if (item.type === 'image') return item;
+    const poster = await getImage({src: item.poster, width: 1200});
+    return {...item, posterUrl: poster.src};
+  }),
+);
+---
+
+<media-carousel>
+  <div class="frame">
+    <div
+      class="track"
+      tabindex="0"
+      role="group"
+      aria-roledescription="carousel"
+      aria-label="Media"
+    >
+      {slides.map((slide, i) => (
+        <div
+          class="slide"
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`${i + 1} / ${slides.length}`}
+        >
+          {slide.type === 'image' ? (
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          ) : (
+            <video
+              muted
+              playsinline
+              preload="none"
+              poster={slide.posterUrl}
+              aria-label={slide.alt}
+            >
+              {slide.webm && <source src={slide.webm} type="video/webm" />}
+              <source src={slide.src} type="video/mp4" />
+            </video>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+  {slides.length > 1 && (
+    <div class="dots">
+      {slides.map((_, i) => (
+        <button
+          class="dot"
+          type="button"
+          aria-label={`Show media ${i + 1}`}
+          aria-current={i === 0 ? 'true' : undefined}
+        />
+      ))}
+    </div>
+  )}
+</media-carousel>
+
+<style>
+  media-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 0;
+  }
+
+  .frame {
+    position: relative;
+    flex: 1;
+    min-height: 16rem;
+    overflow: hidden;
+    border: 0.1rem solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-sunken);
+  }
+
+  .track {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+  .track:focus-visible {
+    outline-offset: -2px;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .slide :global(img),
+  .slide video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .dot {
+    all: unset;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .dot::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--border-strong);
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  .dot[aria-current='true']::before {
+    background: var(--text-title);
+    transform: scale(1.25);
+  }
+  .dot:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: -2px;
+  }
+
+  @media (orientation: landscape) and (min-width: 768px) {
+    media-carousel {
+      align-self: center;
+    }
+    .frame {
+      flex: none;
+      aspect-ratio: 4 / 3;
+      max-height: 70vh;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dot::before {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  class MediaCarousel extends HTMLElement {
+    #track!: HTMLElement;
+    #slides: HTMLElement[] = [];
+    #dots: HTMLButtonElement[] = [];
+    #observers: IntersectionObserver[] = [];
+    #reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    #active = 0;
+    #inView = false;
+
+    connectedCallback() {
+      this.#track = this.querySelector<HTMLElement>('.track')!;
+      this.#slides = [...this.querySelectorAll<HTMLElement>('.slide')];
+      this.#dots = [...this.querySelectorAll<HTMLButtonElement>('.dot')];
+
+      this.#dots.forEach((dot, i) =>
+        dot.addEventListener('click', () => this.#goTo(i)),
+      );
+
+      // With reduced motion nothing autoplays: let the user start the clip.
+      if (this.#reduceMotion.matches) {
+        for (const video of this.querySelectorAll('video')) {
+          video.controls = true;
+        }
+      }
+
+      // Which slide is showing inside the strip.
+      const slideObserver = new IntersectionObserver(
+        entries => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            this.#active = this.#slides.indexOf(entry.target as HTMLElement);
+          }
+          this.#update();
+        },
+        {root: this.#track, threshold: 0.6},
+      );
+      this.#slides.forEach(slide => slideObserver.observe(slide));
+
+      // Whether the carousel itself is on screen.
+      const viewObserver = new IntersectionObserver(
+        ([entry]) => {
+          this.#inView = entry.isIntersecting;
+          this.#update();
+        },
+        {threshold: 0.5},
+      );
+      viewObserver.observe(this);
+
+      this.#observers = [slideObserver, viewObserver];
+    }
+
+    disconnectedCallback() {
+      this.#observers.forEach(observer => observer.disconnect());
+      this.#observers = [];
+    }
+
+    #goTo(index: number) {
+      this.#track.scrollTo({
+        left: this.#slides[index].offsetLeft,
+        behavior: this.#reduceMotion.matches ? 'auto' : 'smooth',
+      });
+    }
+
+    #update() {
+      this.#dots.forEach((dot, i) => {
+        if (i === this.#active) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+
+      this.#slides.forEach((slide, i) => {
+        const video = slide.querySelector('video');
+        if (!video) return;
+
+        // `ended` keeps a finished clip on its last frame: it plays once.
+        const shouldPlay =
+          this.#inView &&
+          i === this.#active &&
+          !video.ended &&
+          !this.#reduceMotion.matches;
+
+        if (shouldPlay) {
+          if (video.paused) {
+            video.play().catch((error: unknown) => {
+              // Autoplay blocked (e.g. low power mode): show the controls.
+              if (
+                error instanceof DOMException &&
+                error.name === 'NotAllowedError'
+              ) {
+                video.controls = true;
+              }
+            });
+          }
+        } else if (!video.paused) {
+          video.pause();
+        }
+      });
+    }
+  }
+
+  if (!customElements.get('media-carousel')) {
+    customElements.define('media-carousel', MediaCarousel);
+  }
+</script>

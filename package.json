@@ -38,6 +38,7 @@
     "esbuild": true
   },
   "devDependencies": {
+    "@iconify-json/simple-icons": "^1.2.104",
     "@iconify-json/tabler": "^1.2.43",
     "@types/node": "^22.20.5",
     "eslint": "^10.14.0",

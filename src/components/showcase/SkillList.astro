@@ -1,0 +1,42 @@
+---
+import {Icon} from 'astro-icon/components';
+import {skills as registry, type SkillKey} from './skills';
+
+interface Props {
+  skills: SkillKey[];
+}
+
+const {skills} = Astro.props;
+---
+
+{skills.length > 0 && (
+  <ul>
+    {skills.map(key => (
+      <li>
+        <Icon name={registry[key].icon} title={registry[key].label} size={28} />
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--text-muted);
+  }
+
+  li {
+    display: grid;
+    place-items: center;
+    transition: color 0.2s ease;
+  }
+
+  li:hover {
+    color: var(--text-title);
+  }
+</style>

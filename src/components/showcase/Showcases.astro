@@ -1,0 +1,17 @@
+---
+import {getCollection, render} from 'astro:content';
+import Showcase from './Showcase.astro';
+
+const entries = (await getCollection('showcases')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const items = await Promise.all(
+  entries.map(async entry => ({entry, Content: (await render(entry)).Content})),
+);
+---
+
+{items.map(({entry, Content}) => (
+  <Showcase id={entry.id} data={entry.data}>
+    <Content />
+  </Showcase>
+))}

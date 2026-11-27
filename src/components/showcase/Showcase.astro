@@ -1,0 +1,75 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import MediaCarousel from './MediaCarousel.astro';
+import SkillList from './SkillList.astro';
+
+interface Props {
+  id: string;
+  data: CollectionEntry<'showcases'>['data'];
+}
+
+const {id, data} = Astro.props;
+---
+
+<section id={id} class="showcase">
+  <MediaCarousel media={data.media} />
+  <div class="text">
+    <h2>{data.title}</h2>
+    <div class="body">
+      <slot />
+    </div>
+    <SkillList skills={data.skills} />
+  </div>
+</section>
+
+<style>
+  .showcase {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 2rem;
+    min-height: max(500px, calc(100vh));
+    padding: 2rem 1rem;
+    color: var(--text-body);
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--text-title);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+  }
+
+  .body {
+    flex: 1;
+  }
+
+  .body :global(p) {
+    margin: 0 0 0.75em;
+  }
+
+  @media (orientation: landscape) and (min-width: 768px) {
+    .showcase {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: none;
+      align-items: stretch;
+      gap: 3rem;
+      padding: 2rem 3rem;
+    }
+
+    .text {
+      justify-content: center;
+    }
+
+    .body {
+      flex: 0 1 auto;
+    }
+  }
+</style>
